@@ -6,8 +6,5 @@ import org.springframework.stereotype.Controller;
 public class CodeGroupController {
 
 	
-	public String hey() {
-		return;
-	}
 
 }
