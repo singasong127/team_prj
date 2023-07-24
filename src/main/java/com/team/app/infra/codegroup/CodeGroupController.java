@@ -8,6 +8,6 @@ public class CodeGroupController {
 
 @RequestMapping("/")
     public String index(){
-    return "index";
+    return "usr/infra/index/index";
 }
 }
