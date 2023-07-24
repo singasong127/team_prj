@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.team.app.infra.member.MemberMapper">
+
+	<resultMap id="resultMapObj"
+		type="com.team.app.infra.member.Member" />
+
+	<sql id="member_val">
+		SELECT
+		seq
+		, memType
+		, nickname
+		, email
+		, pwd
+		, gender
+		, dob
+		, location
+		, memDesc
+	</sql>
+
+	<sql id="member_db">
+		FROM
+		member
+		WHERE 1=1
+		AND nickname LIKE CONCAT('%',#{nickname},'%')
+	</sql>
+	
+	
+
+</mapper>
