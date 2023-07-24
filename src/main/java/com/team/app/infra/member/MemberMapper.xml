@@ -10,15 +10,15 @@
 
 	<sql id="member_val">
 		SELECT
-		seq
-		, memType
-		, nickname
-		, email
-		, pwd
-		, gender
-		, dob
-		, location
-		, memDesc
+			seq
+			, memType
+			, nickname
+			, email
+			, pwd
+			, gender
+			, dob
+			, location
+			, memDesc
 	</sql>
 
 	<sql id="member_db">
@@ -28,6 +28,68 @@
 		AND nickname LIKE CONCAT('%',#{nickname},'%')
 	</sql>
 	
+	<select id="memberOneCount" resultType="Integer">
+		SELECT count(*)
+		<include refid="member_db" />
+	</select>
 	
+	
+	<select id="memberList" resultMap="resultMapObj">
+		<include refid="member_val" />
+		<include refid="member_db" />
+	</select>
 
+	<select id="memberOne" resultType="Integer">
+		<include refid="member_val"/>
+	</select>
+	
+	<insert id="newMemberJoin">
+		INSERT INTO
+			member
+			(
+			memType
+			, nickname
+			, email
+			, pwd
+			, gender
+			, dob
+			, location
+			, memDesc
+			)VALUES(
+				#{memType}
+				, #{nickname}
+				, #{email}
+				, #{pwd}
+				, #{gender}
+				, #{dob}
+				, #{location}
+				, #{memDesc}
+			)
+	</insert>
+	
+	<update id="memberUpdate">
+		UPDATE member
+		SET
+			pwd = #{pwd}
+			, location = #{location}
+			, memDesc = #{memDesc}
+		WHERE 1=1
+			AND seq = #{seq}
+	</update>
+	
+	<update id="memberUelete">
+		UPDATE member
+		SET 
+			memType = #{memType}
+		WHERE 1=1
+			AND seq = #{seq}
+	</update>
+	
+	<delete id="memberExcute">
+		DELETE FROM
+			member
+		WHERE 
+			seq = #{seq}
+	</delete>
+	
 </mapper>

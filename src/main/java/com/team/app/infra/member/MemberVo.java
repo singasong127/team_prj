@@ -88,7 +88,7 @@ public class MemberVo {
 		this.memDesc = memDesc;
 	}
 	
-//	page
+//	page 메서드?
 	
 	public int getThisPage() {
 		return thisPage;
