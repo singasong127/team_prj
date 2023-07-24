@@ -1,4 +1,14 @@
 package com.team.app.infra.code;
 
-public class CodeServiceImpl {
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+@Service
+public class CodeServiceImpl implements CodeService{
+    @Autowired
+    CodeDao dao;
+    public List<Code> selectList() {
+        return dao.selectList();
+    }
 }
