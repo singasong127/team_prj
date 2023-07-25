@@ -9,9 +9,8 @@
 		type="com.team.app.infra.member.Member" />
 
 	<sql id="member_val">
-		SELECT
 			seq
-			, memType
+			, memType <!-- 회원유형 (관리자: 1 / 회원 : 0 ) -->
 			, nickname
 			, email
 			, pwd
@@ -35,13 +34,46 @@
 	
 	
 	<select id="memberList" resultMap="resultMapObj">
-		<include refid="member_val" />
-		<include refid="member_db" />
+		SELECT usr. * FROM(
+			SELECT
+				<include refid="member_val" />
+				<include refid="member_db" />
+		) usr
+		LIMIT #{rowNumToShow} OFFSET #{startRnumForMysql}
 	</select>
 
 	<select id="memberOne" resultType="Integer">
-		<include refid="member_val"/>
+		SELECT
+			<include refid="member_val" />
+		FROM
+			member
+		WHERE 1=1
+			AND seq = #{seq}
 	</select>
+	
+	<insert id="newAdminJoin">
+		INSERT INTO
+			member
+			(
+			memType
+			, nickname
+			, email
+			, pwd
+			, gender
+			, dob
+			, location
+			, memDesc
+			)VALUES(
+				1
+				, #{nickname}
+				, #{email}
+				, #{pwd}
+				, #{gender}
+				, #{dob}
+				, #{location}
+				, #{memDesc}
+			)
+	</insert>
 	
 	<insert id="newMemberJoin">
 		INSERT INTO
@@ -56,7 +88,7 @@
 			, location
 			, memDesc
 			)VALUES(
-				#{memType}
+				0
 				, #{nickname}
 				, #{email}
 				, #{pwd}

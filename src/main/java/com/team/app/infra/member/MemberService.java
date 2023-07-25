@@ -8,14 +8,16 @@ public interface MemberService {
 	
 	public Member memberOne(MemberVo vo);
 
-	public int memberOneCount(MemberVo vo);
+	public int memberOneCount(Member dto);
 	
-	public int newMemberJoin(MemberVo vo);
+	public int newMemberJoin(Member dto);
 	
-	public int memberUpdate(MemberVo vo);
+	public int newAdminJoin(Member dto);
 	
-	public int memberUelete(MemberVo vo);
+	public int memberUpdate(Member dto);
 	
-	public int memberExcute(MemberVo vo);
+	public int memberUelete(Member dto);
+	
+	public int memberExcute(Member dto);
 	
 }
