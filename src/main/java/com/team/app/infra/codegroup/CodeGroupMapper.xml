@@ -4,9 +4,69 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
     <!-- 전체 매퍼중에서 유일한 값을 사용해야한다. 해서 관계적으로 해당 파일의 패스와 파일이름(확장제외) 그리고 dao에서 namespace와 일치해야한다. -->
-<mapper namespace="com.mycompany.app.infra.codegroup.CodeGroupMapper">
+<mapper namespace="com.team.app.infra.codegroup.CodeGroupMapper">
 	
-
+	<resultMap id="resultMapObj" type="com.team.app.infra.codeGroup.CodeGroup"></resultMap>
 	
+	<sql id="selectAll">
+		cgSeq
+		, delNy
+		, cgName
+	</sql>
+	
+	<select id="selectList" resultMap="resultMapObj">
+		SELECT
+			<include refid="selectAll" />
+		FROM teamCodeGroup
+		WHERE 1=1
+		AND delNy = 0
+		<if test="shKey != null and !shKey.equals('')">AND cgName LIKE CONCAT('%',#{shKey},'%')</if>
+	</select>
+	
+	<select id="selectOneCount" resultType="Integer">
+		SELECT count(*)
+		<include refid="selectCommon" />
+	</select>
 	    
+	 <select id="selectOne" resultMap="resultMapObj">
+    	SELECT
+    		<include refid="selectAll"></include>
+    	FROM
+    		teamCodeGroup
+    	WHERE
+    		cgSeq = #{cgSeq}
+    </select>
+    
+    <update id="update">
+    	UPDATE teamCodeGroup
+    	SET
+    		cgName = #{cgName}
+    	WHERE
+    		cgSeq = #{cgSeq} 
+    </update>
+    
+    <update id="uelete">
+    	UPDATE teamCodeGroup
+    	SET
+    		delNy = 1
+    	WHERE
+    		cgSeq = #{cgSeq} 
+    </update>
+    
+    <delete id="delete">
+    	DELETE 
+    	FROM teamCodeGroup
+    	WHERE
+    		cgSeq = #{cgSeq}
+    </delete>
+    
+    <insert id="insert">
+    	INSERT INTO teamCodeGroup (
+    		cgName
+    		, delNy
+    	) VALUES (
+    		#{cgName}
+    		, 0
+    	)
+    </insert>   
 </mapper>    
