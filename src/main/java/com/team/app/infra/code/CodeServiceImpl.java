@@ -8,6 +8,9 @@ import java.util.List;
 public class CodeServiceImpl implements CodeService{
     @Autowired
     CodeDao dao;
+
+
+    @Override
     public List<Code> selectList() {
         return dao.selectList();
     }

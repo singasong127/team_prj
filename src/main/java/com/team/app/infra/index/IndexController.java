@@ -1,13 +1,13 @@
-package com.team.app.infra.codegroup;
+package com.team.app.infra.index;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class CodeGroupController {
+public class IndexController {
 
-@RequestMapping("/")
+    @RequestMapping("/")
     public String index(){
-    return "usr/infra/index/index";
-}
+        return "usr/infra/index/index";
+    }
 }
