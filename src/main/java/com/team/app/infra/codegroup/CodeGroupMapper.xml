@@ -23,10 +23,10 @@
 		<if test="shKey != null and !shKey.equals('')">AND cgName LIKE CONCAT('%',#{shKey},'%')</if>
 	</select>
 	
-	<select id="selectOneCount" resultType="Integer">
+	<!-- <select id="selectOneCount" resultType="Integer">
 		SELECT count(*)
 		<include refid="selectCommon" />
-	</select>
+	</select> -->
 	    
 	 <select id="selectOne" resultMap="resultMapObj">
     	SELECT

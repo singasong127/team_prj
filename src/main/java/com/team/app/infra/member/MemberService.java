@@ -8,7 +8,7 @@ public interface MemberService {
 	
 	public Member memberOne(MemberVo vo);
 
-	public int memberOneCount(Member dto);
+	public int memberOneCount(MemberVo vo);
 	
 	public int newMemberJoin(Member dto);
 	

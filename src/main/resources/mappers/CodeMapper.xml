@@ -5,7 +5,7 @@
 
 <mapper namespace="com.team.app.infra.code.CodeMapper">
 
-    <resultMap id="resultMapObj" type="com.team.app.code.Code"></resultMap>
+    <resultMap id="resultMapObj" type="com.team.app.infra.code.Code"></resultMap>
 
     <select id="selectList" resultMap="resultMapObj">
         select

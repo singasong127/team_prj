@@ -22,8 +22,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public int memberOneCount(Member dto) {
-		return dao.memberOneCount(dto);
+	public int memberOneCount(MemberVo vo) {
+		return dao.memberOneCount(vo);
 	}
 
 	@Override

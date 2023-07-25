@@ -13,7 +13,7 @@ public class CodeDao {
     @Inject
     @Resource(name = "sqlSession")
     SqlSessionTemplate sqlSession;
-    private static String namespace = "com.team.app.code.CodeMapper";
+    private static String namespace = "com.team.app.infra.code.CodeMapper";
 
     public List<Code> selectList() {
         return sqlSession.selectList(namespace + ".selectList","");

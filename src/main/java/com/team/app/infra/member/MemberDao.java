@@ -25,8 +25,8 @@ public class MemberDao {
 		return sqlSession.selectOne(namespace + ".memberOne", vo);
 	}
 	
-	public int memberOneCount(Member dto) {
-		return sqlSession.selectOne(namespace + ".memberOne", dto);
+	public int memberOneCount(MemberVo vo) {
+		return sqlSession.selectOne(namespace + ".memberOne", vo);
 	}
 	
 	public int newMemberJoin(Member dto) {
