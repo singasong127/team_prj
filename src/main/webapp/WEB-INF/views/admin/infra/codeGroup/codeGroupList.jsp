@@ -18,7 +18,7 @@
 	            <!-- 검색 영역 박스 -->
 	            <div class="searchBox">
 	            
-	            
+	            	<input type="text" class="form-control" placeholder="코드 그룹 이름" value="${vo.cgName }">
 				   
 				   <button class="detailBtn" id="btnSh">
 				   	<i class="bi bi-arrow-clockwise"></i>검색
