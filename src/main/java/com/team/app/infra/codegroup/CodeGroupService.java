@@ -2,9 +2,6 @@ package com.team.app.infra.codegroup;
 
 import java.util.List;
 
-import com.team.app.infra.codegroup.CodeGroup;
-import com.team.app.infra.codegroup.CodeGroupVo;
-
 public interface CodeGroupService {
 	
 	public int selectOneCount(CodeGroupVo vo);

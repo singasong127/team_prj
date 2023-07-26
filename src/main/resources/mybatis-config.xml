@@ -3,8 +3,6 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-        <typeAlias type="com.team.app.infra.code.Code" alias="Code"></typeAlias>
-        <typeAlias type="com.team.app.infra.codegroup.CodeGroup" alias="CodeGroup"></typeAlias>
-        <typeAlias type="com.team.app.infra.member.Member" alias="Member"></typeAlias>
+       <typeAlias type="com.team.app.infra.codegroup.CodeGroup" alias="CodeGroup"/>
     </typeAliases>
 </configuration>
