@@ -26,7 +26,7 @@ public class MemberController {
 		}else {
 			
 		}
-		return "";
+		return "admin/infra/member/memberList";
 	}
 	
 //	상세
