@@ -1,0 +1,46 @@
+/*@@@@@@@@@@@@@@ CodeGroupList Pagination  CSS @@@@@@@@@@@@@@*/
+/*@@@@@@@@@@@@@@ CodeGroupList Pagination  CSS @@@@@@@@@@@@@@*/
+.pagination{
+    display: flex;
+    align-self: center;
+    margin-top: 15px;
+    padding: 15px;
+}
+.nextPage{
+    background-color: white;
+    padding: 0;
+    transition: all .3s ease-in-out;
+}
+.nextPage:hover{
+    transform: scaleY(1.4);
+}
+.pagination_ul{
+    display: flex;
+    align-items: center;
+}
+pagination_ul>li{
+    transition: all .3s ease-in-out;
+}
+
+.liBox{
+    font-size: 20px;
+    padding: 5px;
+    color: rgba(0, 0, 0, 0.41);
+}
+.active{
+    font-weight: 900;
+    color: rgba(255, 16, 16, 0.89);
+    transform: scaleY(1.2);
+}
+.liBox>span{
+    font-weight: 900;
+    opacity: .5;
+    transition: all .3s ease-in-out;
+}
+.liBox>span:hover{
+    opacity: .7;
+}
+
+/*@@@@@@@@@@@@@@ CodeGroupList Pagination  CSS @@@@@@@@@@@@@@*/
+/*@@@@@@@@@@@@@@ CodeGroupList Pagination  CSS @@@@@@@@@@@@@@*/
+
