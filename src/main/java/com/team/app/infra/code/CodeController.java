@@ -11,11 +11,11 @@ import java.util.List;
 public class CodeController {
     @Autowired
     CodeServiceImpl service;
-    @RequestMapping("/codeList")
+    @RequestMapping("/cdlist")
     public String selectList(Model model){
         List<Code> list = service.selectList();
         model.addAttribute("list",list);
 
-        return "admin/infra/code/codeList";
+        return "admin/infra/code/cdlist";
     }
 }
