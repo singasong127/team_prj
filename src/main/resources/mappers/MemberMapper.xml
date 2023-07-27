@@ -43,7 +43,7 @@
 		LIMIT #{rowNumToShow} OFFSET #{startRnumForMysql}
 	</select>
 
-	<select id="memberOne" resultType="Integer">
+	<select id="memberOne" resultMap="resultMapObj">
 		SELECT
 			<include refid="member_val" />
 		FROM
