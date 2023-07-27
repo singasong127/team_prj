@@ -17,12 +17,12 @@
             <%--FORM CONTENT STARTS FROM HERE!!--%>
 	            <!-- 검색 영역 박스 -->
 	            <div class="searchBox">
-		            <form name="formSh" method="post">
-		            	<input type="text" class="form-control" placeholder="코드 그룹 이름" value="${vo.cgName }">
-						<button class="detailBtn" id="btnSh">
-					   		<i class="bi bi-arrow-clockwise"></i>검색
-					   </button>
-					</form>
+	            
+	            	<input type="text" class="form-control" placeholder="코드 그룹 이름" value="${vo.cgName }">
+				   
+				   <button class="detailBtn" id="btnSh">
+				   	<i class="bi bi-arrow-clockwise"></i>검색
+				   </button>
 				</div>
 	            <div class="tableBox">
 	            	<table class="table primary-table-bordered display"
@@ -75,13 +75,3 @@
         </div>
     </main>
 </div>
-
-<script type="text/javascript">
-
-	$("#btnSh").on("click", function() {
-		
-		$("form[name=formSh]").attr("action", '/cglist').submit();
-		
-	});
-
-</script>

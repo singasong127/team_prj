@@ -34,9 +34,6 @@ public class CodeGroupController {
 	  }
 	 
 	
-
-	
-	
 	@RequestMapping(value="/cgform") 
 	public String codeGroupForm(CodeGroupVo vo, Model model) { 
 		CodeGroup codeGroup = service.selectOne(vo);
