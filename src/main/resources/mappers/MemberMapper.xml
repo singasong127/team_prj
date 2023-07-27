@@ -18,6 +18,7 @@
 			, dob
 			, location
 			, memDesc
+			, delNy
 	</sql>
 
 	<sql id="member_db">
@@ -63,6 +64,7 @@
 			, dob
 			, location
 			, memDesc
+			, delNy
 			)VALUES(
 				1
 				, #{nickname}
@@ -72,6 +74,7 @@
 				, #{dob}
 				, #{location}
 				, #{memDesc}
+				, 0
 			)
 	</insert>
 	
@@ -87,6 +90,7 @@
 			, dob
 			, location
 			, memDesc
+			, delNy
 			)VALUES(
 				0
 				, #{nickname}
@@ -96,6 +100,7 @@
 				, #{dob}
 				, #{location}
 				, #{memDesc}
+				, 0
 			)
 	</insert>
 	
@@ -112,7 +117,7 @@
 	<update id="memberUelete">
 		UPDATE member
 		SET 
-			memType = #{memType}
+			delNy = 1
 		WHERE 1=1
 			AND seq = #{seq}
 	</update>

@@ -6,14 +6,27 @@ public class Member {
 	private String seq;
 	private String memType;
 	private String nickname;
-	private String eamil;
+	private String email;
 	private String pwd;
 	private String gender;
 	private String dob;
 	private String location;
 	private String memDesc;
+	private String delNy;
 	
-//	getter & setter
+public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getDelNy() {
+		return delNy;
+	}
+	public void setDelNy(String delNy) {
+		this.delNy = delNy;
+	}
+	//	getter & setter
 	public String getSeq() {
 		return seq;
 	}
@@ -32,11 +45,11 @@ public class Member {
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
-	public String getEamil() {
-		return eamil;
+	public String getemail() {
+		return email;
 	}
-	public void setEamil(String eamil) {
-		this.eamil = eamil;
+	public void setemail(String email) {
+		this.email = email;
 	}
 	public String getPwd() {
 		return pwd;
