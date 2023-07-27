@@ -18,7 +18,7 @@
 	            <!-- 검색 영역 박스 -->
 	            <div class="searchBox">
 		            <form name="formSh" method="post">
-		            	<input type="text" class="form-control" placeholder="코드 그룹 이름" value="${vo.cgName }">
+		            	<input type="text" class="form-control" placeholder="코드 그룹 이름" value="${vo.cgName }" name="cgName" id="cgName">
 						<button class="detailBtn" id="btnSh">
 					   		<i class="bi bi-arrow-clockwise"></i>검색
 					   </button>
@@ -31,6 +31,8 @@
 							<tr>
 								<th>#</th>
 								<th>CODEGROUPNAME</th>
+								<th></th>
+								<th>삭제 여부</th>
 							</tr>
 						</thead>
 						<tbody class="mb-3">
@@ -49,10 +51,22 @@
 												href="/cgform?cgSeq=<c:out value="${list.cgSeq}"></c:out>">
 													<c:out value="${list.cgSeq}"></c:out>
 											</a></td>
-											<td><a
-												href="/cgform?cgSeq=<c:out value="${list.cgSeq}"></c:out>">
+											<td>
+												<a href="/cgform?cgSeq=<c:out value="${list.cgSeq}"></c:out>">
 													<c:out value="${list.cgName}"></c:out>
-											</a></td>
+												</a>
+											</td>
+											<td>
+												<a href="/cgform?cgSeq=<c:out value="${list.cgSeq}"></c:out>" class="detailBtn">
+													수정
+												</a>
+											</td>
+											<td>
+												<c:choose>
+													<c:when test="${list.delNy eq '1'}">Y</c:when>
+													<c:otherwise>N</c:otherwise>
+												</c:choose>
+											</td>
 										</tr>
 									</c:forEach>
 								</c:otherwise>

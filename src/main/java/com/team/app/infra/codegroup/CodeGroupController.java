@@ -40,7 +40,7 @@ public class CodeGroupController {
 	  
 		model.addAttribute("item", codeGroup);
 	  
-		return "xdm/infra/codegroup/codeGroupForm"; 
+		return "admin/infra/codeGroup/codeGroupForm"; 
 	}
 	 
 	
@@ -54,12 +54,12 @@ public class CodeGroupController {
 		return "redirect:/cglist";
 	}
 	
-	@RequestMapping(value="/cguelect")
-	public String codeGroupUelect(CodeGroup dto) {
+	@RequestMapping(value="/cguelete")
+	public String codeGroupUelete(CodeGroup dto) {
 		
-		System.out.println("Uelect");
+		System.out.println("Uelete");
 		
-		service.uelect(dto);
+		service.uelete(dto);
 		
 		return "redirect:/cglist";
 	}

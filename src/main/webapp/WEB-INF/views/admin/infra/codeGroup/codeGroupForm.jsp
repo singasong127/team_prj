@@ -16,58 +16,47 @@
             <div class="mainContainer">
             <%--FORM CONTENT STARTS FROM HERE!!--%>
 	            <!-- 검색 영역 박스 -->
-	            <div class="searchBox">
-	            
-	            	<input type="text" class="form-control" placeholder="코드 그룹 이름" value="${vo.cgName }">
-				   
-				   <button class="detailBtn" id="btnSh">
-				   	<i class="bi bi-arrow-clockwise"></i>검색
-				   </button>
-				</div>
-	            <div class="tableBox">
-	            	<table class="table primary-table-bordered display"
-									style="min-width: 845px">
-						<thead class="mb-2 thead-primary">
-							<tr>
-								<th>#</th>
-								<th>CODEGROUPNAME</th>
-							</tr>
-						</thead>
-						<tbody class="mb-3">
+					<form name="form" method="post">
+						<div class="col-lg-6">
+							<div class="row">
+								<c:choose>
+									<c:when test="${empty item.cgSeq }">
+										<input type="text" class="form-control mb-3 mx-3 w-25"
+											name="cgSeq" id="cgSeq"
+											value="<c:out value="${item.cgSeq }"/>" placeholder="자동 생성"
+											readonly style="background-color: #ccc">
+										<input type="text" class="form-control mb-3 w-25"
+											name="cgName" id="cgName"
+											value="<c:out value="${item.cgName }"/>">
+									</c:when>
+									<c:otherwise>
+										<input type="text" class="form-control mb-3 mx-3 w-25"
+											name="cgSeq" id="cgSeq"
+											value="<c:out value="${item.cgSeq }"/>" readonly>
+										<input type="text" class="form-control mb-3 w-25"
+											name="cgName" id="cgName"
+											value="<c:out value="${item.cgName }"/>">
+									</c:otherwise>
+								</c:choose>
+							</div>
+						</div>
+					</form>
+					<%--FORM CONTENT STARTS FROM HERE!!--%>
+            	<div class="excuteBox">
 							<c:choose>
-								<c:when test="${fn:length(list) eq 0}">
-									<tr>
-										<td class="text-center" colspan="9">데이터가 없습니다!</td>
-									</tr>
+								<c:when test="${empty item.cgSeq }">
+									<button type="button" class="detailBtn"
+										id="btnIns">등록</button>
 								</c:when>
 								<c:otherwise>
-									<%-- ${list} 자바에서 넘겨준 객체 이름 --%>
-									<!-- var="list" jstl 블럭에서 사용할 변수 이름 -->
-									<c:forEach items="${list}" var="list" varStatus="status">
-										<tr>
-											<td><a
-												href="/cgform?cgSeq=<c:out value="${list.cgSeq}"></c:out>">
-													<c:out value="${list.cgSeq}"></c:out>
-											</a></td>
-											<td><a
-												href="/cgform?cgSeq=<c:out value="${list.cgSeq}"></c:out>">
-													<c:out value="${list.cgName}"></c:out>
-											</a></td>
-										</tr>
-									</c:forEach>
+									<button type="button" class="detailBtn"
+										id="btnDel">삭제</button>
+									<button type="button" class="detailBtn"
+										id="btnUel">Uelete</button>
+									<button type="button" class="detailBtn" id="btnUpt">저장</button>
 								</c:otherwise>
 							</c:choose>
-						</tbody>
-						<tfoot>
-							
-						</tfoot>
-					</table>
-           		</div>
-            <%--FORM CONTENT STARTS FROM HERE!!--%>
-            	<div class="excuteBox">
-	            	<button class="detailBtn" id="btnUpt" onclick="location.href='/cgform'">수정</button>
-	            	<button class="detailBtn" id="btnIns" onclick="location.href='/cgform'">추가</button>
-	            	<button class="detailBtn" id="btnDel"><i class="bi bi-search"></i>삭제</button>
+	            	
             	</div>
 			<%--FORM CONTENT ENDS FROM HERE!!--%>
        		<%--FORM CONTENT ENDS FROM HERE!!--%>
@@ -75,3 +64,23 @@
         </div>
     </main>
 </div>
+
+<script type="text/javascript">
+
+	$("#btnIns").on("click", function() {
+		$("form[name=form]").attr("action", "/cginsert").submit();
+	});
+	
+	$("#btnDel").on("click", function() {
+		$("form[name=form]").attr("action", "/cgdelete").submit();
+	});
+	
+	$("#btnUel").on("click", function() {
+		$("form[name=form]").attr("action", "/cguelete").submit();
+	});
+	
+	$("#btnUpt").on("click", function() {
+		$("form[name=form]").attr("action", "/cgupdate").submit();
+	});
+
+</script>

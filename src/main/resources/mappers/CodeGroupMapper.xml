@@ -24,7 +24,6 @@
 			<include refid="selectAll" />
 		FROM teamCodeGroup
 		WHERE 1=1
-		AND delNy = 0
 		<if test="cgName != null and !cgName.equals('')">AND cgName LIKE CONCAT('%',#{cgName},'%')</if>
 	</select>
 	

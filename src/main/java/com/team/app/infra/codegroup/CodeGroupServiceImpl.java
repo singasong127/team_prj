@@ -50,8 +50,8 @@ public class CodeGroupServiceImpl implements CodeGroupService {
 	}
 
 	@Override
-	public int uelect(CodeGroup dto) {
-		return dao.uelect(dto);
+	public int uelete(CodeGroup dto) {
+		return dao.uelete(dto);
 	}
 	
 }

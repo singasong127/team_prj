@@ -1,11 +1,19 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 
+<style>
+	#modalCre {position: fixed;
+		z-index: 999;
+		top: 40%;
+		margin: auto;
+	}
+</style>
+
 <%--모달 생성--%>
-<div class="modalBuild modalWindow">
+<div class="modalBuild modalWindow" id="modalCre" style="display: none">
     <div class="modalHead">
         <h1>생성하기</h1>
-        <a class="modalClose"><span class="material-symbols-outlined">close</span></a>
+        <a class="modalClose" onclick="$('#modalCre').css('display', 'none')"><span class="material-symbols-outlined">close</span></a>
     </div>
     <div class="modalBodyLong">
         <div class="formBox">
@@ -45,7 +53,7 @@
                     <div class="inputBox short">
                         <label for="srcGo">지역</label>
                         <input id="srcGo" name="shKey" class="searchInput short" type="text" value="<c:out value="${vo.shKey}"/>">
-                        <span id="magGlass"class="shortSpan material-symbols-outlined">search</span>
+                        <span id="shMap" class="shortSpan material-symbols-outlined">search</span>
                     </div>
                 </div>
                 <div class="labelBox">
@@ -67,3 +75,13 @@
     </div>
 </div>
 <%--모달 생성--%>
+
+<script type="text/javascript">
+
+	$("#shMap").on("click", function() {
+		
+		location.href = "/findmap";
+		
+	});
+
+</script>
