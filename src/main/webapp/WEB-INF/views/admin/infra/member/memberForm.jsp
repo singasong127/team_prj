@@ -40,9 +40,9 @@
 				</div>
 				
        			<div class="excuteBox">
-	            	<button>수정 및 저장</button>
-	            	<button>목록</button>	
-	            	<button>삭제</button>
+	            	<button id ="upSave">수정 및 저장</button>
+	            	<button id ="back">목록</button>	
+	            	<button id ="ue">삭제</button>
             	</div>
 			</form>
 				
@@ -55,6 +55,8 @@
 </div>
 
 <script type="text/javascript">
+	var memberForm = form[name="memberInfo"];
+	
 	
 
 </script>
