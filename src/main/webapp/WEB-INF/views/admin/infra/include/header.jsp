@@ -22,7 +22,11 @@
                         </li></a>
                     </ul>
 				</div>
-
+                <a class="itemBox" href="#">
+                    <li>
+                        멤버 관리
+                    </li>
+                </a>
 			</ul>
 		</div>
 		<div onclick="location.href=" class="outBtn">
