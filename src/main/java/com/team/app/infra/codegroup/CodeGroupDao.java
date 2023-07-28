@@ -14,35 +14,34 @@ public class CodeGroupDao {
 	@Inject
 	@Resource(name = "sqlSession")
 	private SqlSession sqlSession;
+
 	
-	private static String namespace = "CodeGroup";
-	
-	public int selectOneCount(CodeGroupVo vo) { return sqlSession.selectOne(namespace + ".selectOneCount", vo); }
-	public List<CodeGroup> selectList(CodeGroupVo vo){ return sqlSession.selectList(namespace + ".selectList", vo); }
+	public int selectOneCount(CodeGroupVo vo) { return sqlSession.selectOne( "CodeGroup.selectOneCount", vo); }
+	public List<CodeGroup> selectList(CodeGroupVo vo){ return sqlSession.selectList( "CodeGroup.selectList", vo); }
 	
 	public CodeGroup selectOne(CodeGroupVo vo) {
-		CodeGroup codeGroup = sqlSession.selectOne(namespace + ".selectOne", vo);
+		CodeGroup codeGroup = sqlSession.selectOne( "CodeGroup.selectOne", vo);
 		
 		return codeGroup;
 	}
 	
 	public int update(CodeGroup dto) {
 		
-		return sqlSession.update(namespace + ".update", dto);
+		return sqlSession.update( "CodeGroup.update", dto);
 	}
 	
 	public int uelete(CodeGroup dto) {
 		
-		return sqlSession.update(namespace + ".uelete", dto);
+		return sqlSession.update( "CodeGroup.uelete", dto);
 	}
 	
 	public int delete(CodeGroup dto) {
 		
-		return sqlSession.delete(namespace + ".delete", dto);
+		return sqlSession.delete( "CodeGroup.delete", dto);
 	}
 	
 	public int insert(CodeGroup dto) {
 		
-		return sqlSession.insert(namespace + ".insert", dto);
+		return sqlSession.insert( "CodeGroup.insert", dto);
 	}
 }

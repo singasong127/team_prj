@@ -16,6 +16,6 @@ public class CodeController {
         List<Code> list = service.selectList();
         model.addAttribute("list",list);
 
-        return "admin/infra/code/cdlist";
+        return "admin/infra/code/codeList";
     }
 }

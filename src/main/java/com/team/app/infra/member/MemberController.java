@@ -26,34 +26,53 @@ public class MemberController {
 		}else {
 			
 		}
-		return "";
+		return "admin/infra/member/memberList";
 	}
 	
+//	맴버 생성(관리자용)
+	@RequestMapping(value="/memberInesrt")
+	public String memberInesrtPage() {
+		return "admin/infra/member/memberInsert";
+	}
+	
+	@RequestMapping(value="/adminMakeMember")
+	public String memberInesrt(Member dto) {
+		service.newAdminJoin(dto);
+		
+		return "redirect:/memberList";
+	}
+	
+//	회원가입 (유저용)
+	@RequestMapping(value="/memberJoin")
+	public String memberJoin(Member dto) {
+		service.newMemberJoin(dto);
+		return "redirect:/";
+	}
 //	상세
 	@RequestMapping(value="/memberOne")
 	public String memberOne(MemberVo vo, Model model) {
 		Member member = service.memberOne(vo);
 		model.addAttribute("member", member);
-		return "";
+		return "admin/infra/member/memberForm";
 	}
 	
 //	정보변경
 	@RequestMapping(value="/memberUpdate")
 	public String memberUpdate(Member dto) {
 		service.memberUpdate(dto);
-		return "";
+		return "redirect:/memberList";
 	}
 	
 //	uelete?
 	@RequestMapping(value="/memberUelete")
 	public String memberUelete(Member dto, MemberVo vo) {
 		service.memberUelete(dto);
-		return "";
+		return "redirect:/memberOne";
 	}
 	
 	@RequestMapping(value="/memberDelete")
 	public String memberDelete(Member dto) {
-		
-		return"";
+		service.memberExcute(dto);
+		return"/memberList";
 	}
 }
