@@ -35,6 +35,19 @@ public class MemberController {
 		return "admin/infra/member/memberInsert";
 	}
 	
+	@RequestMapping(value="/adminMakeMember")
+	public String memberInesrt(Member dto) {
+		service.newAdminJoin(dto);
+		
+		return "redirect:/memberList";
+	}
+	
+//	회원가입 (유저용)
+	@RequestMapping(value="/memberJoin")
+	public String memberJoin(Member dto) {
+		service.newMemberJoin(dto);
+		return "redirect:/";
+	}
 //	상세
 	@RequestMapping(value="/memberOne")
 	public String memberOne(MemberVo vo, Model model) {
@@ -47,7 +60,7 @@ public class MemberController {
 	@RequestMapping(value="/memberUpdate")
 	public String memberUpdate(Member dto) {
 		service.memberUpdate(dto);
-		return "redirect:/memberOne";
+		return "redirect:/memberList";
 	}
 	
 //	uelete?

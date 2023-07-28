@@ -30,7 +30,7 @@ public class MemberDao {
 	}
 	
 	public int newMemberJoin(Member dto) {
-		return sqlSession.insert(namespace + ".newAdminJoin", dto);
+		return sqlSession.insert(namespace + ".newMemberJoin", dto);
 	}
 	
 	public int newAdminJoin(Member dto) {

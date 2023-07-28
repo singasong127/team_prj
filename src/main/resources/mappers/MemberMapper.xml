@@ -107,6 +107,7 @@
 	<update id="memberUpdate">
 		UPDATE member
 		SET
+			nickname = #{nickname}
 			pwd = #{pwd}
 			, location = #{location}
 			, memDesc = #{memDesc}
