@@ -64,25 +64,68 @@
 	    	        			<th>장비지참</th>
 	            			</tr>
 	            		</thead>
-	            		<%-- <tbody>
-	            			<c:when test="#">
-	            				<tr>
-	            					<td class="text-center" colspan="9">아무것도 없어요 있었는데? 아니 없다고요</td>
-	            				</tr>
-	            			</c:when>
-	            			<c:otherwise> --%>
-	            				<tr>
-	            					<td>1</td>
-	            					<td>2</td>
-	            					<td>3</td>
-	            					<td>4</td>
-	            					<td>5</td>
-	            					<td>6</td>
-	            					<td>7</td>
-	            					<td>8</td>
-	            					<td>9</td>
-	            				</tr>
-	            			<%-- </c:otherwise> --%>
+            				<tr>
+            					<c:choose>
+							<c:when test="${fn:length(list) eq 0}">
+								<tr>
+									<td class="text-center" colspan="9">데이터가 없습니다!</td>
+								</tr>
+							</c:when>
+							<c:otherwise>
+								<%-- ${list} 자바에서 넘겨준 객체 이름 --%>
+								<!-- var="list" jstl 블럭에서 사용할 변수 이름 -->
+								<c:forEach items="${list}" var="list" varStatus="status">
+									<tr>
+										<td>
+											<a href="/ptform?seq=<c:out value="${list.seq}"></c:out>">
+												<c:out value="${list.seq}"></c:out>
+											</a>
+										</td>
+										<td>
+											
+										</td>
+										<td>
+											<a href="/ptform?seq=<c:out value="${list.partyName}"></c:out>">
+												<c:out value="${list.partyName}"></c:out>
+											</a>
+										</td>
+										<td>
+											<a href="/ptform?seq=<c:out value="${list.playerMax}"></c:out>">
+												<c:out value="${list.playerMax}"></c:out>
+											</a>
+										</td>
+										<td>
+											<a href="/ptform?seq=<c:out value="${list.playDt}"></c:out>">
+												<c:out value="${list.playDt}"></c:out>
+											</a>
+										</td>
+										<td>
+											<a href="/ptform?seq=<c:out value="${list.playTimeStart}"></c:out>">
+												<c:out value="${list.playTimeStart}"></c:out>
+											</a>
+										</td>
+										<td>
+											<a href="/ptform?seq=<c:out value="${list.partyGen}"></c:out>">
+												<c:out value="${list.partyGen}"></c:out>
+											</a>
+										</td>
+										<td>
+											<a href="/ptform?seq=<c:out value="${list.partyLocation}"></c:out>">
+												<c:out value="${list.partyLocation}"></c:out>
+											</a>
+										</td>
+										<td>
+											<c:choose>
+												<c:when test="${list.toolNy eq '1'}">Y</c:when>
+												<c:otherwise>N</c:otherwise>
+											</c:choose>
+										</td>
+									</tr>
+								</c:forEach>
+							</c:otherwise>
+						</c:choose>
+            				</tr>
+            			<%-- </c:otherwise> --%>
 	            		</tbody>
 	            	</table>
            		</div>

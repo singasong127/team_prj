@@ -6,5 +6,6 @@
        <typeAlias type="com.team.app.infra.codegroup.CodeGroup" alias="CodeGroup"/>
        <typeAlias type="com.team.app.infra.code.Code" alias="Code"/>
        <typeAlias type="com.team.app.infra.member.Member" alias="Member"/>
+       <typeAlias type="com.team.app.infra.party.Party" alias="Party"/>
     </typeAliases>
 </configuration>
