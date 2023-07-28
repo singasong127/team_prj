@@ -15,42 +15,34 @@ public class CodeGroupController {
 	@Autowired
 	CodeGroupServiceImpl service;
 	
-	@RequestMapping(value="/cglist")
-	public String codeGroupList(CodeGroupVo vo, Model model) {
-		
-		List<CodeGroup> list = service.selectList(vo);
-		
-//		왼쪽의 list는 jsp에서 사용할 변수명
-		model.addAttribute("list", list);
-		
-		return "admin/infra/codeGroup/codeGroupList";
+	  @RequestMapping(value="/cglist") 
+	  public String codeGroupList(@ModelAttribute("vo") CodeGroupVo vo, Model model) {
+	  
+	  vo.setCgName(vo.getCgName() == null ? "" : vo.getCgName());
+	  
+	  vo.setParamsPaging(service.selectOneCount(vo));
+	  
+	  if(vo.getTotalRows() > 0) {
+		  List<CodeGroup> list = service.selectList(vo);
+		  model.addAttribute("list", list); 
+		  // model.addAttribute("vo", vo); } 
+	  } else {
+		  // by pass 
+	  }
+	  
+	  	return "admin/infra/codeGroup/codeGroupList";
+	  }
+	 
+	
+	@RequestMapping(value="/cgform") 
+	public String codeGroupForm(CodeGroupVo vo, Model model) { 
+		CodeGroup codeGroup = service.selectOne(vo);
+	  
+		model.addAttribute("item", codeGroup);
+	  
+		return "admin/infra/codeGroup/codeGroupForm"; 
 	}
-	
-	/*
-	 * @RequestMapping(value="/cglist") public String
-	 * codeGroupList(@ModelAttribute("vo") CodeGroupVo vo, Model model) {
-	 * 
-	 * vo.setShKey(vo.getShKey() == null ? "" : vo.getShKey());
-	 * 
-	 * vo.setParamsPaging(service.selectOneCount(vo));
-	 * 
-	 * if(vo.getTotalRows() > 0) { List<CodeGroup> list = service.selectList(vo);
-	 * model.addAttribute("list", list); // model.addAttribute("vo", vo); } else {
-	 * // by pass }
-	 * 
-	 * return "xdm/infra/codegroup/codeGroupXdmList"; }
-	 */
-	
-
-	
-	/*
-	 * @RequestMapping(value="/cgform") public String codeGroupForm(CodeGroupVo vo,
-	 * Model model) { CodeGroup codeGroup = service.selectOne(vo);
-	 * 
-	 * model.addAttribute("item", codeGroup);
-	 * 
-	 * return "xdm/infra/codegroup/codeGroupForm"; }
-	 */
+	 
 	
 	@RequestMapping(value="/cgupdate")
 	public String codeGroupUpdate(CodeGroup dto) {
@@ -62,12 +54,12 @@ public class CodeGroupController {
 		return "redirect:/cglist";
 	}
 	
-	@RequestMapping(value="/cguelect")
-	public String codeGroupUelect(CodeGroup dto) {
+	@RequestMapping(value="/cguelete")
+	public String codeGroupUelete(CodeGroup dto) {
 		
-		System.out.println("Uelect");
+		System.out.println("Uelete");
 		
-		service.uelect(dto);
+		service.uelete(dto);
 		
 		return "redirect:/cglist";
 	}

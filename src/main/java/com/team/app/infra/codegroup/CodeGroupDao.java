@@ -8,8 +8,6 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.team.app.infra.codegroup.CodeGroup;
-import com.team.app.infra.codegroup.CodeGroupVo;
 
 @Repository
 public class CodeGroupDao {
@@ -32,7 +30,7 @@ public class CodeGroupDao {
 		return sqlSession.update( "CodeGroup.update", dto);
 	}
 	
-	public int uelect(CodeGroup dto) {
+	public int uelete(CodeGroup dto) {
 		
 		return sqlSession.update( "CodeGroup.uelete", dto);
 	}

@@ -1,30 +1,39 @@
-<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
     <!-- 전체 매퍼중에서 유일한 값을 사용해야한다. 해서 관계적으로 해당 파일의 패스와 파일이름(확장제외) 그리고 dao에서 namespace와 일치해야한다. -->
-<mapper namespace="CodeGroup">
+<mapper namespace="Party">
 	
 	<sql id="selectAll">
-		cgSeq
+		seq
 		, delNy
-		, cgName
+		, partyType
+		, partyName
+		, playerNum
+		, playerMax
+		, playDt
+		, playTimeStart
+		, playTimeEnd
+		, partyLeader
+		, partyDesc
+		, toolNy
+		, partyGen
+		, madeTime
+		, partyLocation
 	</sql>
 	
 	<sql id ="selectCommon">
-   		FROM teamCodeGroup
+   		FROM party
 		WHERE 1=1
 		AND delNy = 0
-		<if test="cgName != null and !cgName.equals('')">AND cgName LIKE CONCAT('%',#{cgName},'%')</if>
+		<if test="partyName != null and !partyName.equals('')">AND partyName LIKE CONCAT('%',#{partyName},'%')</if>
     </sql>
 	
-	<select id="selectList" resultType="CodeGroup">
+	<select id="selectList" resultType="Party">
 		SELECT
 			<include refid="selectAll" />
-		FROM teamCodeGroup
-		WHERE 1=1
-		<if test="cgName != null and !cgName.equals('')">AND cgName LIKE CONCAT('%',#{cgName},'%')</if>
+			<include refid="selectCommon" />
 	</select>
 	
 	<select id="selectOneCount" resultType="Integer">
@@ -32,44 +41,39 @@
 		<include refid="selectCommon" />
 	</select>
 	    
-	 <select id="selectOne" resultType="CodeGroup">
+	 <select id="selectOne" resultType="Party">
     	SELECT
     		<include refid="selectAll"></include>
     	FROM
-    		teamCodeGroup
+    		Party
     	WHERE
-    		cgSeq = #{cgSeq}
+    		seq = #{seq}
     </select>
     
     <update id="update">
-    	UPDATE teamCodeGroup
+    	UPDATE Party
     	SET
-    		cgName = #{cgName}
+    		partyName = #{partyName}
+    		, playerMax = #{playerMax}
+    		
     	WHERE
-    		cgSeq = #{cgSeq} 
+    		seq = #{seq} 
     </update>
     
     <update id="uelete">
-    	UPDATE teamCodeGroup
+    	UPDATE Party
     	SET
     		delNy = 1
     	WHERE
-    		cgSeq = #{cgSeq} 
+    		seq = #{seq} 
     </update>
     
-    <delete id="delete">
-    	DELETE 
-    	FROM teamCodeGroup
-    	WHERE
-    		cgSeq = #{cgSeq}
-    </delete>
-    
     <insert id="insert">
-    	INSERT INTO teamCodeGroup (
-    		cgName
+    	INSERT INTO Party (
+    		partyName
     		, delNy
     	) VALUES (
-    		#{cgName}
+    		#{partyName}
     		, 0
     	)
     </insert>   
