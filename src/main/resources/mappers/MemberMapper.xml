@@ -108,7 +108,7 @@
 		UPDATE member
 		SET
 			nickname = #{nickname}
-			pwd = #{pwd}
+			, pwd = #{pwd}
 			, location = #{location}
 			, memDesc = #{memDesc}
 		WHERE 1=1
