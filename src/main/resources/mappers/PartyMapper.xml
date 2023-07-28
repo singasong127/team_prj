@@ -1,0 +1,80 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+    <!-- 전체 매퍼중에서 유일한 값을 사용해야한다. 해서 관계적으로 해당 파일의 패스와 파일이름(확장제외) 그리고 dao에서 namespace와 일치해야한다. -->
+<mapper namespace="Party">
+	
+	<sql id="selectAll">
+		seq
+		, delNy
+		, partyType
+		, partyName
+		, playerNum
+		, playerMax
+		, playDt
+		, playTimeStart
+		, playTimeEnd
+		, partyLeader
+		, partyDesc
+		, toolNy
+		, partyGen
+		, madeTime
+		, partyLocation
+	</sql>
+	
+	<sql id ="selectCommon">
+   		FROM party
+		WHERE 1=1
+		AND delNy = 0
+		<if test="partyName != null and !partyName.equals('')">AND partyName LIKE CONCAT('%',#{partyName},'%')</if>
+    </sql>
+	
+	<select id="selectList" resultType="Party">
+		SELECT
+			<include refid="selectAll" />
+			<include refid="selectCommon" />
+	</select>
+	
+	<select id="selectOneCount" resultType="Integer">
+		SELECT count(*)
+		<include refid="selectCommon" />
+	</select>
+	    
+	 <select id="selectOne" resultType="Party">
+    	SELECT
+    		<include refid="selectAll"></include>
+    	FROM
+    		Party
+    	WHERE
+    		seq = #{seq}
+    </select>
+    
+    <update id="update">
+    	UPDATE Party
+    	SET
+    		partyName = #{partyName}
+    		, playerMax = #{playerMax}
+    		
+    	WHERE
+    		seq = #{seq} 
+    </update>
+    
+    <update id="uelete">
+    	UPDATE Party
+    	SET
+    		delNy = 1
+    	WHERE
+    		seq = #{seq} 
+    </update>
+    
+    <insert id="insert">
+    	INSERT INTO Party (
+    		partyName
+    		, delNy
+    	) VALUES (
+    		#{partyName}
+    		, 0
+    	)
+    </insert>   
+</mapper>    
