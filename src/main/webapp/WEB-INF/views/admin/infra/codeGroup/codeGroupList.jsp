@@ -1,12 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="rb" uri="http://www.springframework.org/tags"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
 <!DOCTYPE html>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> branch 'main' of https://github.com/singasong127/team_prj.git
 <html lang="kr">
 <title>코드 그룹 리스트</title>
 <%@include file="../include/head.jsp"%>
@@ -101,6 +103,7 @@
 	});
 
 </script>
+<<<<<<< HEAD
 =======
 
 <table class="table primary-table-bordered display"
@@ -140,4 +143,6 @@
 
 	</tfoot>
 </table>
+>>>>>>> branch 'main' of https://github.com/singasong127/team_prj.git
+=======
 >>>>>>> branch 'main' of https://github.com/singasong127/team_prj.git
