@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <header>
     <div class="headerBox">
 
@@ -19,18 +20,16 @@
                         <a href="/cglist"><li>
                             공통코드그룹
                         </li></a>
-
                     </ul>
+				</div>
 
-                </div>
-
-            </ul>
-        </div>
-        <div onclick="location.href=" class="outBtn">
-            <span class="material-symbols-outlined">account_circle</span>
-        </div>
-        <div onclick="location.href=" class="outBtn">
-            <span class="material-symbols-outlined">login</span>
-        </div>
-    </div>
+			</ul>
+		</div>
+		<div onclick="location.href=" class="outBtn">
+			<span class="material-symbols-outlined">account_circle</span>
+		</div>
+		<div onclick="location.href=" class="outBtn">
+			<span class="material-symbols-outlined">login</span>
+		</div>
+	</div>
 </header>
