@@ -31,6 +31,8 @@
 							<th>location</th>
 							<th>memDesc</th>
 							<th>delNy</th>
+							<th>signUpDt</th>
+							<th>uptProfileDt</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -53,6 +55,8 @@
 										<td><c:out value="${list.location }"></c:out></td>
 										<td><c:out value="${list.memDesc }"></c:out></td>
 										<td><c:out value="${list.delNy }"></c:out></td>
+										<td><c:out value="${list.signUpDt }"></c:out></td>
+										<td><c:out value="${list.uptProfileDt }"></c:out></td>
 									</tr>							
 								</c:forEach>
 							</c:otherwise>

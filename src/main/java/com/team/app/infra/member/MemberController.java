@@ -67,7 +67,14 @@ public class MemberController {
 	@RequestMapping(value="/memberUelete")
 	public String memberUelete(Member dto, MemberVo vo) {
 		service.memberUelete(dto);
-		return "redirect:/memberOne";
+		return "redirect:/memberList";
+	}
+
+	//	uelete?
+	@RequestMapping(value="/memberNoUelete")
+	public String memberNoUelete(Member dto, MemberVo vo) {
+		service.memberNoUelete(dto);
+		return "redirect:/memberList";
 	}
 	
 	@RequestMapping(value="/memberDelete")

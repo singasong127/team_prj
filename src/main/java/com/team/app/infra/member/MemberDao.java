@@ -44,6 +44,10 @@ public class MemberDao {
 	public int memberUelete(Member dto) {
 		return sqlSession.update(namespace + ".memberUelete" , dto);
 	}
+
+	public int memberNoUelete(Member dto) {
+		return sqlSession.update(namespace + ".memberNoUelete" , dto);
+	}
 	
 	public int memberExcute(Member dto) {
 		return sqlSession.delete(namespace + ".memberExcute", dto);

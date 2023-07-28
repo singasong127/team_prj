@@ -43,12 +43,17 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public int memberUelete(Member dto) {
-		return memberUelete(dto);
+		return dao.memberUelete(dto);
 	}
 
 	@Override
 	public int memberExcute(Member dto) {
-		return memberExcute(dto);
+		return dao.memberExcute(dto);
+	}
+
+	@Override
+	public int memberNoUelete(Member dto) {
+		return dao.memberNoUelete(dto);
 	}
 
 

@@ -45,7 +45,8 @@
        			<div class="excuteBox">
 	            	<button type="button" id ="upSave">수정 및 저장</button>
 	            	<button type="button" id ="back">목록</button>	
-	            	<button type="button" id ="ue">삭제</button>
+	            	<button type="button" id ="noUe">활성화</button>
+	            	<button type="button" id ="ue">비활성화</button>
             	</div>
 				
 			<%--FORM CONTENT ENDS FROM HERE!!--%>
@@ -72,7 +73,13 @@
 	
 	$("#ue").on("click", function(){
 		memberForm.attr("method", "post");
-		memberForm.attr("action", "/memberUelete");
+		memberForm.attr("action", "/memberUelete").submit();
+		
+	});
+	
+	$("#noUe").on("click", function(){
+		memberForm.attr("method", "post");
+		memberForm.attr("action", "/memberNoUelete").submit();
 		
 	});
 	
