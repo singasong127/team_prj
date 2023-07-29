@@ -14,7 +14,7 @@
                         </li>
                     </a>
                     <ul class="subNavList">
-                        <a href="/cdlist"><li>
+                        <a href="/codeList"><li>
                             공통코드
                         </li></a>
                         <a href="/cglist"><li>

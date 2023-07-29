@@ -44,4 +44,11 @@ public class CodeGroupDao {
 		
 		return sqlSession.insert( "CodeGroup.insert", dto);
 	}
+
+	/**
+	 * @return: codeForm을 위한 리스트 뿌려줌
+	 */
+	public List<CodeGroup> selectOpt() {
+		return sqlSession.selectList("CodeGroup.selectOpt");
+	}
 }

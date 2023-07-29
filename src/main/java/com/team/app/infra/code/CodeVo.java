@@ -10,6 +10,7 @@ import lombok.ToString;
 public class CodeVo {
 
     private String shKey;
+    private String optDelNy;
     private String cdSeq;
     private String cgSeq;
     private String cgName;

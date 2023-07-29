@@ -6,15 +6,83 @@
 <mapper namespace="Code">
 
 
+    <sql id="selectField">
+        a.cdSeq,
+        a.teamCodeGroup_seq,
+        a.cdName,
+        a.delNy,
+        b.cgName,
+        b.cgSeq
+    </sql>
+
+    <sql id="selectCommon">
+        FROM
+        teamCode AS a
+        LEFT JOIN teamCodeGroup AS b ON a.teamCodeGroup_seq = b.cgSeq
+        WHERE 1+1
+        <if test="shKey != null and !shKey.equals('')">
+            AND (b.cgName LIKE CONCAT('%',#{shKey},'%')
+            OR a.cdName LIKE CONCAT('%',#{shKey},'%'))
+        </if>
+    </sql>
+
+
     <select id="selectList" resultType="Code">
-        select
-            cdName,
-            cdSeq,
-            delNy,
-            teamCodeGroup_seq
-        from
-            teamCode;
+        SELECT
+            aa.*
+        FROM (
+            SELECT
+                <include refid="selectField" />
+                <include refid="selectCommon" />
+            ) AS aa
+        LIMIT #{rowNumToShow} OFFSET #{startRnumForMysql}
     </select>
 
 
+    <!--PAGING TOTAL COUNT-->
+    <!--PAGING TOTAL COUNT-->
+    <select id="selectOneCount" resultType="Integer">
+        SELECT count(*)
+        <include refid="selectCommon" />
+    </select>
+    <!--PAGING TOTAL COUNT-->
+    <!--PAGING TOTAL COUNT-->
+
+    
+    <select id="selectOne" resultType="Code">
+        SELECT 
+            <include refid="selectField"/>
+        FROM
+            teamCode AS a
+        LEFT JOIN teamCodeGroup AS b ON a.teamCodeGroup_seq = b.cgSeq
+        WHERE a.cdSeq = #{cdSeq}
+    </select>
+
+    <update id="update">
+        UPDATE teamCode
+        SET
+            cdName = #{cdName},
+            teamCodeGroup_seq = #{teamCodeGroup_seq}
+        WHERE
+            cdSeq = #{cdSeq}
+    </update>
+
+    <insert id="insert">
+        INSERT INTO teamCode (cdName, teamCodeGroup_seq, delNy)
+        VALUES (
+            #{cdName},
+            #{teamCodeGroup_seq},
+            0
+        )
+    </insert>
+
+    <update id="uelete">
+        UPDATE teamCode
+        SET (
+                delNy = 1
+                )
+        WHERE cdSeq = #{cdSeq}
+
+    </update>
+    
 </mapper>
