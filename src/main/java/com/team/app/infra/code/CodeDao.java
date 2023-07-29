@@ -14,7 +14,11 @@ public class CodeDao {
     @Resource(name = "sqlSession")
     SqlSessionTemplate sqlSession;
 
-    public List<Code> selectList() {
-        return sqlSession.selectList(  "Code.selectList");
+    public List<Code> selectList(CodeVo vo) {
+        return sqlSession.selectList(  "Code.selectList",vo);
+    }
+
+    public int selectOneCount(CodeVo vo) {
+        return sqlSession.selectOne("Code.SelectOneCount",vo);
     }
 }

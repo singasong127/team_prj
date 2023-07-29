@@ -48,7 +48,7 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>분류코드</th>
+                            <th>분류그룹</th>
                             <th>코드이름</th>
                             <th></th>
                             <th>삭제여부</th>
@@ -104,7 +104,7 @@
         if(thisPage == 0) {
 
             $("input:hidden[name=thisPage]").val(1);
-            $("form[name=search]").attr("action", "/codeList/list").submit();
+            $("form[name=search]").attr("action", "/cdlist").submit();
 
         } else if(thisPage > ${vo.totalPages}){
 
