@@ -24,7 +24,7 @@
                     <c:when test="${empty item.cdSeq }">
                         <div class="mainLabelBox">
                             <h2 class="tableLabel">공통코드 추가</h2>
-                            <div class="addBox" onclick="location.href='/codeList'">
+                            <div class="addBox" onclick="location.href='/cglist'">
                                 <h3 class="tableSubLabel">공통코드 목록</h3>
                                 <span id="back2list" class="material-symbols-outlined">clear_all</span>
                             </div>
