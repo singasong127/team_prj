@@ -22,7 +22,7 @@
                         </li></a>
                     </ul>
 				</div>
-                <a class="itemBox" href="#">
+                <a class="itemBox" href="/memberList">
                     <li>
                         멤버 관리
                     </li>
