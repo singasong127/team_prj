@@ -11,7 +11,32 @@ public class CodeServiceImpl implements CodeService{
 
 
     @Override
-    public List<Code> selectList() {
-        return dao.selectList();
+    public List<Code> selectList(CodeVo vo) {
+        return dao.selectList(vo);
+    }
+
+    @Override
+    public int selectOneCount(CodeVo vo) {
+        return dao.selectOneCount(vo);
+    }
+
+    @Override
+    public Code selectOne(CodeVo vo) {
+        return dao.selectOne(vo);
+    }
+
+    @Override
+    public int update(Code dto) {
+        return dao.update(dto);
+    }
+
+    @Override
+    public int insert(Code dto) {
+        return dao.insert(dto);
+    }
+
+    @Override
+    public int uelete(CodeVo vo) {
+        return dao.uelete(vo);
     }
 }

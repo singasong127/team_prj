@@ -48,10 +48,22 @@ public class CodeGroupServiceImpl implements CodeGroupService {
 		
 		return dao.insert(dto);
 	}
-
 	@Override
 	public int uelete(CodeGroup dto) {
 		return dao.uelete(dto);
 	}
-	
+
+	/**
+	 * @return : codeForm 참조용
+	 */
+	@Override
+	public List<CodeGroup> selectOpt() {
+		return dao.selectOpt();
+	}
+
+
+
+
+
+
 }

@@ -22,7 +22,7 @@
                 <%--                </c:forEach>--%>
                 <div class="mainLabelBox">
                     <h2 class="tableLabel">공통코드 관리</h2>
-                    <div class="addBox" onclick="location.href='/cdform'">
+                    <div class="addBox" onclick="location.href='/codeForm'">
                         <h3 class="tableSubLabel">공통코드 추가</h3>
                         <span class="material-symbols-outlined">add_box</span></a>
                     </div>
@@ -48,7 +48,7 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>분류코드</th>
+                            <th>분류그룹</th>
                             <th>코드이름</th>
                             <th></th>
                             <th>삭제여부</th>
@@ -66,7 +66,28 @@
                                 </tr>
                             </c:when>
                             <c:otherwise>
-
+                                <c:forEach items="${list}" var="list" varStatus="status">
+                                    <tr>
+                                        <td><c:out value="${list.cdSeq}"></c:out></td>
+                                        <td><c:out value="${list.cgName}"></c:out></td>
+                                        <td><c:out value="${list.cdName}"></c:out></td>
+                                        <td>
+                                            <button class="detailBtn" onclick="location.href='/codeForm?cdSeq=<c:out value = '${list.cdSeq}'/>'">
+                                                수정
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <c:choose>
+                                                <c:when test="${list.delNy eq '1'}">
+                                                    Y
+                                                </c:when>
+                                                <c:otherwise>
+                                                    N
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
                             </c:otherwise>
                         </c:choose>
                         </tbody>
@@ -104,7 +125,7 @@
         if(thisPage == 0) {
 
             $("input:hidden[name=thisPage]").val(1);
-            $("form[name=search]").attr("action", "/codeList/list").submit();
+            $("form[name=search]").attr("action", "/cdlist").submit();
 
         } else if(thisPage > ${vo.totalPages}){
 

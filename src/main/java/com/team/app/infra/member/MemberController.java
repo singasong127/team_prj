@@ -30,8 +30,8 @@ public class MemberController {
 	}
 	
 //	맴버 생성(관리자용)
-	@RequestMapping(value="/memberInesrt")
-	public String memberInesrtPage() {
+	@RequestMapping(value="/memberInsert")
+	public String memberInsertPage() {
 		return "admin/infra/member/memberInsert";
 	}
 	
@@ -68,6 +68,7 @@ public class MemberController {
 	public String memberUelete(Member dto, MemberVo vo) {
 		service.memberUelete(dto);
 		return "redirect:/memberList";
+<<<<<<< HEAD
 	}
 
 	//	uelete?
@@ -75,6 +76,8 @@ public class MemberController {
 	public String memberNoUelete(Member dto, MemberVo vo) {
 		service.memberNoUelete(dto);
 		return "redirect:/memberList";
+=======
+>>>>>>> branch 'main' of https://github.com/singasong127/team_prj.git
 	}
 	
 	@RequestMapping(value="/memberDelete")
