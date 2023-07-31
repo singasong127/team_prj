@@ -7,102 +7,137 @@
 <!DOCTYPE html>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> branch 'main' of https://github.com/singasong127/team_prj.git
 <html lang="kr">
 <title>코드 그룹 리스트</title>
+=======
+<html lang="en">
+>>>>>>> branch 'main' of https://github.com/singasong127/team_prj.git
 <%@include file="../include/head.jsp"%>
 <body>
 <div>
-    <%@include file="../include/header.jsp"%>
-    <main>
-        <div class="mainBox">
-            <div class="mainContainer">
-            <%--FORM CONTENT STARTS FROM HERE!!--%>
-	            <!-- 검색 영역 박스 -->
-	            <div class="searchBox">
-		            <form name="formSh" method="post">
-		            	<input type="text" class="form-control" placeholder="코드 그룹 이름" value="${vo.cgName }" name="cgName" id="cgName">
-						<button class="detailBtn" id="btnSh">
-					   		<i class="bi bi-arrow-clockwise"></i>검색
-					   </button>
-					</form>
+	<%@include file="../include/header.jsp"%>
+	<main>
+		<div class="mainBox">
+			<div class="mainContainer">
+				<%--FORM CONTENT STARTS FROM HERE!!--%>
+				<%--FORM CONTENT STARTS FROM HERE!!--%>
+				<div class="mainLabelBox">
+					<h2 class="tableLabel">코드그룹 관리</h2>
+					<div class="addBox" onclick="location.href='/codeGroupForm'">
+						<h3 class="tableSubLabel">코드그룹 추가</h3>
+						<span class="material-symbols-outlined">add_box</span></a>
+					</div>
 				</div>
-	            <div class="tableBox">
-	            	<table class="table primary-table-bordered display"
-									style="min-width: 845px">
-						<thead class="mb-2 thead-primary">
-							<tr>
-								<th>#</th>
-								<th>CODEGROUPNAME</th>
-								<th></th>
-								<th>삭제 여부</th>
-							</tr>
+				<form name="search">
+					<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
+					<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
+					<div class="searchBox">
+
+						<select name="optDelNy">
+							<option value="">삭제여부</option>
+							<option value="1">삭제</option>
+							<option value="0">미삭제</option>
+						</select>
+						<div class="inputBox">
+							<input id="srcGo" name="cgName" class="short searchInput" type="text" value="<c:out value="${vo.cgName}"/>">
+							<span id="magGlass"class="material-symbols-outlined">search</span>
+						</div>
+					</div>
+				</form>
+				<div class="tableBox">
+					<table>
+						<thead>
+						<tr>
+							<th>#</th>
+							<th>그룹이름</th>
+							<th></th>
+							<th>삭제여부</th>
+						</tr>
 						</thead>
-						<tbody class="mb-3">
-							<c:choose>
-								<c:when test="${fn:length(list) eq 0}">
+						<tbody>
+						<c:choose>
+							<c:when test="${fn:length(list) eq 0}">
+								<tr>
+									<td><h4 id="nodata">There is no data!</h4></td>
+								</tr>
+							</c:when>
+							<c:otherwise>
+								<c:forEach items="${list}" var="list" varStatus="status">
 									<tr>
-										<td class="text-center" colspan="9">데이터가 없습니다!</td>
+										<td><c:out value="${list.cgSeq}"></c:out></td>
+										<td><c:out value="${list.cgName}"></c:out></td>
+										<td><button class="detailBtn" onclick="location.href='/cgform?cgSeq=<c:out value = '${list.cgSeq}'/>'">수정</button></td>
+										<td>
+											<c:choose>
+												<c:when test="${list.delNy eq '1'}">
+													Y
+												</c:when>
+												<c:otherwise>
+													N
+												</c:otherwise>
+											</c:choose>
+										</td>
 									</tr>
-								</c:when>
-								<c:otherwise>
-									<%-- ${list} 자바에서 넘겨준 객체 이름 --%>
-									<!-- var="list" jstl 블럭에서 사용할 변수 이름 -->
-									<c:forEach items="${list}" var="list" varStatus="status">
-										<tr>
-											<td><a
-												href="/cgform?cgSeq=<c:out value="${list.cgSeq}"></c:out>">
-													<c:out value="${list.cgSeq}"></c:out>
-											</a></td>
-											<td>
-												<a href="/cgform?cgSeq=<c:out value="${list.cgSeq}"></c:out>">
-													<c:out value="${list.cgName}"></c:out>
-												</a>
-											</td>
-											<td>
-												<a href="/cgform?cgSeq=<c:out value="${list.cgSeq}"></c:out>" class="detailBtn">
-													수정
-												</a>
-											</td>
-											<td>
-												<c:choose>
-													<c:when test="${list.delNy eq '1'}">Y</c:when>
-													<c:otherwise>N</c:otherwise>
-												</c:choose>
-											</td>
-										</tr>
-									</c:forEach>
-								</c:otherwise>
-							</c:choose>
+								</c:forEach>
+							</c:otherwise>
+						</c:choose>
 						</tbody>
-						<tfoot>
-							
-						</tfoot>
 					</table>
-           		</div>
-            <%--FORM CONTENT STARTS FROM HERE!!--%>
-            	<div class="excuteBox">
-	            	<button class="detailBtn" id="btnUpt" onclick="location.href='/cgform'">수정</button>
-	            	<button class="detailBtn" id="btnIns" onclick="location.href='/cgform'">추가</button>
-	            	<button class="detailBtn" id="btnDel"><i class="bi bi-search"></i>삭제</button>
-            	</div>
-			<%--FORM CONTENT ENDS FROM HERE!!--%>
-       		<%--FORM CONTENT ENDS FROM HERE!!--%>
-            </div>
-        </div>
-    </main>
+				</div>
+				<%--pagination include--%>
+				<%--pagination include--%>
+				<c:choose>
+					<c:when test="${vo.totalPages eq 1}">
+
+					</c:when>
+					<c:otherwise>
+
+						<%@include file="../include/pagination.jsp"%>
+
+					</c:otherwise>
+				</c:choose>
+				<%--pagination include--%>
+				<%--pagination include--%>
+
+
+				<%--FORM CONTENT ENDS FROM HERE!!--%>
+				<%--FORM CONTENT ENDS FROM HERE!!--%>
+			</div>
+		</div>
+	</main>
 </div>
 
+</body>
 <script type="text/javascript">
+	<%--pagination js function--%>
+	<%--pagination js function--%>
 
-	$("#btnSh").on("click", function() {
-		
-		$("form[name=formSh]").attr("action", '/cglist').submit();
-		
-	});
+	goList = function(thisPage) {
+		if(thisPage == 0) {
+
+			$("input:hidden[name=thisPage]").val(1);
+			$("form[name=search]").attr("action", "/cglist").submit();
+
+		} else if(thisPage > ${vo.totalPages}){
+
+			$("input:hidden[name=thisPage]").val(thisPage - 1);
+			$("form[name=search]").attr("action", "/cglist").submit();
+		}else{
+
+			$("input:hidden[name=thisPage]").val(thisPage);
+			$("form[name=search]").attr("action", "/cglist").submit();
+
+		}
+	}
+	<%--pagination js function--%>
+	<%--pagination js function--%>
+
 
 </script>
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
@@ -145,4 +180,7 @@
 </table>
 >>>>>>> branch 'main' of https://github.com/singasong127/team_prj.git
 =======
+>>>>>>> branch 'main' of https://github.com/singasong127/team_prj.git
+=======
+</html>
 >>>>>>> branch 'main' of https://github.com/singasong127/team_prj.git

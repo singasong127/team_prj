@@ -4,83 +4,125 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
-<!DOCTYPE html>
-<html lang="kr">
-<title>코드 그룹 리스트</title>
+<!doctype html>
+<html lang="en">
 <%@include file="../include/head.jsp"%>
 <body>
 <div>
-    <%@include file="../include/header.jsp"%>
-    <main>
-        <div class="mainBox">
-            <div class="mainContainer">
-            <%--FORM CONTENT STARTS FROM HERE!!--%>
-	            <!-- 검색 영역 박스 -->
-					<form name="form" method="post">
-						<div class="col-lg-6">
-							<div class="row">
-								<c:choose>
-									<c:when test="${empty item.cgSeq }">
-										<input type="text" class="form-control mb-3 mx-3 w-25"
-											name="cgSeq" id="cgSeq"
-											value="<c:out value="${item.cgSeq }"/>" placeholder="자동 생성"
-											readonly style="background-color: #ccc">
-										<input type="text" class="form-control mb-3 w-25"
-											name="cgName" id="cgName"
-											value="<c:out value="${item.cgName }"/>">
-									</c:when>
-									<c:otherwise>
-										<input type="text" class="form-control mb-3 mx-3 w-25"
-											name="cgSeq" id="cgSeq"
-											value="<c:out value="${item.cgSeq }"/>" readonly>
-										<input type="text" class="form-control mb-3 w-25"
-											name="cgName" id="cgName"
-											value="<c:out value="${item.cgName }"/>">
-									</c:otherwise>
-								</c:choose>
+	<%@include file="../include/header.jsp"%>
+	<main>
+		<div class="mainBox">
+			<div class="mainContainer">
+				<%--FORM CONTENT STARTS FROM HERE!!--%>
+				<%--FORM CONTENT STARTS FROM HERE!!--%>
+
+				<%--WHEN SEQ IS NULL--%>
+				<%--WHEN SEQ IS NULL--%>
+				<%--WHEN SEQ IS NULL--%>
+				<%--WHEN SEQ IS NULL--%>
+				<c:choose>
+					<c:when test="${empty item.cgSeq }">
+						<div class="mainLabelBox">
+							<h2 class="tableLabel">코드그룹 추가</h2>
+							<div class="addBox" onclick="location.href='/cglist'">
+								<h3 class="tableSubLabel">코드그룹 목록</h3>
+								<span id="back2list" class="material-symbols-outlined">clear_all</span>
 							</div>
 						</div>
-					</form>
-					<%--FORM CONTENT STARTS FROM HERE!!--%>
-            	<div class="excuteBox">
-							<c:choose>
-								<c:when test="${empty item.cgSeq }">
-									<button type="button" class="detailBtn"
-										id="btnIns">등록</button>
-								</c:when>
-								<c:otherwise>
-									<button type="button" class="detailBtn"
-										id="btnDel">삭제</button>
-									<button type="button" class="detailBtn"
-										id="btnUel">Uelete</button>
-									<button type="button" class="detailBtn" id="btnUpt">저장</button>
-								</c:otherwise>
-							</c:choose>
-	            	
-            	</div>
-			<%--FORM CONTENT ENDS FROM HERE!!--%>
-       		<%--FORM CONTENT ENDS FROM HERE!!--%>
-            </div>
-        </div>
-    </main>
+						<div class="tableBox_form">
+							<table>
+								<thead>
+								<tr>
+									<th>그룹이름</th>
+									<th></th>
+								</tr>
+								</thead>
+								<tbody>
+								<tr>
+									<form name="insertForm">
+
+										<td><input name="cgName" class="searchInput_form" placeholder="코드그룹명"></td>
+
+										<td><button class="insertBtn btn">생성</button></td>
+									</form>
+								</tr>
+								</tbody>
+							</table>
+						</div>
+						<%--WHEN SEQ IS NULL--%>
+						<%--WHEN SEQ IS NULL--%>
+						<%--WHEN SEQ IS NULL--%>
+						<%--WHEN SEQ IS NULL--%>
+
+
+
+						<%--WHEN SEQ IS NOT NULL--%>
+						<%--WHEN SEQ IS NOT NULL--%>
+						<%--WHEN SEQ IS NOT NULL--%>
+						<%--WHEN SEQ IS NOT NULL--%>
+						<%--WHEN SEQ IS NOT NULL--%>
+					</c:when>
+					<c:otherwise>
+						<div class="mainLabelBox">
+							<h2 class="tableLabel">코드그룹 수정</h2>
+							<div class="addBox" onclick="location.href='/cglist'">
+								<h3 class="tableSubLabel">코드그룹 목록</h3>
+								<span id="back2list" class="material-symbols-outlined">clear_all</span>
+							</div>
+						</div>
+						<div class="tableBox_form">
+							<table>
+								<thead>
+								<tr>
+									<th>#</th>
+									<th>코드그룹 이름</th>
+									<th></th>
+									<th></th>
+								</tr>
+								</thead>
+								<tbody>
+								<tr>
+									<form name="updateForm">
+										<td><input readonly class="searchInput_formSeq" name="cgSeq" value="<c:out value="${item.cgSeq}"></c:out>"/></td>
+										<td><input name="cgName" class="searchInput_form" value="<c:out value="${item.cgName}"></c:out>"></td>
+
+										<td><button class="updateBtn btn">수정</button></td>
+										<td><button class="deleteBtn btn">삭제</button></td>
+									</form>
+								</tr>
+								</tbody>
+							</table>
+						</div>
+					</c:otherwise>
+				</c:choose>
+				<%--WHEN SEQ IS NOT NULL--%>
+				<%--WHEN SEQ IS NOT NULL--%>
+				<%--WHEN SEQ IS NOT NULL--%>
+				<%--WHEN SEQ IS NOT NULL--%>
+				<%--WHEN SEQ IS NOT NULL--%>
+
+				<%--FORM CONTENT ENDS FROM HERE!!--%>
+				<%--FORM CONTENT ENDS FROM HERE!!--%>
+			</div>
+		</div>
+	</main>
 </div>
-
-<script type="text/javascript">
-
-	$("#btnIns").on("click", function() {
-		$("form[name=form]").attr("action", "/cginsert").submit();
+<%--script code--%>
+<script>
+	/*수정 버튼 이벤트*/
+	$(".updateBtn").on("click",function(){
+		$("form[name=updateForm]").attr("action","/cgupdate").submit();
 	});
-	
-	$("#btnDel").on("click", function() {
-		$("form[name=form]").attr("action", "/cgdelete").submit();
+	/*생성버튼 이벤트*/
+	$(".insertBtn").on("click",function(e){
+			$("form[name=insertForm]").attr("action","/cginsert").submit();
 	});
-	
-	$("#btnUel").on("click", function() {
-		$("form[name=form]").attr("action", "/cguelete").submit();
-	});
-	
-	$("#btnUpt").on("click", function() {
-		$("form[name=form]").attr("action", "/cgupdate").submit();
+	/*삭제버튼 이벤트*/
+	$(".deleteBtn").on("click",function(){
+		$("form[name=updateForm]").attr("action","/cguelete").submit();
 	});
 
 </script>
+<%--script code--%>
+</body>
+</html>

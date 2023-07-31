@@ -72,5 +72,12 @@
     		#{cgName}
     		, 0
     	)
-    </insert>   
+    </insert>
+
+	<select id="selectOpt" resultType="CodeGroup">
+		SELECT
+		    <include refid="selectAll"/>
+		FROM
+		    teamCodeGroup
+	</select>
 </mapper>    

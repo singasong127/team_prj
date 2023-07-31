@@ -50,7 +50,7 @@ public class CodeGroupController {
 		System.out.println("codeGroupUpdate");
 		
 		service.update(dto);
-		
+
 		return "redirect:/cglist";
 	}
 	
@@ -83,4 +83,9 @@ public class CodeGroupController {
 		
 		return "redirect:/cglist";
 	}
+
+
+
+
+
 }

@@ -43,7 +43,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public int memberUelete(Member dto) {
-		return memberUelete(dto);
+		return dao.memberUelete(dto);
 	}
 
 	@Override

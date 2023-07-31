@@ -14,7 +14,7 @@
                         </li>
                     </a>
                     <ul class="subNavList">
-                        <a href="/cdlist"><li>
+                        <a href="/codeList"><li>
                             공통코드
                         </li></a>
                         <a href="/cglist"><li>
@@ -22,7 +22,11 @@
                         </li></a>
                     </ul>
 				</div>
-
+                <a class="itemBox" href="/memberList">
+                    <li>
+                        멤버 관리
+                    </li>
+                </a>
 			</ul>
 		</div>
 		<div onclick="location.href=" class="outBtn">

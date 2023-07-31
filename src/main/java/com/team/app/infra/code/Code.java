@@ -9,7 +9,9 @@ import lombok.ToString;
 @Setter
 public class Code {
     private String cdSeq;
+    private String cgSeq;
     private String cdName;
-    private String codeGroup_cgSeq;
+    private String cgName;
+    private String teamCodeGroup_seq;
     private String delNy;
 }
