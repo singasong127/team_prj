@@ -69,6 +69,7 @@ public class MemberController {
 		service.memberUelete(dto);
 		return "redirect:/memberList";
 <<<<<<< HEAD
+<<<<<<< HEAD
 	}
 
 	//	uelete?
@@ -76,6 +77,8 @@ public class MemberController {
 	public String memberNoUelete(Member dto, MemberVo vo) {
 		service.memberNoUelete(dto);
 		return "redirect:/memberList";
+=======
+>>>>>>> branch 'main' of https://github.com/singasong127/team_prj.git
 =======
 >>>>>>> branch 'main' of https://github.com/singasong127/team_prj.git
 	}
