@@ -1,12 +1,6 @@
 package com.team.app.infra.code;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 
-@Getter
-@Setter
-@ToString
 public class CodeVo {
 
     private String shKey;
@@ -15,6 +9,133 @@ public class CodeVo {
     private String cgSeq;
     private String cgName;
 
+    public String getShKey() {
+        return shKey;
+    }
+
+    public void setShKey(String shKey) {
+        this.shKey = shKey;
+    }
+
+    public String getOptDelNy() {
+        return optDelNy;
+    }
+
+    public void setOptDelNy(String optDelNy) {
+        this.optDelNy = optDelNy;
+    }
+
+    public String getCdSeq() {
+        return cdSeq;
+    }
+
+    public void setCdSeq(String cdSeq) {
+        this.cdSeq = cdSeq;
+    }
+
+    public String getCgSeq() {
+        return cgSeq;
+    }
+
+    public void setCgSeq(String cgSeq) {
+        this.cgSeq = cgSeq;
+    }
+
+    public String getCgName() {
+        return cgName;
+    }
+
+    public void setCgName(String cgName) {
+        this.cgName = cgName;
+    }
+
+    public int getThisPage() {
+        return thisPage;
+    }
+
+    public void setThisPage(int thisPage) {
+        this.thisPage = thisPage;
+    }
+
+    public int getRowNumToShow() {
+        return rowNumToShow;
+    }
+
+    public void setRowNumToShow(int rowNumToShow) {
+        this.rowNumToShow = rowNumToShow;
+    }
+
+    public int getPageNumToShow() {
+        return pageNumToShow;
+    }
+
+    public void setPageNumToShow(int pageNumToShow) {
+        this.pageNumToShow = pageNumToShow;
+    }
+
+    public int getTotalRows() {
+        return totalRows;
+    }
+
+    public void setTotalRows(int totalRows) {
+        this.totalRows = totalRows;
+    }
+
+    public int getTotalPages() {
+        return totalPages;
+    }
+
+    public void setTotalPages(int totalPages) {
+        this.totalPages = totalPages;
+    }
+
+    public int getStartPage() {
+        return startPage;
+    }
+
+    public void setStartPage(int startPage) {
+        this.startPage = startPage;
+    }
+
+    public int getEndPage() {
+        return endPage;
+    }
+
+    public void setEndPage(int endPage) {
+        this.endPage = endPage;
+    }
+
+    public int getStartRnumForOracle() {
+        return startRnumForOracle;
+    }
+
+    public void setStartRnumForOracle(int startRnumForOracle) {
+        this.startRnumForOracle = startRnumForOracle;
+    }
+
+    public int getEndRnumForOracle() {
+        return endRnumForOracle;
+    }
+
+    public void setEndRnumForOracle(int endRnumForOracle) {
+        this.endRnumForOracle = endRnumForOracle;
+    }
+
+    public Integer getRNUM() {
+        return RNUM;
+    }
+
+    public void setRNUM(Integer RNUM) {
+        this.RNUM = RNUM;
+    }
+
+    public int getStartRnumForMysql() {
+        return startRnumForMysql;
+    }
+
+    public void setStartRnumForMysql(int startRnumForMysql) {
+        this.startRnumForMysql = startRnumForMysql;
+    }
 
     //	paging
     //	paging
