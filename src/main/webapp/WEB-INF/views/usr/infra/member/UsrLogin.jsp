@@ -13,13 +13,13 @@
     <main>
         <div class="mainBox">
             <div class="mainContainer">
-            	<div class="text-center">
+            	<div class="text-center mx-auto w-25">
             <%--FORM CONTENT STARTS FROM HERE!!--%>
             		<h3>로그인</h3>
             <%--FORM CONTENT STARTS FROM HERE!!--%>
             		<form>
             			<div class="form-floating mb-3">
-    	        			<input type="text" name="" class="form-control" id="floatingInput">
+    	        			<input type="email" name="" class="form-control" id="floatingInput">
 	            			<label for="floatingInput">이메일</label>
             			</div>
             			<div class="form-floating mb-3">
@@ -33,7 +33,7 @@
             			</div>
             			
             			<a href="#">비밀번호를 잊어버렸나요?</a><br>
-            			<a href="#">계정이 없으시면 회원가입!</a>
+            			<a href="/usr_jonin">계정이 없으시면 회원가입!</a>
 			<%--FORM CONTENT ENDS FROM HERE!!--%>
             		</form>
             	</div>

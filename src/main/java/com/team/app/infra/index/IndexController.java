@@ -2,6 +2,7 @@ package com.team.app.infra.index;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class IndexController {
@@ -15,4 +16,6 @@ public class IndexController {
     public String findMap() {
     	return "usr/infra/include/map";
     }
+    
+   
 }

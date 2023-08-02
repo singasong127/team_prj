@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -15,6 +16,7 @@ public class MemberController {
 	@Autowired
 	MemberServiceImpl service;
 	
+//	-------------------------------------------------관리단----------------------------------------------------
 	@RequestMapping(value="/memberList")
 	public String memberList(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception{
 		
@@ -54,22 +56,7 @@ public class MemberController {
 		return "admin/infra/member/memberForm";
 	}
 
-//	회원가입 (유저용)
-	@RequestMapping(value="/memberJoin")
-	public String memberJoin(Member dto) {
-		service.newMemberJoin(dto);
-		return "redirect:/";
-	}
-	
-//	로그인 페이지로
-	@RequestMapping(value="/LoginPage")
-	public ModelAndView loginPage() {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("usr/infra/member/UsrLogin");
-		
-		return mav;
-	}
-	
+
 //	정보변경
 	@RequestMapping(value="/memberUpdate")
 	public String memberUpdate(Member dto) {
@@ -96,4 +83,34 @@ public class MemberController {
 	public String partyTest() {
 		return "usr/infra/member/partyStatus";
 	}
+	
+//	-------------------------------------------------/관리단----------------------------------------------------
+	
+	
+//	로그인 페이지로
+	@RequestMapping(value="/LoginPage")
+	public ModelAndView loginPage() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("usr/infra/member/UsrLogin");
+		
+		return mav;
+	}
+	
+	
+//	-------------------------------------------------유저단----------------------------------------------------
+//	회원가입 페이지
+	 @RequestMapping("/usr_jonin")
+	    public ModelAndView getReadyToTheNextBattle() {
+	    	ModelAndView mav = new ModelAndView();
+	    	mav.setViewName("usr/infra/member/UsrJoin");
+	    	return mav;
+	    }
+	 
+//		회원가입 (유저용)
+		@RequestMapping(value="/memberJoin")
+		public String memberJoin(Member dto) {
+			service.newMemberJoin(dto);
+			return "redirect:/";
+		}
+//	-------------------------------------------------/유저단----------------------------------------------------
 }
