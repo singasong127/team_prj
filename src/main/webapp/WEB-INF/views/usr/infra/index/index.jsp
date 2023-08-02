@@ -14,8 +14,8 @@
         <div class="mainBox">
             <div class="mainContainer">
             <%--FORM CONTENT STARTS FROM HERE!!--%>
-	            <!-- 날짜 박스 -->
 	            <div>
+
 	            	일기예보 박스 넣는곳
 	            </div>
 	            <!-- select 박스 -->
