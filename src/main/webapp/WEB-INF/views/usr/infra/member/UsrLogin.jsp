@@ -21,7 +21,6 @@
             			<div class="form-floating mb-3">
     	        			<input type="email" name="email" class="form-control" id="floatingInput" placeholder="email">
 	            			<label for="floatingInput">이메일</label>
-
             			</div>
             			<div class="form-floating mb-3">
 
