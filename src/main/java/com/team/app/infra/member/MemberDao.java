@@ -52,4 +52,8 @@ public class MemberDao {
 	public int memberExcute(Member dto) {
 		return sqlSession.delete(namespace + ".memberExcute", dto);
 	}
+	
+	public Member usrLogin(MemberVo vo) {
+		return sqlSession.selectOne(namespace + ".usrLogin", vo);
+	}
 }

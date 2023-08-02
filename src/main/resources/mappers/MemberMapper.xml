@@ -9,136 +9,138 @@
 		type="com.team.app.infra.member.Member" />
 
 	<sql id="member_val">
-		seq
-		, memType <!-- 회원유형 (관리자: 1 / 회원 : 0 ) -->
-		, nickname
-		, email
-		, pwd
-		, gender
-		, dob
-		, location
-		, memDesc
-		, delNy
-		, signUpDt
-		, uptProfileDt
+			seq
+			, memType <!-- 회원유형 (관리자: 1 / 회원 : 0 ) -->
+			, nickname
+			, email
+			, pwd
+			, gender
+			, dob
+			, location
+			, memDesc
+			, delNy
 	</sql>
 
 	<sql id="member_db">
 		FROM
 		member
 		WHERE 1=1
-		AND nickname LIKE
-		CONCAT('%',#{nickname},'%')
+		AND nickname LIKE CONCAT('%',#{nickname},'%')
 	</sql>
-
+	
 	<select id="memberOneCount" resultType="Integer">
 		SELECT count(*)
 		<include refid="member_db" />
 	</select>
-
-
+	
+	
 	<select id="memberList" resultMap="resultMapObj">
 		SELECT usr. * FROM(
-		SELECT
-		<include refid="member_val" />
-		<include refid="member_db" />
+			SELECT
+				<include refid="member_val" />
+				<include refid="member_db" />
 		) usr
 		LIMIT #{rowNumToShow} OFFSET #{startRnumForMysql}
 	</select>
 
 	<select id="memberOne" resultMap="resultMapObj">
 		SELECT
-		<include refid="member_val" />
+			<include refid="member_val" />
 		FROM
-		member
+			member
 		WHERE 1=1
-		AND seq = #{seq}
+			AND seq = #{seq}
 	</select>
-
+	
+	<select id="usrLogin" resultMap="resultMapObj">
+		SELECT
+			seq
+			, email
+			, pwd
+			, nickname
+		FROM
+			member
+		WHERE 1=1
+			AND email = #{email}
+			AND pwd = #{pwd}
+	</select>
+	
 	<insert id="newAdminJoin">
 		INSERT INTO
-		member
-		(
-		memType
-		, nickname
-		, email
-		, pwd
-		, gender
-		, dob
-		, location
-		, memDesc
-		, delNy
-		)VALUES(
-		1
-		, #{nickname}
-		, #{email}
-		, #{pwd}
-		, #{gender}
-		, #{dob}
-		, #{location}
-		, #{memDesc}
-		, 0
-		)
+			member
+			(
+			memType
+			, nickname
+			, email
+			, pwd
+			, gender
+			, dob
+			, location
+			, memDesc
+			, delNy
+			)VALUES(
+				1
+				, #{nickname}
+				, #{email}
+				, #{pwd}
+				, #{gender}
+				, #{dob}
+				, #{location}
+				, #{memDesc}
+				, 0
+			)
 	</insert>
-
+	
 	<insert id="newMemberJoin">
 		INSERT INTO
-		member
-		(
-		memType
-		, nickname
-		, email
-		, pwd
-		, gender
-		, dob
-		, location
-		, memDesc
-		, delNy
-		)VALUES(
-		0
-		, #{nickname}
-		, #{email}
-		, #{pwd}
-		, #{gender}
-		, #{dob}
-		, #{location}
-		, #{memDesc}
-		, 0
-		)
+			member
+			(
+			memType
+			, nickname
+			, email
+			, pwd
+			, gender
+			, dob
+			, location
+			, memDesc
+			, delNy
+			)VALUES(
+				0
+				, #{nickname}
+				, #{email}
+				, #{pwd}
+				, #{gender}
+				, #{dob}
+				, #{location}
+				, #{memDesc}
+				, 0
+			)
 	</insert>
-
+	
 	<update id="memberUpdate">
 		UPDATE member
 		SET
-		nickname = #{nickname}
-		, pwd = #{pwd}
-		, location = #{location}
-		, memDesc = #{memDesc}
+			nickname = #{nickname}
+			, pwd = #{pwd}
+			, location = #{location}
+			, memDesc = #{memDesc}
 		WHERE 1=1
-		AND seq = #{seq}
+			AND seq = #{seq}
 	</update>
-
+	
 	<update id="memberUelete">
 		UPDATE member
-		SET
-		delNy = 1
+		SET 
+			delNy = 1
 		WHERE 1=1
-		AND seq = #{seq}
+			AND seq = #{seq}
 	</update>
-
-	<update id="memberNoUelete">
-		UPDATE member
-		SET
-		delNy = 0
-		WHERE 1=1
-		AND seq = #{seq}
-	</update>
-
+	
 	<delete id="memberExcute">
 		DELETE FROM
-		member
-		WHERE
-		seq = #{seq}
+			member
+		WHERE 
+			seq = #{seq}
 	</delete>
-
+	
 </mapper>
