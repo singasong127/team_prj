@@ -25,30 +25,30 @@
 					<!-- 회원가입 폼 -->
 					<form>
 						<!-- email -->
-						<div>
-							<lable>E-mail : </lable>
-							<input type="text" placeholder="이메일을 입력하세요"/>
+						<div class="form-floating">
+							<input type="text" id="email" name="email" placeholder="이메일을 입력하세요"/>
+							<label for="email">email : </label>
 						</div>
 						<!-- email 끝 -->
 						
 						<!-- 닉네임 -->
 						<div>
-							<label>닉네임 : </label>
-							<div class="input-group">
-								<input type="text" placeholder="닉네임을 입력하세요">
-								<button type="button">중복검사</button>
+							<div class="form-floating">
+								<input type="text" id="nickname" placeholder="닉네임을 입력하세요">
+								<label for="nickname">닉네임 : </label>
 							</div>
+								<button type="button">중복검사</button>
 						</div>
 						<!-- 닉네임 끝 -->
 						
 						<!-- 비밀번호 & 비밀번호 확인 -->
-						<div>
-							<label>비밀번호 : </label>
-							<input type="password" placeholder="비밀번호">
+						<div class="form-floating">
+							<input type="password" id="pwd" name="pwd" placeholder="비밀번호">
+							<label for="pwd">비밀번호 : </label>
 						</div>
-						<div>
-							<label>비밀번호 확인 : </label>
-							<input type="password" placeholder="비밀번호를 다시 입력하세요">
+						<div class="form-floating">
+							<input type="password" id="" placeholder="비밀번호를 다시 입력하세요">
+							<label for="" >비밀번호 확인 : </label>
 						</div>
 						<!-- 비밀번호 & 비밀번호 확인 끝 -->
 						
@@ -116,3 +116,8 @@
         </div>
     </main>
 </div>
+
+<script type="text/javascript">
+	
+
+</script>
