@@ -14,21 +14,8 @@ public class MemberVo {
 	private String memDesc;
 	private String delNy;
 
-public String getEmail() {
-		return email;
-	}
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getDelNy() {
-		return delNy;
-	}
-
-	public void setDelNy(String delNy) {
-		this.delNy = delNy;
-	}
+	
 
 	//	paging
 	private int thisPage = 1; // 현재 페이지
@@ -74,13 +61,14 @@ public String getEmail() {
 		this.nickname = nickname;
 	}
 
-	public String getemail() {
+	public String getEmail() {
 		return email;
 	}
 
-	public void setemail(String email) {
+	public void setEmail(String email) {
 		this.email = email;
 	}
+
 
 	public String getPwd() {
 		return pwd;
@@ -120,6 +108,14 @@ public String getEmail() {
 
 	public void setMemDesc(String memDesc) {
 		this.memDesc = memDesc;
+	}
+	
+	public String getDelNy() {
+		return delNy;
+	}
+
+	public void setDelNy(String delNy) {
+		this.delNy = delNy;
 	}
 
 //	page 메서드?

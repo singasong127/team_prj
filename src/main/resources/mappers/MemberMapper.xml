@@ -52,6 +52,19 @@
 			AND seq = #{seq}
 	</select>
 	
+	<select id="usrLogin" resultMap="resultMapObj">
+		SELECT
+			seq
+			, email
+			, pwd
+			, nickname
+		FROM
+			member
+		WHERE 1=1
+			AND email = #{email}
+			AND pwd = #{pwd}
+	</select>
+	
 	<insert id="newAdminJoin">
 		INSERT INTO
 			member

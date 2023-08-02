@@ -46,9 +46,14 @@ public class MemberServiceImpl implements MemberService {
 		return dao.memberUelete(dto);
 	}
 
+//	@Override
+//	public int memberExcute(Member dto) {
+//		return dao.memberExcute(dto);
+//	}
+
 	@Override
-	public int memberExcute(Member dto) {
-		return memberExcute(dto);
+	public Member usrLogin(MemberVo vo) {
+		return dao.usrLogin(vo);
 	}
 
 

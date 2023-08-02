@@ -19,13 +19,13 @@
             		<h3>로그인</h3>
             		<form>
             			<div class="form-floating mb-3">
-    	        			<input type="email" name="email" class="form-control" id="floatingInput" placeholder="email">
-	            			<label for="floatingInput">이메일</label>
+    	        			<input type="email" name="email" id="email" class="form-control" placeholder="email">
+	            			<label for="email">이메일</label>
             			</div>
             			<div class="form-floating mb-3">
 
-    	        			<input type="password" name="pwd" class="form-control" id="floatingPassword" placeholder="password">
-	            			<label for="floatingPassword">비밀번호</label>
+    	        			<input type="password" name="pwd" id="pwd" class="form-control"  placeholder="password">
+	            			<label for="pwd">비밀번호</label>
 
             			</div>
             			
@@ -44,10 +44,9 @@
 </div>
 
 <script type="text/javascript">
-	var login = ${"form[name='login']"};
 	
 	$("#newJoin").on("click", function(){
-		widow.location.replace("/usr_jonin");
+		window.location.replace("/usr_jonin");
 	});
 	
 	
@@ -60,14 +59,14 @@
 			async : true
 			, cache : false
 			, type : "post"
-			, url : "/memberJoin"
+			, url : "/usrLogin"
 			, data :{
-				"email" : $("#email").val()
+				"email" : $("#email").val(),
 				"pwd" : $("#pwd").val()
 			}
 			, success : function(response){
 				if(response.rt == "success"){
-					location.herf = "/";
+					location.href = "/";
 				}else{
 					alert("회원정보가 일치하지 않습니다.");
 				}
@@ -80,16 +79,16 @@
 	
 	vaild = function(){
 		
-		function checkNull(element, value, errotMessage){
-			if(){
-				alert(errotMessage);
+		function checkNull(element, value, errorMessage){
+			if(value === "" || value === null || value === undefined){
+				alert(errorMessage);
 				element.focus();
 				return false;
 			}
 		}
 		
-		if(checkNull($("#email"), $.trim($("#email").val()), "이메일을 입력해주세요")) return false;
-		if(checkNull($("#pwd"), $.trim($("#pwd").val()), "이메일을 입력해주세요")) return false;
+		/* if(checkNull($("#email"), $.trim($("#email").val()), "이메일을 입력해주세요")) return false; */
+		/* if(checkNull($("#pwd"), $.trim($("#pwd").val()), "비밀번호를 입력해주세요")) return false; */
 		
 	}
 

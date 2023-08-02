@@ -1,13 +1,17 @@
 package com.team.app.infra.member;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -110,6 +114,36 @@ public class MemberController {
 		@RequestMapping(value="/memberJoin")
 		public String memberJoin(Member dto) {
 			service.newMemberJoin(dto);
+			return "redirect:/";
+		}
+		
+//		로그인
+		@ResponseBody
+		@RequestMapping(value="/usrLogin")
+		public Map<String, Object> loginP(MemberVo vo, HttpSession httpSesssion){
+			Map<String , Object> returnMap = new HashMap<String, Object>();
+			
+			Member rtMember = service.usrLogin(vo);
+			
+			if(rtMember != null) {
+				httpSesssion.setMaxInactiveInterval(60*10);
+				httpSesssion.setAttribute("sessionId", vo.getEmail());
+				
+				returnMap.put("rtMember", rtMember);
+				returnMap.put("rt", "success");
+			}else {
+				returnMap.put("rt", "fail");
+			}
+			
+			return returnMap;
+		}
+		
+//		로그아웃
+		@RequestMapping(value="/usrLogout")
+		public String logoutP(HttpSession httpSesssion){
+			
+			httpSesssion.invalidate();
+			
 			return "redirect:/";
 		}
 //	-------------------------------------------------/유저단----------------------------------------------------
