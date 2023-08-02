@@ -208,6 +208,8 @@
 			var arrAddress = places.address_name.split(' ');
 			
 			console.log(arrAddress[0], arrAddress[1], arrAddress[2]);
+			
+			location.href = "redirect:/";
 								
 		});
 		
