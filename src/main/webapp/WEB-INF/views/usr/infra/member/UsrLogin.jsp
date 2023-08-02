@@ -15,15 +15,15 @@
             <div class="mainContainer">
             	<div class="text-center mx-auto w-25">
             <%--FORM CONTENT STARTS FROM HERE!!--%>
-            		<h3>로그인</h3>
             <%--FORM CONTENT STARTS FROM HERE!!--%>
+            		<h3>로그인</h3>
             		<form>
             			<div class="form-floating mb-3">
-    	        			<input type="email" name="" class="form-control" id="floatingInput">
-	            			<label for="floatingInput">이메일</label>
+    	        			<input type="email" name="" class="form-control" id="floatingId" placeholder="email">
+	            			<label for="floatingId">id</label>
             			</div>
             			<div class="form-floating mb-3">
-    	        			<input type="password" name="" class="form-control" id="floatingInput">
+    	        			<input placeholder="pwd" type="password" name="" class="form-control" id="floatingInput">
 	            			<label for="floatingInput">비밀번호</label>
             			</div>
             			
@@ -36,10 +36,10 @@
             			<a href="/usr_jonin">계정이 없으시면 회원가입!</a>
 			<%--FORM CONTENT ENDS FROM HERE!!--%>
             		</form>
-            	</div>
        		<%--FORM CONTENT ENDS FROM HERE!!--%>
 				</div>
             </div>
         </div>
     </main>
 </div>
+</body>
