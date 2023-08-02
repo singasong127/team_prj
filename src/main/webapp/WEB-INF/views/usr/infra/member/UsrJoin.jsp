@@ -52,11 +52,11 @@
 						</div>
 						<!-- 비밀번호 & 비밀번호 확인 끝 -->
 						
-						<!-- 성별 -->
+						<!-- 성별 (성별 공통코드 적용해서 int 값으로 지정) -->
 						<div>
-							<input type="radio" value="1">
+							<input type="radio" name="gender" id="1" value="1"/>
 							<label>남성</label>
-							<input type="radio" value="2">
+							<input type="radio" name="gender" id="2" value="2"/>
 							<label>여성</label>
 						</div>
 						<!-- 성별 끝 -->

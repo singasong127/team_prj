@@ -19,16 +19,16 @@
             <%--FORM CONTENT STARTS FROM HERE!!--%>
             		<form>
             			<div class="form-floating mb-3">
-    	        			<input type="email" name="" class="form-control" id="floatingInput">
+    	        			<input type="email" name="email" class="form-control" id="floatingInput" placeholder="email">
 	            			<label for="floatingInput">이메일</label>
             			</div>
             			<div class="form-floating mb-3">
-    	        			<input type="password" name="" class="form-control" id="floatingInput">
-	            			<label for="floatingInput">비밀번호</label>
+    	        			<input type="password" name="pwd" class="form-control" id="floatingPassword" placeholder="password">
+	            			<label for="floatingPassword">비밀번호</label>
             			</div>
             			
             			<div class="mb-3">
-            				<button type="button" class="btn btn-success">로그인</button>
+            				<button type="button" name="login" class="btn btn-success">로그인</button>
             				<button type="button" class="btn btn-secondary">취소</button>
             			</div>
             			
@@ -43,3 +43,30 @@
         </div>
     </main>
 </div>
+
+<script type="text/javascript">
+	var login = ${"form[name='login']"};
+	
+	vaild(){
+		
+	}
+	
+	$.ajax({
+		async : true
+		, cache : false
+		, type : "post"
+		, url : ""
+		, data :{
+			"email" : $("#email").val()
+			"pwd" : $("#pwd").val()
+		}
+		, success : function(response){
+			if(response.rt == "success"){
+				location.herf = "";
+			}else{
+				alert("회원정보가 일치하지 않습니다.");
+			}
+		}
+	});
+
+</script>
