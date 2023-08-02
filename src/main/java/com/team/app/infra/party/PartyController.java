@@ -22,6 +22,8 @@ public class PartyController {
 	  
 	  vo.setParamsPaging(service.selectOneCount(vo));
 	  
+	  System.out.println(vo.getPartyLocation());
+	  
 	  if(vo.getTotalRows() > 0) {
 		  List<Party> list = service.selectList(vo);
 		  model.addAttribute("list", list); 

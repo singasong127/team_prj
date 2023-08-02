@@ -209,8 +209,10 @@
 			
 			console.log(arrAddress[0], arrAddress[1], arrAddress[2]);
 			
-			location.href = "redirect:/";
-								
+			
+			
+			location.href = "/";
+			
 		});
 		
 		
