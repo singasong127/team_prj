@@ -17,6 +17,8 @@ public interface MemberService {
 	public int memberUpdate(Member dto);
 	
 	public int memberUelete(Member dto);
+
+	public int memberNoUelete(Member dto);
 	
 	public int memberExcute(Member dto);
 	

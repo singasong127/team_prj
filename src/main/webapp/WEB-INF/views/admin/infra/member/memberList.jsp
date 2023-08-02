@@ -56,15 +56,7 @@
 						<c:choose>
 							<c:when test="${fn:length(list) eq 0}">
 								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
 									<td><h4 id="nodata">There is no data!</h4></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
 								</tr>
 							</c:when>
 							<c:otherwise>
@@ -81,8 +73,17 @@
 										<td><c:out value="${list.nickname }"></c:out></td>
 										<td><c:out value="${list.email }"></c:out></td>
 										<td><c:out value="${list.pwd }"></c:out></td>
-										<td><c:out value="${list.gender }"></c:out></td>
+										<td>
+											<c:choose>
+												<c:when test="${list.gender == 0 }">남자</c:when>
+												<c:when test="${list.gender == 1 }">여자</c:when>
+												<c:when test="${list.gender == 2 }">기타</c:when>
+											</c:choose>
+										</td>
 										<td><c:out value="${list.location }"></c:out></td>
+										<td><c:out value="${list.memDesc }"></c:out></td>
+										<td><c:out value="${list.delNy }"></c:out></td>
+									</tr>							
 										<td>
 											<button class="detailBtn" onclick="location.href='/memberOne?seq=<c:out value = '${list.seq}'/>'">
 												상세
