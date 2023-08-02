@@ -20,7 +20,7 @@
             		<form>
             			<div class="form-floating mb-3">
     	        			<input type="email" name="" class="form-control" id="floatingId" placeholder="email">
-	            			<label for="floatingId">id</label>
+	            			<label for="floatingId">아이디</label>
             			</div>
             			<div class="form-floating mb-3">
     	        			<input placeholder="pwd" type="password" name="" class="form-control" id="floatingInput">
