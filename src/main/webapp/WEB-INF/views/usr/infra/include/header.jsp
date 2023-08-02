@@ -51,7 +51,7 @@
                 <a class="itemBox" href="#"><li>테마관리</li></a>
             </ul>
         </div>
-                    <div onclick="location.href='#'" class="outBtn">
+                    <div onclick="location.href='/LoginPage'" class="outBtn">
                         <span class="material-symbols-outlined">login</span>
                     </div>
     </div>

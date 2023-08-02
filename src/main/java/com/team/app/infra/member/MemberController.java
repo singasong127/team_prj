@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class MemberController {
@@ -30,11 +31,14 @@ public class MemberController {
 	}
 	
 //	맴버 생성(관리자용)
+	
+//	유저
 	@RequestMapping(value="/memberInsert")
 	public String memberInsertPage() {
 		return "admin/infra/member/memberInsert";
 	}
 	
+//	관리자
 	@RequestMapping(value="/adminMakeMember")
 	public String memberInesrt(Member dto) {
 		service.newAdminJoin(dto);
@@ -42,18 +46,28 @@ public class MemberController {
 		return "redirect:/memberList";
 	}
 	
-//	회원가입 (유저용)
-	@RequestMapping(value="/memberJoin")
-	public String memberJoin(Member dto) {
-		service.newMemberJoin(dto);
-		return "redirect:/";
-	}
 //	상세
 	@RequestMapping(value="/memberOne")
 	public String memberOne(MemberVo vo, Model model) {
 		Member member = service.memberOne(vo);
 		model.addAttribute("member", member);
 		return "admin/infra/member/memberForm";
+	}
+
+//	회원가입 (유저용)
+	@RequestMapping(value="/memberJoin")
+	public String memberJoin(Member dto) {
+		service.newMemberJoin(dto);
+		return "redirect:/";
+	}
+	
+//	로그인 페이지로
+	@RequestMapping(value="/LoginPage")
+	public ModelAndView loginPage() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("usr/infra/member/UsrLogin");
+		
+		return mav;
 	}
 	
 //	정보변경
@@ -70,9 +84,16 @@ public class MemberController {
 		return "redirect:/memberList";
 	}
 	
-	@RequestMapping(value="/memberDelete")
-	public String memberDelete(Member dto) {
-		service.memberExcute(dto);
-		return"/memberList";
+//	DB에서 맴버 삭제 기능()
+//	@RequestMapping(value="/memberDelete")
+//	public String memberDelete(Member dto) {
+//		service.memberExcute(dto);
+//		return"/memberList";
+//	}
+
+//	그냥 경로(파티 창 들어가는거 확인 작업)
+	@RequestMapping(value="/PartyTest")
+	public String partyTest() {
+		return "usr/infra/member/partyStatus";
 	}
 }
