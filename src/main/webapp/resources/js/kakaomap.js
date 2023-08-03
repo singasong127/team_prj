@@ -202,7 +202,7 @@
 			
 			console.log(arrAddress[0], arrAddress[1], arrAddress[2]);
 			
-			$("form[name=formMap]").attr("action", "/ptinsert");
+			$("form[name=formMap]").attr("action", "/");
 			
 		});
 		

@@ -32,7 +32,7 @@ public class PartyController {
 		  // by pass 
 	  }
 	  
-	  	return "admin/infra/index/indexAdmin";
+	  	return "admin/infra/party/partyList";
 	  }
 	 
 	
