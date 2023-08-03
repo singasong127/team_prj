@@ -60,14 +60,14 @@
 			, a.nickname
 			, b.uuidName
 			, b.originalName
-
+			, b.path
 		FROM
 			member AS a
 		LEFT JOIN uploadList AS b ON b.pseq = a.seq
 		WHERE 1=1
 			AND a.email = #{email}
 			AND a.pwd = #{pwd}
-		    AND b.path LIKE CONCAT('%member%')
+		  AND (b.path IS NULL OR b.path LIKE CONCAT('%member%'));
 	</select>
 
 	<!--UPLOAD SELECT-->

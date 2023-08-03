@@ -135,7 +135,6 @@ public class MemberController {
 				httpSession.setAttribute("sessionProfilePath",rtMember.getPath());
 				httpSession.setAttribute("sessionProfileName",rtMember.getUuidName());
 				httpSession.setAttribute("sessionSeq",rtMember.getSeq());
-				
 				returnMap.put("rtMember", rtMember);
 				returnMap.put("rt", "success");
 			}else {
