@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.inject.Inject;
 
+import com.team.app.infra.upload.Upload;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
@@ -52,4 +53,11 @@ public class MemberDao {
 	public Member usrLogin(MemberVo vo) {
 		return sqlSession.selectOne(namespace + ".usrLogin", vo);
 	}
+
+    public int insertUploaded(Member dto) { return sqlSession.insert(namespace + ".insertUploaded",dto);
+    }
+
+	public List<Upload> selectListUpload(Member dto) {return sqlSession.selectList(namespace+".selectListUpload",dto);}
+
+	public int deleteUpload(Member dto) {return sqlSession.delete(namespace+".deleteUpload",dto);}
 }

@@ -46,7 +46,7 @@ public class MemberController {
 	
 //	관리자
 	@RequestMapping(value="/adminMakeMember")
-	public String memberInesrt(Member dto) {
+	public String memberInesrt(Member dto) throws Exception {
 		service.newAdminJoin(dto);
 		
 		return "redirect:/memberList";
@@ -63,7 +63,7 @@ public class MemberController {
 
 //	정보변경
 	@RequestMapping(value="/memberUpdate")
-	public String memberUpdate(Member dto) {
+	public String memberUpdate(Member dto) throws Exception {
 		service.memberUpdate(dto);
 		return "redirect:/memberList";
 	}
@@ -112,7 +112,7 @@ public class MemberController {
 	 
 //		회원가입 (유저용)
 		@RequestMapping(value="/memberJoin")
-		public String memberJoin(Member dto) {
+		public String memberJoin(Member dto) throws Exception {
 			service.newMemberJoin(dto);
 			return "redirect:/";
 		}
@@ -120,14 +120,17 @@ public class MemberController {
 //		로그인
 		@ResponseBody
 		@RequestMapping(value="/usrLogin")
-		public Map<String, Object> loginP(MemberVo vo, HttpSession httpSesssion){
+		public Map<String, Object> loginP(MemberVo vo, HttpSession httpSession){
 			Map<String , Object> returnMap = new HashMap<String, Object>();
 			
 			Member rtMember = service.usrLogin(vo);
 			
 			if(rtMember != null) {
-				httpSesssion.setMaxInactiveInterval(60*10);
-				httpSesssion.setAttribute("sessionId", vo.getEmail());
+				httpSession.setMaxInactiveInterval(60*10);
+				httpSession.setAttribute("sessionId", vo.getEmail());
+				httpSession.setAttribute("sessionProfilePath",rtMember.getPath());
+				httpSession.setAttribute("sessionProfileName",rtMember.getUuidName());
+				httpSession.setAttribute("sessionSeq",rtMember.getSeq());
 				
 				returnMap.put("rtMember", rtMember);
 				returnMap.put("rt", "success");

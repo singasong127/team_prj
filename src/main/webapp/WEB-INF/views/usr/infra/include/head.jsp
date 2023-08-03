@@ -11,7 +11,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/resources/js/jquery-3.6.4.min.js"></script>
     <script src="/resources/js/adminView.js"></script>
-    
+    <script src="/resources/js/fileUpload.js"></script>
+    <script src="/resources/js/commonXdm.js"></script>
+    <script src="/resources/js/constantsXdm.js"></script>
+
     
 <%--    <!-- vCahtCloud api -->--%>
 <%--    <link rel="canonical" href="https://vchatcloud.com/index.html" />--%>

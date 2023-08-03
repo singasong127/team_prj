@@ -3,7 +3,16 @@ package com.team.app.infra.member;
 import org.springframework.web.multipart.MultipartFile;
 
 public class Member {
+	public String getTableName() {
+		return tableName;
+	}
+
+	public void setTableName(String tableName) {
+		this.tableName = tableName;
+	}
+
 	//UPLOAD
+	private String tableName;
 	private Integer type;
 	private String defaultNy;
 	private String path;
