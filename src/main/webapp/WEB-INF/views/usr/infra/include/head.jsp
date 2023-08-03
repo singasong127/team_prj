@@ -15,7 +15,11 @@
     <script src="/resources/js/commonXdm.js"></script>
     <script src="/resources/js/constantsXdm.js"></script>
 
-    
+<%--DATE PICKER--%>
+    <script src="/resources/js/bootstrap-datepicker.js"></script>
+    <link rel="stylesheet" href="/resources/css/user/bootstrap-datepicker3.css">
+<%--DATE PICKER--%>
+
 <%--    <!-- vCahtCloud api -->--%>
 <%--    <link rel="canonical" href="https://vchatcloud.com/index.html" />--%>
 <%--    <link href="/resources/css/vStyle.css" rel="stylesheet" />--%>
