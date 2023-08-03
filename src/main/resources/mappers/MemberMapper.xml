@@ -52,6 +52,48 @@
 			AND seq = #{seq}
 	</select>
 	
+	<select id="usrLogin" resultMap="resultMapObj">
+		SELECT
+			a.seq
+			, a.email
+			, a.pwd
+			, a.nickname
+			, b.uuidName
+			, b.originalName
+			, b.path
+		FROM
+			member AS a
+		LEFT JOIN uploadList AS b ON b.pseq = a.seq
+		WHERE 1=1
+			AND a.email = #{email}
+			AND a.pwd = #{pwd}
+		  AND (b.path IS NULL OR b.path LIKE CONCAT('%member%'));
+	</select>
+
+	<!--UPLOAD SELECT-->
+	<!--UPLOAD SELECT-->
+	<select id="selectListUpload" resultType="Upload">
+		SELECT
+			type
+			 ,path
+			 ,originalName
+			 ,uuidName
+			 ,ext
+			 ,size
+			 ,delNy
+			 ,pseq
+		FROM
+			uploadList
+		WHERE 1+1
+		  AND path LIKE CONCAT('%member%')
+		  AND pseq = #{seq}
+	</select>
+	<!--UPLOAD SELECT-->
+	<!--UPLOAD SELECT-->
+
+
+
+
 	<insert id="newAdminJoin">
 		INSERT INTO
 			member
@@ -103,6 +145,34 @@
 				, 0
 			)
 	</insert>
+
+	<!-- uploadeds -->
+	<!-- uploadeds -->
+	<insert id="insertUploaded">
+		INSERT INTO ${tableName} (
+			  type
+			 ,defaultNy
+			 ,path
+			 ,originalName
+			 ,uuidName
+			 ,ext
+			 ,size
+			 ,delNy
+			 ,pseq
+		) values (
+			#{type}
+			,#{defaultNy}
+			,#{path}
+			,#{originalName}
+			,#{uuidName}
+			,#{ext}
+			,#{size}
+			,0
+			,#{pseq}
+		 )
+	</insert>
+	<!-- uploadeds -->
+	<!-- uploadeds -->
 	
 	<update id="memberUpdate">
 		UPDATE member
@@ -129,5 +199,16 @@
 		WHERE 
 			seq = #{seq}
 	</delete>
-	
+<!--DELETE UPLOADED PROFILE IMG-->
+<!--DELETE UPLOADED PROFILE IMG-->
+	<delete id="deleteUpload">
+		DELETE FROM uploadList
+		WHERE 1=1
+		  AND pseq = #{seq}
+		  AND path LIKE CONCAT('%member%')
+	</delete>
+<!--DELETE UPLOADED PROFILE IMG-->
+<!--DELETE UPLOADED PROFILE IMG-->
+
+
 </mapper>

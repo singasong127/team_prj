@@ -13,33 +13,84 @@
     <main>
         <div class="mainBox">
             <div class="mainContainer">
-            	<div class="text-center">
+            	<div class="text-center mx-auto w-25">
+            <%--FORM CONTENT STARTS FROM HERE!!--%>
             <%--FORM CONTENT STARTS FROM HERE!!--%>
             		<h3>로그인</h3>
-            <%--FORM CONTENT STARTS FROM HERE!!--%>
             		<form>
             			<div class="form-floating mb-3">
-    	        			<input type="text" name="" class="form-control" id="floatingInput">
-	            			<label for="floatingInput">이메일</label>
+    	        			<input type="email" name="email" id="email" class="form-control" placeholder="email">
+	            			<label for="email">이메일</label>
             			</div>
             			<div class="form-floating mb-3">
-    	        			<input type="password" name="" class="form-control" id="floatingInput">
-	            			<label for="floatingInput">비밀번호</label>
+
+    	        			<input type="password" name="pwd" id="pwd" class="form-control"  placeholder="password">
+	            			<label for="pwd">비밀번호</label>
+
             			</div>
             			
             			<div class="mb-3">
-            				<button type="button" class="btn btn-success">로그인</button>
-            				<button type="button" class="btn btn-secondary">취소</button>
+            				<button type="button" id="login" class="btn btn-success">로그인</button>
+            				<button type="button" id="newJoin" class="btn btn-primary">회원가입</button>
             			</div>
             			
-            			<a href="#">비밀번호를 잊어버렸나요?</a><br>
-            			<a href="#">계정이 없으시면 회원가입!</a>
 			<%--FORM CONTENT ENDS FROM HERE!!--%>
             		</form>
-            	</div>
        		<%--FORM CONTENT ENDS FROM HERE!!--%>
 				</div>
             </div>
         </div>
     </main>
 </div>
+
+<script type="text/javascript">
+	
+	$("#newJoin").on("click", function(){
+		window.location.replace("/usr_jonin");
+	});
+	
+	
+	
+	$("#login").on("click", function(){
+		
+		if(vaild() == false )return false;		
+	
+		$.ajax({
+			async : true
+			, cache : false
+			, type : "post"
+			, url : "/usrLogin"
+			, data :{
+				"email" : $("#email").val(),
+				"pwd" : $("#pwd").val()
+			}
+			, success : function(response){
+				if(response.rt == "success"){
+					location.href = "/";
+				}else{
+					alert("회원정보가 일치하지 않습니다.");
+				}
+			}
+			, error : function(jqXHR, textStatus, errorThrown){
+				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+			}
+		});
+	});
+	
+	vaild = function(){
+		
+		function checkNull(element, value, errorMessage){
+			if(value === "" || value === null || value === undefined){
+				alert(errorMessage);
+				element.focus();
+				return false;
+			}
+		}
+		
+		/* if(checkNull($("#email"), $.trim($("#email").val()), "이메일을 입력해주세요")) return false; */
+		/* if(checkNull($("#pwd"), $.trim($("#pwd").val()), "비밀번호를 입력해주세요")) return false; */
+		
+	}
+
+</script>
+</body>
