@@ -5,16 +5,8 @@
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
 <!DOCTYPE html>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> branch 'main' of https://github.com/singasong127/team_prj.git
 <html lang="kr">
 <title>코드 그룹 리스트</title>
-=======
-<html lang="en">
->>>>>>> branch 'main' of https://github.com/singasong127/team_prj.git
 <%@include file="../include/head.jsp"%>
 <body>
 <div>
@@ -137,50 +129,3 @@
 
 
 </script>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
-<table class="table primary-table-bordered display"
-	style="min-width: 845px">
-	<thead class="mb-2 thead-primary">
-		<tr>
-			<th>#</th>
-			<th>CODEGROUPNAME</th>
-		</tr>
-	</thead>
-	<tbody class="mb-3">
-		<c:choose>
-			<c:when test="${fn:length(list) eq 0}">
-				<tr>
-					<td class="text-center" colspan="9">데이터가 없습니다!</td>
-				</tr>
-			</c:when>
-			<c:otherwise>
-				<%-- ${list} 자바에서 넘겨준 객체 이름 --%>
-				<!-- var="list" jstl 블럭에서 사용할 변수 이름 -->
-				<c:forEach items="${list}" var="list" varStatus="status">
-					<tr>
-						<td><a
-							href="/cgform?cgSeq=<c:out value="${list.cgSeq}"></c:out>"> <c:out
-									value="${list.cgSeq}"></c:out>
-						</a></td>
-						<td><a
-							href="/cgform?cgSeq=<c:out value="${list.cgSeq}"></c:out>"> <c:out
-									value="${list.cgName}"></c:out>
-						</a></td>
-					</tr>
-				</c:forEach>
-			</c:otherwise>
-		</c:choose>
-	</tbody>
-	<tfoot>
-
-	</tfoot>
-</table>
->>>>>>> branch 'main' of https://github.com/singasong127/team_prj.git
-=======
->>>>>>> branch 'main' of https://github.com/singasong127/team_prj.git
-=======
-</html>
->>>>>>> branch 'main' of https://github.com/singasong127/team_prj.git

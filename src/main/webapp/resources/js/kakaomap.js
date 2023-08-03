@@ -186,17 +186,10 @@
 				
 				
 	   	$(el).on("click", function(marker) {
-			/*$('#main_content').css('display', 'none');
-			$('#list_detail').css('display', 'block');
-			$('#diningName').html(places.place_name);
-			$('#diningAddress').html(places.address_name);
-			$('#diningPhone').html(places.phone);*/
 			
 			var getMarkerLatLng = marker.view.infowindow.n.toLatLng(); // 클릭한 item의 경위도값 받기 위한 변수 선언
 			var getMarkerLat = getMarkerLatLng.getLat(); // 클릭한 item의 위도값 받기 위한 변수 선언
 			var getMarkerLng = getMarkerLatLng.getLng(); // 클릭한 item의 경도값 받기 위한 변수 선언
-			
-			console.log(places.place_name + " / 위도: " + getMarkerLat, "경도: " + getMarkerLng);
 			
 			console.log(places);
 			
@@ -209,9 +202,7 @@
 			
 			console.log(arrAddress[0], arrAddress[1], arrAddress[2]);
 			
-			
-			
-			location.href = "/";
+			$("form[name=formMap]").attr("action", "/ptinsert");
 			
 		});
 		

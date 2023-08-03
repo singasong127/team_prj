@@ -41,13 +41,13 @@ public class MemberController {
 	
 //	유저
 	@RequestMapping(value="/memberInsert")
-	public String memberInsertPage() {
+	public String memberInsertUsr() {
 		return "admin/infra/member/memberInsert";
 	}
 	
 //	관리자
 	@RequestMapping(value="/adminMakeMember")
-	public String memberInesrt(Member dto) throws Exception {
+	public String memberInsertXdm(Member dto) throws Exception {
 		service.newAdminJoin(dto);
 		
 		return "redirect:/memberList";
@@ -107,7 +107,7 @@ public class MemberController {
 	
 //	-------------------------------------------------유저단----------------------------------------------------
 //	회원가입 페이지
-	 @RequestMapping("/usr_jonin")
+	 @RequestMapping("/adminJoin")
 	    public ModelAndView getReadyToTheNextBattle() {
 	    	ModelAndView mav = new ModelAndView();
 	    	mav.setViewName("usr/infra/member/UsrJoin");

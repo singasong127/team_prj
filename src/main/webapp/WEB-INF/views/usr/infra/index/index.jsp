@@ -88,7 +88,7 @@
            		</div>
             <%--FORM CONTENT STARTS FROM HERE!!--%>
             	<div class="excuteBox">
-	            	<button class="detailBtn" id="btnCre">파티생성</button>
+	            	<button class="detailBtn" id="btnCre" onclick="location.href='/ptinsert'">파티생성</button>
 	            	<button class="detailBtn" onclick="location.href='/PartyTest'">테스트</button>
 	            	<button class="detailBtn"><i class="bi bi-search"></i></button>
             	</div>
@@ -103,12 +103,6 @@
 
 <script type="text/javascript">
 
-	$("#btnCre").on("click", function() {
-		
-		$("#modalCre").css("display", "block");
-		
-	});
-	
 	
 	
 </script>

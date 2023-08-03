@@ -26,8 +26,8 @@
 				        <ul id="placesList"></ul>
 				        <div id="pagination"></div>
 			    	</div>
-	            <div id="map" style="width: 100%; height: 860px;"></div>
 				</form>
+	            <div id="map" style="width: 100%; height: 860px;"></div>
             </div>
             <%--FORM CONTENT STARTS FROM HERE!!--%>
             	
@@ -43,6 +43,4 @@
 <script type="text/javascript" src="/resources/js/kakaomap.js"></script>
 <script type="text/javascript">
 
-	
-	
 </script>
