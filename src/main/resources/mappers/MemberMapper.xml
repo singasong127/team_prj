@@ -54,15 +54,20 @@
 	
 	<select id="usrLogin" resultMap="resultMapObj">
 		SELECT
-			seq
-			, email
-			, pwd
-			, nickname
+			a.seq
+			, a.email
+			, a.pwd
+			, a.nickname
+			, b.uuidName
+			, b.originalName
+
 		FROM
-			member
+			member AS a
+		LEFT JOIN uploadList AS b ON b.pseq = a.seq
 		WHERE 1=1
-			AND email = #{email}
-			AND pwd = #{pwd}
+			AND a.email = #{email}
+			AND a.pwd = #{pwd}
+		    AND b.path LIKE CONCAT('%member%')
 	</select>
 
 	<!--UPLOAD SELECT-->

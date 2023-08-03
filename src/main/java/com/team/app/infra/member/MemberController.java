@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import com.team.app.infra.upload.Upload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -54,9 +55,12 @@ public class MemberController {
 	
 //	상세
 	@RequestMapping(value="/memberOne")
-	public String memberOne(MemberVo vo, Model model) {
+	public String memberOne(Member dto,MemberVo vo, Model model) {
 		Member member = service.memberOne(vo);
 		model.addAttribute("member", member);
+
+		List<Upload> uploadList = service.selectListUpload(dto);
+		model.addAttribute("listUploaded",uploadList);
 		return "admin/infra/member/memberForm";
 	}
 
