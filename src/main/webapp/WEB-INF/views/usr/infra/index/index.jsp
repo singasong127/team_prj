@@ -105,7 +105,7 @@
 
 	$("#btnCre").on("click", function() {
 		
-		$("#modalCre").css("display", "block");
+		window.location.replace("newChallger");
 		
 	});
 	

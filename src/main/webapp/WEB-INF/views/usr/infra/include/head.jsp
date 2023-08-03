@@ -20,6 +20,11 @@
     <link rel="stylesheet" href="/resources/css/user/bootstrap-datepicker3.css">
 <%--DATE PICKER--%>
 
+<!-- TIME PICKER -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+<!-- TIME PICKER -->
+
 <%--    <!-- vCahtCloud api -->--%>
 <%--    <link rel="canonical" href="https://vchatcloud.com/index.html" />--%>
 <%--    <link href="/resources/css/vStyle.css" rel="stylesheet" />--%>

@@ -74,4 +74,9 @@ public class PartyController {
 		
 		return "redirect:/ptlist";
 	}
+	
+	@RequestMapping(value="/newChallger")
+	public String newParty() {
+		return "usr/infra/member/newParty";
+	}
 }
