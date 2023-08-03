@@ -60,4 +60,13 @@ public class MemberDao {
 	public List<Upload> selectListUpload(Member dto) {return sqlSession.selectList(namespace+".selectListUpload",dto);}
 
 	public int deleteUpload(Member dto) {return sqlSession.delete(namespace+".deleteUpload",dto);}
+
+	/**
+	 * 아이디 중복 체크
+	 * @param vo: email from 'UsrLogin'
+	 * @return: if duplicated, return fail vice versa
+	 */
+	public int selectOneCheckId(MemberVo vo) {
+		return sqlSession.selectOne(namespace + ".idCheck",vo);
+	}
 }
