@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -44,7 +45,27 @@ public class MemberController {
 	public String memberInsertPage() {
 		return "admin/infra/member/memberInsert";
 	}
-	
+
+	@ResponseBody
+	@RequestMapping(value= "/idCheck", method = RequestMethod.POST)
+	public Map<String,Object> idCheck(MemberVo vo){
+		Map<String,Object> returnMap = new HashMap<String, Object>();
+		int rtNum = service.selectOneCheckId(vo);
+		if (rtNum == 0) {
+			returnMap.put("rt","available");
+		}else{
+			returnMap.put("rt","unavailable");
+		}
+		System.out.println(returnMap);
+		return returnMap;
+	}
+
+//SIGNUP ID DUPLICATION CHECK
+//SIGNUP ID DUPLICATION CHECK
+
+
+
+
 //	관리자
 	@RequestMapping(value="/adminMakeMember")
 	public String memberInesrt(Member dto) throws Exception {
