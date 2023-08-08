@@ -24,7 +24,7 @@
 <body>
 <div class="chat_wrap">
     <div class="header">
-        <h3>채팅방(${sessionId})</h3>
+        <h3>채팅방(${sessionNickName})</h3>
     </div>
     <div id="chat"></div>
     <!-- 채팅저장출력 -->
