@@ -6,7 +6,7 @@ import java.time.format.DateTimeFormatter;
 public class UtilDateTime {
     public static String nowString() throws Exception {
         LocalDateTime localDateTime = LocalDateTime.now();
-        String localDateTimeString = localDateTime.format(DateTimeFormatter.ofPattern(Constants.DATETIME_FORMAT_BASIC));
+        String localDateTimeString = localDateTime.format(DateTimeFormatter.ofPattern(Constants_b.DATETIME_FORMAT_BASIC));
         return localDateTimeString;
     }
 }
