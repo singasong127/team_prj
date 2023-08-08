@@ -8,5 +8,6 @@
        <typeAlias type="com.team.app.infra.member.Member" alias="Member"/>
        <typeAlias type="com.team.app.infra.party.Party" alias="Party"/>
        <typeAlias type="com.team.app.infra.upload.Upload" alias="Upload"/>
+       <typeAlias type="com.team.app.infra.chat.ChatVo" alias="Chat"/>
     </typeAliases>
 </configuration>
