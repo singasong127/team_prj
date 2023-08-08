@@ -127,6 +127,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	/**
+	 * 업로드 테이블에서 SELECT
 	 * @param dto: Member' seq
 	 * @return: SELECT * FROM uploadList WHERE pseq = #{seq}
 	 */
@@ -142,6 +143,16 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int deleteUpload(Member dto) {
 		return dao.deleteUpload(dto);
+	}
+
+	/**
+	 * 아이디 중복체크
+	 * @param vo: email from 'UsrJoin.jsp'
+	 * @return: if duplicated, return fail vice versa
+	 */
+	@Override
+	public int selectOneCheckId(MemberVo vo) {
+		return dao.selectOneCheckId(vo);
 	}
 
 

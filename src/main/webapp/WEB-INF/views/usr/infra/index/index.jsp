@@ -103,6 +103,15 @@
 
 <script type="text/javascript">
 
+<<<<<<< HEAD
+=======
+	$("#btnCre").on("click", function() {
+		
+		window.location.replace("newChallger");
+		
+	});
+	
+>>>>>>> branch 'main' of https://github.com/singasong127/team_prj.git
 	
 	
 </script>

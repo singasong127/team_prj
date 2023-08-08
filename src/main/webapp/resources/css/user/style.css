@@ -1805,7 +1805,13 @@ select{
     display: none;
     font-size: 13px;
     position: relative;
-    left: 60px;
+    left: 0px;
+}
+.id_ok{
+    color:forestgreen;
+}
+.id_already{
+    color: red;
 }
 /*LOGIN*/
 /*LOGIN*/

@@ -52,7 +52,7 @@
 			AND seq = #{seq}
 	</select>
 	
-	<select id="usrLogin" resultMap="resultMapObj">
+	<select id="usrLogin" resultType="Member">
 		SELECT
 			a.seq
 			, a.email
@@ -69,6 +69,20 @@
 			AND a.pwd = #{pwd}
 		  AND (b.path IS NULL OR b.path LIKE CONCAT('%member%'));
 	</select>
+<!--아이디 중복체크 -->
+<!--아이디 중복체크 -->
+	<select id="idCheck" resultType="integer">
+		SELECT
+			COUNT(seq)
+		FROM
+			member
+		WHERE 1=1
+		  AND email = #{email}
+	</select>
+<!--아이디 중복체크 -->
+<!--아이디 중복체크 -->
+
+
 
 	<!--UPLOAD SELECT-->
 	<!--UPLOAD SELECT-->

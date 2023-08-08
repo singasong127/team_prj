@@ -43,4 +43,5 @@ public interface MemberService {
 
 	int deleteUpload(Member dto);
 
+    int selectOneCheckId(MemberVo vo);
 }//END OF MemberService
