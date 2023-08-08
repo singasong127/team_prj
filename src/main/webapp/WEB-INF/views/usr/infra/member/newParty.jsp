@@ -18,7 +18,7 @@
             
             <!-- 파티 생성 데이터 담을 폼 -->
             <div class="formBox mx-auto">
-	            <form>
+	            <form name="">
 	            	<!-- 파티 생성 박스 -->
 					<div class="d-flex flex-column p-4">
 						<!-- 종목과 파티제목 -->
@@ -200,7 +200,7 @@ $('#playTimeEnd').timepicker({
 $(".modalOk").on("click", function(){
 	/* alert("이거 나오면 잘되는거임?"); */
 	
-	
+	$('form[name=partyTime]')
 	
 });
 	

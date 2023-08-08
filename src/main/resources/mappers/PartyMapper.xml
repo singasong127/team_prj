@@ -19,6 +19,7 @@
 		, partyDesc
 		, toolNy
 		, partyGen
+		, partyAge
 		, madeTime
 		, partyLocation
 	</sql>
@@ -51,7 +52,7 @@
     </select>
     
     <update id="update">
-    	UPDATE Party
+    	UPDATE party
     	SET
     		partyName = #{partyName}
     		, playerMax = #{playerMax}
@@ -61,7 +62,7 @@
     </update>
     
     <update id="uelete">
-    	UPDATE Party
+    	UPDATE party
     	SET
     		delNy = 1
     	WHERE
@@ -69,8 +70,9 @@
     </update>
     
     <insert id="insert">
-    	INSERT INTO Party (
-    		partyName
+    	INSERT INTO party (
+    		partyType
+    		, partyName
     		, delNy
     	) VALUES (
     		#{partyName}
