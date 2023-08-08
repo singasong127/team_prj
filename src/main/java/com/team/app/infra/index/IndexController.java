@@ -6,18 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-<<<<<<< HEAD
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.team.app.infra.party.Party;
 import com.team.app.infra.party.PartyServiceImpl;
 import com.team.app.infra.party.PartyVo;
 
-=======
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
->>>>>>> branch 'main' of https://github.com/singasong127/team_prj.git
 
 @Controller
 public class IndexController {
