@@ -57,6 +57,38 @@
 			<version>${org.springframework-version}</version>
 		</dependency>
 
+		<!-- websocket for chatting-->
+		<!-- websocket for chatting-->
+		<!-- websocket for chatting-->
+		<!-- websocket for chatting-->
+		<!-- websocket for chatting-->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>4.1.0.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>4.1.0.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>4.1.0.RELEASE</version>
+		</dependency>
+		<!-- 웹소캣 라이브러리 -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-websocket</artifactId>
+			<version>4.1.7.RELEASE</version>
+		</dependency>
+		<!-- websocket for chatting-->
+		<!-- websocket for chatting-->
+		<!-- websocket for chatting-->
+		<!-- websocket for chatting-->
+		<!-- websocket for chatting-->
+
 		<!-- Logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>

@@ -20,6 +20,7 @@
 	            </div>
 	            <!-- select 박스 -->
 	            <div class="searchBox">
+					<a style="width: 100px; height: 30px;" href="#" id="chat">채팅</a>
 	            
 	            <!-- 종목(나중에 분류 재지정하고 재설정) -->
 				   <select>
@@ -102,6 +103,16 @@
 <%@ include file="../../../admin/infra/include/partyBuild.jsp" %>
 
 <script type="text/javascript">
+
+	//채팅창 오픈
+	//채팅창 오픈
+	$("#chat").on('click',function(e){
+		e.preventDefault();
+		window.open("/chat","chat","width=500, height=800, top=200, left=200");
+	// 경로, 파일, 너비, 높이, 위치 지정
+	})
+	//채팅창 오픈
+	//채팅창 오픈
 
 	$("#btnCre").on("click", function() {
 		
