@@ -46,7 +46,6 @@
             <div class="sender">{{sender}}</div>
             <div class="message">{{message}}</div>
             <div class="date">{{regdate}}</div>
-            <div class="date">{{regdate}}</div>
         </div>
     </script>
     <div class="input-div">
@@ -57,7 +56,7 @@
 </body>
 <!-- 메시지 입력시 오른쪽 왼쪽으로 기입되는 방식 지정 -->
 <script>
-    var uid = "${sessionId}";
+    var uid = "${sessionNickName}";
     Handlebars.registerHelper("printLeftRight", function(sender) {
         if (uid != sender) {
             return "left";
@@ -72,7 +71,7 @@
     });
 </script>
 <script>
-    var uid = "${sessionId}"
+    var uid = "${sessionNickName}"
     getList();
     //채팅삭제
     //채팅삭제
@@ -115,7 +114,7 @@
                 url:'/chat/insert',
                 data:{
                     sender:uid,
-                    message:message
+                    message:message,
                 },
                 success:function(data){
                     sock.send(uid + "|" + message+"|"+data);
@@ -128,6 +127,8 @@
     // 채팅 데이터 받아오기
     function getList() {
         $.ajax({
+            async:"true",
+            cache:"false",
             type : 'get',
             url : '/chat.json',
             dataType : 'json',
@@ -139,27 +140,24 @@
     }
 
     // 웹소캣 생성
-    var sock = new SockJS("http://localhost/echo");
+    var sock = new SockJS("http://localhost/echo/");
     sock.onmessage = onMessage;
+    console.log(sock);
 
     // 서버로부터 메시지 받기
     function onMessage(msg) {
-        console.log("does this work??");
         var items = msg.data.split("|");
         var sender = items[0];
         var message = items[1];
-        var id = items[2];
-        var date = items[3];
+        var date = items[2];
         var data = {
             "message" : message,
             "sender" : sender,
-            "regdate" : date,
-            "id" : id
+            "regdate" : date
         }
         var temp = Handlebars.compile($("#temp1").html());
         $("#chat").append(temp(data));
-        console.log(temp);
-        window.scrollTo(0, $("#chat").prop("scrollHeight"))
+        window.scrollTo(0, $("#chat").prop("scrollHeight"));
     }
 </script>
 </html>
