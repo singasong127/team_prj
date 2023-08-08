@@ -23,9 +23,13 @@ public class IndexController {
     public String index(@ModelAttribute Party party, Model model, PartyVo vo) {
     	
     	service.selectList(vo);
+    	// service.selectOne(vo);
     	
     	List<Party> list = service.selectList(vo);
     	model.addAttribute("list", list);
+    	
+//    	Party item = service.selectOne(vo);
+//    	model.addAttribute("item", item);
     	
         return "usr/infra/index/index";
     }
