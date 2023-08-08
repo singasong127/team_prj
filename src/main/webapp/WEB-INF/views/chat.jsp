@@ -9,7 +9,7 @@
     <script
             src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link rel="stylesheet" href="/resources/chat.css" />
+    <link rel="stylesheet" href="/resources/css/user/chat.css" />
     <title>Chat Application</title>
     <style>
         div.header {
@@ -25,11 +25,25 @@
         <h3>채팅방(${uid})</h3>
     </div>
     <div id="chat"></div>
+    <!-- 채팅저장출력 -->
     <script id="temp" type="text/x-handlebars-template">
+        {{#each .}}
+        <div class="{{printLeftRight sender}}">
+            <div class="sender">{{sender}}</div>
+            <div class="message">
+                {{message}}
+                <a href="{{id}}" style="display:{{printNone sender}}">X</a>
+            </div>
+            <div class="date">{{regdate}}</div>
+        </div>
+        {{/each}}
+    </script>
+    <!-- 새로운채팅출력 -->
+    <script id="temp1" type="text/x-handlebars-template">
         <div class="{{printLeftRight sender}}">
             <div class="sender">{{sender}}</div>
             <div class="message">{{message}}</div>
-            <div class="date">{{date}}</div>
+            <div class="date">{{regdate}}</div>
         </div>
     </script>
     <div class="input-div">
@@ -48,9 +62,32 @@
             return "right";
         }
     });
+    Handlebars.registerHelper("printNone", function(sender) {
+        if (uid != sender) {
+            return "none";
+        }
+    });
 </script>
 <script>
     var uid = "${uid}"
+    getList();
+    //채팅삭제
+    //채팅삭제
+    $("#chat").on('click','.message a',function(e){
+        e.preventDefault();
+        var id=$(this).attr("href");
+        if(!confirm(id+"을(를) 삭제하시겠습니까?")) return;
+        $.ajax({
+            type:'post',
+            url:'/chat/delete',
+            data:{id:id},
+            success:function(){
+                alert("삭제되었습니다.");
+                getList();
+            }
+        })
+    })
+
     $("#txtMessage").on("keypress", function(e) {
         if (e.keyCode == 13 && !e.shiftKey) {
             e.preventDefault();
@@ -64,7 +101,56 @@
             // 서버로 메시지 보내기
             sock.send(uid + "|" + message);
             $("#txtMessage").val("");
+
+            // DB로 데이터 보내기
+            $.ajax({
+                type:'post',
+                url:'/chat/insert',
+                data:{
+                    sender:uid,
+                    message:message
+                },
+                success:function(data){
+                    sock.send(uid + "|" + message+"|"+data);
+                }
+            })//ajax
+
         }
     })
+
+    // 채팅 데이터 받아오기
+    function getList() {
+        $.ajax({
+            type : 'get',
+            url : '/chat.json',
+            dataType : 'json',
+            success : function(data) {
+                var temp = Handlebars.compile($("#temp").html());
+                $("#chat").append(temp(data));
+            }
+        });
+    }
+
+    // 웹소캣 생성
+    var sock = new SockJS("http://localhost/echo");
+    sock.onmessage = onMessage;
+
+    // 서버로부터 메시지 받기
+    function onMessage(msg) {
+        var items = msg.data.split("|");
+        var sender = items[0];
+        var message = items[1];
+        var id = item[2];
+        var date = items[3];
+        var data = {
+            "message" : message,
+            "sender" : sender,
+            "regdate" : date,
+            "id" : id
+        }
+        var temp = Handlebars.compile($("#temp1").html());
+        $("#chat").append(temp(data));
+        window.scrollTo(0, $("#chat").prop("scrollHeight"))
+    }
 </script>
 </html>
