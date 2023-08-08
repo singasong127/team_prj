@@ -17,6 +17,8 @@ public class ChatVo {
     private String id;
     private String sender;
     private String message;
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="Asia/Seoul")
+    private Date regdate;
 
 
     public String getSender() {
@@ -43,6 +45,4 @@ public class ChatVo {
         this.regdate = regdate;
     }
 
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="Asia/Seoul")
-    private Date regdate;
 }

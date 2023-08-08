@@ -6,7 +6,7 @@ public interface ChatDao {
     public List<ChatVo> list();
     public void insert(ChatVo vo);
 
-    void delete(int id);
+    public void delete(int id);
 
     public int last();
 }
