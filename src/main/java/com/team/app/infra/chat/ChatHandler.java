@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.team.app.infra.chat.ChatDao;
 public class ChatHandler extends TextWebSocketHandler {
     // 여러개의 웹소켓 세션을 담도록 리스트를 생성한다.
     List<WebSocketSession> sessionList = new ArrayList<WebSocketSession>();
@@ -17,6 +18,7 @@ public class ChatHandler extends TextWebSocketHandler {
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
         // 연결되었을떄
         System.out.println("연결됨 : " + session.getId());
+        sessionList.add(session);
         super.afterConnectionEstablished(session);
     }
 
@@ -32,7 +34,6 @@ public class ChatHandler extends TextWebSocketHandler {
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
         // 메시지가 들어오는 부분
         String strMessage = message.getPayload();
-        System.out.println("메시지 : " + strMessage);
 
 
         // 연결된세션들에게 메시지를 보낼때
@@ -40,6 +41,8 @@ public class ChatHandler extends TextWebSocketHandler {
         SimpleDateFormat stf = new SimpleDateFormat("yyy-MM-dd HH:mm:ss");
         String strDate=stf.format(new Date());
         strMessage+="|"+strDate;
+        System.out.println("메시지 : " + strMessage);
+
         for (WebSocketSession webSocketSession:sessionList) {
             webSocketSession.sendMessage(new TextMessage(strMessage));
         }
