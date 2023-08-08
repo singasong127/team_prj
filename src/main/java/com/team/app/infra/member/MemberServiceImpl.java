@@ -4,7 +4,9 @@ import java.io.File;
 import java.util.List;
 import java.util.UUID;
 
+import com.team.app.infra.upload.Constants_b;
 import com.team.app.infra.upload.Constants;
+import com.team.app.infra.upload.Constants_hong;
 import com.team.app.infra.upload.Upload;
 import com.team.app.infra.upload.UtilDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -94,9 +96,9 @@ public class MemberServiceImpl implements MemberService {
 				String pathModule = className;
 				String nowString = UtilDateTime.nowString();
 				String pathDate = nowString.substring(0,4) + "/" + nowString.substring(5,7) + "/" + nowString.substring(8,10);
-				String path = Constants.UPLOAD_PATH_PREFIX + "/" + pathModule + "/" + pathDate + "/";
+				String path = Constants_b.UPLOAD_PATH_PREFIX + "/" + pathModule + "/" + pathDate + "/";
 //          String path = Constants.UPLOAD_PATH_PREFIX  + "/";
-				String pathForView = Constants.UPLOAD_PATH_PREFIX_FOR_VIEW + "/" + pathModule + "/" + pathDate + "/";
+				String pathForView = Constants_b.UPLOAD_PATH_PREFIX_FOR_VIEW + "/" + pathModule + "/" + pathDate + "/";
 
 				File uploadPath = new File(path);
 
