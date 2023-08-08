@@ -1,3 +1,5 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page session="true"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -22,7 +24,7 @@
 <body>
 <div class="chat_wrap">
     <div class="header">
-        <h3>채팅방(${uid})</h3>
+        <h3>채팅방(${sessionId})</h3>
     </div>
     <div id="chat"></div>
     <!-- 채팅저장출력 -->
@@ -44,6 +46,7 @@
             <div class="sender">{{sender}}</div>
             <div class="message">{{message}}</div>
             <div class="date">{{regdate}}</div>
+            <div class="date">{{regdate}}</div>
         </div>
     </script>
     <div class="input-div">
@@ -54,7 +57,7 @@
 </body>
 <!-- 메시지 입력시 오른쪽 왼쪽으로 기입되는 방식 지정 -->
 <script>
-    var uid = "${uid}";
+    var uid = "${sessionId}";
     Handlebars.registerHelper("printLeftRight", function(sender) {
         if (uid != sender) {
             return "left";
@@ -69,7 +72,7 @@
     });
 </script>
 <script>
-    var uid = "${uid}"
+    var uid = "${sessionId}"
     getList();
     //채팅삭제
     //채팅삭제
@@ -78,6 +81,8 @@
         var id=$(this).attr("href");
         if(!confirm(id+"을(를) 삭제하시겠습니까?")) return;
         $.ajax({
+            async:true,
+            cache:false,
             type:'post',
             url:'/chat/delete',
             data:{id:id},
@@ -104,6 +109,8 @@
 
             // DB로 데이터 보내기
             $.ajax({
+                async:"true",
+                cache:"false",
                 type:'post',
                 url:'/chat/insert',
                 data:{
@@ -137,10 +144,11 @@
 
     // 서버로부터 메시지 받기
     function onMessage(msg) {
+        console.log("does this work??");
         var items = msg.data.split("|");
         var sender = items[0];
         var message = items[1];
-        var id = item[2];
+        var id = items[2];
         var date = items[3];
         var data = {
             "message" : message,
@@ -150,6 +158,7 @@
         }
         var temp = Handlebars.compile($("#temp1").html());
         $("#chat").append(temp(data));
+        console.log(temp);
         window.scrollTo(0, $("#chat").prop("scrollHeight"))
     }
 </script>
