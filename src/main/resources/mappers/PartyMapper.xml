@@ -46,7 +46,7 @@
     	SELECT
     		<include refid="selectAll"></include>
     	FROM
-    		Party
+    		party
     	WHERE
     		seq = #{seq}
     </select>
@@ -71,8 +71,12 @@
     
     <insert id="insert">
     	INSERT INTO party (
+<<<<<<< Upstream, based on branch 'main' of https://github.com/singasong127/team_prj.git
     		partyType
     		, partyName
+=======
+    		partyName
+>>>>>>> 4245361 파티생성 기능 추가
     		, delNy
     	) VALUES (
     		#{partyName}
