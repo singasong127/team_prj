@@ -18,7 +18,17 @@
             
             <!-- 파티 생성 데이터 담을 폼 -->
             <div class="formBox mx-auto">
+<<<<<<< HEAD
+=======
+<<<<<<< Upstream, based on branch 'main' of https://github.com/singasong127/team_prj.git
+	            <form name="">
+=======
+>>>>>>> branch 'lee' of https://github.com/singasong127/team_prj.git
 	            <form name="partyTime">
+<<<<<<< HEAD
+=======
+>>>>>>> 4245361 파티생성 기능 추가
+>>>>>>> branch 'lee' of https://github.com/singasong127/team_prj.git
 	            	<!-- 파티 생성 박스 -->
 					<div class="d-flex flex-column p-4">
 						<!-- 종목과 파티제목 -->
@@ -200,9 +210,17 @@ $(".modalOk").on("click", function(){
 	/* alert("파티생성"); */
 	var partyTime = $("form[name=partyTime]");
 	
+<<<<<<< HEAD
+=======
+<<<<<<< Upstream, based on branch 'main' of https://github.com/singasong127/team_prj.git
+>>>>>>> branch 'lee' of https://github.com/singasong127/team_prj.git
 	$('form[name=partyTime]')
 	
 	partyTime.attr("action", "/ptinsert").submit();
+<<<<<<< HEAD
+=======
+>>>>>>> 4245361 파티생성 기능 추가
+>>>>>>> branch 'lee' of https://github.com/singasong127/team_prj.git
 });
 	
 </script>
