@@ -153,6 +153,7 @@ public class MemberController {
 			if(rtMember != null) {
 				httpSession.setMaxInactiveInterval(60*10);
 				httpSession.setAttribute("sessionId", vo.getEmail());
+				httpSession.setAttribute("sessionNickName", rtMember.getNickname());
 				httpSession.setAttribute("sessionProfilePath",rtMember.getPath());
 				httpSession.setAttribute("sessionProfileName",rtMember.getUuidName());
 				httpSession.setAttribute("sessionSeq",rtMember.getSeq());
@@ -161,7 +162,6 @@ public class MemberController {
 			}else {
 				returnMap.put("rt", "fail");
 			}
-			
 			return returnMap;
 		}
 		

@@ -1,8 +1,8 @@
 package com.team.app.infra.chat;
 
+import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import java.util.Date;
 
 public class ChatVo {
 
@@ -17,6 +17,15 @@ public class ChatVo {
     private String id;
     private String sender;
     private String message;
+
+    public Date getRegdate() {
+        return regdate;
+    }
+
+    public void setRegdate(Date regdate) {
+        this.regdate = regdate;
+    }
+
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="Asia/Seoul")
     private Date regdate;
 
@@ -37,12 +46,5 @@ public class ChatVo {
         this.message = message;
     }
 
-    public Date getRegdate() {
-        return regdate;
-    }
-
-    public void setRegdate(Date regdate) {
-        this.regdate = regdate;
-    }
 
 }
