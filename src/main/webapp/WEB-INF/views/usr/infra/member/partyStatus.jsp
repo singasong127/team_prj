@@ -18,11 +18,27 @@
 					<%--FORM CONTENT STARTS FROM HERE!!--%>
 					<%--FORM CONTENT ENDS FROM HERE!!--%>
 
+					<article>
+						<div class="overflow-y-auto">
+							
+							<ul>
+								<li>파티명 : <c:out value="${team.partyName }"/></li>
+								<li>파티장 : <c:out value="${team.partyLeader }"/></li>
+								<li>날짜 : <c:out value="${team.playDt }"/></li>
+								<li>시작시간 : <c:out value="${team.playTimeStart }"/></li>
+								<li>종료시간 : <c:out value="${team.playTimeEnd }"/></li>
+								<li>파티인원 : <c:out value="${team.playerNum } / ${team.playerMax }"/></li>
+								<li>성별 : <c:out value="${team.partyGen }"/></li>
+								<li>장비 지참 여부 : <c:out value="${team.toolNy }"/></li>
+								<li>설명 : <c:out value="${team.partyDesc }"/></li>
+							</ul>				
+						</div>											
+					</article>
+					
 					<%--FORM CONTENT STARTS FROM HERE!!--%>
-
 					<article class="contents">
 						<!-- 파티 스테이터스 -->
-						<div class="chat">
+						<div class="">
 							<div class="pb-2 bg-white">
 								<div class="party_name d-flex justify-content-between">
 									<h5 class="text-white my-1">참여자 명단</h5>
@@ -133,8 +149,9 @@
 							</div>
 						</div>
 					</article>
+					
+					
 				</div>
-
 			</div>
 			<%--FORM CONTENT ENDS FROM HERE!!--%>
 		</main>

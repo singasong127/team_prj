@@ -78,7 +78,7 @@
 									<c:forEach items="${list}" var="list" varStatus="status">
 											<tr>
 												<td>
-													<a href="/ptform?seq=<c:out value="${list.seq}"></c:out>">
+													<a href="/PartyTest?seq=<c:out value="${list.seq}"></c:out>">
 														<c:out value="${list.seq}"></c:out>
 													</a>
 												</td>
@@ -86,7 +86,7 @@
 													
 												</td>
 												<td>
-													<a href="/ptform?seq=<c:out value="${list.partyName}"></c:out>">
+													<a href="/PartyTest?seq=<c:out value="${list.seq}"></c:out>">
 														<c:out value="${list.partyName}"></c:out>
 													</a>
 												</td>
@@ -107,7 +107,7 @@
 													</c:choose>
 												</td>
 												<td>
-													<a href="/ptform?seq=<c:out value="${list.partyLocation}"></c:out>">
+													<a href="/PartyTest?seq=<c:out value="${list.partyLocation}"></c:out>">
 														<c:out value="${list.partyLocation}"></c:out>
 													</a>
 												</td>
