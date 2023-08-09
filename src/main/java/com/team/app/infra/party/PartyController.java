@@ -44,6 +44,16 @@ public class PartyController {
 	  
 		return ""; 
 	}
+	
+//	그냥 경로(파티 창 들어가는거 확인 작업)
+	@RequestMapping(value="/PartyTest")
+	public String partyTest(PartyVo vo, Model model) {
+		Party party = service.selectOne(vo);
+		
+		model.addAttribute("team", party);
+		return "usr/infra/member/partyStatus";
+	}
+	
 	 
 	
 	@RequestMapping(value="/ptupdate")
@@ -74,11 +84,13 @@ public class PartyController {
 		
 		service.insert(dto);
 		
-		return "redirect:/ptlist";
+		return "redirect:/";
 	}
 	
 	@RequestMapping(value="/newChallger")
 	public String newParty() {
 		return "usr/infra/member/newParty";
 	}
+	
+
 }

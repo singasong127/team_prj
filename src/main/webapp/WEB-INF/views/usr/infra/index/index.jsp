@@ -91,7 +91,7 @@
 													</a>
 												</td>
 												<td>
-													<c:out value="${list.playerMax}"></c:out>
+													<c:out value="${list.playerNum} / ${list.playerMax}"/> 
 												</td>
 												<td>
 													<c:out value="${list.playDt}"></c:out>
@@ -141,7 +141,7 @@
 
 <script type="text/javascript">
 	$("#btnSh").on("click", function() {
-		$("form[name=formSh]").attr("action", "/")
+		$("form[name=formSh]").attr("action", "/").submit();
 	});	
 	
 
