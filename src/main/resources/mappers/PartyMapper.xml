@@ -9,12 +9,13 @@
 		seq
 		, delNy
 		, partyType
+		, partySport
 		, partyName
 		, playerNum
 		, playerMax
-		, playDt
-		, playTimeStart
-		, playTimeEnd
+		, (DATE_FORMAT(playDt, '%Y-%m-%d') ) AS playDt
+		, (DATE_FORMAT(playTimeStart, '%p %l:%i') ) AS playTimeStart
+		, (DATE_FORMAT(playTimeEnd, '%p %l:%i') ) AS playTimeEnd
 		, partyLeader
 		, partyDesc
 		, toolNy
@@ -28,7 +29,11 @@
    		FROM party
 		WHERE 1=1
 		AND delNy = 0
+		<if test="partySport != null and !partySport.equals('')">AND partySport = #{partySport}</if>
 		<if test="partyName != null and !partyName.equals('')">AND partyName LIKE CONCAT('%',#{partyName},'%')</if>
+		<if test="partyGen != null and !partyGen.equals('')">AND partyGen = #{partyGen}</if>
+		<if test="partyAge != null and !partyAge.equals('')">AND partyAge = #{partyAge}</if>
+		<if test="playDt != null and !playDt.equals('')">AND playDt LIKE CONCAT('%',#{playDt},'%')</if>
     </sql>
 	
 	<select id="selectList" resultType="Party">
@@ -39,7 +44,9 @@
 	
 	<select id="selectOneCount" resultType="Integer">
 		SELECT count(*)
-		<include refid="selectCommon" />
+		FROM party
+		WHERE 1=1
+		AND delNy = 0
 	</select>
 	    
 	 <select id="selectOne" resultType="Party">

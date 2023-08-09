@@ -76,11 +76,11 @@
 							<div class="labelBox">
 								<span>성별</span>
 								<div class="form-check form-check-inline">
-									<input type="radio" name="gender" value="1">
+									<input type="radio" name="gender" value="0">
 									<label>남성</label>
 								</div>
 								<div class="form-check form-check-inline">
-									<input type="radio"  name="gender" value="0">
+									<input type="radio"  name="gender" value="1">
 									<label>여성</label>
 								</div>
 								<div class="form-check form-check-inline">
