@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.team.app.infra.chat.ChatDao;
 public class ChatHandler extends TextWebSocketHandler {
     // 여러개의 웹소켓 세션을 담도록 리스트를 생성한다.
     List<WebSocketSession> sessionList = new ArrayList<WebSocketSession>();
