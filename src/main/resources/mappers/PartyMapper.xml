@@ -9,7 +9,15 @@
 		seq
 		, delNy
 		, partyType
-		, partySport
+		<!-- , partySport -->
+		, (SELECT
+			(SELECT 
+				cdName
+				FROM teamCode
+    			WHERE 1=1
+    			AND cdSeq = p.partySport) AS partySport
+			FROM party AS p
+			LEFT JOIN teamCode AS cd ON cd.cdSeq = p.partySport)
 		, partyName
 		, playerNum
 		, playerMax
@@ -33,7 +41,7 @@
 		<if test="partyName != null and !partyName.equals('')">AND partyName LIKE CONCAT('%',#{partyName},'%')</if>
 		<if test="partyGen != null and !partyGen.equals('')">AND partyGen = #{partyGen}</if>
 		<if test="partyAge != null and !partyAge.equals('')">AND partyAge = #{partyAge}</if>
-		<if test="playDt != null and !playDt.equals('')">AND playDt LIKE CONCAT('%',#{playDt},'%')</if>
+		<if test="playDt != null and !playDt.equals('')">AND playDt = #{playDt}</if>
     </sql>
 	
 	<select id="selectList" resultType="Party">
@@ -76,6 +84,7 @@
     		seq = #{seq} 
     </update>
     
+    <!-- 회원 유형: 사용자(0), 관리자(1) -->
     <insert id="insert">
     	INSERT INTO party (
     		partyType

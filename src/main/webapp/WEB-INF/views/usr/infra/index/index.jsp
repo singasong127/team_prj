@@ -19,11 +19,16 @@
 	            </div>
 	            <!-- select 박스 -->
 	            <div class="searchBox">
-	            <form name="formSh" method="post" class="d-flex">
+	            <form name="formSh" method="post" class="d-flex" autocomplete="off">
 
 	            <!-- 종목(나중에 분류 재지정하고 재설정) -->
 				   <select name="partySport" id="partySport" class="me-2">
 				   	<option value="" selected>-- 종목 --</option>
+				   	<c:forEach items="list" var="listSport" varStatus="statusSport">
+				   		<option value="${list.partySport }">
+				   			<c:out value="${vo.partySport }" />
+				   		</option>
+				   	</c:forEach>
 				   </select>
 				   <input type="text" class="form-control me-2" id="partyName" name="partyName" placeholder="-- 파티 제목 --">
 				   <!-- 날짜 선택 -->
@@ -187,7 +192,7 @@
 			,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 Tooltip
 			,yearRange: '2020:2023'
 		});
-		 $('#playDt').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후
+		 $('#playDt').datepicker();
 	});
 	
 </script>
