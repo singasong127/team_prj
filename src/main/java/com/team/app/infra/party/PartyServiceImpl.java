@@ -44,4 +44,5 @@ public class PartyServiceImpl implements PartyService {
 		return dao.insert(dto);
 	}
 
+
 }

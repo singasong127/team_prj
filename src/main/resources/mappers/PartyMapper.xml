@@ -10,14 +10,11 @@
 		, delNy
 		, partyType
 		<!-- , partySport -->
-		, (SELECT
-			(SELECT 
-				cdName
-				FROM teamCode
-    			WHERE 1=1
-    			AND cdSeq = p.partySport) AS partySport
-			FROM party AS p
-			LEFT JOIN teamCode AS cd ON cd.cdSeq = p.partySport)
+		, (SELECT 
+			cdName
+			FROM teamCode AS cd
+   			WHERE 1=1
+   			AND cd.cdSeq = p.partySport) AS partySport
 		, partyName
 		, playerNum
 		, playerMax
@@ -34,7 +31,7 @@
 	</sql>
 	
 	<sql id ="selectCommon">
-   		FROM party
+   		FROM party AS p
 		WHERE 1=1
 		AND delNy = 0
 		<if test="partySport != null and !partySport.equals('')">AND partySport = #{partySport}</if>

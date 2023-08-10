@@ -24,15 +24,15 @@
 	            <!-- 종목(나중에 분류 재지정하고 재설정) -->
 				   <select name="partySport" id="partySport" class="me-2">
 				   	<option value="" selected>-- 종목 --</option>
-				   	<c:forEach items="list" var="listSport" varStatus="statusSport">
-				   		<option value="${list.partySport }">
-				   			<c:out value="${vo.partySport }" />
-				   		</option>
+				   	<c:forEach items="${optList}" var="cd">
+				   		<option value="<c:out value="${cd.cdSeq}"/>"  <c:if test="${list.partySport == cd.cdSeq}">selected</c:if> >
+                        	<c:out value="${cd.cdName}"/>
+                        </option>
 				   	</c:forEach>
 				   </select>
 				   <input type="text" class="form-control me-2" id="partyName" name="partyName" placeholder="-- 파티 제목 --">
 				   <!-- 날짜 선택 -->
-				   <input type="text" class="form-control me-2" id="playDt" name="playDt" value="" placeholder="-- 날짜 --">
+				   <input type="text" class="form-control me-2" id="playDt" name="playDt" value="<c:out value="${vo.playDt }" />" placeholder="-- 날짜 --">
 				   
 				   <!-- 성별 선택창 -->
 				   <select name="partyGen" id="partyGen" class="me-2">
@@ -93,7 +93,7 @@
 													</a>
 												</td>
 												<td>
-													
+													<c:out value="${list.partySport}"></c:out>
 												</td>
 												<td>
 													<a href="/ptform?seq=<c:out value="${list.partyName}"></c:out>">

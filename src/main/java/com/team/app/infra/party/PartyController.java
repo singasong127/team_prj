@@ -8,12 +8,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.team.app.infra.code.Code;
+import com.team.app.infra.code.CodeServiceImpl;
 
 
 @Controller
 public class PartyController {
 	@Autowired
 	PartyServiceImpl service;
+	@Autowired
+	CodeServiceImpl cdService;
 	
 	  @RequestMapping(value="/ptlist") 
 	  public String partyList(@ModelAttribute("vo") PartyVo vo, Model model) {
@@ -81,4 +85,10 @@ public class PartyController {
 	public String newParty() {
 		return "usr/infra/member/newParty";
 	}
+	
+	@ModelAttribute("optList")
+	public List<Code> selectOptList() {
+		return cdService.selectOpt();
+	}
+	
 }

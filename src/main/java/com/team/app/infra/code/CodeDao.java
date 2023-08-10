@@ -37,4 +37,8 @@ public class CodeDao {
     public int uelete(CodeVo vo) {
         return sqlSession.update("Code.uelete",vo);
     }
+    
+    public List<Code> selectOpt() {
+		return sqlSession.selectList("Code.selectOpt");
+	}
 }
