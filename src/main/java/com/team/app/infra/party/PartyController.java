@@ -8,12 +8,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.team.app.infra.code.Code;
+import com.team.app.infra.code.CodeServiceImpl;
 
 
 @Controller
 public class PartyController {
 	@Autowired
 	PartyServiceImpl service;
+	@Autowired
+	CodeServiceImpl cdService;
 	
 	  @RequestMapping(value="/ptlist") 
 	  public String partyList(@ModelAttribute("vo") PartyVo vo, Model model) {
@@ -44,16 +48,6 @@ public class PartyController {
 	  
 		return ""; 
 	}
-	
-//	그냥 경로(파티 창 들어가는거 확인 작업)
-	@RequestMapping(value="/PartyTest")
-	public String partyTest(PartyVo vo, Model model) {
-		Party party = service.selectOne(vo);
-		
-		model.addAttribute("team", party);
-		return "usr/infra/member/partyStatus";
-	}
-	
 	 
 	
 	@RequestMapping(value="/ptupdate")
@@ -84,7 +78,7 @@ public class PartyController {
 		
 		service.insert(dto);
 		
-		return "redirect:/";
+		return "redirect:/ptlist";
 	}
 	
 	@RequestMapping(value="/newChallger")
@@ -92,5 +86,9 @@ public class PartyController {
 		return "usr/infra/member/newParty";
 	}
 	
-
+	@ModelAttribute("optList")
+	public List<Code> selectOptList() {
+		return cdService.selectOpt();
+	}
+	
 }
