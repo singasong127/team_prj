@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.team.app.infra.code.Code;
+import com.team.app.infra.code.CodeServiceImpl;
+import com.team.app.infra.code.CodeVo;
 import com.team.app.infra.party.Party;
 import com.team.app.infra.party.PartyServiceImpl;
 import com.team.app.infra.party.PartyVo;
@@ -19,15 +22,19 @@ public class IndexController {
 	
 	@Autowired
 	PartyServiceImpl service;
+	@Autowired
+	CodeServiceImpl cdService;
 	
     @RequestMapping(value="/")
-    public String index(@ModelAttribute Party party, Model model, PartyVo vo) {
+    public String index(Model model, PartyVo vo, CodeVo cdVo) {
     	
     	service.selectList(vo);
 //    	service.selectOne(vo);
     	
     	List<Party> list = service.selectList(vo);
+    	List<Code> cdList = cdService.selectCodeName(cdVo);
     	model.addAttribute("list", list);
+    	model.addAttribute("code", cdList);
     	
     	System.out.println(vo.getPartyGen());
     	

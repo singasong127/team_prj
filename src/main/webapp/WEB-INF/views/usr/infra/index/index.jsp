@@ -20,38 +20,34 @@
 	            <!-- select 박스 -->
 	            <div class="searchBox">
 	            <form name="formSh" method="post" class="d-flex" autocomplete="off">
-
 	            <!-- 종목(나중에 분류 재지정하고 재설정) -->
-	            
-				   <select name="partySport" id="partySport" class="me-2">
-				   	<option value="" selected>-- 종목 --</option>
-				   	<c:forEach items="${optList}" var="cd">
-				   		<option value="<c:out value="${cd.cdSeq}"/>"  <c:if test="${list.partySport == cd.cdSeq}">selected</c:if> >
-                        	<c:out value="${cd.cdName}"/>
-                        </option>
-				   	</c:forEach>
-				   </select>
+			   		<select name="partySport" id="partySport" class="me-2">
+			   			<option value="" selected>-- 종목 --</option>
+				   		<c:forEach items="${code}" var="code" >
+				   			<option value="<c:out value='${code.cdSeq}'/>"><c:out value="${code.cdName}"></c:out></option>
+				   		</c:forEach>
+				   	</select>
 				   <input type="text" class="form-control me-2" id="partyName" name="partyName" placeholder="-- 파티 제목 --">
 				   <!-- 날짜 선택 -->
-				   <input type="text" class="form-control me-2" id="playDt" name="playDt" value="<c:out value="${vo.playDt }" />" placeholder="-- 날짜 --">
+				   <input type="text" class="form-control me-2" id="playDt" name="playDt" placeholder="-- 날짜 --">
 				   
 				   <!-- 성별 선택창 -->
 				   <select name="partyGen" id="partyGen" class="me-2">
 				   	<option value=" " selected>-- 성별 --</option>
-				   	<option value="<c:out value="${vo.partyGen }"/>0">남성</option>
-				   	<option value="<c:out value="${vo.partyGen }"/>1">여성</option>
-				   	<option value="<c:out value="${vo.partyGen }"/>2">무관</option>
+				   	<option value="0">남성</option>
+				   	<option value="1">여성</option>
+				   	<option value="2">무관</option>
 				   </select>
 				   
 				   <select name="partyAge" id="partyAge" class="me-2">
 			   		<option value="" selected>-- 연령대 --</option>
-			   			<option value="<c:out value="${vo.partyAge }"/>0">연령 무관</option>
-				   		<option value="<c:out value="${vo.partyAge }"/>10">10대</option>
-				   		<option value="<c:out value="${vo.partyAge }"/>20">20대</option>
-				   		<option value="<c:out value="${vo.partyAge }"/>30">30대</option>
-				   		<option value="<c:out value="${vo.partyAge }"/>40">40대</option>
-				   		<option value="<c:out value="${vo.partyAge }"/>50">50대</option>
-				   		<option value="<c:out value="${vo.partyAge }"/>60">60대</option>
+			   			<option value="0">연령 무관</option>
+				   		<option value="10">10대</option>
+				   		<option value="20">20대</option>
+				   		<option value="30">30대</option>
+				   		<option value="40">40대</option>
+				   		<option value="50">50대</option>
+				   		<option value="60">60대</option>
 				   </select>
 				   
 				   <input type="text" class="form-control me-2" name="partyLocation" id="partyLocation" placeholder="-- 지역 --">
@@ -163,17 +159,10 @@
 
 <script type="text/javascript">
 	$("#btnSh").on("click", function() {
-		$("form[name=formSh]").attr("action", "/?").submit();
+		$("form[name=formSh]").attr("action", "/").submit();
 	});	
 	
 
-
-
-	$("#btnCre").on("click", function() {
-		
-		window.location.replace("newChallger");
-		
-	});
 	
 	$(function() {
 		$("#playDt").datepicker({

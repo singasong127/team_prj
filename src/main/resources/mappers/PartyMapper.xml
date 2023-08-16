@@ -75,8 +75,14 @@
 			, partyLocation
     	FROM
     		party
-    	WHERE
-    		seq = #{seq}
+    	WHERE 1=1
+    		AND seq = #{seq}
+    		<if test="partySport != null and !partySport.equals('')">AND partySport = #{partySport}</if>
+    		<if test="partyName != null and !partyName.equals('')">AND partyName LIKE CONCAT('%',#{partyName},'%')</if>
+    		<if test="playDt != null and !playDt.equals('')">AND playDt LIKE CONCAT('%',#{playDt},'%')</if>
+    		<if test="partyGen != null and !partyGen.equals('')">AND partyGen = #{partyGen}</if>
+    		<if test="partyAge != null and !partyAge.equals('')">AND partyAge = #{partyAge}</if>
+    		<if test="playLocation != null and !playLocation.equals('')">AND playLocation LIKE CONCAT('%',#{playLocation},'%')</if>
     </select>
     
     <update id="update">

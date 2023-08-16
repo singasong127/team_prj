@@ -41,7 +41,8 @@ public class CodeServiceImpl implements CodeService{
     }
 
 	@Override
-	public List<Code> selectOpt() {
-		return dao.selectOpt();
+	public List<Code> selectCodeName(CodeVo vo) {
+		return dao.selectCodeName(vo);
 	}
+
 }

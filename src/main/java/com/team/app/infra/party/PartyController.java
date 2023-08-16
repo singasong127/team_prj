@@ -8,10 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
 import com.team.app.infra.code.Code;
-
 import com.team.app.infra.code.CodeServiceImpl;
+import com.team.app.infra.code.CodeVo;
 
 
 @Controller
@@ -22,7 +21,7 @@ public class PartyController {
 	CodeServiceImpl cdService;
 	
 	  @RequestMapping(value="/ptlist") 
-	  public String partyList(@ModelAttribute("vo") PartyVo vo, Model model) {
+	  public String partyList(@ModelAttribute("vo") PartyVo vo, Model model, CodeVo cdVo) {
 	  
 	  vo.setPartyName(vo.getPartyName() == null ? "" : vo.getPartyName());
 	  
@@ -34,10 +33,11 @@ public class PartyController {
 		  List<Party> list = service.selectList(vo);
 		  model.addAttribute("list", list); 
 		  // model.addAttribute("vo", vo); } 
+		  
 	  } else {
 		  // by pass 
 	  }
-	  
+	  	
 	  	return "admin/infra/party/partyList";
 	  }
 	 
@@ -50,16 +50,6 @@ public class PartyController {
 	  
 		return "usr/infra/member/partyStatus"; 
 	}
-	
-//	그냥 경로(파티 창 들어가는거 확인 작업)
-	@RequestMapping(value="/PartyTest")
-	public String partyTest(PartyVo vo, Model model) {
-		Party party = service.selectOne(vo);
-		
-		model.addAttribute("team", party);
-		return "usr/infra/member/partyStatus";
-	}
-	
 	 
 	
 	@RequestMapping(value="/ptupdate")
@@ -90,7 +80,7 @@ public class PartyController {
 		
 		service.insert(dto);
 		
-		return "redirect:/";
+		return "redirect:/ptlist";
 	}
 	
 	@RequestMapping(value="/newChallger")
@@ -99,5 +89,5 @@ public class PartyController {
 		return "usr/infra/member/newParty";
 	}
 	
-
+	
 }

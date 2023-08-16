@@ -15,6 +15,6 @@ public interface CodeService {
 
     int uelete(CodeVo vo);
     
-    List<Code> selectOpt();
+    List<Code> selectCodeName(CodeVo vo);
     
 }
