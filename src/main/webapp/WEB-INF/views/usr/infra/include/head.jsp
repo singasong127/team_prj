@@ -18,6 +18,7 @@
 
     <script src="/resources/js/commonXdm.js"></script>
     <script src="/resources/js/constantsXdm.js"></script>
+    <script src="/resources/js/validation.js"></script>
 
 
 <%--DATE PICKER--%>
