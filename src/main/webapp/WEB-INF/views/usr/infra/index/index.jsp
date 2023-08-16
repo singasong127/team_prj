@@ -159,7 +159,7 @@
 
 <script type="text/javascript">
 	$("#btnSh").on("click", function() {
-		$("form[name=formSh]").attr("action", "/?").submit();
+		$("form[name=formSh]").attr("action", "/").submit();
 	});	
 	
 
