@@ -34,7 +34,7 @@
 									<option selected>:: 종목</option>
 							</select>
 							<select name="playerMax" id="playerMax">
-								<option selected>::인원</option>
+								<option selected >::인원</option>
 								<option value="1">1명</option>
 								<option value="2">2명</option>
 								<option value="3">3명</option>
