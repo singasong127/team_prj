@@ -98,20 +98,10 @@ public class MemberController {
 	public String memberUelete(Member dto, MemberVo vo) {
 		service.memberUelete(dto);
 		return "redirect:/memberList";
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 	}
 
-	//	uelete?
-	@RequestMapping(value="/memberNoUelete")
-	public String memberNoUelete(Member dto, MemberVo vo) {
-		service.memberNoUelete(dto);
-		return "redirect:/memberList";
-=======
->>>>>>> branch 'main' of https://github.com/singasong127/team_prj.git
-=======
->>>>>>> branch 'main' of https://github.com/singasong127/team_prj.git
-	}
+
 	
 //	DB에서 맴버 삭제 기능()
 //	@RequestMapping(value="/memberDelete")

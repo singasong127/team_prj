@@ -38,10 +38,7 @@ public class CodeDao {
         return sqlSession.update("Code.uelete",vo);
     }
     
-<<<<<<< HEAD
     public List<Code> selectOpt() {
 		return sqlSession.selectList("Code.selectOpt");
 	}
-=======
->>>>>>> branch 'main' of https://github.com/singasong127/team_prj.git
 }
