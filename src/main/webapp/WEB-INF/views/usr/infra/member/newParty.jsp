@@ -209,6 +209,7 @@ $(".modalOk").on("click", function(){
 	$('form[name=partyTime]')
 	
 	partyTime.attr("action", "/ptinsert").submit();
+	
 });
 	
 </script>

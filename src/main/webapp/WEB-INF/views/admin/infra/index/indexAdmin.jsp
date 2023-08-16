@@ -13,7 +13,7 @@
     <main>
         <div class="mainBox">
             <div class="mainContainer">
-            <%--FORM CONTENT STARTS FROM HERE!!--%>
+            FORM CONTENT STARTS FROM HERE!!
 	            <!-- 날짜 박스 -->
 	            <div>
 	            	일기예보 박스 넣는곳
@@ -24,6 +24,7 @@
 	            종목(나중에 분류 재지정하고 재설정)
 				   <select>
 				   	<option value="" selected>-- 종목 --</option>
+				   	
 				   </select>
 				   
 				   날짜 선택

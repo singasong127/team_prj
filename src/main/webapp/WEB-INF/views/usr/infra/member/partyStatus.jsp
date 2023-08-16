@@ -37,7 +37,7 @@
 
 					<%--FORM CONTENT STARTS FROM HERE!!--%>
 
-					<article class="contents">
+					<%-- <article class="contents">
 						<!-- 파티 스테이터스 -->
 						<div class="chat">
 							<div class="pb-2 bg-white">
@@ -150,7 +150,7 @@
 							</div>
 						</div>
 
-						<%--FORM CONTENT STARTS FROM HERE!!--%>
+						FORM CONTENT STARTS FROM HERE!!
 						<div class="col-6">
 							<div class="pb-2 bg-white">
 								<div class="d-flex justify-content-between">
@@ -259,9 +259,9 @@
 									</div>
 								</div>
 							</div>
+					</article> --%>
 						</div>
 					</div>
-					</article>
 				</div>
 			</div>
 			<%--FORM CONTENT ENDS FROM HERE!!--%>
