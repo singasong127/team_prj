@@ -45,7 +45,7 @@ public class PartyController {
 	  
 		model.addAttribute("item", party);
 	  
-		return ""; 
+		return "usr/infra/member/partyStatus"; 
 	}
 	 
 	

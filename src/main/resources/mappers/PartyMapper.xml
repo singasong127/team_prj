@@ -56,7 +56,23 @@
 	    
 	 <select id="selectOne" resultType="Party">
     	SELECT
-    		<include refid="selectAll"></include>
+    		seq
+			, delNy
+			, partyType
+			, partySport
+			, partyName
+			, playerNum
+			, playerMax
+			, (DATE_FORMAT(playDt, '%Y-%m-%d') ) AS playDt
+			, (DATE_FORMAT(playTimeStart, '%p %l:%i') ) AS playTimeStart
+			, (DATE_FORMAT(playTimeEnd, '%p %l:%i') ) AS playTimeEnd
+			, partyLeader
+			, partyDesc
+			, toolNy
+			, partyGen
+			, partyAge
+			, madeTime
+			, partyLocation
     	FROM
     		party
     	WHERE

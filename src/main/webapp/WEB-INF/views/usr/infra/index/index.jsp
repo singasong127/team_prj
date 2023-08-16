@@ -22,9 +22,10 @@
 	            <form name="formSh" method="post" class="d-flex" autocomplete="off">
 
 	            <!-- 종목(나중에 분류 재지정하고 재설정) -->
+	            
 				   <select name="partySport" id="partySport" class="me-2">
 				   	<option value="" selected>-- 종목 --</option>
-				   	<c:forEach items="${optList}" var="cd">
+				   	<c:forEach items="" var="cd">
 				   		<option value="<c:out value="${cd.cdSeq}"/>"  <c:if test="${list.partySport == cd.cdSeq}">selected</c:if> >
                         	<c:out value="${cd.cdName}"/>
                         </option>
@@ -96,7 +97,7 @@
 													<c:out value="${list.partySport}"></c:out>
 												</td>
 												<td>
-													<a href="/ptform?seq=<c:out value="${list.partyName}"></c:out>">
+													<a href="/ptform?seq=<c:out value="${list.seq}"></c:out>">
 														<c:out value="${list.partyName}"></c:out>
 													</a>
 												</td>
