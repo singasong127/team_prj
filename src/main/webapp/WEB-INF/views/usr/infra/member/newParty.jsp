@@ -175,7 +175,6 @@ $('#playDt')
 });
 
 $('#playTimeStart').timepicker({
-<<<<<<< HEAD
 	  timeFormat: 'hh:mm',
 	    interval: 30,
 	  timeFormat: 'h:mm p',
@@ -206,7 +205,7 @@ $('#playTimeEnd').timepicker({
 $(".modalOk").on("click", function(){
 	/* alert("이거 나오면 잘되는거임?"); */
 	
-	$('form[name=partyTime]')
+	var partyTime = $('form[name=partyTime]');
 	
 	partyTime.attr("action", "/ptinsert").submit();
 	
