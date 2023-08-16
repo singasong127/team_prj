@@ -107,12 +107,7 @@ public class MemberController {
 //		return"/memberList";
 //	}
 
-//	그냥 경로(파티 창 들어가는거 확인 작업)
-	@RequestMapping(value="/PartyTest")
-	public String partyTest() {
-		return "usr/infra/member/partyStatus";
-	}
-	
+
 //	-------------------------------------------------/관리단----------------------------------------------------
 	
 	

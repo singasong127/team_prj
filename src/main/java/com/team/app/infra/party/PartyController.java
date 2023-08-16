@@ -8,12 +8,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.team.app.infra.code.CodeServiceImpl;
 
 
 @Controller
 public class PartyController {
 	@Autowired
 	PartyServiceImpl service;
+	@Autowired
+	CodeServiceImpl cdService;
 	
 	  @RequestMapping(value="/ptlist") 
 	  public String partyList(@ModelAttribute("vo") PartyVo vo, Model model) {
@@ -42,7 +45,7 @@ public class PartyController {
 	  
 		model.addAttribute("item", party);
 	  
-		return ""; 
+		return "usr/infra/member/partyStatus"; 
 	}
 	 
 	
@@ -78,7 +81,10 @@ public class PartyController {
 	}
 	
 	@RequestMapping(value="/newChallger")
-	public String newParty() {
+	public String newParty(Model model, PartyVo vo) {
+		
 		return "usr/infra/member/newParty";
 	}
+	
+	
 }

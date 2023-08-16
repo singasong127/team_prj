@@ -9,12 +9,18 @@
 		seq
 		, delNy
 		, partyType
+		<!-- , partySport -->
+		, (SELECT 
+			cdName
+			FROM teamCode AS cd
+   			WHERE 1=1
+   			AND cd.cdSeq = p.partySport) AS partySport
 		, partyName
 		, playerNum
 		, playerMax
-		, playDt
-		, playTimeStart
-		, playTimeEnd
+		, (DATE_FORMAT(playDt, '%Y-%m-%d') ) AS playDt
+		, (DATE_FORMAT(playTimeStart, '%p %l:%i') ) AS playTimeStart
+		, (DATE_FORMAT(playTimeEnd, '%p %l:%i') ) AS playTimeEnd
 		, partyLeader
 		, partyDesc
 		, toolNy
@@ -25,10 +31,14 @@
 	</sql>
 	
 	<sql id ="selectCommon">
-   		FROM party
+   		FROM party AS p
 		WHERE 1=1
 		AND delNy = 0
+		<if test="partySport != null and !partySport.equals('')">AND partySport = #{partySport}</if>
 		<if test="partyName != null and !partyName.equals('')">AND partyName LIKE CONCAT('%',#{partyName},'%')</if>
+		<if test="partyGen != null and !partyGen.equals('')">AND partyGen = #{partyGen}</if>
+		<if test="partyAge != null and !partyAge.equals('')">AND partyAge = #{partyAge}</if>
+		<if test="playDt != null and !playDt.equals('')">AND playDt = #{playDt}</if>
     </sql>
 	
 	<select id="selectList" resultType="Party">
@@ -39,14 +49,32 @@
 	
 	<select id="selectOneCount" resultType="Integer">
 		SELECT count(*)
-		<include refid="selectCommon" />
+		FROM party
+		WHERE 1=1
+		AND delNy = 0
 	</select>
 	    
 	 <select id="selectOne" resultType="Party">
     	SELECT
-    		<include refid="selectAll"></include>
+    		seq
+			, delNy
+			, partyType
+			, partySport
+			, partyName
+			, playerNum
+			, playerMax
+			, (DATE_FORMAT(playDt, '%Y-%m-%d') ) AS playDt
+			, (DATE_FORMAT(playTimeStart, '%p %l:%i') ) AS playTimeStart
+			, (DATE_FORMAT(playTimeEnd, '%p %l:%i') ) AS playTimeEnd
+			, partyLeader
+			, partyDesc
+			, toolNy
+			, partyGen
+			, partyAge
+			, madeTime
+			, partyLocation
     	FROM
-    		Party
+    		party
     	WHERE
     		seq = #{seq}
     </select>
@@ -69,14 +97,30 @@
     		seq = #{seq} 
     </update>
     
+    <!-- 회원 유형: 사용자(0), 관리자(1) -->
     <insert id="insert">
     	INSERT INTO party (
     		partyType
     		, partyName
+    		, playerNum
+    		, playerMax
+    		, playDt
+    		, playTimeStart
+			, playTimeEnd
+    		, partyGen
+    		, toolNy
     		, delNy
     	) VALUES (
-    		#{partyName}
-    		, 0
+    		"0"
+    		, #{partyName}
+    		, "1"
+    		, #{playerMax}
+    		, #{playDt}
+    		, #{playTimeStart}
+    		, #{playTimeEnd}
+    		, #{partyGen}
+    		, #{toolNy}
+    		, "0"
     	)
     </insert>   
 </mapper>    

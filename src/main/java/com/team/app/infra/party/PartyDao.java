@@ -40,4 +40,5 @@ public class PartyDao {
 		
 		return sqlSession.insert(namespace + ".insert", dto);
 	}
+	
 }
