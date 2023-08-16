@@ -38,4 +38,8 @@ public class CodeDao {
         return sqlSession.update("Code.uelete",vo);
     }
     
+    public List<Code> selectCodeName(CodeVo vo) {
+    	return sqlSession.selectList("Code.selectCodeName", vo);
+    }
+    
 }

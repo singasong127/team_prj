@@ -8,7 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.team.app.infra.code.Code;
 import com.team.app.infra.code.CodeServiceImpl;
+import com.team.app.infra.code.CodeVo;
 
 
 @Controller
@@ -19,7 +21,7 @@ public class PartyController {
 	CodeServiceImpl cdService;
 	
 	  @RequestMapping(value="/ptlist") 
-	  public String partyList(@ModelAttribute("vo") PartyVo vo, Model model) {
+	  public String partyList(@ModelAttribute("vo") PartyVo vo, Model model, CodeVo cdVo) {
 	  
 	  vo.setPartyName(vo.getPartyName() == null ? "" : vo.getPartyName());
 	  
@@ -31,10 +33,11 @@ public class PartyController {
 		  List<Party> list = service.selectList(vo);
 		  model.addAttribute("list", list); 
 		  // model.addAttribute("vo", vo); } 
+		  
 	  } else {
 		  // by pass 
 	  }
-	  
+	  	
 	  	return "admin/infra/party/partyList";
 	  }
 	 

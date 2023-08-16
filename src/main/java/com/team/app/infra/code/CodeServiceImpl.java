@@ -40,4 +40,9 @@ public class CodeServiceImpl implements CodeService{
         return dao.uelete(vo);
     }
 
+	@Override
+	public List<Code> selectCodeName(CodeVo vo) {
+		return dao.selectCodeName(vo);
+	}
+
 }
