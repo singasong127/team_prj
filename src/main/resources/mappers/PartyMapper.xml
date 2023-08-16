@@ -107,6 +107,7 @@
     		, playDt
     		, playTimeStart
 			, playTimeEnd
+			, partyLeader
     		, partyGen
     		, toolNy
     		, delNy
@@ -118,6 +119,7 @@
     		, #{playDt}
     		, #{playTimeStart}
     		, #{playTimeEnd}
+    		, #{partyLeader}
     		, #{partyGen}
     		, #{toolNy}
     		, "0"
