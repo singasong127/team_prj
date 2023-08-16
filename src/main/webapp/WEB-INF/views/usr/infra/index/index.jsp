@@ -32,25 +32,25 @@
 				   </select>
 				   <input type="text" class="form-control me-2" id="partyName" name="partyName" placeholder="-- 파티 제목 --">
 				   <!-- 날짜 선택 -->
-				   <input type="text" class="form-control me-2" id="playDt" name="playDt" value="<c:out value="${vo.playDt }" />" placeholder="-- 날짜 --">
+				   <input type="text" class="form-control me-2" id="playDt" name="playDt" placeholder="-- 날짜 --">
 				   
 				   <!-- 성별 선택창 -->
 				   <select name="partyGen" id="partyGen" class="me-2">
 				   	<option value=" " selected>-- 성별 --</option>
-				   	<option value="<c:out value="${vo.partyGen }"/>0">남성</option>
-				   	<option value="<c:out value="${vo.partyGen }"/>1">여성</option>
-				   	<option value="<c:out value="${vo.partyGen }"/>2">무관</option>
+				   	<option value="0">남성</option>
+				   	<option value="1">여성</option>
+				   	<option value="2">무관</option>
 				   </select>
 				   
 				   <select name="partyAge" id="partyAge" class="me-2">
 			   		<option value="" selected>-- 연령대 --</option>
-			   			<option value="<c:out value="${vo.partyAge }"/>0">연령 무관</option>
-				   		<option value="<c:out value="${vo.partyAge }"/>10">10대</option>
-				   		<option value="<c:out value="${vo.partyAge }"/>20">20대</option>
-				   		<option value="<c:out value="${vo.partyAge }"/>30">30대</option>
-				   		<option value="<c:out value="${vo.partyAge }"/>40">40대</option>
-				   		<option value="<c:out value="${vo.partyAge }"/>50">50대</option>
-				   		<option value="<c:out value="${vo.partyAge }"/>60">60대</option>
+			   			<option value="0">연령 무관</option>
+				   		<option value="10">10대</option>
+				   		<option value="20">20대</option>
+				   		<option value="30">30대</option>
+				   		<option value="40">40대</option>
+				   		<option value="50">50대</option>
+				   		<option value="60">60대</option>
 				   </select>
 				   
 				   <input type="text" class="form-control me-2" name="partyLocation" id="partyLocation" placeholder="-- 지역 --">
@@ -147,7 +147,7 @@
            		</div>
             <%--FORM CONTENT STARTS FROM HERE!!--%>
             	<div class="excuteBox">
-	            	<button class="detailBtn" id="btnCre" onclick="location.href='/ptinsert'">파티생성</button>
+	            	<button class="detailBtn" id="btnCre" onclick="location.href='/newChallger'">파티생성</button>
 	            	<button class="detailBtn" onclick="location.href='/PartyTest'">테스트</button>
 	            	<button class="detailBtn" id="btnSh"><i class="bi bi-search"></i></button>
             	</div>
@@ -166,13 +166,6 @@
 	});	
 	
 
-
-
-	$("#btnCre").on("click", function() {
-		
-		window.location.replace("newChallger");
-		
-	});
 	
 	$(function() {
 		$("#playDt").datepicker({

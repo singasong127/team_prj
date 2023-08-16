@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.team.app.infra.code.Code;
 import com.team.app.infra.code.CodeServiceImpl;
 
 
@@ -82,13 +81,10 @@ public class PartyController {
 	}
 	
 	@RequestMapping(value="/newChallger")
-	public String newParty() {
+	public String newParty(Model model, PartyVo vo) {
+		
 		return "usr/infra/member/newParty";
 	}
 	
-	@ModelAttribute("optList")
-	public List<Code> selectOptList() {
-		return cdService.selectOpt();
-	}
 	
 }

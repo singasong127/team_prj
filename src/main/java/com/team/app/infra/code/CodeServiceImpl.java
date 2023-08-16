@@ -40,8 +40,4 @@ public class CodeServiceImpl implements CodeService{
         return dao.uelete(vo);
     }
 
-	@Override
-	public List<Code> selectOpt() {
-		return dao.selectOpt();
-	}
 }

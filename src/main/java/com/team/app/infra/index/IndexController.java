@@ -29,8 +29,6 @@ public class IndexController {
     	List<Party> list = service.selectList(vo);
     	model.addAttribute("list", list);
     	
-    	System.out.println(vo.getPartyGen());
-    	
 //    	Party item = service.selectOne(vo);
 //    	model.addAttribute("item", item);
     	
