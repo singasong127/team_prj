@@ -18,23 +18,13 @@
             
             <!-- 파티 생성 데이터 담을 폼 -->
             <div class="formBox mx-auto">
-<<<<<<< HEAD
-=======
-<<<<<<< Upstream, based on branch 'main' of https://github.com/singasong127/team_prj.git
-	            <form name="">
-=======
->>>>>>> branch 'lee' of https://github.com/singasong127/team_prj.git
 	            <form name="partyTime">
-<<<<<<< HEAD
-=======
->>>>>>> 4245361 파티생성 기능 추가
->>>>>>> branch 'lee' of https://github.com/singasong127/team_prj.git
 	            	<!-- 파티 생성 박스 -->
 					<div class="d-flex flex-column p-4">
 						<!-- 종목과 파티제목 -->
 						<div class="labelBox ">
-							<label for="partyName" class="col-sm-2">파티 제목</label>
-							<input type="text" name="partyName" id="partyName" class="form-control" placeholder="파티 제목">
+							<label for="" class="col-sm-2">파티 제목</label>
+							<input type="text" class="form-control" placeholder="파티 제목">
 						</div>
 						
 						<!-- 인원수 날짜 연령대 -->
@@ -86,11 +76,12 @@
 							<div class="labelBox" id="partyGen">
 								<span>성별</span>
 								<div class="form-check form-check-inline">
-									<input type="radio" name="partyGen"  value="0"/>
+									<input type="radio" name="gender" value="0">
 									<label>남성</label>
 								</div>
 								<div class="form-check form-check-inline">
-									<input type="radio" name="partyGen" value="1"/>									<label>여성</label>
+									<input type="radio"  name="gender" value="1">
+									<label>여성</label>
 								</div>
 								<div class="form-check form-check-inline">
 									<input type="radio" name="partyGen" value="2"/>
@@ -151,7 +142,7 @@ $('#playDt')
     calendarWeeks: false, //캘린더 옆에 몇 주차인지 보여주는 옵션 기본값 false 보여주려면 true
     clearBtn: false, //날짜 선택한 값 초기화 해주는 버튼 보여주는 옵션 기본값 false 보여주려면 true
     datesDisabled: ['2019-06-24', '2019-06-26'], //선택 불가능한 일 설정 하는 배열 위에 있는 format 과 형식이 같아야함.
-    daysOfWeekDisabled: [], //선택 불가능한 요일 설정 0 : 일요일 ~ 6 : 토요일
+    daysOfWeekDisabled: [0, 6], //선택 불가능한 요일 설정 0 : 일요일 ~ 6 : 토요일
     daysOfWeekHighlighted: [3], //강조 되어야 하는 요일 설정
     disableTouchKeyboard: false, //모바일에서 플러그인 작동 여부 기본값 false 가 작동 true가 작동 안함.
     immediateUpdates: false, //사용자가 보는 화면으로 바로바로 날짜를 변경할지 여부 기본값 :false
@@ -185,6 +176,8 @@ $('#playDt')
 $('#playTimeStart').timepicker({
 	  timeFormat: 'hh:mm',
 	    interval: 30,
+	  timeFormat: 'h:mm p',
+	    interval: 60,
 	    minTime: '0',
 	    maxTime: '11:00pm',
 	    defaultTime: '11',
@@ -197,6 +190,8 @@ $('#playTimeStart').timepicker({
 $('#playTimeEnd').timepicker({
 	  timeFormat: 'hh:mm',
 	    interval: 30,
+	  timeFormat: 'h:mm p',
+	    interval: 60,
 	    minTime: '0',
 	    maxTime: '11:00pm',
 	    defaultTime: '11',
@@ -207,20 +202,11 @@ $('#playTimeEnd').timepicker({
 });
 
 $(".modalOk").on("click", function(){
-	/* alert("파티생성"); */
-	var partyTime = $("form[name=partyTime]");
+	/* alert("이거 나오면 잘되는거임?"); */
 	
-<<<<<<< HEAD
-=======
-<<<<<<< Upstream, based on branch 'main' of https://github.com/singasong127/team_prj.git
->>>>>>> branch 'lee' of https://github.com/singasong127/team_prj.git
 	$('form[name=partyTime]')
 	
 	partyTime.attr("action", "/ptinsert").submit();
-<<<<<<< HEAD
-=======
->>>>>>> 4245361 파티생성 기능 추가
->>>>>>> branch 'lee' of https://github.com/singasong127/team_prj.git
 });
 	
 </script>

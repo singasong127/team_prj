@@ -19,33 +19,42 @@
 	            </div>
 	            <!-- select 박스 -->
 	            <div class="searchBox">
-	            <form name="formSh" method="post">
+	            <form name="formSh" method="post" class="d-flex" autocomplete="off">
 
 	            <!-- 종목(나중에 분류 재지정하고 재설정) -->
-				   <select>
+				   <select name="partySport" id="partySport" class="me-2">
 				   	<option value="" selected>-- 종목 --</option>
+				   	<c:forEach items="${optList}" var="cd">
+				   		<option value="<c:out value="${cd.cdSeq}"/>"  <c:if test="${list.partySport == cd.cdSeq}">selected</c:if> >
+                        	<c:out value="${cd.cdName}"/>
+                        </option>
+				   	</c:forEach>
 				   </select>
-				   
+				   <input type="text" class="form-control me-2" id="partyName" name="partyName" placeholder="-- 파티 제목 --">
 				   <!-- 날짜 선택 -->
-				   <input type="text" class="form-control" id="date" name="date" value="" placeholder="-- 날짜 --">
+				   <input type="text" class="form-control me-2" id="playDt" name="playDt" value="<c:out value="${vo.playDt }" />" placeholder="-- 날짜 --">
 				   
 				   <!-- 성별 선택창 -->
-				   <select name="partyGen" id="partyGen">
+				   <select name="partyGen" id="partyGen" class="me-2">
 				   	<option value=" " selected>-- 성별 --</option>
-				   	<option value="0">남성</option>
-				   	<option value="1">여성</option>
-				   	<option value="2">무관</option>
+				   	<option value="<c:out value="${vo.partyGen }"/>0">남성</option>
+				   	<option value="<c:out value="${vo.partyGen }"/>1">여성</option>
+				   	<option value="<c:out value="${vo.partyGen }"/>2">무관</option>
 				   </select>
 				   
-				   <!-- 지역(예시로 전국 8도로 세팅 나중에 변경) -->
-				   <select>
-				   	<option value="" selected>-- 지역 --</option>
-				   	
+				   <select name="partyAge" id="partyAge" class="me-2">
+			   		<option value="" selected>-- 연령대 --</option>
+			   			<option value="<c:out value="${vo.partyAge }"/>0">연령 무관</option>
+				   		<option value="<c:out value="${vo.partyAge }"/>10">10대</option>
+				   		<option value="<c:out value="${vo.partyAge }"/>20">20대</option>
+				   		<option value="<c:out value="${vo.partyAge }"/>30">30대</option>
+				   		<option value="<c:out value="${vo.partyAge }"/>40">40대</option>
+				   		<option value="<c:out value="${vo.partyAge }"/>50">50대</option>
+				   		<option value="<c:out value="${vo.partyAge }"/>60">60대</option>
 				   </select>
 				   
-				   <select>
-				   	<option value="" selected>-- 연령대 --</option>
-				   </select>
+				   <input type="text" class="form-control me-2" name="partyLocation" id="partyLocation" placeholder="-- 지역 --">
+				   					   
 				   
 				   <button class="detailBtn">
 				   	<i class="bi bi-arrow-clockwise"></i>
@@ -63,6 +72,7 @@
 	    	        			<th>날짜</th>
 	    	        			<th>시간</th>
 	    	        			<th>성별</th>
+	    	        			<th>연령대</th>
 	    	        			<th>지역</th>
 	    	        			<th>장비지참</th>
 	            			</tr>
@@ -83,7 +93,7 @@
 													</a>
 												</td>
 												<td>
-													
+													<c:out value="${list.partySport}"></c:out>
 												</td>
 												<td>
 													<a href="/PartyTest?seq=<c:out value="${list.seq}"></c:out>">
@@ -91,7 +101,7 @@
 													</a>
 												</td>
 												<td>
-													<c:out value="${list.playerNum} / ${list.playerMax}"/> 
+													<c:out value="${list.playerNum}"></c:out> / <c:out value="${list.playerMax}"></c:out>
 												</td>
 												<td>
 													<c:out value="${list.playDt}"></c:out>
@@ -107,7 +117,18 @@
 													</c:choose>
 												</td>
 												<td>
-													<a href="/PartyTest?seq=<c:out value="${list.partyLocation}"></c:out>">
+													<c:choose>
+														<c:when test="${list.partyAge eq '10'}">10대</c:when>
+														<c:when test="${list.partyAge eq '20'}">20대</c:when>
+														<c:when test="${list.partyAge eq '30'}">30대</c:when>
+														<c:when test="${list.partyAge eq '40'}">40대</c:when>
+														<c:when test="${list.partyAge eq '50'}">50대</c:when>
+														<c:when test="${list.partyAge eq '60'}">60대</c:when>
+														<c:otherwise>연령 무관</c:otherwise>
+													</c:choose>
+												</td>
+												<td>
+													<a href="/ptform?seq=<c:out value="${list.partyLocation}"></c:out>">
 														<c:out value="${list.partyLocation}"></c:out>
 													</a>
 												</td>
@@ -127,7 +148,6 @@
             <%--FORM CONTENT STARTS FROM HERE!!--%>
             	<div class="excuteBox">
 	            	<button class="detailBtn" id="btnCre" onclick="location.href='/ptinsert'">파티생성</button>
-	            	<button class="detailBtn" onclick="location.href='/PartyTest'">테스트</button>
 	            	<button class="detailBtn" id="btnSh"><i class="bi bi-search"></i></button>
             	</div>
 			<%--FORM CONTENT ENDS FROM HERE!!--%>
@@ -141,7 +161,7 @@
 
 <script type="text/javascript">
 	$("#btnSh").on("click", function() {
-		$("form[name=formSh]").attr("action", "/").submit();
+		$("form[name=formSh]").attr("action", "/?").submit();
 	});	
 	
 
@@ -154,7 +174,7 @@
 	});
 	
 	$(function() {
-		$("#date").datepicker({
+		$("#playDt").datepicker({
 			dateFormat: 'yy-mm-dd'
 			,showOtherMonths: true
 			,showMonthAfterYear: true
@@ -171,7 +191,7 @@
 			,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 Tooltip
 			,yearRange: '2020:2023'
 		});
-		 $('#date').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후
+		 $('#playDt').datepicker();
 	});
 	
 </script>
