@@ -29,6 +29,9 @@ public class IndexController {
     	
     	service.selectList(vo);
 //    	service.selectOne(vo);
+    	System.out.println("voPartySport" + vo.getPartySport());
+    	System.out.println("voPartyName"+ vo.getPartyName());
+    	System.out.println(vo.getPlayDt());
     	
     	List<Party> list = service.selectList(vo);
     	List<Code> cdList = cdService.selectCodeName(cdVo);
