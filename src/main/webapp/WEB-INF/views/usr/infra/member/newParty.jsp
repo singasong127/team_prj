@@ -19,6 +19,7 @@
             <!-- 파티 생성 데이터 담을 폼 -->
             <div class="formBox mx-auto">
 	            <form name="partyTime">
+	            	<input type="hidden" value="${sessionSeq }" name="partyLeader">
 	            	<!-- 파티 생성 박스 -->
 					<div class="d-flex flex-column p-4">
 						<!-- 종목과 파티제목 -->
@@ -95,7 +96,7 @@
 							 	<label for="srcGo">지역</label>
 								<div class="input-group">
 									<input id="srcGo" name="shKey" class="searchInput" type="text" value="<c:out value="${vo.shKey}"/>">
-	                   			 	<span id="shMap" class="shortSpan material-symbols-outlined">search</span>
+	                   			 	<span id="shMap" class="shortSpan material-symbols-outlined" onclick="location.href='/findmap'">search</span>
 								</div>
 							</div>
 						</div>
@@ -174,6 +175,7 @@ $('#playDt')
 });
 
 $('#playTimeStart').timepicker({
+<<<<<<< HEAD
 	  timeFormat: 'hh:mm',
 	    interval: 30,
 	  timeFormat: 'h:mm p',

@@ -8,7 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
 import com.team.app.infra.code.Code;
+
 import com.team.app.infra.code.CodeServiceImpl;
 
 
@@ -46,7 +48,7 @@ public class PartyController {
 	  
 		model.addAttribute("item", party);
 	  
-		return ""; 
+		return "usr/infra/member/partyStatus"; 
 	}
 	
 //	그냥 경로(파티 창 들어가는거 확인 작업)
@@ -92,10 +94,10 @@ public class PartyController {
 	}
 	
 	@RequestMapping(value="/newChallger")
-	public String newParty() {
+	public String newParty(Model model, PartyVo vo) {
+		
 		return "usr/infra/member/newParty";
 	}
 	
 
-	
 }

@@ -22,6 +22,7 @@
 	            <form name="formSh" method="post" class="d-flex" autocomplete="off">
 
 	            <!-- 종목(나중에 분류 재지정하고 재설정) -->
+	            
 				   <select name="partySport" id="partySport" class="me-2">
 				   	<option value="" selected>-- 종목 --</option>
 				   	<c:forEach items="${optList}" var="cd">
@@ -88,7 +89,7 @@
 									<c:forEach items="${list}" var="list" varStatus="status">
 											<tr>
 												<td>
-													<a href="/PartyTest?seq=<c:out value="${list.seq}"></c:out>">
+													<a href="/ptform?seq=<c:out value="${list.seq}"></c:out>">
 														<c:out value="${list.seq}"></c:out>
 													</a>
 												</td>
@@ -96,7 +97,7 @@
 													<c:out value="${list.partySport}"></c:out>
 												</td>
 												<td>
-													<a href="/PartyTest?seq=<c:out value="${list.seq}"></c:out>">
+													<a href="/ptform?seq=<c:out value="${list.seq}"></c:out>">
 														<c:out value="${list.partyName}"></c:out>
 													</a>
 												</td>
@@ -147,7 +148,8 @@
            		</div>
             <%--FORM CONTENT STARTS FROM HERE!!--%>
             	<div class="excuteBox">
-	            	<button class="detailBtn" id="btnCre" onclick="location.href='/ptinsert'">파티생성</button>
+	            	<button class="detailBtn" id="btnCre" onclick="location.href='/newChallger'">파티생성</button>
+	            	<button class="detailBtn" onclick="location.href='/PartyTest'">테스트</button>
 	            	<button class="detailBtn" id="btnSh"><i class="bi bi-search"></i></button>
             	</div>
 			<%--FORM CONTENT ENDS FROM HERE!!--%>

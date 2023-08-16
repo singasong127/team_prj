@@ -48,7 +48,10 @@ public class IndexController {
     }
 
 
-
+    @GetMapping("/three")
+    public String indexy(){
+        return "index";
+    }
 
 
 

@@ -15,6 +15,9 @@ public interface CodeService {
 
     int uelete(CodeVo vo);
     
+<<<<<<< HEAD
     List<Code> selectOpt();
     
+=======
+>>>>>>> branch 'main' of https://github.com/singasong127/team_prj.git
 }

@@ -56,7 +56,11 @@
 	    
 	 <select id="selectOne" resultType="Party">
     	SELECT
+<<<<<<< HEAD
     	seq
+=======
+    		seq
+>>>>>>> branch 'main' of https://github.com/singasong127/team_prj.git
 			, delNy
 			, partyType
 			, partySport
@@ -107,6 +111,7 @@
     		, playDt
     		, playTimeStart
 			, playTimeEnd
+			, partyLeader
     		, partyGen
     		, toolNy
     		, delNy
@@ -118,6 +123,7 @@
     		, #{playDt}
     		, #{playTimeStart}
     		, #{playTimeEnd}
+    		, #{partyLeader}
     		, #{partyGen}
     		, #{toolNy}
     		, "0"
