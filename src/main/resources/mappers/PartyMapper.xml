@@ -56,7 +56,7 @@
 	    
 	 <select id="selectOne" resultType="Party">
     	SELECT
-    		seq
+	    	seq
 			, delNy
 			, partyType
 			, partySport

@@ -98,7 +98,10 @@ public class MemberController {
 	public String memberUelete(Member dto, MemberVo vo) {
 		service.memberUelete(dto);
 		return "redirect:/memberList";
+
 	}
+
+
 	
 //	DB에서 맴버 삭제 기능()
 //	@RequestMapping(value="/memberDelete")

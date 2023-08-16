@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.UUID;
 
 import com.team.app.infra.upload.Constants_b;
-import com.team.app.infra.upload.Constants;
-import com.team.app.infra.upload.Constants_hong;
 import com.team.app.infra.upload.Upload;
 import com.team.app.infra.upload.UtilDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,6 +62,7 @@ public class MemberServiceImpl implements MemberService {
 	public int memberUelete(Member dto) {
 		return dao.memberUelete(dto);
 	}
+
 
 //	@Override
 //	public int memberExcute(Member dto) {

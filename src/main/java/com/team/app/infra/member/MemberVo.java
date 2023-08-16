@@ -13,6 +13,24 @@ public class MemberVo {
 	private String location;
 	private String memDesc;
 	private String delNy;
+	private String signUpDt;
+	private String uptProfileDt;
+
+	public String getSignUpDt() {
+		return signUpDt;
+	}
+
+	public void setSignUpDt(String signUpDt) {
+		this.signUpDt = signUpDt;
+	}
+
+	public String getUptProfileDt() {
+		return uptProfileDt;
+	}
+
+	public void setUptProfileDt(String uptProfileDt) {
+		this.uptProfileDt = uptProfileDt;
+	}
 
 
 	

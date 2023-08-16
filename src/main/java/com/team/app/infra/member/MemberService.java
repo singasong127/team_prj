@@ -20,10 +20,11 @@ public interface MemberService {
 	public int memberUpdate(Member dto) throws Exception;
 	
 	public int memberUelete(Member dto);
-	
-//	public int memberExcute(Member dto);
-	
-	public Member usrLogin(MemberVo vo);
+
+
+
+
+    public Member usrLogin(MemberVo vo);
 
 	/**
 	 * @param multipartFiles

@@ -5,10 +5,7 @@
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
 <!doctype html>
-<html lang="en">
-<%@include file="../include/head.jsp"%>
-<body>
-<div>
+<html lang="kr">
 	<%@include file="../include/header.jsp"%>
 	<main>
 		<div class="mainBox">
@@ -269,8 +266,30 @@
 </div>
 <%--script code--%>
 <script type="text/javascript">
-
-
+	var memberForm = $("form[name='memberInfo']");
+	
+	$("#upSave").on("click", function(){
+		memberForm.attr("method", "post");
+		memberForm.attr("action", "/memberUpdate").submit();
+		
+	});
+	
+	$("#back").on("click", function(){
+		window.location.replace("/memberList");
+		
+	});
+	
+	$("#ue").on("click", function(){
+		memberForm.attr("method", "post");
+		memberForm.attr("action", "/memberUelete").submit();
+		
+	});
+	
+	$("#noUe").on("click", function(){
+		memberForm.attr("method", "post");
+		memberForm.attr("action", "/memberNoUelete").submit();
+		
+	});
 
 	/*validation js*/
 

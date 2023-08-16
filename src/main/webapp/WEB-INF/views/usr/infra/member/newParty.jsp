@@ -18,7 +18,7 @@
             
             <!-- 파티 생성 데이터 담을 폼 -->
             <div class="formBox mx-auto">
-	            <form name="">
+	            <form name="partyTime">
 	            	<input type="hidden" value="${sessionSeq }" name="partyLeader">
 	            	<!-- 파티 생성 박스 -->
 					<div class="d-flex flex-column p-4">
@@ -30,10 +30,10 @@
 						
 						<!-- 인원수 날짜 연령대 -->
 						<div class="labelBox justify-content-around">
-							<select id="partySport">
+							<select id="partyType">
 									<option selected>:: 종목</option>
 							</select>
-							<select id="partyNum">
+							<select name="playerMax" id="playerMax">
 								<option selected>::인원</option>
 								<option value="1">1명</option>
 								<option value="2">2명</option>
@@ -61,20 +61,20 @@
 						<!-- 날짜 -->
 						<div class="labelBox">
 								<label for="playDt" class="col-sm-2 col-form-label">날짜</label>
-                           		<input type="text" class="form-control" id="playDt">
+                           		<input type="text" class="form-control" name="playDt" id="playDt">
 						</div>
 						
 						<!-- 시간 -->
 						<div class="labelBox">
 							<label class="col-sm-2">시간</label>
-							<input type="text" class="form-control" id="playTimeStart">
+							<input type="text" class="form-control" name="playTimeStart" id="playTimeStart">
 							<span class="mx-2">&nbsp;~&nbsp;</span>
-							<input type="text" class="form-control" id="playTimeEnd">
+							<input type="text" class="form-control" name="playTimeEnd" id="playTimeEnd">
 							
 						</div>
 						
 						<!-- 성별 -->
-							<div class="labelBox">
+							<div class="labelBox" id="partyGen">
 								<span>성별</span>
 								<div class="form-check form-check-inline">
 									<input type="radio" name="gender" value="0">
@@ -85,7 +85,7 @@
 									<label>여성</label>
 								</div>
 								<div class="form-check form-check-inline">
-									<input type="radio"  name="gender" value="2">
+									<input type="radio" name="partyGen" value="2"/>
 									<label>무관</label>
 								</div>
 							</div>
@@ -105,12 +105,12 @@
 						<div class="labelBox ">
 							<label>장비</label>
 							<div class="form-check form-check-inline">
-								  <input type="radio" name="equip" value="1" id="y">
-								<label for="y">Y</label>
+								  <input type="radio" name="toolNy" value="1"/>
+								<label for="toolNy">Y</label>
 							</div>
 							<div class="form-check form-check-inline">
-								<input type="radio" name="equip" value="0" id="n">
-								<label for="n">N</label>
+								<input type="radio" name="toolNy" value="0"/>
+								<label for="toolNy">N</label>
 							</div>
 						</div>
 						
@@ -175,6 +175,8 @@ $('#playDt')
 });
 
 $('#playTimeStart').timepicker({
+	  timeFormat: 'hh:mm',
+	    interval: 30,
 	  timeFormat: 'h:mm p',
 	    interval: 60,
 	    minTime: '0',
@@ -187,6 +189,8 @@ $('#playTimeStart').timepicker({
 });
 
 $('#playTimeEnd').timepicker({
+	  timeFormat: 'hh:mm',
+	    interval: 30,
 	  timeFormat: 'h:mm p',
 	    interval: 60,
 	    minTime: '0',
@@ -201,7 +205,9 @@ $('#playTimeEnd').timepicker({
 $(".modalOk").on("click", function(){
 	/* alert("이거 나오면 잘되는거임?"); */
 	
-	$('form[name=partyTime]')
+	var partyTime = $('form[name=partyTime]');
+	
+	partyTime.attr("action", "/ptinsert").submit();
 	
 });
 	
