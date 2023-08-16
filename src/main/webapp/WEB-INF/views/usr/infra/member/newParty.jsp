@@ -51,7 +51,7 @@
 								<option value="10">10명</option>
 							</select>
 							<select name="partyAge" id="partyAge">
-								<option selected>::연령대</option>
+								<option selected value="0">::연령대</option>
 								<option value="10">10~19세</option>
 								<option value="20">20~29세</option>
 								<option value="30">30~39세</option>
@@ -119,9 +119,10 @@
 						</div>
 						
 						<!-- 파티 소개 -->
+						
 						<div class="textArea justify-content-evenly">
 							<label for="partyDesc">파티소개</label>
-                   			<textarea id="partyDesc"></textarea>
+                   			<textarea  rows="3" cols="35" name="partyDesc" id="partyDesc"></textarea>
 						</div>
 					</div>           
 	            </form>

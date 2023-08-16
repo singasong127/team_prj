@@ -116,6 +116,7 @@
 			, partyLeader
     		, partyGen
     		, toolNy
+    		, partyDesc
     		, delNy
     	) VALUES (
     		"0"
@@ -128,6 +129,7 @@
     		, #{partyLeader}
     		, #{partyGen}
     		, #{toolNy}
+    		, #{partyDesc}
     		, "0"
     	)
     </insert>   
