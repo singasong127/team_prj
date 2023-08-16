@@ -6,11 +6,13 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import com.team.app.infra.upload.Upload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -40,13 +42,33 @@ public class MemberController {
 	
 //	유저
 	@RequestMapping(value="/memberInsert")
-	public String memberInsertPage() {
+	public String memberInsertUsr() {
 		return "admin/infra/member/memberInsert";
 	}
-	
+
+	@ResponseBody
+	@RequestMapping(value= "/idCheck", method = RequestMethod.POST)
+	public Map<String,Object> idCheck(MemberVo vo){
+		Map<String,Object> returnMap = new HashMap<String, Object>();
+		int rtNum = service.selectOneCheckId(vo);
+		if (rtNum == 0) {
+			returnMap.put("rt","available");
+		}else{
+			returnMap.put("rt","unavailable");
+		}
+		System.out.println(returnMap);
+		return returnMap;
+	}
+
+//SIGNUP ID DUPLICATION CHECK
+//SIGNUP ID DUPLICATION CHECK
+
+
+
+
 //	관리자
 	@RequestMapping(value="/adminMakeMember")
-	public String memberInesrt(Member dto) {
+	public String memberInsertXdm(Member dto) throws Exception {
 		service.newAdminJoin(dto);
 		
 		return "redirect:/memberList";
@@ -54,16 +76,19 @@ public class MemberController {
 	
 //	상세
 	@RequestMapping(value="/memberOne")
-	public String memberOne(MemberVo vo, Model model) {
+	public String memberOne(Member dto,MemberVo vo, Model model) {
 		Member member = service.memberOne(vo);
 		model.addAttribute("member", member);
+
+		List<Upload> uploadList = service.selectListUpload(dto);
+		model.addAttribute("listUploaded",uploadList);
 		return "admin/infra/member/memberForm";
 	}
 
 
 //	정보변경
 	@RequestMapping(value="/memberUpdate")
-	public String memberUpdate(Member dto) {
+	public String memberUpdate(Member dto) throws Exception {
 		service.memberUpdate(dto);
 		return "redirect:/memberList";
 	}
@@ -95,12 +120,7 @@ public class MemberController {
 //		return"/memberList";
 //	}
 
-//	그냥 경로(파티 창 들어가는거 확인 작업)
-	@RequestMapping(value="/PartyTest")
-	public String partyTest() {
-		return "usr/infra/member/partyStatus";
-	}
-	
+
 //	-------------------------------------------------/관리단----------------------------------------------------
 	
 	
@@ -116,7 +136,7 @@ public class MemberController {
 	
 //	-------------------------------------------------유저단----------------------------------------------------
 //	회원가입 페이지
-	 @RequestMapping("/usr_jonin")
+	 @RequestMapping("/adminJoin")
 	    public ModelAndView getReadyToTheNextBattle() {
 	    	ModelAndView mav = new ModelAndView();
 	    	mav.setViewName("usr/infra/member/UsrJoin");
@@ -125,7 +145,7 @@ public class MemberController {
 	 
 //		회원가입 (유저용)
 		@RequestMapping(value="/memberJoin")
-		public String memberJoin(Member dto) {
+		public String memberJoin(Member dto) throws Exception {
 			service.newMemberJoin(dto);
 			return "redirect:/";
 		}
@@ -133,21 +153,23 @@ public class MemberController {
 //		로그인
 		@ResponseBody
 		@RequestMapping(value="/usrLogin")
-		public Map<String, Object> loginP(MemberVo vo, HttpSession httpSesssion){
+		public Map<String, Object> loginP(MemberVo vo, HttpSession httpSession){
 			Map<String , Object> returnMap = new HashMap<String, Object>();
 			
 			Member rtMember = service.usrLogin(vo);
 			
 			if(rtMember != null) {
-				httpSesssion.setMaxInactiveInterval(60*10);
-				httpSesssion.setAttribute("sessionId", vo.getEmail());
-				
+				httpSession.setMaxInactiveInterval(60*10);
+				httpSession.setAttribute("sessionId", vo.getEmail());
+				httpSession.setAttribute("sessionNickName", rtMember.getNickname());
+				httpSession.setAttribute("sessionProfilePath",rtMember.getPath());
+				httpSession.setAttribute("sessionProfileName",rtMember.getUuidName());
+				httpSession.setAttribute("sessionSeq",rtMember.getSeq());
 				returnMap.put("rtMember", rtMember);
 				returnMap.put("rt", "success");
 			}else {
 				returnMap.put("rt", "fail");
 			}
-			
 			return returnMap;
 		}
 		

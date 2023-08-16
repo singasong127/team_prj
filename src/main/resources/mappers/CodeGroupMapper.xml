@@ -16,7 +16,7 @@
    		FROM teamCodeGroup
 		WHERE 1=1
 		AND delNy = 0
-		<if test="cgName != null and !cgName.equals('')">AND cgName LIKE CONCAT('%',#{cgName},'%')</if>
+		<!-- <if test="cgName != null and !cgName.equals('')">AND cgName LIKE CONCAT('%',#{cgName},'%')</if> -->
     </sql>
 	
 	<select id="selectList" resultType="CodeGroup">
@@ -29,7 +29,7 @@
 	
 	<select id="selectOneCount" resultType="Integer">
 		SELECT count(*)
-		<include refid="selectCommon" />
+		FROM teamCodeGroup
 	</select>
 	    
 	 <select id="selectOne" resultType="CodeGroup">

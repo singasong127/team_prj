@@ -5,7 +5,8 @@
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kr">
+<title>코드 그룹 리스트</title>
 <%@include file="../include/head.jsp"%>
 <body>
 <div>
@@ -22,7 +23,7 @@
 						<span class="material-symbols-outlined">add_box</span></a>
 					</div>
 				</div>
-				<form name="search">
+				<form name="search" method="post">
 					<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 					<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
 					<div class="searchBox">
@@ -112,11 +113,11 @@
 			$("input:hidden[name=thisPage]").val(1);
 			$("form[name=search]").attr("action", "/cglist").submit();
 
-		} else if(thisPage > ${vo.totalPages}){
+		} else if(thisPage > ${vo.totalPages}) {
 
 			$("input:hidden[name=thisPage]").val(thisPage - 1);
 			$("form[name=search]").attr("action", "/cglist").submit();
-		}else{
+		} else {
 
 			$("input:hidden[name=thisPage]").val(thisPage);
 			$("form[name=search]").attr("action", "/cglist").submit();
@@ -128,4 +129,3 @@
 
 
 </script>
-</html>

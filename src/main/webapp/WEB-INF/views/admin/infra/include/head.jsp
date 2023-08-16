@@ -13,4 +13,7 @@
     <script src="/resources/js/adminView.js"></script>
     <script src="/resources/js/footer.js"></script>
     <script src="/resources/js/modal.js"></script>
+    <script src="/resources/js/fileUpload.js"></script>
+    <script src="/resources/js/commonXdm.js"></script>
+    <script src="/resources/js/constantsXdm.js"></script>
 </head>

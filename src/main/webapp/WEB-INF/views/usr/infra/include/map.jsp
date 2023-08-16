@@ -15,18 +15,18 @@
         <div class="mainBox">
             <div class="mainContainer">
             <%--FORM CONTENT STARTS FROM HERE!!--%>
-		        <form autocomplete="off" class="d-flex" onsubmit="searchPlaces(); return false;">
+		        <form name="formMap" autocomplete="off" onsubmit="searchPlaces(); return false;">
 					<input type="text" class="form-control" id="keyword"
 						placeholder="검색할 단어를 입력" value="" >
 					<!-- <button type="submit" id="btnSearch">
 						<i class="fa-solid fa-magnifying-glass"></i>
 					</button> -->
+		       		<div id="list" class="bg_white">
+				        <div class="option"></div>
+				        <ul id="placesList"></ul>
+				        <div id="pagination"></div>
+			    	</div>
 				</form>
-	       		<div id="list" class="bg_white">
-			        <div class="option"></div>
-			        <ul id="placesList"></ul>
-			        <div id="pagination"></div>
-		    	</div>
 	            <div id="map" style="width: 100%; height: 860px;"></div>
             </div>
             <%--FORM CONTENT STARTS FROM HERE!!--%>
@@ -43,8 +43,4 @@
 <script type="text/javascript" src="/resources/js/kakaomap.js"></script>
 <script type="text/javascript">
 
-	$("#srcGo").val() = places.address_name;
-	
-	var address = $("#srcGo").val();
-	
 </script>

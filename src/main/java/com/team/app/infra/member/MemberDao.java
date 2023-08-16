@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.inject.Inject;
 
+import com.team.app.infra.upload.Upload;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
@@ -55,5 +56,21 @@ public class MemberDao {
 	
 	public Member usrLogin(MemberVo vo) {
 		return sqlSession.selectOne(namespace + ".usrLogin", vo);
+	}
+
+    public int insertUploaded(Member dto) { return sqlSession.insert(namespace + ".insertUploaded",dto);
+    }
+
+	public List<Upload> selectListUpload(Member dto) {return sqlSession.selectList(namespace+".selectListUpload",dto);}
+
+	public int deleteUpload(Member dto) {return sqlSession.delete(namespace+".deleteUpload",dto);}
+
+	/**
+	 * 아이디 중복 체크
+	 * @param vo: email from 'UsrLogin'
+	 * @return: if duplicated, return fail vice versa
+	 */
+	public int selectOneCheckId(MemberVo vo) {
+		return sqlSession.selectOne(namespace + ".idCheck",vo);
 	}
 }

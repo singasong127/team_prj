@@ -17,7 +17,7 @@
     </div>
     <div class="modalBodyLong">
         <div class="formBox">
-            <form>
+            <form name="formBulid">
                 <div class="labelBox">
                     <label for="partyName">파티명</label>
                     <input id="partyName" placeholder="파티명"/>
@@ -52,7 +52,8 @@
                 <div class="labelBox">
                     <div class="inputBox short">
                         <label for="srcGo">지역</label>
-                        <input id="srcGo" name="shKey" class="searchInput short" type="text" value="<c:out value="${vo.shKey}"/>">
+                        <input type="hidden" />
+                        <input id="partyLocation" name="partyLocation" class="searchInput short" type="text" value="<c:out value="${vo.partyLocation }"/>">
                         <span id="shMap" class="shortSpan material-symbols-outlined">search</span>
                     </div>
                 </div>

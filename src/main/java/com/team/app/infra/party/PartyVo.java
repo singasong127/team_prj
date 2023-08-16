@@ -15,6 +15,7 @@ public class PartyVo {
 	private String partyDesc; 
 	private String toolNy; 
 	private String partyGen;
+	private String partyAge;
 	private String madeTime;
 	private String partyLocation;
 	
@@ -120,6 +121,12 @@ public class PartyVo {
 	}
 	public void setPartyGen(String partyGen) {
 		this.partyGen = partyGen;
+	}
+	public String getPartyAge() {
+		return partyAge;
+	}
+	public void setPartyAge(String partyAge) {
+		this.partyAge = partyAge;
 	}
 	public String getMadeTime() {
 		return madeTime;

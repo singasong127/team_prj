@@ -1,7 +1,5 @@
 package com.team.app.infra.code;
 
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 public interface CodeService {
@@ -16,4 +14,10 @@ public interface CodeService {
     int insert(Code dto);
 
     int uelete(CodeVo vo);
+    
+<<<<<<< HEAD
+    List<Code> selectOpt();
+    
+=======
+>>>>>>> branch 'main' of https://github.com/singasong127/team_prj.git
 }

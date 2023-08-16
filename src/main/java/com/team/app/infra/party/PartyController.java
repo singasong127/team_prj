@@ -9,11 +9,17 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
+import com.team.app.infra.code.Code;
+
+import com.team.app.infra.code.CodeServiceImpl;
+
 
 @Controller
 public class PartyController {
 	@Autowired
 	PartyServiceImpl service;
+	@Autowired
+	CodeServiceImpl cdService;
 	
 	  @RequestMapping(value="/ptlist") 
 	  public String partyList(@ModelAttribute("vo") PartyVo vo, Model model) {
@@ -21,6 +27,8 @@ public class PartyController {
 	  vo.setPartyName(vo.getPartyName() == null ? "" : vo.getPartyName());
 	  
 	  vo.setParamsPaging(service.selectOneCount(vo));
+	  
+	  System.out.println(vo.getPartyLocation());
 	  
 	  if(vo.getTotalRows() > 0) {
 		  List<Party> list = service.selectList(vo);
@@ -30,7 +38,7 @@ public class PartyController {
 		  // by pass 
 	  }
 	  
-	  	return "admin/infra/index/indexAdmin";
+	  	return "admin/infra/party/partyList";
 	  }
 	 
 	
@@ -40,8 +48,18 @@ public class PartyController {
 	  
 		model.addAttribute("item", party);
 	  
-		return ""; 
+		return "usr/infra/member/partyStatus"; 
 	}
+	
+//	그냥 경로(파티 창 들어가는거 확인 작업)
+	@RequestMapping(value="/PartyTest")
+	public String partyTest(PartyVo vo, Model model) {
+		Party party = service.selectOne(vo);
+		
+		model.addAttribute("team", party);
+		return "usr/infra/member/partyStatus";
+	}
+	
 	 
 	
 	@RequestMapping(value="/ptupdate")
@@ -72,6 +90,14 @@ public class PartyController {
 		
 		service.insert(dto);
 		
-		return "redirect:/ptlist";
+		return "redirect:/";
 	}
+	
+	@RequestMapping(value="/newChallger")
+	public String newParty(Model model, PartyVo vo) {
+		
+		return "usr/infra/member/newParty";
+	}
+	
+
 }
