@@ -63,9 +63,9 @@
 			, partyName
 			, playerNum
 			, playerMax
-			, (DATE_FORMAT(playDt, '%Y-%m-%d') ) AS playDt
-			, (DATE_FORMAT(playTimeStart, '%p %l:%i') ) AS playTimeStart
-			, (DATE_FORMAT(playTimeEnd, '%p %l:%i') ) AS playTimeEnd
+			, playDt
+			, playTimeStart
+			, playTimeEnd
 			, partyLeader
 			, partyDesc
 			, toolNy
@@ -114,6 +114,7 @@
     		, playTimeStart
 			, playTimeEnd
 			, partyLeader
+			, partyDesc
     		, partyGen
     		, toolNy
     		, delNy
@@ -126,6 +127,7 @@
     		, #{playTimeStart}
     		, #{playTimeEnd}
     		, #{partyLeader}
+    		, #{partyDesc}
     		, #{partyGen}
     		, #{toolNy}
     		, "0"
