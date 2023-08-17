@@ -20,11 +20,7 @@
             <!-- 파티 생성 데이터 담을 폼 -->
             <div class="formBox mx-auto">
 	            <form name="partyTime">
-<<<<<<< HEAD
-	            	<input type="hidden" value='<c:out value="${sessionSeq}"/>' id="partyLeader" name="partyLeader">
-=======
 	            	<input type="hidden" value="<c:out value='${sessionSeq }' />" name="partyLeader">
->>>>>>> branch 'main' of https://github.com/singasong127/team_prj.git
 	            	<!-- 파티 생성 박스 -->
 					<div class="d-flex flex-column p-4">
 						<!-- 종목과 파티제목 -->
@@ -126,11 +122,7 @@
 						<!-- 파티 소개 -->
 						<div class="textArea justify-content-evenly">
 							<label for="partyDesc">파티소개</label>
-<<<<<<< HEAD
-                   			<textarea id="partyDesc" name="partyDesc" row="3" col="30"></textarea>
-=======
                    			<textarea name="partyDesc" rows="3" cols="30"></textarea>
->>>>>>> branch 'main' of https://github.com/singasong127/team_prj.git
 						</div>
 					</div>           
 	            </form>
@@ -188,15 +180,8 @@ $('#playDt')
 });
 
 $('#playTimeStart').timepicker({
-<<<<<<< HEAD
-	  timeFormat: 'p hh:mm',
-=======
->>>>>>> branch 'main' of https://github.com/singasong127/team_prj.git
 	    interval: 30,
-<<<<<<< HEAD
-=======
 	  	timeFormat: 'p hh:mm',
->>>>>>> branch 'main' of https://github.com/singasong127/team_prj.git
 	    interval: 60,
 	    minTime: '0',
 	    maxTime: '11:00pm',
@@ -208,15 +193,8 @@ $('#playTimeStart').timepicker({
 });
 
 $('#playTimeEnd').timepicker({
-<<<<<<< HEAD
-	  timeFormat: 'p hh:mm',
-=======
->>>>>>> branch 'main' of https://github.com/singasong127/team_prj.git
 	    interval: 30,
-<<<<<<< HEAD
-=======
 	  	timeFormat: 'p hh:mm',
->>>>>>> branch 'main' of https://github.com/singasong127/team_prj.git
 	    interval: 60,
 	    minTime: '0',
 	    maxTime: '11:00pm',
