@@ -59,7 +59,7 @@
 	            </form>
 				</div>
 	            <div class="tableBox">
-	            	<table class="">
+	            	<table>
 	            		<thead>
 	            			<tr>
 		            			<th>No.</th>
@@ -83,19 +83,15 @@
 								</c:when>
 								<c:otherwise>
 									<c:forEach items="${list}" var="list" varStatus="status">
-											<tr>
+											<tr onclick="location.href='/ptform?seq=<c:out value="${list.seq}"/>'">
 												<td>
-													<a href="/ptform?seq=<c:out value="${list.seq}"></c:out>">
-														<c:out value="${list.seq}"></c:out>
-													</a>
+													<c:out value="${list.seq}"></c:out>
 												</td>
 												<td>
 													<c:out value="${list.partySport}"></c:out>
 												</td>
 												<td>
-													<a href="/ptform?seq=<c:out value="${list.seq}"></c:out>">
-														<c:out value="${list.partyName}"></c:out>
-													</a>
+													<c:out value="${list.partyName}"></c:out>
 												</td>
 												<td>
 													<c:out value="${list.playerNum}"></c:out> / <c:out value="${list.playerMax}"></c:out>
@@ -125,9 +121,7 @@
 													</c:choose>
 												</td>
 												<td>
-													<a href="/ptform?seq=<c:out value="${list.partyLocation}"></c:out>">
-														<c:out value="${list.partyLocation}"></c:out>
-													</a>
+													<c:out value="${list.partyLocation}"></c:out>
 												</td>
 												<td>
 													<c:choose>
