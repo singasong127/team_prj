@@ -4,6 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
+
 <!DOCTYPE html>
 <html lang="kr">
 <%@include file="../include/head.jsp"%>
@@ -33,7 +34,7 @@
 							<select name="partySport" id="partySport" class="me-2">
 				   				<option value="" selected>-- 종목 --</option>
 						   		<c:forEach items="${code}" var="code" >
-						   			<option value="<c:out value='${code.cdSeq}'/>"><c:out value="${code.cdName}"></c:out></option>
+						   			<option value="<c:out value='${code.cdSeq}'/>"><c:out value="${code.cdName}"/></option>
 						   		</c:forEach>
 				   			</select>
 							

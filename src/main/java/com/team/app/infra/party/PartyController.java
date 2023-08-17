@@ -84,9 +84,21 @@ public class PartyController {
 	}
 	
 	@RequestMapping(value="/newChallger")
-	public String newParty(Model model, PartyVo vo) {
+	public String newParty(Model model, CodeVo cdVo, PartyVo vo) {
 		
-
+		service.selectList(vo);
+//    	service.selectOne(vo);
+    	
+    	List<Party> list = service.selectList(vo);
+    	List<Code> cdList = cdService.selectCodeName(cdVo);
+    	model.addAttribute("list", list);
+    	model.addAttribute("code", cdList);
+    	
+    	System.out.println(vo.getPartyGen());
+    	
+//    	Party item = service.selectOne(vo);
+//    	model.addAttribute("item", item);
+		
 		
 		return "usr/infra/member/newParty";
 	}
