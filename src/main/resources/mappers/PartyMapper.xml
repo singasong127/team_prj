@@ -116,6 +116,8 @@
 			, partyLeader
 			, partyDesc
     		, partyGen
+    		, partyAge
+    		, madeTime
     		, toolNy
     		, delNy
     	) VALUES (
@@ -129,6 +131,8 @@
     		, #{partyLeader}
     		, #{partyDesc}
     		, #{partyGen}
+    		, #{partyAge}
+    		, #{madeTime}
     		, #{toolNy}
     		, "0"
     	)

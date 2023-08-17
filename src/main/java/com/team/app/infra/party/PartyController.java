@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.team.app.infra.code.Code;
 import com.team.app.infra.code.CodeServiceImpl;
 import com.team.app.infra.code.CodeVo;
+import com.team.app.infra.index.CurrentDt;
 
 
 @Controller
@@ -74,7 +75,8 @@ public class PartyController {
 	
 	
 	@RequestMapping(value="/ptinsert")
-	public String partyInsert(Party dto) {
+	public String partyInsert(Party dto, CurrentDt dt) {
+		dto.setMadeTime(dt.getNowDt());
 		
 		System.out.println("Inserted");
 		
