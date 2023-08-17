@@ -2,6 +2,9 @@ package com.team.app.infra.party;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -75,20 +78,25 @@ public class PartyController {
 	
 	
 	@RequestMapping(value="/ptinsert")
-	public String partyInsert(Party dto, CurrentDt dt) {
+	public String partyInsert(Party dto, PartyVo vo, CurrentDt dt) {
 		dto.setMadeTime(dt.getNowDt());
+		dto.setPartyLeader(vo.getPartyLeader());
 		
-		System.out.println("Inserted");
+		System.out.println("partyLeader: " + dto.getPartyLeader());
 		
 		service.insert(dto);
 		
-		return "redirect:/ptlist";
+		return "redirect:/";
 	}
 	
 	@RequestMapping(value="/newChallger")
-	public String newParty(Model model, PartyVo vo) {
+	public String newParty(Model model, PartyVo vo, HttpSession session) {
+		vo.setPartyLeader( (String)session.getAttribute("sessionSeq") );
 		
+		System.out.println("partyLeader: " + vo.getPartyLeader());
 		
+		Party party = service.selectOne(vo);
+		model.addAttribute("party", party);
 		
 		return "usr/infra/member/newParty";
 	}
