@@ -198,11 +198,15 @@
 			console.log(map.getCenter());
 			
 			// 주소 문자열 자르기
-			var arrAddress = places.address_name.split(' ');
+			var arrAddressFull = places.address_name.split(" ");
 			
-			console.log(arrAddress[0], arrAddress[1], arrAddress[2]);
+			var arrAddress = arrAddressFull[0] + " " + arrAddressFull[1];
 			
-			$("form[name=formMap]").attr("action", "/");
+			$("#partyLocation").val(arrAddress);
+			
+			console.log($("#partyLocation").val());
+			
+			$("form[name=formMap]").attr("action", "/newChallger").submit();
 			
 		});
 		

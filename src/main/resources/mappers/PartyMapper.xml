@@ -77,7 +77,11 @@
     		party
     	WHERE 1=1
     		AND seq = #{seq}
-
+    		<if test="partySport != null and !partySport.equals('')">AND partySport = #{partySport}</if>
+    		<if test="partyName != null and !partyName.equals('')">AND partyName LIKE CONCAT('%',#{partyName},'%')</if>
+    		<if test="playDt != null and !playDt.equals('')">AND playDt LIKE CONCAT('%',#{playDt},'%')</if>
+    		<if test="partyGen != null and !partyGen.equals('')">AND partyGen = #{partyGen}</if>
+    		<if test="partyAge != null and !partyAge.equals('')">AND partyAge = #{partyAge}</if>
     </select>
     
     <update id="update">
@@ -102,6 +106,7 @@
     <insert id="insert">
     	INSERT INTO party (
     		partyType
+    		, partySport
     		, partyName
     		, playerNum
     		, playerMax
@@ -116,9 +121,10 @@
     		, toolNy
     		, delNy
     	) VALUES (
-    		"0"
+    		0
+    		, #{partySport}
     		, #{partyName}
-    		, "1"
+    		, 1
     		, #{playerMax}
     		, #{playDt}
     		, #{playTimeStart}
@@ -129,7 +135,7 @@
     		, #{partyAge}
     		, #{madeTime}
     		, #{toolNy}
-    		, "0"
+    		, 0
     	)
     </insert>   
 </mapper>    
