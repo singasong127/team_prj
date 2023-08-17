@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -30,6 +29,9 @@ public class IndexController {
     	
     	service.selectList(vo);
 //    	service.selectOne(vo);
+    	System.out.println("voPartySport" + vo.getPartySport());
+    	System.out.println("voPartyName"+ vo.getPartyName());
+    	System.out.println(vo.getPlayDt());
     	
     	List<Party> list = service.selectList(vo);
     	List<Code> cdList = cdService.selectCodeName(cdVo);

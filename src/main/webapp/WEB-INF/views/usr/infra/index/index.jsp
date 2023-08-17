@@ -166,7 +166,7 @@
 	
 	$(function() {
 		$("#playDt").datepicker({
-			dateFormat: 'yy-mm-dd'
+			format: 'yyyy-mm-dd'
 			,showOtherMonths: true
 			,showMonthAfterYear: true
 			,changeYear: true //option값 년 선택 가능
