@@ -26,7 +26,7 @@
 						<!-- 종목과 파티제목 -->
 						<div class="labelBox ">
 							<label for="" class="col-sm-2">파티 제목</label>
-							<input type="text" name="partyName" class="form-control" placeholder="파티 제목">
+							<input type="text" class="form-control" placeholder="파티 제목">
 						</div>
 						
 						<!-- 인원수 날짜 연령대 -->
@@ -38,8 +38,11 @@
 						   		</c:forEach>
 				   			</select>
 							
+							<select id="partyType">
+									<option selected>:: 종목</option>
+							</select>
 							<select name="playerMax" id="playerMax">
-								<option selected value="0">::인원</option>
+								<option selected >::인원</option>
 								<option value="1">1명</option>
 								<option value="2">2명</option>
 								<option value="3">3명</option>
@@ -51,8 +54,8 @@
 								<option value="9">9명</option>
 								<option value="10">10명</option>
 							</select>
-							<select name="partyAge" id="partyAge">
-								<option selected value="0">::연령대</option>
+							<select>
+								<option selected>::연령대</option>
 								<option value="10">10~19세</option>
 								<option value="20">20~29세</option>
 								<option value="30">30~39세</option>
@@ -120,10 +123,9 @@
 						</div>
 						
 						<!-- 파티 소개 -->
-						
 						<div class="textArea justify-content-evenly">
 							<label for="partyDesc">파티소개</label>
-                   			<textarea  rows="3" cols="35" name="partyDesc" id="partyDesc"></textarea>
+                   			<textarea id="partyDesc"></textarea>
 						</div>
 					</div>           
 	            </form>
@@ -181,8 +183,9 @@ $('#playDt')
 });
 
 $('#playTimeStart').timepicker({
-	  timeFormat: 'hh:mm p',
+	  timeFormat: 'hh:mm',
 	    interval: 30,
+	  timeFormat: 'h:mm p',
 	    interval: 60,
 	    minTime: '0',
 	    maxTime: '11:00pm',
@@ -194,8 +197,9 @@ $('#playTimeStart').timepicker({
 });
 
 $('#playTimeEnd').timepicker({
-	  timeFormat: 'hh:mm p',
+	  timeFormat: 'hh:mm',
 	    interval: 30,
+	  timeFormat: 'h:mm p',
 	    interval: 60,
 	    minTime: '0',
 	    maxTime: '11:00pm',
