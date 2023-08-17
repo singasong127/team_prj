@@ -82,7 +82,10 @@
     		<if test="playDt != null and !playDt.equals('')">AND playDt LIKE CONCAT('%',#{playDt},'%')</if>
     		<if test="partyGen != null and !partyGen.equals('')">AND partyGen = #{partyGen}</if>
     		<if test="partyAge != null and !partyAge.equals('')">AND partyAge = #{partyAge}</if>
+<<<<<<< HEAD
     		<if test="partyLocation != null and !partyLocation.equals('')">AND partyLocation LIKE CONCAT('%',#{partyLocation},'%')</if>
+=======
+>>>>>>> branch 'main' of https://github.com/singasong127/team_prj.git
     </select>
     
     <update id="update">
@@ -135,7 +138,10 @@
     		, #{partyAge}
     		, #{madeTime}
     		, #{toolNy}
+<<<<<<< HEAD
     		, #{partyDesc}
+=======
+>>>>>>> branch 'main' of https://github.com/singasong127/team_prj.git
     		, 0
     	)
     </insert>   

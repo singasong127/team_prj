@@ -35,11 +35,6 @@
         	<c:when test="${not empty sessionId}">
                 <c:choose>
                     <c:when test="${empty sessionProfilePath}">
-                        <div>
-                            <button id="chat">
-                                <span class="material-symbols-outlined">mode_comment</span>
-                            </button>
-                        </div>
                         <div class="dropdown">
                             <a id="headerProfile" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img style="object-fit: cover; align-self: center" id="uploadImgProfilePreview" src="/resources/img/defaultProfile.png" class="rounded-circle d-block" width="68" height="68">
@@ -51,11 +46,6 @@
                         </div>
                     </c:when>
                     <c:otherwise>
-                        <div>
-                            <button id="chat">
-                                <span class="material-symbols-outlined">mode_comment</span>
-                            </button>
-                        </div>
                         <div class="dropdown">
                             <a id="headerProfile" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img style="object-fit: cover; align-self: center" id="uploadImgProfilePreview" src="<c:out value="${sessionProfilePath}"/><c:out value="${sessionProfileName}"/>" class="rounded-circle d-block" width="68" height="68">

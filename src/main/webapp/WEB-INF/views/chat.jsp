@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="true"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=utf-8"
          pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -10,7 +10,7 @@
             src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.5/sockjs.min.js"></script>
     <script
             src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="stylesheet" href="/resources/css/user/chat.css" />
     <title>Chat Application</title>
     <style>
@@ -23,33 +23,31 @@
 </head>
 <body>
 <div class="chat_wrap">
-    <div class="header">
-        <h3>채팅방(${sessionNickName})</h3>
-    </div>
-    <div id="chat"></div>
+
+    <div class="chatRecord" id="chat"></div>
     <!-- 채팅저장출력 -->
-    <script id="temp" type="text/x-handlebars-template">
-        {{#each .}}
-        <div class="{{printLeftRight sender}}">
-            <div class="sender">{{sender}}</div>
-            <div class="message">
-                {{message}}
-                <a href="{{id}}" style="display:{{printNone sender}}">X</a>
+        <script id="temp" type="text/x-handlebars-template">
+            {{#each .}}
+            <div class="{{printLeftRight sender}}">
+                <div class="sender">{{sender}}</div>
+                <div class="message">
+                    {{message}}
+                    <a href="{{id}}" style="display:{{printNone sender}}">X</a>
+                </div>
+                <div class="date">{{regdate}}</div>
             </div>
-            <div class="date">{{regdate}}</div>
-        </div>
-        {{/each}}
-    </script>
-    <!-- 새로운채팅출력 -->
-    <script id="temp1" type="text/x-handlebars-template">
-        <div class="{{printLeftRight sender}}">
-            <div class="sender">{{sender}}</div>
-            <div class="message">{{message}}</div>
-            <div class="date">{{regdate}}</div>
-        </div>
-    </script>
+            {{/each}}
+        </script>
+        <!-- 새로운채팅출력 -->
+        <script id="temp1" type="text/x-handlebars-template">
+            <div class="{{printLeftRight sender}}">
+                <div class="sender">{{sender}}</div>
+                <div class="message">{{message}}</div>
+                <div class="date">{{regdate}}</div>
+            </div>
+        </script>
     <div class="input-div">
-			<textarea id="txtMessage" cols="30" rows="10"
+			<textarea id="txtMessage" cols="10" rows="10"
                       placeholder="메시지를 입력한 후에 엔터키를 누르세요."></textarea>
     </div>
 </div>
@@ -140,7 +138,7 @@
     }
 
     // 웹소캣 생성
-    var sock = new SockJS("http://localhost/echo/");
+    var sock = new SockJS("http://localhost:81/echo/");
     sock.onmessage = onMessage;
     console.log(sock);
 
@@ -158,6 +156,12 @@
         var temp = Handlebars.compile($("#temp1").html());
         $("#chat").append(temp(data));
         window.scrollTo(0, $("#chat").prop("scrollHeight"));
+
+        var chatRecord = $(".chatRecord")[0];
+        chatRecord.scrollTo({
+            top: chatRecord.scrollHeight,
+            behavior: 'smooth' // Set behavior to 'smooth' for smooth scrolling
+        });
     }
 </script>
 </html>

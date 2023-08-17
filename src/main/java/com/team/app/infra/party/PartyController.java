@@ -2,6 +2,10 @@ package com.team.app.infra.party;
 
 import java.util.List;
 
+<<<<<<< HEAD
+=======
+import javax.servlet.http.HttpServletRequest;
+>>>>>>> branch 'main' of https://github.com/singasong127/team_prj.git
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +34,7 @@ public class PartyController {
 	  
 	  vo.setParamsPaging(service.selectOneCount(vo));
 	  
-	  System.out.println(vo.getPartyLocation());
-	  
+
 	  if(vo.getTotalRows() > 0) {
 		  List<Party> list = service.selectList(vo);
 		  model.addAttribute("list", list); 
@@ -77,16 +80,26 @@ public class PartyController {
 	
 	
 	@RequestMapping(value="/ptinsert")
+<<<<<<< HEAD
 	public String partyInsert(Party dto, PartyVo vo, CurrentDt dt ) {
+=======
+	public String partyInsert(Party dto, PartyVo vo, CurrentDt dt) {
+>>>>>>> branch 'main' of https://github.com/singasong127/team_prj.git
 		dto.setMadeTime(dt.getNowDt());
 		dto.setPartyLeader(vo.getPartyLeader());
+<<<<<<< HEAD
+=======
+		
+		System.out.println("partyLeader: " + dto.getPartyLeader());
+>>>>>>> branch 'main' of https://github.com/singasong127/team_prj.git
 		
 		service.insert(dto);
 		
-		return "redirect:/ptlist";
+		return "redirect:/";
 	}
 	
 	@RequestMapping(value="/newChallger")
+<<<<<<< HEAD
 	public String newParty(Model model, CodeVo cdVo, PartyVo vo, HttpSession session) {
 		
 		vo.setPartyLeader((String)session.getAttribute("sessionSeq"));
@@ -96,6 +109,15 @@ public class PartyController {
 		
     	List<Code> cdList = cdService.selectCodeName(cdVo);
     	model.addAttribute("code", cdList);
+=======
+	public String newParty(Model model, PartyVo vo, HttpSession session) {
+		vo.setPartyLeader( (String)session.getAttribute("sessionSeq") );
+		
+		System.out.println("partyLeader: " + vo.getPartyLeader());
+		
+		Party party = service.selectOne(vo);
+		model.addAttribute("party", party);
+>>>>>>> branch 'main' of https://github.com/singasong127/team_prj.git
 		
 		return "usr/infra/member/newParty";
 	}

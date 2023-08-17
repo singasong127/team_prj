@@ -1762,6 +1762,11 @@ select{
     letter-spacing: 0;
     white-space: nowrap;
 }
+.tableBox>table>tbody>tr:hover{
+    border-radius: 50px;
+    color: darkseagreen;
+    cursor: pointer;
+}
 .tableBox>table>tbody>tr{
     transition: all .3s ease-in-out;
 }
@@ -1792,6 +1797,7 @@ select{
     color: rgba(0,0,0,0.5) !important;
     padding: 10px;
 }
+
 
 /*@@@@@@@@@@@@@@  Table  CSS @@@@@@@@@@@@@@*/
 /*@@@@@@@@@@@@@@  Table  CSS @@@@@@@@@@@@@@*/

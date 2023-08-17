@@ -20,7 +20,11 @@
             <!-- 파티 생성 데이터 담을 폼 -->
             <div class="formBox mx-auto">
 	            <form name="partyTime">
+<<<<<<< HEAD
 	            	<input type="hidden" value='<c:out value="${sessionSeq}"/>' id="partyLeader" name="partyLeader">
+=======
+	            	<input type="hidden" value="<c:out value='${sessionSeq }' />" name="partyLeader">
+>>>>>>> branch 'main' of https://github.com/singasong127/team_prj.git
 	            	<!-- 파티 생성 박스 -->
 					<div class="d-flex flex-column p-4">
 						<!-- 종목과 파티제목 -->
@@ -51,7 +55,7 @@
 								<option value="9">9명</option>
 								<option value="10">10명</option>
 							</select>
-							<select>
+							<select name="partyAge">
 								<option selected>::연령대</option>
 								<option value="10">10~19세</option>
 								<option value="20">20~29세</option>
@@ -100,7 +104,7 @@
 							<div class="inputBox" style="width: 60%">
 							 	<label for="srcGo">지역</label>
 								<div class="input-group">
-									<input id="srcGo" name="shKey" class="searchInput" type="text" value="<c:out value="${vo.shKey}"/>">
+									<input id="srcGo" name="partyLocation" class="searchInput" type="text" value="">
 	                   			 	<span id="shMap" class="shortSpan material-symbols-outlined" onclick="location.href='/findmap'">search</span>
 								</div>
 							</div>
@@ -122,7 +126,11 @@
 						<!-- 파티 소개 -->
 						<div class="textArea justify-content-evenly">
 							<label for="partyDesc">파티소개</label>
+<<<<<<< HEAD
                    			<textarea id="partyDesc" name="partyDesc" row="3" col="30"></textarea>
+=======
+                   			<textarea name="partyDesc" rows="3" cols="30"></textarea>
+>>>>>>> branch 'main' of https://github.com/singasong127/team_prj.git
 						</div>
 					</div>           
 	            </form>
@@ -180,8 +188,15 @@ $('#playDt')
 });
 
 $('#playTimeStart').timepicker({
+<<<<<<< HEAD
 	  timeFormat: 'p hh:mm',
+=======
+>>>>>>> branch 'main' of https://github.com/singasong127/team_prj.git
 	    interval: 30,
+<<<<<<< HEAD
+=======
+	  	timeFormat: 'p hh:mm',
+>>>>>>> branch 'main' of https://github.com/singasong127/team_prj.git
 	    interval: 60,
 	    minTime: '0',
 	    maxTime: '11:00pm',
@@ -193,8 +208,15 @@ $('#playTimeStart').timepicker({
 });
 
 $('#playTimeEnd').timepicker({
+<<<<<<< HEAD
 	  timeFormat: 'p hh:mm',
+=======
+>>>>>>> branch 'main' of https://github.com/singasong127/team_prj.git
 	    interval: 30,
+<<<<<<< HEAD
+=======
+	  	timeFormat: 'p hh:mm',
+>>>>>>> branch 'main' of https://github.com/singasong127/team_prj.git
 	    interval: 60,
 	    minTime: '0',
 	    maxTime: '11:00pm',
