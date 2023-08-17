@@ -82,7 +82,7 @@
     		<if test="playDt != null and !playDt.equals('')">AND playDt LIKE CONCAT('%',#{playDt},'%')</if>
     		<if test="partyGen != null and !partyGen.equals('')">AND partyGen = #{partyGen}</if>
     		<if test="partyAge != null and !partyAge.equals('')">AND partyAge = #{partyAge}</if>
-    		<if test="playLocation != null and !playLocation.equals('')">AND playLocation LIKE CONCAT('%',#{playLocation},'%')</if>
+    		<if test="partyLocation != null and !partyLocation.equals('')">AND partyLocation LIKE CONCAT('%',#{partyLocation},'%')</if>
     </select>
     
     <update id="update">
@@ -107,6 +107,7 @@
     <insert id="insert">
     	INSERT INTO party (
     		partyType
+    		, partySport
     		, partyName
     		, playerNum
     		, playerMax
@@ -114,7 +115,6 @@
     		, playTimeStart
 			, playTimeEnd
 			, partyLeader
-			, partyDesc
     		, partyGen
     		, partyAge
     		, madeTime
@@ -122,21 +122,21 @@
     		, partyDesc
     		, delNy
     	) VALUES (
-    		"0"
+    		0
+    		, #{partySport}
     		, #{partyName}
-    		, "1"
+    		, 1
     		, #{playerMax}
     		, #{playDt}
     		, #{playTimeStart}
     		, #{playTimeEnd}
     		, #{partyLeader}
-    		, #{partyDesc}
     		, #{partyGen}
     		, #{partyAge}
     		, #{madeTime}
     		, #{toolNy}
     		, #{partyDesc}
-    		, "0"
+    		, 0
     	)
     </insert>   
 </mapper>    

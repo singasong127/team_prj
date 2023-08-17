@@ -20,13 +20,13 @@
             <!-- 파티 생성 데이터 담을 폼 -->
             <div class="formBox mx-auto">
 	            <form name="partyTime">
-	            	<input type="hidden" value="${sessionSeq }" name="partyLeader">
+	            	<input type="hidden" value='<c:out value="${sessionSeq}"/>' id="partyLeader" name="partyLeader">
 	            	<!-- 파티 생성 박스 -->
 					<div class="d-flex flex-column p-4">
 						<!-- 종목과 파티제목 -->
 						<div class="labelBox ">
 							<label for="" class="col-sm-2">파티 제목</label>
-							<input type="text" class="form-control" placeholder="파티 제목">
+							<input type="text" name="partyName" class="form-control" placeholder="파티 제목">
 						</div>
 						
 						<!-- 인원수 날짜 연령대 -->
@@ -38,9 +38,6 @@
 						   		</c:forEach>
 				   			</select>
 							
-							<select id="partyType">
-									<option selected>:: 종목</option>
-							</select>
 							<select name="playerMax" id="playerMax">
 								<option selected >::인원</option>
 								<option value="1">1명</option>
@@ -125,7 +122,7 @@
 						<!-- 파티 소개 -->
 						<div class="textArea justify-content-evenly">
 							<label for="partyDesc">파티소개</label>
-                   			<textarea id="partyDesc"></textarea>
+                   			<textarea id="partyDesc" name="partyDesc" row="3" col="30"></textarea>
 						</div>
 					</div>           
 	            </form>
@@ -183,9 +180,8 @@ $('#playDt')
 });
 
 $('#playTimeStart').timepicker({
-	  timeFormat: 'hh:mm',
+	  timeFormat: 'p hh:mm',
 	    interval: 30,
-	  timeFormat: 'h:mm p',
 	    interval: 60,
 	    minTime: '0',
 	    maxTime: '11:00pm',
@@ -197,9 +193,8 @@ $('#playTimeStart').timepicker({
 });
 
 $('#playTimeEnd').timepicker({
-	  timeFormat: 'hh:mm',
+	  timeFormat: 'p hh:mm',
 	    interval: 30,
-	  timeFormat: 'h:mm p',
 	    interval: 60,
 	    minTime: '0',
 	    maxTime: '11:00pm',
