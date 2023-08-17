@@ -88,6 +88,8 @@ public class PartyController {
 	@RequestMapping(value="/newChallger")
 	public String newParty(Model model, PartyVo vo) {
 		
+		
+		
 		return "usr/infra/member/newParty";
 	}
 	
