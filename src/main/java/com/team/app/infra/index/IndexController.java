@@ -2,6 +2,8 @@ package com.team.app.infra.index;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -47,7 +49,12 @@ public class IndexController {
     }
     
     @GetMapping("/findmap")
-    public String findMap() {
+    public String findMap(Model model, PartyVo vo, HttpSession session) {
+    	vo.setPartyLocation( (String)session.getAttribute("partyLocation") );
+    	
+    	Party party = service.selectOne(vo);
+    	model.addAttribute("party", party);
+    	
     	return "usr/infra/include/map";
     }
 

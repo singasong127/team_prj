@@ -208,6 +208,8 @@
 			
 			$("form[name=formMap]").attr("action", "/newChallger").submit();
 			
+			location.href = "/newChallger";
+			
 		});
 		
 		

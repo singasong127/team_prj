@@ -95,7 +95,8 @@
 							<div class="inputBox" style="width: 60%">
 							 	<label for="srcGo">지역</label>
 								<div class="input-group">
-									<input id="srcGo" name="partyLocation" class="searchInput" type="text" value="">
+									<input id="srcGo" name="partyLocation" class="searchInput" type="text"
+									 value="<c:out value="${partyLocation }" />" >
 	                   			 	<span id="shMap" class="shortSpan material-symbols-outlined" onclick="location.href='/findmap'">search</span>
 								</div>
 							</div>
