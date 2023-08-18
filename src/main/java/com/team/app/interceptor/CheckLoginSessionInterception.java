@@ -5,7 +5,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-
 public class CheckLoginSessionInterception extends HandlerInterceptorAdapter {
 	
 	@Override

@@ -41,6 +41,7 @@
 			<exclude-mapping path="/" />
 			<exclude-mapping path="/three" />
 			<exclude-mapping path="/LoginPage" />
+			<exclude-mapping path="/usrLogin" />
 			<beans:bean id="checkLoginSessionInterception" class="com.team.app.interceptor.CheckLoginSessionInterception"/>
 		</interceptor>
 	</interceptors>	
