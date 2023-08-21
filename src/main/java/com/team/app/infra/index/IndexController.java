@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.team.app.infra.code.Code;
 import com.team.app.infra.code.CodeServiceImpl;
@@ -57,6 +58,7 @@ public class IndexController {
     	
     	return "usr/infra/include/map";
     }
+    
 
     @RequestMapping(value = "/chat", method = RequestMethod.GET)
     public String chat() {

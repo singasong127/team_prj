@@ -15,7 +15,8 @@
         <div class="mainBox">
             <div class="mainContainer">
             <%--FORM CONTENT STARTS FROM HERE!!--%>
-		        <form name="formMap" autocomplete="off" onsubmit="searchPlaces(); return false;">
+		        <form name="formMap" autocomplete="off" 
+		        onsubmit="searchPlaces(); return false;">
 					<input type="text" class="form-control" id="keyword"
 						placeholder="검색할 단어를 입력" value="" >
 					<!-- <button type="submit" id="btnSearch">
@@ -26,7 +27,7 @@
 				        <ul id="placesList"></ul>
 				        <div id="pagination"></div>
 			    	</div>
-			    	<input type="hidden" name="partyLocation" id="partyLocation" value="">
+			    	<input type="hidden" name="location" id="location" value="">
 				</form>
 	            <div id="map" style="width: 100%; height: 860px;"></div>
             </div>

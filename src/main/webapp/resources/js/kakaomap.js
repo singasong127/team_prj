@@ -202,14 +202,11 @@
 			
 			var arrAddress = arrAddressFull[0] + " " + arrAddressFull[1];
 			
-			$("#partyLocation").val(arrAddress);
-			
-			console.log($("#partyLocation").val());
+			$("#location").val() = arrAddress;
 			
 			$("form[name=formMap]").attr("action", "/newChallger").submit();
 			
 			location.href = "/newChallger";
-			
 		});
 		
 		

@@ -2,7 +2,6 @@ package com.team.app.infra.party;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -89,16 +88,20 @@ public class PartyController {
 	}
 	
 	@RequestMapping(value="/newChallger")
-	public String newParty(Model model, PartyVo vo, HttpSession session) {
+	public String newParty(Model model, PartyVo vo, CodeVo cdVo, HttpSession session) {
+		
 		vo.setPartyLeader( (String)session.getAttribute("sessionSeq") );
 		
 		System.out.println("partyLeader: " + vo.getPartyLeader());
 		
 		Party party = service.selectOne(vo);
+		List<Code> code = cdService.selectCodeName(cdVo);
+		model.addAttribute("code", code);
 		model.addAttribute("party", party);
 		
 		return "usr/infra/member/newParty";
 	}
+	
 	
 	
 }

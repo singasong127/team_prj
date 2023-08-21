@@ -19,7 +19,7 @@
             
             <!-- 파티 생성 데이터 담을 폼 -->
             <div class="formBox mx-auto">
-	            <form name="partyTime">
+	            <form name="partyTime" method="post">
 	            	<input type="hidden" value="<c:out value='${sessionSeq }' />" name="partyLeader">
 	            	<!-- 파티 생성 박스 -->
 					<div class="d-flex flex-column p-4">
@@ -98,11 +98,15 @@
 						<!-- 지역 -->
 						<div class="labelBox">
 							<div class="inputBox" style="width: 60%">
+								<%
+									request.setCharacterEncoding("UTF-8");
+									String location = request.getParameter("location");
+								%>
 							 	<label for="srcGo">지역</label>
 								<div class="input-group">
 									<input id="srcGo" name="partyLocation" class="searchInput" type="text"
-									 value="<c:out value="${partyLocation }" />" >
-	                   			 	<span id="shMap" class="shortSpan material-symbols-outlined" onclick="location.href='/findmap'">search</span>
+									 value="<%= location %>" readonly>
+	                   			 	<span id="shMap" class="shortSpan material-symbols-outlined" onclick="location.href='/findmap'" style="cursor: pointer">search</span>
 								</div>
 							</div>
 						</div>
