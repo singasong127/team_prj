@@ -32,7 +32,20 @@
 
 
 	<context:component-scan base-package="com.team.app" />
-
+	
+	<!-- session interceptor s 2023.07.18 for logincheck -->
+	<interceptors>
+		<interceptor>
+			<mapping path="/**"/>
+			<exclude-mapping path="/resources/**" />
+			<exclude-mapping path="/" />
+			<exclude-mapping path="/three" />
+			<exclude-mapping path="/LoginPage" />
+			<exclude-mapping path="/usrLogin" />
+			<beans:bean id="checkLoginSessionInterception" class="com.team.app.interceptor.CheckLoginSessionInterception"/>
+		</interceptor>
+	</interceptors>	
+	<!-- session interceptor e 2023.07.18 for logincheck -->
 
 
 	<!-- 웹소캣 등록 첫번째 -->

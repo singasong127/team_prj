@@ -91,10 +91,8 @@ public class PartyController {
 	@RequestMapping(value="/newChallger")
 	public String newParty(Model model, PartyVo vo, HttpSession session) {
 		vo.setPartyLeader( (String)session.getAttribute("sessionSeq") );
-		vo.setPartyLocation( (String)session.getAttribute("partyLocation") );
 		
 		System.out.println("partyLeader: " + vo.getPartyLeader());
-		System.out.println("partyLocation: " + vo.getPartyLocation());
 		
 		Party party = service.selectOne(vo);
 		model.addAttribute("party", party);

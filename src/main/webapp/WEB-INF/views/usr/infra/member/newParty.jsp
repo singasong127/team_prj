@@ -4,6 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
+
 <!DOCTYPE html>
 <html lang="kr">
 <%@include file="../include/head.jsp"%>
@@ -30,9 +31,13 @@
 						
 						<!-- 인원수 날짜 연령대 -->
 						<div class="labelBox justify-content-around">
-							<select id="partyType">
-									<option selected>:: 종목</option>
-							</select>
+							<select name="partySport" id="partySport" class="me-2">
+				   				<option value="" selected>-- 종목 --</option>
+						   		<c:forEach items="${code}" var="code" >
+						   			<option value="<c:out value='${code.cdSeq}'/>"><c:out value="${code.cdName}"/></option>
+						   		</c:forEach>
+				   			</select>
+							
 							<select name="playerMax" id="playerMax">
 								<option selected >::인원</option>
 								<option value="1">1명</option>

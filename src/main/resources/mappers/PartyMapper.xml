@@ -82,6 +82,7 @@
     		<if test="playDt != null and !playDt.equals('')">AND playDt LIKE CONCAT('%',#{playDt},'%')</if>
     		<if test="partyGen != null and !partyGen.equals('')">AND partyGen = #{partyGen}</if>
     		<if test="partyAge != null and !partyAge.equals('')">AND partyAge = #{partyAge}</if>
+    		<if test="partyLocation != null and !partyLocation.equals('')">AND partyLocation LIKE CONCAT('%',#{partyLocation},'%')</if>
     </select>
     
     <update id="update">
@@ -114,11 +115,11 @@
     		, playTimeStart
 			, playTimeEnd
 			, partyLeader
-			, partyDesc
     		, partyGen
     		, partyAge
     		, madeTime
     		, toolNy
+    		, partyDesc
     		, delNy
     	) VALUES (
     		0
@@ -130,11 +131,11 @@
     		, #{playTimeStart}
     		, #{playTimeEnd}
     		, #{partyLeader}
-    		, #{partyDesc}
     		, #{partyGen}
     		, #{partyAge}
     		, #{madeTime}
     		, #{toolNy}
+    		, #{partyDesc}
     		, 0
     	)
     </insert>   
