@@ -18,7 +18,7 @@
 				</div>
 				<%--FORM CONTENT STARTS FROM HERE!!--%>
 				<%--FORM CONTENT STARTS FROM HERE!!--%>
-                <form class="row g-3">
+                <form name="insert" class="row g-3" method="post">
                     <%--아이디--%>
                     <div class="my-3 row mb-3 d-flex justify-content-center">
                         <label for="emailunique" class="col-sm-2 col-form-label">이메일</label>
@@ -29,12 +29,23 @@
                         </div>
                     </div>
                     <%--아이디--%>
+                    
+                    <%--닉네임--%>
+                    <div class="my-3 row mb-3 d-flex justify-content-center">
+                        <label for="nickunique" class="col-sm-2 col-form-label">닉네임</label>
+                        <div class="col-sm-5">
+                            <input name="nickname" type="text" class="form-control" id="nickunique">
+                            <span class="id_ok" >사용가능한 닉네임입니다.</span>
+                            <span class="id_already">중복된 닉네임입니다.</span>
+                        </div>
+                    </div>
+                    <%--닉네임--%>
 
                     <%--비밀번호--%>
                     <div class="my-3 row mb-3 d-flex justify-content-center">
                         <label for="inputPassword" class="col-sm-2 col-form-label">비밀번호</label>
                         <div class="col-sm-5">
-                            <input type="password" class="form-control" id="inputPassword">
+                            <input type="password" name="pwd" class="form-control" id="inputPassword">
                         </div>
                     </div>
                     <div class="my-3 row mb-3 d-flex justify-content-center">
@@ -49,7 +60,7 @@
                     <div class="my-3 row mb-3 d-flex justify-content-center">
                         <label for="autoSizingSelect" class="col-md-1 col-form-label">성별</label>
                         <div class="col-md-2">
-                            <select class="form-select" id="autoSizingSelect">
+                            <select class="form-select" name="gender" id="autoSizingSelect">
                                 <option selected>::</option>
                                 <option value="0">남</option>
                                 <option value="1">여</option>
@@ -60,7 +71,7 @@
                         <%--LOCATION--%>
                         <label for="location" class="col-md-1 col-form-label">거주지</label>
                         <div class="col-sm-3">
-                            <input type="text" class="form-control" id="location">
+                            <input type="text" class="form-control" name="location" id="location">
                         </div>
                         <%--LOCATION--%>
                     </div>
@@ -69,7 +80,7 @@
                     <div class="my-3 row mb-3 d-flex justify-content-center">
                         <label for="datePicker" class="me-3 col-sm-1 col-form-label">생년월일</label>
                         <div class="col-md-4">
-                            <input type="text" class="form-control" id="datePicker">
+                            <input type="text" name="dob" class="form-control" id="datePicker">
                         </div>
                     </div>
                     <%--DOB--%>
@@ -78,13 +89,13 @@
                         <div class="my-3 row mb-3 d-flex justify-content-center">
                             <label for="memDesc" class="col-sm-2 col-form-label">간단한 자기소개</label>
                             <div class="col-md-5">
-                                <textarea class="form-control" id="memDesc" rows="3"></textarea>
+                                <textarea class="form-control" name="memDesc" id="memDesc" rows="3"></textarea>
                             </div>
                         </div>
                     <%--DESCRIPTION--%>
                         <div class="my-3 row mb-3 d-flex justify-content-center">
                             <div class="col-md-5 d-flex justify-content-center">
-                                <button class="insertBtn btn btn-success btn-lg" >생성</button>
+                                <button id="joinBtn" class="insertBtn btn btn-success btn-lg" >생성</button>
                             </div>
                         </div>
 
@@ -99,8 +110,10 @@
 <script src="/resources/js/datePicker.js"></script>
 <script>
 
-    $(".insertBtn").on("click", function(e) {
-
+    var join = $("form[name='insert']");
+    
+    $("#joinBtn").on("click", function(e) {
+		
 
         if($("#inputPassword").val() != $("#inputPassword2").val()) {
             e.preventDefault();
@@ -117,11 +130,11 @@
             // PASSWORD AND RE-PASSWORD VALIDATION
         }else{
 
-
-
+        	join.attr("action", "/memberJoin").submit();
         } //else tag
         // PASSWORD AND RE-PASSWORD VALIDATION
         // PASSWORD AND RE-PASSWORD VALIDATION
+       	
 
     }); //click button tag
 

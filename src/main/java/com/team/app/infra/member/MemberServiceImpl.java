@@ -34,9 +34,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public int newMemberJoin(Member dto) throws Exception {
-		dao.newMemberJoin(dto);
-		uploadFiles(dto.getUploadImgProfile(), dto, "uploadList", dto.getUploadImgProfileType(), dto.getUploadImgProfileMaxNumber());
-		return 1;
+		return dao.newMemberJoin(dto);
 	}
 
 	@Override

@@ -125,13 +125,14 @@ public class MemberController {
 	
 	
 //	-------------------------------------------------유저단----------------------------------------------------
-//	회원가입 페이지
-	 @RequestMapping("/adminJoin")
+//	회원가입 페이지(유저용)
+	 @RequestMapping("/usrJoin")
 	    public ModelAndView getReadyToTheNextBattle() {
 	    	ModelAndView mav = new ModelAndView();
 	    	mav.setViewName("usr/infra/member/UsrJoin");
 	    	return mav;
 	    }
+
 	 
 //		회원가입 (유저용)
 		@RequestMapping(value="/memberJoin")
