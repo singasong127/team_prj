@@ -3,9 +3,9 @@ package com.team.app.interceptor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+import org.springframework.web.servlet.HandlerInterceptor;
 
-public class CheckLoginSessionInterception extends HandlerInterceptorAdapter {
+public class CheckLoginSessionInterception implements HandlerInterceptor {
 	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -17,7 +17,7 @@ public class CheckLoginSessionInterception extends HandlerInterceptorAdapter {
 			return false;
 		}
 		
-		return super.preHandle(request, response, handler);
+		return HandlerInterceptor.super.preHandle(request, response, handler);
 
 	}
 }
