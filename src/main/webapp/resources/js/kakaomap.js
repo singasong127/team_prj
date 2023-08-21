@@ -202,7 +202,7 @@
 			
 			var arrAddress = arrAddressFull[0] + " " + arrAddressFull[1];
 			
-			$("#location").val() = arrAddress;
+			$("#location").val(arrAddress);
 			
 			$("form[name=formMap]").attr("action", "/newChallger").submit();
 			
