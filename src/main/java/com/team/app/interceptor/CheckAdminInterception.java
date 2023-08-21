@@ -9,8 +9,11 @@ import javax.servlet.http.HttpServletResponse;
 public class CheckAdminInterception implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        if(request.getSession().getAttribute("sessionType") == "1"){
-        }else{
+        Object sessionType = request.getSession().getAttribute("sessionType");
+        Object sessionId = request.getSession().getAttribute("sessionId");
+        if(sessionId != null && sessionType.equals("1")) {
+        }else if(sessionId != null&& sessionType.equals("0")){
+            //if we want to alert them...
             request.setAttribute("alertMessage", "This is an alert message.");
             response.sendRedirect("/");
             return false;
