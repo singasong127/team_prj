@@ -48,7 +48,20 @@
 		</interceptor>
 	</interceptors>	
 	<!-- session interceptor e 2023.07.18 for logincheck -->
-
+	<!-- session interceptor s 2023.07.18 for logincheck -->
+	<interceptors>
+		<interceptor>
+			<mapping path="/**"/>
+			<exclude-mapping path="/resources/**" />
+			<exclude-mapping path="/" />
+			<exclude-mapping path="/usrLogout" />
+			<exclude-mapping path="/memberOneUser" />
+			<exclude-mapping path="/usrLogin" />
+			<exclude-mapping path="/memberJoin" />
+			<beans:bean id="checkAdminInterception" class="com.team.app.interceptor.CheckAdminInterception"/>
+		</interceptor>
+	</interceptors>
+	<!-- session interceptor e 2023.07.18 for logincheck -->
 
 	<!-- 웹소캣 등록 첫번째 -->
 	<!-- 웹소캣 등록 첫번째 -->

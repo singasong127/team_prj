@@ -48,8 +48,8 @@
 							<th>비밀번호</th>
 							<th>성별</th>
 							<th>거주지</th>
-							<th></th>
 							<th>삭제 여부</th>
+							<th></th>
 						</tr>
 						</thead>
 						<tbody>
@@ -81,9 +81,7 @@
 											</c:choose>
 										</td>
 										<td><c:out value="${list.location }"></c:out></td>
-										<td><c:out value="${list.memDesc }"></c:out></td>
-										<td><c:out value="${list.delNy }"></c:out></td>
-									</tr>							
+
 										<td>
 											<button class="detailBtn" onclick="location.href='/memberOne?seq=<c:out value = '${list.seq}'/>'">
 												상세
