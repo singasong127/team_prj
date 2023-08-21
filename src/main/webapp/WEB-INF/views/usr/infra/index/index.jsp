@@ -33,7 +33,7 @@
 				   
 				   <!-- 성별 선택창 -->
 				   <select name="partyGen" id="partyGen" class="me-2">
-				   	<option value=" " selected>-- 성별 --</option>
+				   	<option value="" selected>-- 성별 --</option>
 				   	<option value="0">남성</option>
 				   	<option value="1">여성</option>
 				   	<option value="2">무관</option>
