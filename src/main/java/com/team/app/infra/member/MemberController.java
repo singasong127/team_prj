@@ -49,9 +49,26 @@ public class MemberController {
 	@ResponseBody
 	@RequestMapping(value= "/idCheck", method = RequestMethod.POST)
 	public Map<String,Object> idCheck(MemberVo vo){
+		System.out.println("heyheyheyheyheyhehyehyehyheyhe");
 		Map<String,Object> returnMap = new HashMap<String, Object>();
 		int rtNum = service.selectOneCheckId(vo);
+			System.out.println("@@@@@@@@@@@@2진행시켜!");
+			System.out.println(rtNum);
+			System.out.println("@@@@@@@@@@@@2진행시켜!");
 		if (rtNum == 0) {
+			returnMap.put("rt","available");
+		}else{
+			returnMap.put("rt","unavailable");
+		}
+		System.out.println(returnMap);
+		return returnMap;
+	}
+	@ResponseBody
+	@RequestMapping(value= "/nicknameCheck", method = RequestMethod.POST)
+	public Map<String,Object> nicknameCheck(MemberVo vo){
+		Map<String,Object> returnMap = new HashMap<String, Object>();
+		int rtNumNick = service.selectOneCheckNickname(vo);
+		if (rtNumNick == 0) {
 			returnMap.put("rt","available");
 		}else{
 			returnMap.put("rt","unavailable");
