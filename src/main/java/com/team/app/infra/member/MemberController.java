@@ -49,6 +49,7 @@ public class MemberController {
 	@ResponseBody
 	@RequestMapping(value= "/idCheck", method = RequestMethod.POST)
 	public Map<String,Object> idCheck(MemberVo vo){
+		System.out.println("heyheyheyheyheyhehyehyehyheyhe");
 		Map<String,Object> returnMap = new HashMap<String, Object>();
 		int rtNum = service.selectOneCheckId(vo);
 			System.out.println("@@@@@@@@@@@@2진행시켜!");

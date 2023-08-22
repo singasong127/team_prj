@@ -43,7 +43,8 @@
 			<exclude-mapping path="/LoginPage" />
 			<exclude-mapping path="/usrLogin" />
 			<exclude-mapping path="/usrJoin" />
-
+			<exclude-mapping path="/idCheck" />
+			<exclude-mapping path="/nicknameCheck" />
 			<exclude-mapping path="/memberJoin" />
 			<beans:bean id="checkLoginSessionInterception" class="com.team.app.interceptor.CheckLoginSessionInterception"/>
 		</interceptor>
