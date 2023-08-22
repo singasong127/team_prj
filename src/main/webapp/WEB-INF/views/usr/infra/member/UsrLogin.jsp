@@ -34,6 +34,12 @@
             				<button type="button" id="newJoin" class="btn btn-primary">회원가입</button>
             			</div>
             			
+            			<div class="mb-5">
+            				<p class="text-center">소셜 로그인</p>
+            				<button type="button" id="kalogin" class="btn btn-warning rounded-circle" ><i class="bi bi-chat-fill"></i></button>
+            				<p id="token-result"></p>
+            			</div>
+            			
 			<%--FORM CONTENT ENDS FROM HERE!!--%>
             		</form>
        		<%--FORM CONTENT ENDS FROM HERE!!--%>
@@ -43,13 +49,21 @@
     </main>
 </div>
 
+<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.3.0/kakao.min.js" integrity="sha384-70k0rrouSYPWJt7q9rSTKpiTfX6USlMYjZUtr1Du+9o4cGvhPAWxngdtVZDdErlh" crossorigin="anonymous"></script>
 <script type="text/javascript">
+	Kakao.init('0c6fe60bab513d3d0b7383e693f6174e');
+	
+	$("#kalogin").on("click", function(){
+		/* alert("작동"); */
+		 Kakao.Auth.authorize({
+		      redirectUri: 'http://localhost',
+		      /* scope : 'profile_nickname, profile_image, account_email, gender' */
+		    });
+	});
 	
 	$("#newJoin").on("click", function(){
 		window.location.replace("/usrJoin");
 	});
-	
-	
 	
 	$("#login").on("click", function(){
 		
