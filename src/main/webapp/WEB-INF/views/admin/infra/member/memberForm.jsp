@@ -6,13 +6,23 @@
 
 <!doctype html>
 <html lang="kr">
+	<%@include file="../include/head.jsp"%>
 	<%@include file="../include/header.jsp"%>
 	<main>
 		<div class="mainBox">
 			<div class="mainContainer">
 				<%--FORM CONTENT STARTS FROM HERE!!--%>
 				<%--FORM CONTENT STARTS FROM HERE!!--%>
-
+					<%
+						String alertMessage = (String) request.getAttribute("alertMessage");
+						if (alertMessage != null && !alertMessage.isEmpty()) {
+					%>
+					<script>
+						alert("<%= alertMessage %>");
+					</script>
+					<%
+						}
+					%>
 				<%--WHEN SEQ IS NULL--%>
 				<%--WHEN SEQ IS NULL--%>
 				<%--WHEN SEQ IS NULL--%>
@@ -76,7 +86,7 @@
 											<option value="1" selected>관리자</option>
 										</select>
 									</div>
-									<div class="col-md-1">
+									<div class="col-md-2">
 										<label for="gender" class="form-label">성별</label>
 										<select class="form-select" aria-label="Default select example" name="gender" id="gender">
 											<option value="">::</option>
@@ -197,7 +207,7 @@
 											<option value="1" <c:if test="${member.memType == 1}">selected</c:if> >관리자</option>
 										</select>
 									</div>
-									<div class="col-md-1">
+									<div class="col-md-2">
 										<label for="gender" class="form-label">성별</label>
 										<select class="form-select" aria-label="Default select example" name="" disabled id="gender">
 											<option value="">::</option>

@@ -46,7 +46,7 @@
 <script type="text/javascript">
 	
 	$("#newJoin").on("click", function(){
-		window.location.replace("/usr_jonin");
+		window.location.replace("/usrJoin");
 	});
 	
 	
