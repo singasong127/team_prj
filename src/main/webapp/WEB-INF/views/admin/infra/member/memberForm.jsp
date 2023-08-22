@@ -6,6 +6,7 @@
 
 <!doctype html>
 <html lang="kr">
+	<%@include file="../include/head.jsp" %>
 	<%@include file="../include/header.jsp"%>
 	<main>
 		<div class="mainBox">

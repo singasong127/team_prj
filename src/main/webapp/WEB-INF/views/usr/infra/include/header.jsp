@@ -6,7 +6,7 @@
 
 <header>
     <div class="headerBox">
-        <div class="logo" onclick="location.href='#'" ><img src="/resources/img/logo.png" alt=""></div>
+        <div class="logo" onclick="location.href='/'" ><img src="/resources/img/logo.png" alt=""></div>
         <div class="nav">
             <div class="curtain"></div>
             <ul class="navList">
