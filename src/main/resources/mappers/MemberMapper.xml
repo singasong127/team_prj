@@ -60,6 +60,7 @@
 			, a.nickname
 			, b.uuidName
 			, b.originalName
+			, a.memType
 			, b.path
 		FROM
 			member AS a

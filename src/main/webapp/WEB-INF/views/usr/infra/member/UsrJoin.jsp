@@ -56,6 +56,17 @@
                     </div>
                     <%--비밀번호--%>
 
+                    <%--POSTAL CODE--%>
+                    <div class="my-3 row mb-3 d-flex justify-content-center">
+                        <label for="sample6_postcode" class="col-sm-2 col-form-label">주소</label>
+                        <div class="col-sm-5">
+                                <input class="form-control" type="text" id="sample6_postcode" placeholder="우편번호">
+                                <input class="form-control" type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+                            <input class="form-control" type="text" id="sample6_address" placeholder="주소"><br>
+                            <input class="form-control" type="text" id="sample6_detailAddress" placeholder="상세주소">
+                        </div>
+                    </div>
+                    <%--POSTAL CODE--%>
                     <%--Gender--%>
                     <div class="my-3 row mb-3 d-flex justify-content-center">
                         <label for="autoSizingSelect" class="col-md-1 col-form-label">성별</label>
@@ -67,6 +78,7 @@
                             </select>
                         </div>
                         <%--Gender--%>
+
 
                         <%--LOCATION--%>
                         <label for="location" class="col-md-1 col-form-label">거주지</label>
@@ -107,6 +119,8 @@
     </main>
 </div>
 </body>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
 <script src="/resources/js/datePicker.js"></script>
 <script>
 
@@ -137,19 +151,4 @@
        	
 
     }); //click button tag
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </script>

@@ -86,6 +86,7 @@ public class MemberController {
 	}
 
 
+
 //	정보변경
 	@RequestMapping(value="/memberUpdate")
 	public String memberUpdate(Member dto) throws Exception {
@@ -156,6 +157,7 @@ public class MemberController {
 				httpSession.setAttribute("sessionProfilePath",rtMember.getPath());
 				httpSession.setAttribute("sessionProfileName",rtMember.getUuidName());
 				httpSession.setAttribute("sessionSeq",rtMember.getSeq());
+				httpSession.setAttribute("sessionType",rtMember.getMemType());
 				returnMap.put("rtMember", rtMember);
 				returnMap.put("rt", "success");
 			}else {
@@ -172,5 +174,16 @@ public class MemberController {
 			
 			return "redirect:/";
 		}
+//		회원정보 수정
+	@RequestMapping(value="/memberOneUser")
+	public String memberOneUser(Member dto,MemberVo vo, Model model) {
+		Member member = service.memberOne(vo);
+		model.addAttribute("member", member);
+
+		List<Upload> uploadList = service.selectListUpload(dto);
+		model.addAttribute("listUploaded",uploadList);
+		return "usr/infra/member/UsrInfo";
+	}
+
 //	-------------------------------------------------/유저단----------------------------------------------------
 }
