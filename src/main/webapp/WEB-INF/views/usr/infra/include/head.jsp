@@ -26,6 +26,10 @@
     <link rel="stylesheet" href="/resources/css/user/bootstrap-datepicker3.css">
 <%--DATE PICKER--%>
 
+<%--KAKAO POSTAL--%>
+    <script src="/resources/js/kakaoPostal.js"></script>
+<%--KAKAO POSTAL--%>
+
 <!-- TIME PICKER -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>

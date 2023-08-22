@@ -12,7 +12,7 @@ public class CheckAdminInterception implements HandlerInterceptor {
         Object sessionType = request.getSession().getAttribute("sessionType");
         Object sessionId = request.getSession().getAttribute("sessionId");
         if(sessionId != null && sessionType.equals("1")) {
-        }else if(sessionId != null&& sessionType.equals("0")){
+        }else if(sessionId != null && sessionType.equals("0")){
             //if we want to alert them...
             request.setAttribute("alertMessage", "This is an alert message.");
             response.sendRedirect("/");
