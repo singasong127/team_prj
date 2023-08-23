@@ -51,27 +51,13 @@
 
 <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.3.0/kakao.min.js" integrity="sha384-70k0rrouSYPWJt7q9rSTKpiTfX6USlMYjZUtr1Du+9o4cGvhPAWxngdtVZDdErlh" crossorigin="anonymous"></script>
 <script type="text/javascript">
-	Kakao.init('0c6fe60bab513d3d0b7383e693f6174e');
+	Kakao.init('baaca73bb6f8db74471d98b723933ed6');
 	
 	$("#kalogin").on("click", function(){
 		/* alert("작동"); */
 		 Kakao.Auth.authorize({
 		      redirectUri: 'http://localhost'
-		      /* , scope : 'profile_nickname, profile_image, account_email, gender' */
-		       /* , success: function(authObj){
-		    	  window.Kakao.API.request({
-		    		  url : '/v2/user/me',
-		    		  success : function(respones){
-		    			  console.log(respones);
-		    		  },
-		    		  fail : function(error){
-		    			  console.log(error);
-		    		  }
-		    	  });
-		      },
-		      fail : function(err){
-		    	  console.log(err)
-		      }  */
+		      , scope : 'profile_nickname, account_email, gender'
 		    }); 
 	});
 	
