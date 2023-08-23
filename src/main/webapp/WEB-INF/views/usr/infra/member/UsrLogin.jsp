@@ -34,6 +34,12 @@
             				<button type="button" id="newJoin" class="btn btn-primary">회원가입</button>
             			</div>
             			
+            			<div class="mb-5">
+            				<p class="text-center">소셜 로그인</p>
+            				<button type="button" id="kalogin" onclick="kakaoLogin()" class="btn btn-warning rounded-circle" ><i class="bi bi-chat-fill"></i></button>
+            				<p id="token-result"></p>
+            			</div>
+            			
 			<%--FORM CONTENT ENDS FROM HERE!!--%>
             		</form>
        		<%--FORM CONTENT ENDS FROM HERE!!--%>
@@ -43,13 +49,36 @@
     </main>
 </div>
 
+<%--<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.3.0/kakao.min.js" integrity="sha384-70k0rrouSYPWJt7q9rSTKpiTfX6USlMYjZUtr1Du+9o4cGvhPAWxngdtVZDdErlh" crossorigin="anonymous"></script>--%>
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script type="text/javascript">
+	window.Kakao.init('bc68fcad30fbf0889ceb096448c62a53');
+
+	function kakaoLogin() {
+		window.Kakao.Auth.login({
+			scope: 'profile_nickname,account_email', //동의항목 페이지에 있는 개인정보 보호 테이블의 활성화된 ID값을 넣습니다.
+			success: function(response) {
+				console.log(response) // 로그인 성공하면 받아오는 데이터
+				window.Kakao.API.request({ // 사용자 정보 가져오기
+					url: '/v2/user/me',
+					success: (res) => {
+						const kakao_account = res.kakao_account;
+						console.log(kakao_account)
+					}
+				});
+				window.location.href='/' //리다이렉트 되는 코드
+			},
+			fail: function(error) {
+				console.log(error);
+			}
+		});
+	}
+</script>
+<script>
 	
 	$("#newJoin").on("click", function(){
-		window.location.replace("/usr_jonin");
+		window.location.replace("/usrJoin");
 	});
-	
-	
 	
 	$("#login").on("click", function(){
 		
@@ -91,6 +120,5 @@
 		/* if(checkNull($("#pwd"), $.trim($("#pwd").val()), "비밀번호를 입력해주세요")) return false; */
 		
 	}
-
 </script>
 </body>
