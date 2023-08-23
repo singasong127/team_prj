@@ -56,9 +56,23 @@
 	$("#kalogin").on("click", function(){
 		/* alert("작동"); */
 		 Kakao.Auth.authorize({
-		      redirectUri: 'http://localhost',
-		      /* scope : 'profile_nickname, profile_image, account_email, gender' */
-		    });
+		      redirectUri: 'http://localhost'
+		      /* , scope : 'profile_nickname, profile_image, account_email, gender' */
+		       /* , success: function(authObj){
+		    	  window.Kakao.API.request({
+		    		  url : '/v2/user/me',
+		    		  success : function(respones){
+		    			  console.log(respones);
+		    		  },
+		    		  fail : function(error){
+		    			  console.log(error);
+		    		  }
+		    	  });
+		      },
+		      fail : function(err){
+		    	  console.log(err)
+		      }  */
+		    }); 
 	});
 	
 	$("#newJoin").on("click", function(){
@@ -105,6 +119,5 @@
 		/* if(checkNull($("#pwd"), $.trim($("#pwd").val()), "비밀번호를 입력해주세요")) return false; */
 		
 	}
-
 </script>
 </body>
