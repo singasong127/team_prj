@@ -1,16 +1,19 @@
 package com.team.app.infra.index;
 
 import java.util.List;
+import java.util.Map;
 
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.team.app.infra.code.Code;
 import com.team.app.infra.code.CodeServiceImpl;
@@ -49,14 +52,23 @@ public class IndexController {
         return "usr/infra/index/index";
     }
     
-    @GetMapping("/findmap")
-    public String findMap(Model model, PartyVo vo, HttpSession session) {
-    	vo.setPartyLocation( (String)session.getAttribute("partyLocation") );
-    	
-    	Party party = service.selectOne(vo);
-    	model.addAttribute("party", party);
+    @RequestMapping(value="/findmap")
+    public String findMap(Model model, PartyVo vo) {
     	
     	return "usr/infra/include/map";
+    }
+    
+    @RequestMapping(value="/findmap/submit", method=RequestMethod.POST)
+    public String submitFindMap(@RequestBody Map<String, Object> location, HttpServletRequest request) throws Exception {
+    	
+    	String lo = (String)location.get("location");
+    	
+    	request.setAttribute("location", lo);
+    	
+    	System.out.println("Location: " + (String)request.getAttribute("location"));
+    	
+    	
+    	return "forward:/newChallger";
     }
     
 

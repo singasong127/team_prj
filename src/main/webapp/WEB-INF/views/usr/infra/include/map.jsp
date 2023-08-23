@@ -27,7 +27,7 @@
 				        <ul id="placesList"></ul>
 				        <div id="pagination"></div>
 			    	</div>
-			    	<input type="hidden" name="location" id="location" value="">
+			    	<input type="hidden" name="location" id="location" value="${location }">
 				</form>
 	            <div id="map" style="width: 100%; height: 860px;"></div>
             </div>
@@ -44,7 +44,6 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=54c60ae7f8e07cf5112b5b1d3980bd2d&libraries=services"></script>
 <script type="text/javascript" src="/resources/js/kakaomap.js"></script>
 <script type="text/javascript">
-	
 	
 	
 </script>

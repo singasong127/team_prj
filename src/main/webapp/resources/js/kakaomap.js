@@ -177,8 +177,6 @@
 	        itemStr += '    <span>' +  places.address_name  + '</span>'; 
 	    }
 	                 
-	      itemStr += '  <span class="tel">' + places.phone  + '</span>' +
-	                '</div>';           
 	
 	    el.innerHTML = itemStr;
 	    el.className = 'item';
@@ -204,9 +202,26 @@
 			
 			$("#location").val(arrAddress);
 			
-			$("form[name=formMap]").attr("action", "/newChallger").submit();
+			$.ajax({
+					async : true,
+					cache : false,
+					type : "post",
+					contentType : "application/json",
+					url : "/findmap/submit",
+					dataType : 'json',
+					data : JSON.stringify({
+						location : arrAddress
+						}),
+					success : function(data) {
+						console.log(data);
+					},
+					error : function(jqXHR, textStatus, errorThrown) {
+						/*alert("ajaxUpdate " + jqXHR.textStatus + " : "
+								+ jqXHR.errorThrown);*/
+					},
+				});
 			
-			location.href = "/newChallger";
+			
 		});
 		
 		

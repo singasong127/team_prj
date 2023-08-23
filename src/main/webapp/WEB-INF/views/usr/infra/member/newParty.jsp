@@ -98,14 +98,10 @@
 						<!-- 지역 -->
 						<div class="labelBox">
 							<div class="inputBox" style="width: 60%">
-								<%
-									request.setCharacterEncoding("UTF-8");
-									String location = request.getParameter("location");
-								%>
 							 	<label for="srcGo">지역</label>
 								<div class="input-group">
 									<input id="srcGo" name="partyLocation" class="searchInput" type="text"
-									 value="<%= location %>" readonly>
+									 value="<c:out value=' ${vo.partyLocation }' />" readonly>
 	                   			 	<span id="shMap" class="shortSpan material-symbols-outlined" onclick="location.href='/findmap'" style="cursor: pointer">search</span>
 								</div>
 							</div>
