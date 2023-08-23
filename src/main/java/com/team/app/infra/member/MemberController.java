@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -21,6 +22,9 @@ public class MemberController {
 	
 	@Autowired
 	MemberServiceImpl service;
+	
+	@Autowired
+	KakaoAPI kakaoAPI;
 	
 //	-------------------------------------------------관리단----------------------------------------------------
 	@RequestMapping(value="/memberList")
@@ -203,4 +207,26 @@ public class MemberController {
 	}
 
 //	-------------------------------------------------/유저단----------------------------------------------------
+	
+//	카카오 로그인 API
+	
+	@RequestMapping(value="")
+	public String KakaoLogin(@RequestParam("code") String code, HttpSession session) throws Exception {
+		 System.out.println("code : " + code);
+
+	        String access_Token = kakaoAPI.getAccessToken(code);
+	        System.out.println("access_Token : " + access_Token);
+	        
+	        HashMap<String, Object> userInfo = kakaoAPI.getUserInfo(access_Token);
+	        System.out.println("login Controller : " + userInfo);
+
+	        //    클라이언트의 이메일이 존재할 때 세션에 해당 이메일과 토큰 등록
+	        if (userInfo.get("email") != null) {
+	            session.setAttribute("userId", userInfo.get("email"));
+	            session.setAttribute("access_Token", access_Token);
+	        }
+		
+		
+		return "/";
+	}
 }

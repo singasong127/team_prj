@@ -157,5 +157,4 @@ public class MemberServiceImpl implements MemberService {
 		return dao.selectOneCheckNickname(vo);
 	}
 
-
 }
