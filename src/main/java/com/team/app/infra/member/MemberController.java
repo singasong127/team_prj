@@ -212,7 +212,7 @@ public class MemberController {
 	
 //	카카오 로그인 API
 	
-	@RequestMapping(value="http://localhost")
+	@RequestMapping(value="/login")
 	public String KakaoLogin(@RequestParam("code") String code, HttpSession session) throws Exception {
 		 System.out.println("code : " + code);
 
@@ -235,7 +235,7 @@ public class MemberController {
 	        }
 		
 		
-		return "";
+		return "/";
 	}
 	
 //	@RequestMapping(value="")

@@ -36,7 +36,8 @@
             			
             			<div class="mb-5">
             				<p class="text-center">소셜 로그인</p>
-            				<button type="button" id="kalogin" class="btn btn-warning rounded-circle" ><i class="bi bi-chat-fill"></i></button>
+            				<!-- <button type="button" id="kalogin" class="btn btn-warning rounded-circle" ><i class="bi bi-chat-fill"></i></button> -->
+            				<a href="https://kauth.kakao.com/oauth/authorize?client_id=6f52e43b4e6118aacd25c03eb6e7ba9b&redirect_uri=http://localhost&response_type=code" class="btn btn-warning rounded-circle" ><i class="bi bi-chat-fill"></i></a>
             				<p id="token-result"></p>
             			</div>
             			
@@ -49,18 +50,18 @@
     </main>
 </div>
 
-<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.3.0/kakao.min.js" integrity="sha384-70k0rrouSYPWJt7q9rSTKpiTfX6USlMYjZUtr1Du+9o4cGvhPAWxngdtVZDdErlh" crossorigin="anonymous"></script>
+
 <script type="text/javascript">
-	Kakao.init('baaca73bb6f8db74471d98b723933ed6');
+	/* Kakao.init('baaca73bb6f8db74471d98b723933ed6'); */
 	
-	$("#kalogin").on("click", function(){
-		/* alert("작동"); */
+/* 	$("#kalogin").on("click", function(){
+		 alert("작동"); 
 		 Kakao.Auth.authorize({
 		      redirectUri: 'http://localhost'
 		      , scope : 'profile_nickname, account_email, gender'
 		    }); 
 	});
-	
+	 */
 	$("#newJoin").on("click", function(){
 		window.location.replace("/usrJoin");
 	});

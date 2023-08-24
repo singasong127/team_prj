@@ -41,8 +41,7 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a class="dropdown-item" onclick="
-                                            location.href='<c:if test="${sessionType eq 1}">/memberOne?seq=<c:out value='${sessionSeq}'/></c:if><c:if test="${sessionType eq 0}">/memberOneUser?seq=<c:out value='${sessionSeq}'/></c:if>'">
+                                    <a class="dropdown-item" onclick="location.href='<c:if test="${sessionType eq 1}">/memberOne?seq=<c:out value='${sessionSeq}'/></c:if><c:if test="${sessionType eq 0}">/memberOneUser?seq=<c:out value='${sessionSeq}'/></c:if>'">
                                         내 정보
                                     </a>
                                 </li>

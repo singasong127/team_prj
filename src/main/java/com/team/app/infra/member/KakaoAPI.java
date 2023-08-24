@@ -33,8 +33,8 @@ public class KakaoAPI {
     	   BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
            StringBuilder sb = new StringBuilder();
            sb.append("grant_type=authorization_code");
-           sb.append("&client_id=97d39d6e91ff9fdedf425d2586080d4e");
-           sb.append("&redirect_uri=http://localhost");
+           sb.append("&client_id=6f52e43b4e6118aacd25c03eb6e7ba9");
+           sb.append("&redirect_uri=http://localhost/login");
            sb.append("&code=" + authorize_code);
            bw.write(sb.toString());
            bw.flush();
@@ -100,10 +100,9 @@ public class KakaoAPI {
 	            JsonElement element = parser.parse(result);
 
 	            JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
-	            JsonObject kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
 
-	            String nickname = properties.getAsJsonObject().get("nickname").getAsString();
-	            String email = kakao_account.getAsJsonObject().get("email").getAsString();
+	            String nickname = properties.getAsJsonObject().get("profile_nickname").getAsString();
+	            String email = properties.getAsJsonObject().get("profile_email").getAsString();
 
 	            userInfo.put("nickname", nickname);
 	            userInfo.put("email", email);

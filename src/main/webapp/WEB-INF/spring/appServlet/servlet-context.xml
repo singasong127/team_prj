@@ -40,6 +40,7 @@
 			<exclude-mapping path="/resources/**" />
 			<exclude-mapping path="/" />
 			<exclude-mapping path="/three" />
+			<exclude-mapping path="/login" />
 			<exclude-mapping path="/LoginPage" />
 			<exclude-mapping path="/usrLogin" />
 			<exclude-mapping path="/usrJoin" />
