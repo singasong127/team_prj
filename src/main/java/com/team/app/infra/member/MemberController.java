@@ -1,5 +1,7 @@
 package com.team.app.infra.member;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -210,7 +212,7 @@ public class MemberController {
 	
 //	카카오 로그인 API
 	
-	@RequestMapping(value="")
+	@RequestMapping(value="http://localhost")
 	public String KakaoLogin(@RequestParam("code") String code, HttpSession session) throws Exception {
 		 System.out.println("code : " + code);
 
@@ -222,11 +224,33 @@ public class MemberController {
 
 	        //    클라이언트의 이메일이 존재할 때 세션에 해당 이메일과 토큰 등록
 	        if (userInfo.get("email") != null) {
-	            session.setAttribute("userId", userInfo.get("email"));
+	        	session.setMaxInactiveInterval(60*10);
+	            session.setAttribute("sessionId", userInfo.get("email"));
+	            session.setAttribute("sessionNickName", userInfo.get("nickname"));
 	            session.setAttribute("access_Token", access_Token);
+	            
+	            System.out.println(userInfo.get("email"));
+	            System.out.println(session.getAttribute("sessionId"));
+	            System.out.println(session.getAttribute("access_Token"));
 	        }
 		
 		
-		return "/";
+		return "";
 	}
+	
+//	@RequestMapping(value="")
+//	public String kakaoLogout(HttpSession session) {
+//		String access_Token  = (String)session.getAttribute("access_Token");
+//		
+//		if(access_Token != null && !"".equals(access_Token)) {
+//			kakaoAPI.kakaoLogout(access_Token);
+//			session.removeAttribute(access_Token);
+//			session.removeAttribute("userId");
+//			session.removeAttribute("userNick");
+//		}else {
+//			System.out.println("access_Token is null");
+//		}
+//		
+//		return "redirect:/";
+//	}
 }
