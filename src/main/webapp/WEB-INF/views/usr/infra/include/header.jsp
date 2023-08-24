@@ -40,15 +40,12 @@
                                 <img style="object-fit: cover; align-self: center" id="uploadImgProfilePreview" src="${userProfile}" class="rounded-circle d-block" width="68" height="68">
                             </a>
                             <ul class="dropdown-menu">
-<<<<<<< HEAD
                                 <li>
                                     <a class="dropdown-item" onclick="location.href='<c:if test="${sessionType eq 1}">/memberOne?seq=<c:out value='${sessionSeq}'/></c:if><c:if test="${sessionType eq 0}">/memberOneUser?seq=<c:out value='${sessionSeq}'/></c:if>'">
                                         내 정보
                                     </a>
                                 </li>
-=======
 <%--                                <li><a class="dropdown-item" onclick="location.href='/memberOne?seq=<c:out value='${sessionSeq}'/>'">내 정보</a></li>--%>
->>>>>>> branch 'main' of https://github.com/singasong127/team_prj.git
                                 <li><a class="dropdown-item" onclick="location.href='/usrLogout'">로그아웃</a></li>
                             </ul>
                         </div>

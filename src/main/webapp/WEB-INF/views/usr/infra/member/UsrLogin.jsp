@@ -36,9 +36,6 @@
             			
             			<div class="mb-5">
             				<p class="text-center">소셜 로그인</p>
-            				<!-- <button type="button" id="kalogin" class="btn btn-warning rounded-circle" ><i class="bi bi-chat-fill"></i></button> -->
-            				<a href="https://kauth.kakao.com/oauth/authorize?client_id=6f52e43b4e6118aacd25c03eb6e7ba9b&redirect_uri=http://localhost&response_type=code" class="btn btn-warning rounded-circle" ><i class="bi bi-chat-fill"></i></a>
-            				<p id="token-result"></p>
             			</div>
             			
 			<%--FORM CONTENT ENDS FROM HERE!!--%>
