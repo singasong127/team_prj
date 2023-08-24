@@ -1,9 +1,13 @@
 package com.team.app.infra.index;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -58,17 +62,27 @@ public class IndexController {
     	return "usr/infra/include/map";
     }
     
+    @ResponseBody
     @RequestMapping(value="/findmap/submit", method=RequestMethod.POST)
-    public String submitFindMap(@RequestBody Map<String, Object> location, HttpServletRequest request) throws Exception {
+    public Map<String, Object> submitFindMap(@RequestBody Map<String, Object> location, 
+    		Model model, RedirectAttributes rttr) throws Exception {
+    	Map<String, Object> returnMap = new HashMap<String, Object>();
     	
     	String lo = (String)location.get("location");
     	
-    	request.setAttribute("location", lo);
+    	rttr.addAttribute("url", "redirect:/newChallger/post");
     	
-    	System.out.println("Location: " + (String)request.getAttribute("location"));
+    	if(lo != null) {
+    		model.addAttribute("location", lo);
+    		returnMap.put("location", model.getAttribute("location"));
+    		returnMap.put("url", rttr.getAttribute("url"));
+    		returnMap.put("rt", "success");
+    		System.out.println("Location: " + model.getAttribute("location"));
+    	} else {
+    		returnMap.put("rt", "fail");
+    	}
     	
-    	
-    	return "forward:/newChallger";
+    	return returnMap;
     }
     
 

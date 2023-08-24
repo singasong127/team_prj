@@ -212,12 +212,14 @@
 					data : JSON.stringify({
 						location : arrAddress
 						}),
-					success : function(data) {
-						console.log(data);
+					success : function(response) {
+						if(response.rt == "success") {
+							// location.href = "/newChallger/post";
+						}
 					},
 					error : function(jqXHR, textStatus, errorThrown) {
-						/*alert("ajaxUpdate " + jqXHR.textStatus + " : "
-								+ jqXHR.errorThrown);*/
+						alert("ajaxUpdate " + jqXHR.textStatus + " : "
+								+ jqXHR.errorThrown);
 					},
 				});
 			

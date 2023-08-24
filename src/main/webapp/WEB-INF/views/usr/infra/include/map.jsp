@@ -27,7 +27,6 @@
 				        <ul id="placesList"></ul>
 				        <div id="pagination"></div>
 			    	</div>
-			    	<input type="hidden" name="location" id="location" value="${location }">
 				</form>
 	            <div id="map" style="width: 100%; height: 860px;"></div>
             </div>

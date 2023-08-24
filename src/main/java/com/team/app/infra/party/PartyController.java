@@ -1,6 +1,8 @@
 package com.team.app.infra.party;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -92,12 +94,13 @@ public class PartyController {
 		return "redirect:/";
 	}
 	
+	
 	@RequestMapping(value="/newChallger")
 	public String newParty(Model model, @ModelAttribute PartyVo vo, CodeVo cdVo, HttpSession session,
-			HttpServletRequest request) {
+			HttpServletRequest request, RedirectAttributes rttr) {
 		
 		vo.setPartyLeader( (String)session.getAttribute("sessionSeq") );
-		vo.setPartyLocation( (String)request.getAttribute("location") );
+		vo.setPartyLocation( (String)model.getAttribute("location") );
 		
 		System.out.println("partyLeader: " + vo.getPartyLeader());
 		System.out.println("partyLocation: " + vo.getPartyLocation());
@@ -110,6 +113,24 @@ public class PartyController {
 		return "usr/infra/member/newParty";
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="/newChallger/post", method=RequestMethod.POST)
+	public Map<String, Object> newPartyPost(Model model, @RequestBody Map<String, Object> location) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		
+		Party pt = new Party();
+		System.out.println("model: " + model.getAttribute("location"));
+		
+		if(pt != null) {
+			
+			model.addAttribute(model.getAttribute("location"));
+			returnMap.put("rt", "success");
+		} else {
+			returnMap.put("rt", "fail");
+		}
+		
+		return returnMap;
+	}
 	
 	
 }
