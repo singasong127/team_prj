@@ -44,6 +44,7 @@
 			<exclude-mapping path="/LoginPage" />
 			<exclude-mapping path="/usrLogin" />
 			<exclude-mapping path="/usrJoin" />
+			<exclude-mapping path="/login/kakao" />
 			<exclude-mapping path="/idCheck" />
 			<exclude-mapping path="/nicknameCheck" />
 			<exclude-mapping path="/memberJoin" />
@@ -62,6 +63,8 @@
 			<exclude-mapping path="/memberOneUser" />
 			<exclude-mapping path="/usrLogin" />
 			<exclude-mapping path="/usrJoin" />
+			<exclude-mapping path="/login/kakao" />
+
 			<exclude-mapping path="/memberJoin" />
 			<exclude-mapping path="/newChallger" />
 			<exclude-mapping path="/ptinsert" />

@@ -1,14 +1,11 @@
 package com.team.app.infra.member;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
-import com.team.app.infra.upload.Upload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,15 +16,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.team.app.infra.upload.Upload;
+
 @Controller
 public class MemberController {
 	
 	@Autowired
 	MemberServiceImpl service;
-	
 	@Autowired
 	KakaoAPI kakaoAPI;
-	
+
 //	-------------------------------------------------관리단----------------------------------------------------
 	@RequestMapping(value="/memberList")
 	public String memberList(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception{
@@ -197,6 +195,33 @@ public class MemberController {
 			
 			return "redirect:/";
 		}
+		//kakao login
+	@RequestMapping(value="/login/kakao")
+	public String login(@RequestParam("code") String code, HttpSession session) {
+		System.out.println("code : " + code);
+
+		String access_Token = kakaoAPI.getAccessToken(code);
+		System.out.println("access_Token : " + access_Token);
+
+		HashMap<String, Object> userInfo = kakaoAPI.getUserInfo(access_Token);
+		System.out.println("login Controller : " + userInfo);
+
+		//    클라이언트의 이메일이 존재할 때 세션에 해당 이메일과 토큰 등록
+		if (userInfo.get("nickname") != null) {
+			session.setAttribute("userId", userInfo.get("nickname"));
+			session.setAttribute("access_Token", access_Token);
+			session.setAttribute("userProfile", userInfo.get("profile_image"));
+			session.setAttribute("sessionId", userInfo.get("nickname"));
+		}
+
+		return "redirect:/";
+	}
+
+
+
+
+
+
 //		회원정보 수정
 	@RequestMapping(value="/memberOneUser")
 	public String memberOneUser(Member dto,MemberVo vo, Model model) {

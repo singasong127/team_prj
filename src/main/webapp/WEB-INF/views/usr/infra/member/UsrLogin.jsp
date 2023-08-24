@@ -44,6 +44,9 @@
 			<%--FORM CONTENT ENDS FROM HERE!!--%>
             		</form>
        		<%--FORM CONTENT ENDS FROM HERE!!--%>
+				<a href="https://kauth.kakao.com/oauth/authorize?client_id=adca34fb40e1d2e79631a91ac4c1b21f&redirect_uri=http://localhost/login/kakao&response_type=code">
+					<img src="/resources/img/kakao_login_medium_narrow.png">
+				</a>
 				</div>
             </div>
         </div>
