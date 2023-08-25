@@ -2,7 +2,6 @@ package com.team.app.infra.party;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -89,16 +88,34 @@ public class PartyController {
 	}
 	
 	@RequestMapping(value="/newChallger")
-	public String newParty(Model model, PartyVo vo, HttpSession session) {
+	public String newParty(Model model, @ModelAttribute PartyVo vo, CodeVo cdVo, 
+			HttpSession session) throws Exception {
+		
 		vo.setPartyLeader( (String)session.getAttribute("sessionSeq") );
 		
 		System.out.println("partyLeader: " + vo.getPartyLeader());
+		System.out.println("partyLocation: " + vo.getPartyLocation());
 		
 		Party party = service.selectOne(vo);
+		List<Code> code = cdService.selectCodeName(cdVo);
+		model.addAttribute("code", code);
 		model.addAttribute("party", party);
 		
 		return "usr/infra/member/newParty";
 	}
+	
+//	@ResponseBody
+//    @RequestMapping(value="/newChallger/post", method=RequestMethod.POST)
+//    public Map<String, Object> postNewParty(@RequestBody Map<String, Object> location,
+//    		HttpServletRequest request) throws Exception {
+//    	Map<String, Object> returnMap = new HashMap<String, Object>();
+//    	
+//    	System.out.println("Location: " + location.get("location"));
+//    	
+//    	returnMap.put("lo", location.get("location"));
+//    	returnMap.put("rt", "success");
+//    	return returnMap;
+//    }
 	
 	
 }

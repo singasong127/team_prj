@@ -24,7 +24,7 @@
                         <label for="emailunique" class="col-sm-2 col-form-label">이메일</label>
                         <div class="col-sm-5">
                             <input oninput="checkId()" name="email" type="text" class="form-control" id="emailunique">
-                            <span class="id_ok" >사용가능한 아이디입니다</span>
+                            <span class="id_ok">사용가능한 아이디입니다</span>
                             <span class="id_already">중복된 아이디입니다</span>
                         </div>
                     </div>
@@ -60,10 +60,11 @@
                     <div class="my-3 row mb-3 d-flex justify-content-center">
                         <label for="sample6_postcode" class="col-sm-2 col-form-label">주소</label>
                         <div class="col-sm-5">
-                                <input class="form-control" type="text" id="sample6_postcode" placeholder="우편번호">
+                                <input class="form-control" type="text" name="zipcode" id="sample6_postcode" placeholder="우편번호">
                                 <input class="form-control" type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
                             <input class="form-control" type="text" id="sample6_address" placeholder="주소"><br>
                             <input class="form-control" type="text" id="sample6_detailAddress" placeholder="상세주소">
+                            <input type="hidden" name="address" value="">
                         </div>
                     </div>
                     <%--POSTAL CODE--%>
@@ -79,13 +80,6 @@
                         </div>
                         <%--Gender--%>
 
-
-                        <%--LOCATION--%>
-                        <label for="location" class="col-md-1 col-form-label">거주지</label>
-                        <div class="col-sm-3">
-                            <input type="text" class="form-control" name="location" id="location">
-                        </div>
-                        <%--LOCATION--%>
                     </div>
 
                     <%--DOB--%>
@@ -123,7 +117,7 @@
 
 <script src="/resources/js/datePicker.js"></script>
 <script>
-
+	
     var join = $("form[name='insert']");
     
     $("#joinBtn").on("click", function(e) {
@@ -143,7 +137,7 @@
             // PASSWORD AND RE-PASSWORD VALIDATION
             // PASSWORD AND RE-PASSWORD VALIDATION
         }else{
-
+			$("input[name=address]").val($("#sample6_address").val() + " " + $('#sample6_detailAddress').val());
         	join.attr("action", "/memberJoin").submit();
         } //else tag
         // PASSWORD AND RE-PASSWORD VALIDATION

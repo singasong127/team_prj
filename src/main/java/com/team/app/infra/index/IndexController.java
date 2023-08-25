@@ -1,15 +1,24 @@
 package com.team.app.infra.index;
 
-import java.util.List;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 
-import javax.servlet.http.HttpSession;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.team.app.infra.code.Code;
 import com.team.app.infra.code.CodeServiceImpl;
@@ -48,15 +57,25 @@ public class IndexController {
         return "usr/infra/index/index";
     }
     
-    @GetMapping("/findmap")
-    public String findMap(Model model, PartyVo vo, HttpSession session) {
-    	vo.setPartyLocation( (String)session.getAttribute("partyLocation") );
-    	
-    	Party party = service.selectOne(vo);
-    	model.addAttribute("party", party);
-    	
-    	return "usr/infra/include/map";
-    }
+//    @RequestMapping(value="/findmap")
+//    public String findMap(Model model, PartyVo vo) {
+//    	
+//    	return "usr/infra/include/map";
+//    }
+//    
+//    @ResponseBody
+//    @RequestMapping(value="/findmap/submit", method=RequestMethod.POST)
+//    public Map<String, Object> submitFindMap(@RequestBody Map<String, Object> location, 
+//    		Model model) throws Exception {
+//    	Map<String, Object> returnMap = new HashMap<String, Object>();
+//    	
+//    	System.out.println("Location: " + location.get("location"));
+//    	
+//    	returnMap.put("lo", location.get("location"));
+//    	returnMap.put("rt", "success");
+//    	return returnMap;
+//    }
+    
 
     @RequestMapping(value = "/chat", method = RequestMethod.GET)
     public String chat() {

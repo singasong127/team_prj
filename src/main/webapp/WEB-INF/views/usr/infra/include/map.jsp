@@ -15,7 +15,8 @@
         <div class="mainBox">
             <div class="mainContainer">
             <%--FORM CONTENT STARTS FROM HERE!!--%>
-		        <form name="formMap" autocomplete="off" onsubmit="searchPlaces(); return false;">
+		        <form name="formMap" autocomplete="off" 
+		        onsubmit="searchPlaces(); return false;">
 					<input type="text" class="form-control" id="keyword"
 						placeholder="검색할 단어를 입력" value="" >
 					<!-- <button type="submit" id="btnSearch">
@@ -26,7 +27,6 @@
 				        <ul id="placesList"></ul>
 				        <div id="pagination"></div>
 			    	</div>
-			    	<input type="hidden" name="partyLocation" id="partyLocation" value="">
 				</form>
 	            <div id="map" style="width: 100%; height: 860px;"></div>
             </div>
@@ -40,10 +40,8 @@
 
 <%@ include file="../../../admin/infra/include/partyBuild.jsp" %>
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=54c60ae7f8e07cf5112b5b1d3980bd2d&libraries=services"></script>
-<script type="text/javascript" src="/resources/js/kakaomap.js"></script>
 <script type="text/javascript">
 	
 	
-	
 </script>
+</body>

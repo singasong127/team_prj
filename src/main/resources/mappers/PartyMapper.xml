@@ -117,6 +117,7 @@
 			, partyLeader
     		, partyGen
     		, partyAge
+    		, partyLocation
     		, madeTime
     		, toolNy
     		, partyDesc
@@ -133,6 +134,7 @@
     		, #{partyLeader}
     		, #{partyGen}
     		, #{partyAge}
+    		, #{partyLocation}
     		, #{madeTime}
     		, #{toolNy}
     		, #{partyDesc}
