@@ -66,7 +66,7 @@
 	    }
 	    
 		// 음식점만 검색되게 합니다
-		ps.keywordSearch(keyword + "체육시설", placesSearchCB, {
+		ps.keywordSearch(keyword, placesSearchCB, {
 			size: 5,
 			useMapCenter: true,
 			useMapBounds: true
@@ -197,31 +197,37 @@
 			
 			// 주소 문자열 자르기
 			var arrAddressFull = places.address_name.split(" ");
+			var arrAddress = arrAddressFull[0] + arrAddressFull[1];
 			
-			var arrAddress = arrAddressFull[0] + " " + arrAddressFull[1];
+			var splitAddress = [...arrAddress];
+			var address = splitAddress[0] + splitAddress[1] + " " + splitAddress[2] + splitAddress[3]; 
+			console.log(address);
 			
-			$("#location").val(arrAddress);
+			$("#srcGo").val(address);
 			
-			$.ajax({
+			$("#modalMap").hide();
+			
+			/*$.ajax({
 					async : true,
 					cache : false,
 					type : "post",
 					contentType : "application/json",
-					url : "/findmap/submit",
+					url : "/newChallger/post",
 					dataType : 'json',
 					data : JSON.stringify({
 						location : arrAddress
 						}),
 					success : function(response) {
 						if(response.rt == "success") {
-							// location.href = "/newChallger/post";
+							alert(response.lo);
+							$("#srcGo").val(response.lo);
 						}
 					},
 					error : function(jqXHR, textStatus, errorThrown) {
 						alert("ajaxUpdate " + jqXHR.textStatus + " : "
 								+ jqXHR.errorThrown);
 					},
-				});
+				});*/
 			
 			
 		});
@@ -229,6 +235,7 @@
 		
 	    return el;
 	}
+	
 	
 	
 	// 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다

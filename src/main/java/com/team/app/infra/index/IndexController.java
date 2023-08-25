@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.team.app.infra.code.Code;
@@ -56,34 +57,24 @@ public class IndexController {
         return "usr/infra/index/index";
     }
     
-    @RequestMapping(value="/findmap")
-    public String findMap(Model model, PartyVo vo) {
-    	
-    	return "usr/infra/include/map";
-    }
-    
-    @ResponseBody
-    @RequestMapping(value="/findmap/submit", method=RequestMethod.POST)
-    public Map<String, Object> submitFindMap(@RequestBody Map<String, Object> location, 
-    		Model model, RedirectAttributes rttr) throws Exception {
-    	Map<String, Object> returnMap = new HashMap<String, Object>();
-    	
-    	String lo = (String)location.get("location");
-    	
-    	rttr.addAttribute("url", "redirect:/newChallger/post");
-    	
-    	if(lo != null) {
-    		model.addAttribute("location", lo);
-    		returnMap.put("location", model.getAttribute("location"));
-    		returnMap.put("url", rttr.getAttribute("url"));
-    		returnMap.put("rt", "success");
-    		System.out.println("Location: " + model.getAttribute("location"));
-    	} else {
-    		returnMap.put("rt", "fail");
-    	}
-    	
-    	return returnMap;
-    }
+//    @RequestMapping(value="/findmap")
+//    public String findMap(Model model, PartyVo vo) {
+//    	
+//    	return "usr/infra/include/map";
+//    }
+//    
+//    @ResponseBody
+//    @RequestMapping(value="/findmap/submit", method=RequestMethod.POST)
+//    public Map<String, Object> submitFindMap(@RequestBody Map<String, Object> location, 
+//    		Model model) throws Exception {
+//    	Map<String, Object> returnMap = new HashMap<String, Object>();
+//    	
+//    	System.out.println("Location: " + location.get("location"));
+//    	
+//    	returnMap.put("lo", location.get("location"));
+//    	returnMap.put("rt", "success");
+//    	return returnMap;
+//    }
     
 
     @RequestMapping(value = "/chat", method = RequestMethod.GET)

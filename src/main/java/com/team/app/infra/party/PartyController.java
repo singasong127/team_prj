@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.team.app.infra.code.Code;
@@ -94,13 +95,11 @@ public class PartyController {
 		return "redirect:/";
 	}
 	
-	
 	@RequestMapping(value="/newChallger")
-	public String newParty(Model model, @ModelAttribute PartyVo vo, CodeVo cdVo, HttpSession session,
-			HttpServletRequest request, RedirectAttributes rttr) {
+	public String newParty(Model model, @ModelAttribute PartyVo vo, CodeVo cdVo, 
+			HttpSession session) throws Exception {
 		
 		vo.setPartyLeader( (String)session.getAttribute("sessionSeq") );
-		vo.setPartyLocation( (String)model.getAttribute("location") );
 		
 		System.out.println("partyLeader: " + vo.getPartyLeader());
 		System.out.println("partyLocation: " + vo.getPartyLocation());
@@ -113,24 +112,18 @@ public class PartyController {
 		return "usr/infra/member/newParty";
 	}
 	
-	@ResponseBody
-	@RequestMapping(value="/newChallger/post", method=RequestMethod.POST)
-	public Map<String, Object> newPartyPost(Model model, @RequestBody Map<String, Object> location) throws Exception {
-		Map<String, Object> returnMap = new HashMap<String, Object>();
-		
-		Party pt = new Party();
-		System.out.println("model: " + model.getAttribute("location"));
-		
-		if(pt != null) {
-			
-			model.addAttribute(model.getAttribute("location"));
-			returnMap.put("rt", "success");
-		} else {
-			returnMap.put("rt", "fail");
-		}
-		
-		return returnMap;
-	}
+//	@ResponseBody
+//    @RequestMapping(value="/newChallger/post", method=RequestMethod.POST)
+//    public Map<String, Object> postNewParty(@RequestBody Map<String, Object> location,
+//    		HttpServletRequest request) throws Exception {
+//    	Map<String, Object> returnMap = new HashMap<String, Object>();
+//    	
+//    	System.out.println("Location: " + location.get("location"));
+//    	
+//    	returnMap.put("lo", location.get("location"));
+//    	returnMap.put("rt", "success");
+//    	return returnMap;
+//    }
 	
 	
 }

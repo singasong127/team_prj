@@ -40,9 +40,8 @@
 
 <%@ include file="../../../admin/infra/include/partyBuild.jsp" %>
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=54c60ae7f8e07cf5112b5b1d3980bd2d&libraries=services"></script>
-<script type="text/javascript" src="/resources/js/kakaomap.js"></script>
 <script type="text/javascript">
 	
 	
 </script>
+</body>

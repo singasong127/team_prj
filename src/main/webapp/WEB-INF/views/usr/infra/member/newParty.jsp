@@ -6,7 +6,31 @@
 
 
 <!DOCTYPE html>
-<html lang="kr">
+<html lang="ko">
+<style>
+	#modalMap {
+		width: 70%;
+		height: 70%;
+		position: fixed;
+		top: 15%;
+		left: 15%;
+		z-index: 999;
+		overflow-y: hidden;
+	}
+	
+	#formMapWrap {
+		width: 100%;
+		position: relactive;
+	}
+	
+	#formMap {
+		position: absolute;
+		top: 5%;
+		left: 5%;
+		z-index: 9999;
+	}
+</style>
+
 <%@include file="../include/head.jsp"%>
 <body>
 <div>
@@ -99,10 +123,10 @@
 						<div class="labelBox">
 							<div class="inputBox" style="width: 60%">
 							 	<label for="srcGo">지역</label>
-								<div class="input-group">
+								<div class="input-group d-flex">
 									<input id="srcGo" name="partyLocation" class="searchInput" type="text"
-									 value="<c:out value=' ${vo.partyLocation }' />" readonly>
-	                   			 	<span id="shMap" class="shortSpan material-symbols-outlined" onclick="location.href='/findmap'" style="cursor: pointer">search</span>
+									 value="" readonly>
+	                   			 	<span id="shMap" class="shortSpan material-symbols-outlined" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="cursor: pointer">search</span>
 								</div>
 							</div>
 						</div>
@@ -137,9 +161,51 @@
             </div>
         </div>
     </main>
+    <%--모달 생성--%>
+	<div class="modal" id="modalMap" style="display: none; box-shadow: #ccc -5px -5px 10px 0px">
+	    <div class="modal-header" style="background-color: limegreen">
+	        <h2 style="color: #fff; font-weight: bold;">지역 검색</h2>
+	        <a class="modalClose"><span class="material-symbols-outlined">close</span></a>
+	    </div>
+	    <div class="modal-body" style="background-color: #fff;">
+	        <div class="formBoxInfo modal-dialog-centered" id="formMapWrap">
+	            <form name="formMap" autocomplete="off" 
+			        onsubmit="searchPlaces(); return false;" id="formMap">
+					<input type="text" class="form-control" id="keyword"
+						placeholder="검색할 단어를 입력" value="" >
+					<!-- <button type="submit" id="btnSearch">
+						<i class="fa-solid fa-magnifying-glass"></i>
+					</button> -->
+		       		<div id="list" class="bg_white">
+				        <div class="option"></div>
+				        <ul id="placesList"></ul>
+				        <div id="pagination"></div>
+			    	</div>
+				</form>
+	            <div id="map" style="width: 100%; height: 540px;"></div>
+	        </div>
+	    </div>
+	    <div class="modal-footer" style="background-color: #fff">
+	        <button class="modalBad">나가기</button>
+	    </div>
+	</div>
+    
 </div>
 
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=54c60ae7f8e07cf5112b5b1d3980bd2d&libraries=services"></script>
+<script type="text/javascript" src="/resources/js/kakaomap.js"></script>
 <script type="text/javascript">
+	
+	$("#shMap").on("click", function() {
+		$("#modalMap").show();
+	});
+	
+	$(".modalClose").on("click", function() {
+		$("#modalMap").hide();
+	});
+
+
 $('#playDt')
 .datepicker({
     format: 'yyyy-mm-dd', //데이터 포맷 형식(yyyy : 년 mm : 월 dd : 일 )
@@ -216,3 +282,4 @@ $(".modalOk").on("click", function(){
 });
 	
 </script>
+</body>
