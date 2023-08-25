@@ -161,7 +161,7 @@ public class MemberController {
 			dto.setSignUpDt(dt.getNowDt());
 			
 			service.newMemberJoin(dto);
-			return "redirect:/";
+			return "redirect:/LoginPage";
 		}
 		
 //		로그인
@@ -225,7 +225,7 @@ public class MemberController {
 
 //		회원정보 수정
 	@RequestMapping(value="/memberOneUser")
-	public String memberOneUser(Member dto,MemberVo vo, Model model) {
+	public String memberOneUser(Member dto, MemberVo vo, Model model) throws Exception {
 		Member member = service.memberOne(vo);
 		model.addAttribute("member", member);
 

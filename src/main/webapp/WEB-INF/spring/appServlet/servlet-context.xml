@@ -76,6 +76,7 @@
 			<exclude-mapping path="/ptupdate" />
 			<exclude-mapping path="/ptform" />
 			<exclude-mapping path="/ptlist" />
+			<exclude-mapping path="/memberList" />
 			<beans:bean id="checkAdminInterception" class="com.team.app.interceptor.CheckAdminInterception"/>
 		</interceptor>
 	</interceptors>
