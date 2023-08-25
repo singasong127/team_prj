@@ -237,10 +237,10 @@
 										<label for="dob" class="form-label">생년월일</label>
 										<input type="text" class="form-control" id="dob" name="" disabled value="<c:out value="${member.dob}"/>">
 									</div>
-									<div class="col-md-2">
+									<%-- <div class="col-md-2">
 										<label for="location" class="form-label">거주지</label>
 										<input type="text" class="form-control" id="location" name="location" value="<c:out value="${member.location}"/>" >
-									</div>
+									</div> --%>
 								</div>
 
 								<div class="row mb-3">

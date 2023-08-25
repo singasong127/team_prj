@@ -230,7 +230,7 @@ public class MemberController {
 
 
 
-//		회원정보 수정
+//		회원정보
 	@RequestMapping(value="/memberOneUser")
 	public String memberOneUser(Member dto,MemberVo vo, Model model) {
 		Member member = service.memberOne(vo);
