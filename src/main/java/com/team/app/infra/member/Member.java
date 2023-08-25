@@ -104,10 +104,12 @@ public class Member {
 	private String pwd;
 	private String gender;
 	private String dob;
-	private String location;
+	private String zipcode;
+	private String address;
 	private String memDesc;
 	private String delNy;
-
+	private String signUpDt;
+	private String uptProfileDt;
 
 	public Integer getType() {
 		return type;
@@ -229,12 +231,20 @@ public class Member {
 		this.dob = dob;
 	}
 
-	public String getLocation() {
-		return location;
+	public String getZipcode() {
+		return zipcode;
+	}
+	
+	public void setZipcode(String zipcode) {
+		this.zipcode = zipcode;
+	}
+	
+	public String getAddress() {
+		return address;
 	}
 
-	public void setLocation(String location) {
-		this.location = location;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	public String getMemDesc() {
@@ -251,6 +261,23 @@ public class Member {
 
 	public void setDelNy(String delNy) {
 		this.delNy = delNy;
+	}
+
+
+	public String getSignUpDt() {
+		return signUpDt;
+	}
+
+	public void setSignUpDt(String signUpDt) {
+		this.signUpDt = signUpDt;
+	}
+
+	public String getUptProfileDt() {
+		return uptProfileDt;
+	}
+
+	public void setUptProfileDt(String uptProfileDt) {
+		this.uptProfileDt = uptProfileDt;
 	}
 }
 

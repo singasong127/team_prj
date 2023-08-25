@@ -6,6 +6,9 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+
+import com.team.app.infra.index.CurrentDt;
+import com.team.app.infra.upload.Upload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,7 +49,9 @@ public class MemberController {
 	
 //	유저
 	@RequestMapping(value="/memberInsert")
-	public String memberInsertUsr() {
+	public String memberInsertUsr(Member dto, CurrentDt dt) {
+		dto.setSignUpDt(dt.getNowDt());
+		
 		return "admin/infra/member/memberInsert";
 	}
 
@@ -110,7 +115,8 @@ public class MemberController {
 
 //	정보변경
 	@RequestMapping(value="/memberUpdate")
-	public String memberUpdate(Member dto) throws Exception {
+	public String memberUpdate(Member dto, CurrentDt dt) throws Exception {
+		dto.setUptProfileDt(dt.getNowDt());
 		service.memberUpdate(dto);
 		return "redirect:/memberList";
 	}
@@ -158,7 +164,9 @@ public class MemberController {
 	 
 //		회원가입 (유저용)
 		@RequestMapping(value="/memberJoin")
-		public String memberJoin(Member dto) throws Exception {
+		public String memberJoin(Member dto, CurrentDt dt) throws Exception {
+			dto.setSignUpDt(dt.getNowDt());
+			
 			service.newMemberJoin(dto);
 			return "redirect:/";
 		}

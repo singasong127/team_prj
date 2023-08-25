@@ -111,8 +111,8 @@
 									<input type="text" class="form-control" id="dob" name="" disabled value="<c:out value="${member.dob}"/>">
 								</div>
 								<div class="col-md-2">
-									<label for="location" class="form-label">거주지</label>
-									<input type="text" class="form-control" id="location" name="location" value="<c:out value="${member.location}"/>" >
+									<label for="address" class="form-label">주소</label>
+									<input type="text" class="form-control" id="address" name="address" value="<c:out value="${member.address}"/>" >
 								</div>
 							</div>
 

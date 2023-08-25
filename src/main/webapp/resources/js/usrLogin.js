@@ -1,65 +1,30 @@
 // DUPLICATE CHECK
 // DUPLICATE CHECK
-
 checkId = function(e) {
+    var userId = $("#emailunique").val();
 
-    const email = $("input[name=email]").val();
-
-    if (email == "") {
+    if (userId == "" || userId == null) {
         $('.id_ok').css("display", 'none');
         $('.id_already').css("display", 'none');
         return;
-    }else{
-        $.ajax({
-            async: true,
-            cache: false,
-            url: "/idCheck",
-            type: 'post',
-            data: {"email": email.trim()},
-            success: function(response) {
-                if(response.rt == "available") {
-                    console.log("진행시켜!");
-                    console.log(email);
-                    $('.id_ok').css("display", 'inline-block');
-                    $('.id_already').css("display", "none");
-                } else {
-                    console.log("하아");
-                    $('.id_ok').css("display", 'none');
-                    $('.id_already').css("display", "inline-block");
-                }
-            }, error: function() { $(email).focus(); }
-        });
     }
 
-
-
-}
-
-checkNickname = function(e) {
-    const nickname = $("input[name=nickname]").val();
-
-    if (!nickname) {
-        $('.nickname_ok').css("display", 'none');
-        $('.nickname_already').css("display", 'none');
-        return;
-    }
-
-
+    var email = $("input[name=email]").val();
     $.ajax({
         async: true,
         cache: false,
-        url: "/nicknameCheck",
+        url: "/idCheck",
         type: 'post',
-        data: {"nickname": nickname},
+        data: {"email": email},
         success: function(response) {
             if(response.rt == "available") {
-                $('.nickname_ok').css("display", 'inline-block');
-                $('.nickname_already').css("display", "none");
+                $('.id_ok').css("display", 'inline-block');
+                $('.id_already').css("display", "none");
             } else {
-                $('.nickname_ok').css("display", 'none');
-                $('.nickname_already').css("display", "inline-block");
+                $('.id_ok').css("display", 'none');
+                $('.id_already').css("display", "inline-block");
             }
-        }, error: function() { $(nickname).focus(); }
+        }, error: function() { $("input[name=email]").focus(); }
     });
 }
 // DUPLICATE CHECK

@@ -6,7 +6,31 @@
 
 
 <!DOCTYPE html>
-<html lang="kr">
+<html lang="ko">
+<style>
+	#modalMap {
+		width: 70%;
+		height: 70%;
+		position: fixed;
+		top: 15%;
+		left: 15%;
+		z-index: 999;
+		overflow-y: hidden;
+	}
+	
+	#formMapWrap {
+		width: 100%;
+		position: relactive;
+	}
+	
+	#formMap {
+		position: absolute;
+		top: 5%;
+		left: 5%;
+		z-index: 9999;
+	}
+</style>
+
 <%@include file="../include/head.jsp"%>
 <body>
 <div>
@@ -19,7 +43,7 @@
             
             <!-- 파티 생성 데이터 담을 폼 -->
             <div class="formBox mx-auto">
-	            <form name="partyTime">
+	            <form name="partyTime" method="post" autocomplete="off">
 	            	<input type="hidden" value="<c:out value='${sessionSeq }' />" name="partyLeader">
 	            	<!-- 파티 생성 박스 -->
 					<div class="d-flex flex-column p-4">
@@ -40,7 +64,6 @@
 							
 							<select name="playerMax" id="playerMax">
 								<option selected >::인원</option>
-								<option value="1">1명</option>
 								<option value="2">2명</option>
 								<option value="3">3명</option>
 								<option value="4">4명</option>
@@ -66,7 +89,8 @@
 						<!-- 날짜 -->
 						<div class="labelBox">
 								<label for="playDt" class="col-sm-2 col-form-label">날짜</label>
-                           		<input type="text" class="form-control" name="playDt" id="playDt">
+                           		<input type="text" class="form-control" name="playDt"
+                           		 id="playDt" placeholder="<c:out value='${CurrentDt.getNowDt }' />">
 						</div>
 						
 						<!-- 시간 -->
@@ -82,11 +106,11 @@
 							<div class="labelBox" id="partyGen">
 								<span>성별</span>
 								<div class="form-check form-check-inline">
-									<input type="radio" name="gender" value="0">
+									<input type="radio" name="partyGen" value="0">
 									<label>남성</label>
 								</div>
 								<div class="form-check form-check-inline">
-									<input type="radio"  name="gender" value="1">
+									<input type="radio"  name="partyGen" value="1">
 									<label>여성</label>
 								</div>
 								<div class="form-check form-check-inline">
@@ -99,10 +123,10 @@
 						<div class="labelBox">
 							<div class="inputBox" style="width: 60%">
 							 	<label for="srcGo">지역</label>
-								<div class="input-group">
+								<div class="input-group d-flex">
 									<input id="srcGo" name="partyLocation" class="searchInput" type="text"
-									 value="<c:out value="${partyLocation }" />" >
-	                   			 	<span id="shMap" class="shortSpan material-symbols-outlined" onclick="location.href='/findmap'">search</span>
+									 value="" readonly>
+	                   			 	<span id="shMap" class="shortSpan material-symbols-outlined" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="cursor: pointer">search</span>
 								</div>
 							</div>
 						</div>
@@ -137,20 +161,59 @@
             </div>
         </div>
     </main>
+    <%--모달 생성--%>
+	<div class="modal" id="modalMap" style="display: none; box-shadow: #ccc -5px -5px 10px 0px">
+	    <div class="modal-header" style="background-color: limegreen">
+	        <h2 style="color: #fff; font-weight: bold;">지역 검색</h2>
+	        <a class="modalClose"><span class="material-symbols-outlined">close</span></a>
+	    </div>
+	    <div class="modal-body" style="background-color: #fff;">
+	        <div class="formBoxInfo modal-dialog-centered" id="formMapWrap">
+	            <form name="formMap" autocomplete="off" 
+			        onsubmit="searchPlaces(); return false;" id="formMap">
+					<input type="text" class="form-control" id="keyword"
+						placeholder="검색할 단어를 입력" value="" >
+					<!-- <button type="submit" id="btnSearch">
+						<i class="fa-solid fa-magnifying-glass"></i>
+					</button> -->
+		       		<div id="list" class="bg_white">
+				        <div class="option"></div>
+				        <ul id="placesList"></ul>
+				        <div id="pagination"></div>
+			    	</div>
+				</form>
+	            <div id="map" style="width: 100%; height: 540px;"></div>
+	        </div>
+	    </div>
+	    <div class="modal-footer" style="background-color: #fff">
+	        <button class="modalBad">나가기</button>
+	    </div>
+	</div>
+    
 </div>
 
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=54c60ae7f8e07cf5112b5b1d3980bd2d&libraries=services"></script>
+<script type="text/javascript" src="/resources/js/kakaomap.js"></script>
 <script type="text/javascript">
+	
+	$("#shMap").on("click", function() {
+		$("#modalMap").show();
+	});
+	
+	$(".modalClose").on("click", function() {
+		$("#modalMap").hide();
+	});
+
+
 $('#playDt')
 .datepicker({
     format: 'yyyy-mm-dd', //데이터 포맷 형식(yyyy : 년 mm : 월 dd : 일 )
-    startDate: '-10d', //달력에서 선택 할 수 있는 가장 빠른 날짜. 이전으로는 선택 불가능 ( d : 일 m : 달 y : 년 w : 주)
-    endDate: '+10d', //달력에서 선택 할 수 있는 가장 느린 날짜. 이후로 선택 불가 ( d : 일 m : 달 y : 년 w : 주)
+    startDate: '0d', //달력에서 선택 할 수 있는 가장 빠른 날짜. 이전으로는 선택 불가능 ( d : 일 m : 달 y : 년 w : 주)
+    endDate: '+14d', //달력에서 선택 할 수 있는 가장 느린 날짜. 이후로 선택 불가 ( d : 일 m : 달 y : 년 w : 주)
     autoclose: true, //사용자가 날짜를 클릭하면 자동 캘린더가 닫히는 옵션
     calendarWeeks: false, //캘린더 옆에 몇 주차인지 보여주는 옵션 기본값 false 보여주려면 true
     clearBtn: false, //날짜 선택한 값 초기화 해주는 버튼 보여주는 옵션 기본값 false 보여주려면 true
-    datesDisabled: ['2019-06-24', '2019-06-26'], //선택 불가능한 일 설정 하는 배열 위에 있는 format 과 형식이 같아야함.
-    daysOfWeekDisabled: [0, 6], //선택 불가능한 요일 설정 0 : 일요일 ~ 6 : 토요일
-    daysOfWeekHighlighted: [3], //강조 되어야 하는 요일 설정
     disableTouchKeyboard: false, //모바일에서 플러그인 작동 여부 기본값 false 가 작동 true가 작동 안함.
     immediateUpdates: false, //사용자가 보는 화면으로 바로바로 날짜를 변경할지 여부 기본값 :false
     multidate: false, //여러 날짜 선택할 수 있게 하는 옵션 기본값 :false
@@ -211,8 +274,13 @@ $(".modalOk").on("click", function(){
 	
 	var partyTime = $('form[name=partyTime]');
 	
-	partyTime.attr("action", "/ptinsert").submit();
+	if(partyTime.find("input").val() == null) {
+		alert("파티 정보를 입력해주세요.");
+	} else {
+		partyTime.attr("action", "/ptinsert").submit();
+	}
 	
 });
 	
 </script>
+</body>
