@@ -10,7 +10,8 @@ public class MemberVo {
 	private String pwd;
 	private String gender;
 	private String dob;
-	private String location;
+	private String zipcode;
+	private String address;
 	private String memDesc;
 	private String delNy;
 	private String signUpDt;
@@ -112,12 +113,21 @@ public class MemberVo {
 		this.dob = dob;
 	}
 
-	public String getLocation() {
-		return location;
+
+	public String getZipcode() {
+		return zipcode;
 	}
 
-	public void setLocation(String location) {
-		this.location = location;
+	public void setZipcode(String zipcode) {
+		this.zipcode = zipcode;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	public String getMemDesc() {

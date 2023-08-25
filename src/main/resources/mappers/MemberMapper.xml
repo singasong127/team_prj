@@ -16,7 +16,7 @@
 			, pwd
 			, gender
 			, dob
-			, location
+			, address
 			, memDesc
 			, delNy
 	</sql>
@@ -119,7 +119,7 @@
 			, pwd
 			, gender
 			, dob
-			, location
+			, address
 			, memDesc
 			, delNy
 			)VALUES(
@@ -129,7 +129,7 @@
 				, #{pwd}
 				, #{gender}
 				, #{dob}
-				, #{location}
+				, #{address}
 				, #{memDesc}
 				, 0
 			)
@@ -145,9 +145,11 @@
 			, pwd
 			, gender
 			, dob
-			, location
+			, zipcode
+			, address
 			, memDesc
 			, delNy
+			, signUpDt
 			)VALUES(
 				0
 				, #{nickname}
@@ -155,9 +157,11 @@
 				, #{pwd}
 				, #{gender}
 				, #{dob}
-				, #{location}
+				, #{zipcode}
+				, #{address}
 				, #{memDesc}
 				, 0
+				, #{signUpDt}
 			)
 	</insert>
 
@@ -194,8 +198,10 @@
 		SET
 			nickname = #{nickname}
 			, pwd = #{pwd}
-			, location = #{location}
+			, zipcode = #{zipcode}
+			, address = #{address}
 			, memDesc = #{memDesc}
+			, uptProfileDt = #{uptProfileDt}
 		WHERE 1=1
 			AND seq = #{seq}
 	</update>
