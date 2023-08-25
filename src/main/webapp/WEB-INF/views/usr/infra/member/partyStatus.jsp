@@ -36,6 +36,7 @@
 
 					</div>
 					<div class="partHalf partyStatus_half">
+						<!-- 파티장 -->
 						<div class="userInfo">
 							<div class="userInfo_img">
 								<img src="${sessionProfilePath}${sessionProfileName}">
@@ -44,7 +45,10 @@
 								<h6>${sessionId}</h6>
 							</div>
 						</div>
+						<!-- 파티원 -->
+						
 					</div>
+					
 					<%--FORM CONTENT STARTS FROM HERE!!--%>
 					<%--FORM CONTENT ENDS FROM HERE!!--%>
 

@@ -126,7 +126,7 @@
 								<%--SUBMIT BUTTON--%>
 								<%--SUBMIT BUTTON--%>
 							<div class="col-2 justify-content-md-center">
-								<button class="updateBtn btn btn-success btn-lg" >수정</button>
+								<button  class="updateBtn btn btn-success btn-lg" >수정</button>
 							</div>
 							<div class="col-2 justify-content-md-center">
 								<button class="deleteBtn btn btn-danger btn-lg" >회원탈퇴</button>
