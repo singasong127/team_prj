@@ -80,7 +80,7 @@
 												<c:when test="${list.gender == 2 }">기타</c:when>
 											</c:choose>
 										</td>
-										<td><c:out value="${list.location }"></c:out></td>
+										<td><c:out value="${list.address }"></c:out></td>
 
 										<td>
 											<button class="detailBtn" onclick="location.href='/memberOne?seq=<c:out value = '${list.seq}'/>'">
