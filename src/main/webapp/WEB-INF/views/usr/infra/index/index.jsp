@@ -139,7 +139,6 @@
             <%--FORM CONTENT STARTS FROM HERE!!--%>
             	<div class="excuteBox">
 	            	<button class="detailBtn" id="btnCre" onclick="location.href='/newChallger'">파티생성</button>
-	            	<button class="detailBtn" onclick="location.href='/PartyTest'">테스트</button>
 	            	<button class="detailBtn" id="btnSh"><i class="bi bi-search"></i></button>
             	</div>
 			<%--FORM CONTENT ENDS FROM HERE!!--%>

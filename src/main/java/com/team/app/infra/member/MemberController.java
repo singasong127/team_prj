@@ -111,7 +111,7 @@ public class MemberController {
 	public String memberUpdate(Member dto, CurrentDt dt) throws Exception {
 		dto.setUptProfileDt(dt.getNowDt());
 		service.memberUpdate(dto);
-		return "redirect:/memberList";
+		return "redirect:/";
 	}
 	
 //	uelete?

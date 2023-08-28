@@ -29,6 +29,51 @@
 		left: 5%;
 		z-index: 9999;
 	}
+	
+	#list {
+		background-color: #fff; 
+		border-radius: 5px; 
+		display: none;
+	}
+	
+	#placesList {
+		border-left: 1px solid #ccc;
+		border-right: 1px solid #ccc;
+	}
+	
+	#placesList>li {
+		border-bottom: 1px solid #ccc;
+	}
+	
+	#pagination>a {
+		margin: 0 5px;
+		text-decoration: none;
+		color: #000;
+	}
+	
+	#pagination>a:first-of-type {
+		margin-left: 0;		
+	}
+	
+	#pagination>a:last-of-type {
+		margin-right: 0;		
+	}
+	
+	.on {
+		font-weight: bold;
+		color: limegreen;
+	}
+	
+	.item {
+		padding: 5px 20px;
+		margin-left: -32px;
+	}
+	
+	.item:hover {
+		background-color: #ccc;
+		cursor: pointer;
+	}
+	
 </style>
 
 <%@include file="../include/head.jsp"%>
@@ -179,7 +224,7 @@
 		       		<div id="list" class="bg_white">
 				        <div class="option"></div>
 				        <ul id="placesList"></ul>
-				        <div id="pagination"></div>
+				        <div id="pagination" style="padding-left: 25%"></div>
 			    	</div>
 				</form>
 	            <div id="map" style="width: 100%; height: 540px;"></div>
