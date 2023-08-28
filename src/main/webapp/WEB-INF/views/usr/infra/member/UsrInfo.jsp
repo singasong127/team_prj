@@ -110,7 +110,7 @@
 									<label for="dob" class="form-label">생년월일</label>
 									<input type="text" class="form-control" id="dob" name="" disabled value="<c:out value="${member.dob}"/>">
 								</div>
-								<div class="col-md-2">
+								<div class="col-md-3">
 									<label for="address" class="form-label">주소</label>
 									<input type="text" class="form-control" id="address" name="address" value="<c:out value="${member.address}"/>" >
 								</div>
@@ -145,7 +145,6 @@
 		</div>
 	</div>
 </main>
-</div>
 <%--script code--%>
 <script type="text/javascript">
 	var memberForm = $("form[name='memberInfo']");
