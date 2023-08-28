@@ -34,34 +34,50 @@
         <c:choose>
         	<c:when test="${not empty sessionId}">
                 <c:choose>
-                    <c:when test="${empty sessionProfilePath}">
+                    <c:when test="${not empty userId}">
                         <div class="dropdown">
                             <a id="headerProfile" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img style="object-fit: cover; align-self: center" id="uploadImgProfilePreview" src="/resources/img/defaultProfile.png" class="rounded-circle d-block" width="68" height="68">
+                                <img style="object-fit: cover; align-self: center" id="uploadImgProfilePreview" src="${userProfile}" class="rounded-circle d-block" width="68" height="68">
                             </a>
                             <ul class="dropdown-menu">
-                                <li>
-                                    <a class="dropdown-item" onclick="
-                                            location.href='<c:if test="${sessionType eq 1}">/memberOne?seq=<c:out value='${sessionSeq}'/></c:if><c:if test="${sessionType eq 0}">/memberOneUser?seq=<c:out value='${sessionSeq}'/></c:if>'">
-                                        내 정보
-                                    </a>
-                                </li>
+<%--                                <li><a class="dropdown-item" onclick="location.href='/memberOne?seq=<c:out value='${sessionSeq}'/>'">내 정보</a></li>--%>
                                 <li><a class="dropdown-item" onclick="location.href='/usrLogout'">로그아웃</a></li>
                             </ul>
                         </div>
                     </c:when>
                     <c:otherwise>
-                        <div class="dropdown">
-                            <a id="headerProfile" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img style="object-fit: cover; align-self: center" id="uploadImgProfilePreview" src="<c:out value="${sessionProfilePath}"/><c:out value="${sessionProfileName}"/>" class="rounded-circle d-block" width="68" height="68">
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" onclick="location.href='/memberOne?seq=<c:out value='${sessionSeq}'/>'">내 정보</a></li>
-                                <li><a class="dropdown-item" onclick="location.href='/usrLogout'">로그아웃</a></li>
-                            </ul>
-                        </div>
+                        <c:choose>
+                            <c:when test="${empty sessionProfilePath}">
+                                <div class="dropdown">
+                                    <a id="headerProfile" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <img style="object-fit: cover; align-self: center" id="uploadImgProfilePreview" src="/resources/img/defaultProfile.png" class="rounded-circle d-block" width="68" height="68">
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a class="dropdown-item" onclick="
+                                                    location.href='<c:if test="${sessionType eq 1}">/memberOne?seq=<c:out value='${sessionSeq}'/></c:if><c:if test="${sessionType eq 0}">/memberOneUser?seq=<c:out value='${sessionSeq}'/></c:if>'">
+                                                내 정보
+                                            </a>
+                                        </li>
+                                        <li><a class="dropdown-item" onclick="location.href='/usrLogout'">로그아웃</a></li>
+                                    </ul>
+                                </div>
+                            </c:when>
+                            <c:otherwise>
+                                <div class="dropdown">
+                                    <a id="headerProfile" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <img style="object-fit: cover; align-self: center" id="uploadImgProfilePreview" src="<c:out value="${sessionProfilePath}"/><c:out value="${sessionProfileName}"/>" class="rounded-circle d-block" width="68" height="68">
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" onclick="location.href='/memberOne?seq=<c:out value='${sessionSeq}'/>'">내 정보</a></li>
+                                        <li><a class="dropdown-item" onclick="location.href='/usrLogout'">로그아웃</a></li>
+                                    </ul>
+                                </div>
+                            </c:otherwise>
+                        </c:choose>
                     </c:otherwise>
                 </c:choose>
+
         	</c:when>
 	        <c:otherwise>
 		        <div onclick="location.href='/LoginPage'" class="outBtn">

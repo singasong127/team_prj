@@ -153,6 +153,9 @@ public class MemberServiceImpl implements MemberService {
 	public int selectOneCheckId(MemberVo vo) {
 		return dao.selectOneCheckId(vo);
 	}
+	public int selectOneCheckNickname(MemberVo vo) {
+		return dao.selectOneCheckNickname(vo);
+	}
 
 
 }

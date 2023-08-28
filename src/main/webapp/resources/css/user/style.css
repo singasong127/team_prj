@@ -1813,10 +1813,22 @@ select{
     position: relative;
     left: 0px;
 }
+.nickname_already,.nickname_ok{
+    display: none;
+    font-size: 13px;
+    position: relative;
+    left: 0px;
+}
 .id_ok{
     color:forestgreen;
 }
+.nickname_ok{
+    color:forestgreen;
+}
 .id_already{
+    color: red;
+}
+.nickname_already{
     color: red;
 }
 /*LOGIN*/

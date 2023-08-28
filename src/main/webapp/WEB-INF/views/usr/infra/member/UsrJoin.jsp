@@ -34,9 +34,9 @@
                     <div class="my-3 row mb-3 d-flex justify-content-center">
                         <label for="nickunique" class="col-sm-2 col-form-label">닉네임</label>
                         <div class="col-sm-5">
-                            <input name="nickname" type="text" class="form-control" id="nickunique">
-                            <span class="id_ok" >사용가능한 닉네임입니다.</span>
-                            <span class="id_already">중복된 닉네임입니다.</span>
+                            <input name="nickname" oninput="checkNickname()" type="text" class="form-control" id="nickunique">
+                            <span class="nickname_ok" >사용가능한 닉네임입니다.</span>
+                            <span class="nickname_already">중복된 닉네임입니다.</span>
                         </div>
                     </div>
                     <%--닉네임--%>
