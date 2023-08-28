@@ -34,7 +34,8 @@ public class KakaoAPI {public String getAccessToken (String authorize_code) {
         StringBuilder sb = new StringBuilder();
         sb.append("grant_type=authorization_code");
         sb.append("&client_id=adca34fb40e1d2e79631a91ac4c1b21f");
-        sb.append("&redirect_uri=http://localhost/login/kakao");
+//        sb.append("&redirect_uri=http://localhost/login/kakao");
+        sb.append("&redirect_uri=http://43.200.5.22:8080/login/kakao");
         sb.append("&code=" + authorize_code);
         bw.write(sb.toString());
         bw.flush();
