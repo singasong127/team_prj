@@ -12,7 +12,7 @@
             padding:0;
         }
         .container{
-            width: 500px;
+            width: 300px;
             margin: 0 auto;
             padding: 25px
         }
@@ -25,8 +25,8 @@
         }
         .chating{
             background-color: #000;
-            width: 500px;
-            height: 500px;
+            width: 300px;
+            height: 300px;
             overflow: auto;
         }
         .chating .me{
@@ -42,13 +42,27 @@
             height: 25px;
         }
         #yourMsg{
-            display: none;
+            /*display: none;*/
         }
     </style>
 </head>
-
+<script>
+    $(function(){
+        wsOpen();
+    });
+</script>
 <script type="text/javascript">
     var ws;
+
+    function wsClose(){
+        console.log(ws);
+        ws.close();
+    }
+    function wsOpenFirst(){
+        ws = new WebSocket("ws://" + location.host + "/chating/"+$("#roomNumber").val());
+        ws.onopen;
+        wsEvt();
+    }
 
     function wsOpen(){
         //웹소켓 전송시 현재 방의 번호를 넘겨서 보낸다.
@@ -73,8 +87,10 @@
                     }
                 }else if(d.type == "message"){
                     if(d.sessionId == $("#sessionId").val()){
+
                         $("#chating").append("<p class='me'>나 :" + d.msg + "</p>");
                     }else{
+
                         $("#chating").append("<p class='others'>" + d.userName + " :" + d.msg + "</p>");
                     }
 
@@ -91,17 +107,7 @@
         });
     }
 
-    function chatName(){
-        var userName = $("#userName").val();
-        if(userName == null || userName.trim() == ""){
-            alert("사용자 이름을 입력해주세요.");
-            $("#userName").focus();
-        }else{
-            wsOpen();
-            $("#yourName").hide();
-            $("#yourMsg").show();
-        }
-    }
+
 
     function send() {
         var option ={
@@ -117,22 +123,15 @@
 </script>
 <body>
 <div id="container" class="container">
-    <h1>${roomName}의 채팅방</h1>
+
     <input type="hidden" id="sessionId" value="">
+    <input type="hidden" id="userName" value="${sessionNickName}">
     <input type="hidden" id="roomNumber" value="${roomNumber}">
 
     <div id="chating" class="chating">
     </div>
 
-    <div id="yourName">
-        <table class="inputTable">
-            <tr>
-                <th>사용자명</th>
-                <th><input type="text" name="userName" id="userName"></th>
-                <th><button onclick="chatName()" id="startBtn">이름 등록</button></th>
-            </tr>
-        </table>
-    </div>
+
     <div id="yourMsg">
         <table class="inputTable">
             <tr>
@@ -140,6 +139,8 @@
                 <th><input id="chatting" placeholder="보내실 메시지를 입력하세요."></th>
                 <th><button onclick="send()" id="sendBtn">보내기</button></th>
             </tr>
+            <tr><button onclick="wsClose()">방 터뜨리기</button></tr>
+            <tr><button onclick="wsOpenFirst()">방 부활</button></tr>
         </table>
     </div>
 </div>
