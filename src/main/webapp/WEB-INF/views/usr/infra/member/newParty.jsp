@@ -227,7 +227,7 @@
 				        <div id="pagination" style="padding-left: 25%"></div>
 			    	</div>
 				</form>
-	            <div id="map" style="width: 100%; height: 540px;"></div>
+	            <div id="map" style="width: 100%; height: 550px; margin-top: -20px"></div>
 	        </div>
 	    </div>
 	    <div class="modal-footer" style="background-color: #fff">

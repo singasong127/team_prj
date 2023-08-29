@@ -38,7 +38,7 @@
 						</div>
 						<div class="tableBox_form">
 
-							<form class="row g-4" method="post" name="insertForm" enctype="multipart/form-data">
+							<form class="row g-4" method="post" name="insertForm" enctype="multipart/form-data" autocomplete="off">
 									<%--USER PROFILE STARTS--%>
 									<%--USER PROFILE STARTS--%>
 								<div class="row mb-3">
@@ -120,6 +120,18 @@
 										<label for="address" class="form-label">주소</label>
 										<input type="text" class="form-control" id="adr" name="address">
 									</div>
+									<%--POSTAL CODE--%>
+				                    <div class="my-3 row mb-3 d-flex justify-content-center" id="changeAddress" style="display: none">
+				                        <label for="sample6_postcode" class="col-sm-2 col-form-label">주소 변경</label>
+				                        <div class="col-sm-5">
+			                                <input class="form-control" type="text" name="zipcode" id="sample6_postcode" placeholder="우편번호">
+			                                <input class="form-control" type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+				                            <input class="form-control" type="text" id="sample6_address" placeholder="주소">
+				                            <input class="form-control" type="text" id="sample6_detailAddress" placeholder="상세주소">
+				                            <input type="hidden" id="addressFull" value="">
+				                        </div>
+				                    </div>
+				                    <%--POSTAL CODE--%>
 								</div>
 
 								<div class="row mb-3">
@@ -237,10 +249,23 @@
 										<label for="dob" class="form-label">생년월일</label>
 										<input type="text" class="form-control" id="dob" name="" disabled value="<c:out value="${member.dob}"/>">
 									</div>
-									<div class="col-md-2">
-										<label for="location" class="form-label">주소</label>
+									<div class="col-md-3">
+										<label for="address" class="form-label">주소</label>
 										<input type="text" class="form-control" id="address" name="address" value="<c:out value="${member.address}"/>" >
+										<input type="button" class="form-control" id="btnChgAddress" value="주소 변경">
 									</div>
+									<%--POSTAL CODE--%>
+				                    <div class="my-3 row mb-3" id="changeAddress" style="display: none">
+				                        <label for="sample6_postcode" class="col-sm-2 col-form-label">주소 변경</label>
+				                        <div class="col-sm-5">
+			                                <input class="form-control" type="text" name="zipcode" id="sample6_postcode" placeholder="우편번호">
+			                                <input class="form-control" type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+				                            <input class="form-control" type="text" id="sample6_address" placeholder="주소">
+				                            <input class="form-control" type="text" id="sample6_detailAddress" placeholder="상세주소">
+				                            <input type="hidden" id="addressFull" value="">
+				                        </div>
+				                    </div>
+				                    <%--POSTAL CODE--%>
 								</div>
 
 								<div class="row mb-3">
@@ -273,13 +298,32 @@
 			</div>
 		</div>
 	</main>
+
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="/resources/js/kakaoPostal.js"></script>
 <%--script code--%>
 <script type="text/javascript">
 	var memberForm = $("form[name='memberInfo']");
 	
+	$("#btnChgAddress").on("click", function() {
+		
+		$("#changeAddress").show();
+		
+	});
+
 	$("#upSave").on("click", function(){
-		memberForm.attr("method", "post");
-		memberForm.attr("action", "/memberUpdate").submit();
+		
+		if(!($("#sample6_address").val(null)) || !($("#sample6_address").val("")) ) {
+			$("#address").remove();
+			$("#addressFull").attr("name", "address");
+			$("#addressFull").val($("#sample6_address").val() + " " + $('#sample6_detailAddress').val());
+			memberForm.attr("method", "post");
+			memberForm.attr("action", "/memberUpdate").submit();
+		} else {
+			$("#addressFull").remove();
+			memberForm.attr("method", "post");
+			memberForm.attr("action", "/memberUpdate").submit();
+		}
 		
 	});
 	

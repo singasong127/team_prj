@@ -52,6 +52,8 @@
 			<exclude-mapping path="/idCheck" />
 			<exclude-mapping path="/nicknameCheck" />
 			<exclude-mapping path="/memberJoin" />
+			<exclude-mapping path="/memberOne" />
+			<exclude-mapping path="/memberUpdate" />
 			<beans:bean id="checkLoginSessionInterception" class="com.team.app.interceptor.CheckLoginSessionInterception"/>
 		</interceptor>
 	</interceptors>	
@@ -68,7 +70,7 @@
 			<exclude-mapping path="/usrLogin" />
 			<exclude-mapping path="/usrJoin" />
 			<exclude-mapping path="/login/kakao" />
-
+			<exclude-mapping path="/memberOne" />
 			<exclude-mapping path="/memberJoin" />
 			<exclude-mapping path="/newChallger" />
 			<exclude-mapping path="/ptinsert" />
@@ -77,6 +79,7 @@
 			<exclude-mapping path="/ptform" />
 			<exclude-mapping path="/ptlist" />
 			<exclude-mapping path="/memberList" />
+			<exclude-mapping path="/memberUpdate" />
 			<beans:bean id="checkAdminInterception" class="com.team.app.interceptor.CheckAdminInterception"/>
 		</interceptor>
 	</interceptors>
