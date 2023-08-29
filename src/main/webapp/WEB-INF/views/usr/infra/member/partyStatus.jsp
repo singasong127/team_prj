@@ -35,16 +35,16 @@
 						<%@include file="../../../chat.jsp"%>
 
 					</div>
-					<div class="partHalf partyStatus_half">
-						<div class="userInfo">
-							<div class="userInfo_img">
-								<img src="${sessionProfilePath}${sessionProfileName}">
-							</div>
-							<div class="userInfo_info">
-								<h6>${sessionId}</h6>
-							</div>
-						</div>
-					</div>
+<%--					<div class="partHalf partyStatus_half">--%>
+<%--						<div class="userInfo">--%>
+<%--							<div class="userInfo_img">--%>
+<%--								<img src="${sessionProfilePath}${sessionProfileName}">--%>
+<%--							</div>--%>
+<%--							<div class="userInfo_info">--%>
+<%--								<h6>${sessionId}</h6>--%>
+<%--							</div>--%>
+<%--						</div>--%>
+<%--					</div>--%>
 					<%--FORM CONTENT STARTS FROM HERE!!--%>
 					<%--FORM CONTENT ENDS FROM HERE!!--%>
 

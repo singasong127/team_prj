@@ -37,9 +37,9 @@
 
 	<!-- 웹소캣 등록 첫번째 -->
 	<!-- 웹소캣 등록 첫번째 -->
-	<beans:bean id="echoHandler" class="com.team.app.infra.chat.ChatHandler"/>
-		<websocket:handlers>
-			<websocket:mapping handler="echoHandler" path="/echo"/>
-			<websocket:sockjs/>
-		</websocket:handlers>
+<!--	<beans:bean id="echoHandler" class="com.team.app.infra.chat.ChatHandler"/>-->
+<!--		<websocket:handlers>-->
+<!--			<websocket:mapping handler="echoHandler" path="/echo"/>-->
+<!--			<websocket:sockjs/>-->
+<!--		</websocket:handlers>-->
 	</beans:beans>
