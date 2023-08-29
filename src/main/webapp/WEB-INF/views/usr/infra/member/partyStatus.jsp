@@ -46,7 +46,14 @@
 							</div>
 						</div>
 						<!-- 파티원 -->
-						
+						<!-- <div class="userInfo">
+							<div class="userInfo_img">
+								<img alt="#" src="#">
+							</div>
+							<div class="userInfo_info">
+								<h6></h6>
+							</div>
+						</div> -->
 					</div>
 					
 					<%--FORM CONTENT STARTS FROM HERE!!--%>

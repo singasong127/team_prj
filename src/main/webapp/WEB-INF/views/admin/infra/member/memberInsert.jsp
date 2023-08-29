@@ -51,7 +51,7 @@
 			
        		<%--FORM CONTENT ENDS FROM HERE!!--%>
        			<div class="excuteBox">
-	            	<button tpye="button" id="save">저장</button>
+	            	<button type="button" id="save">저장</button>
 	            	
             	</div>
             </div>
