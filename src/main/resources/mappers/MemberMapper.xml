@@ -16,6 +16,7 @@
 			, pwd
 			, gender
 			, dob
+			, zipcode
 			, address
 			, memDesc
 			, delNy

@@ -262,7 +262,7 @@
 			                                <input class="form-control" type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
 				                            <input class="form-control" type="text" id="sample6_address" placeholder="주소">
 				                            <input class="form-control" type="text" id="sample6_detailAddress" placeholder="상세주소">
-				                            <input type="hidden" id="addressFull" value="">
+				                            <input type="hidden" id="addressFull" name="address" value="">
 				                        </div>
 				                    </div>
 				                    <%--POSTAL CODE--%>
@@ -313,7 +313,7 @@
 
 	$("#upSave").on("click", function(){
 		
-		if(!($("#sample6_address").val(null)) || !($("#sample6_address").val("")) ) {
+		if( $("#sample6_address").val(null) || $("#sample6_address").val("") ) {
 			$("#address").remove();
 			$("#addressFull").attr("name", "address");
 			$("#addressFull").val($("#sample6_address").val() + " " + $('#sample6_detailAddress').val());

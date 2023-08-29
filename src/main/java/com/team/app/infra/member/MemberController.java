@@ -108,9 +108,13 @@ public class MemberController {
 
 //	정보변경
 	@RequestMapping(value="/memberUpdate")
-	public String memberUpdate(Member dto, CurrentDt dt) throws Exception {
+	public String memberUpdate(Member dto, MemberVo vo, CurrentDt dt) throws Exception {
 		dto.setUptProfileDt(dt.getNowDt());
 		service.memberUpdate(dto);
+		
+		System.out.println(dto.getZipcode());
+		System.out.println(dto.getAddress());
+		
 		return "redirect:/";
 	}
 	
