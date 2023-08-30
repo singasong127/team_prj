@@ -113,22 +113,12 @@
 								
 								<div class="col-md-3">
 									<label for="address" class="form-label">주소</label>
-									<input type="text" class="form-control" id="zipcode" name="zipcode" value="<c:out value="${member.zipcode}"/>" >
-									<input type="text" class="form-control" id="address" name="address" value="<c:out value="${member.address}"/>" >
-									<input type="button" class="form-control" id="btnChgAddress" value="주소 변경">
+									<input type="text" class="form-control" id="sample6_postcode" name="zipcode" value="<c:out value="${member.zipcode}"/>" >
+									<input type="text" class="form-control" id="sample6_address" name="address" value="<c:out value="${member.address}"/>" >
+		                            <input class="form-control" type="text" id="sample6_detailAddress" placeholder="상세주소" style="display: none">
+	                                <input class="form-control" type="button" id="btnChgAddress" onclick="sample6_execDaumPostcode()" value="주소 변경">
+	                                <input type="hidden" id="addressFull">
 								</div>
-								<%--POSTAL CODE--%>
-			                    <div class="my-3 row mb-3" id="changeAddress" style="display: none">
-			                        <label for="sample6_postcode" class="col-sm-2 col-form-label">주소 변경</label>
-			                        <div class="col-sm-5">
-		                                <input class="form-control" type="text" id="sample6_postcode" placeholder="우편번호">
-		                                <input class="form-control" type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-			                            <input class="form-control" type="text" id="sample6_address" placeholder="주소">
-			                            <input class="form-control" type="text" id="sample6_detailAddress" placeholder="상세주소">
-			                            <input type="hidden" id="addressFull"> 
-			                        </div>
-			                    </div>
-			                    <%--POSTAL CODE--%>
 							</div>
 
 							<div class="row mb-3">
@@ -169,24 +159,15 @@
 	
 	$("#btnChgAddress").on("click", function() {
 		
-		$("#changeAddress").show();
+		$("#sample6_detailAddress").show();
 		
 	});
 
 	$("#upSave").on("click", function(){
 		
-		if( !($("sample6_postcode").val(null)) || !($("sample6_postcode").val("")) ) {
-			$("#zipcode").removeAttribute('name');
-			$("#address").removeAttribute('name');
-			$("#sample6_postcode").attr('name', 'zipcode');
-			$("#addressFull").attr('name', 'address');
-			$("#addressFull").val($('#sample6_address').val() + ' ' + $('#sample6_detailAddress').val());
-			memberForm.attr("action", "/memberUpdate").submit();
-		} else {
-			// by pass
-			memberForm.attr("action", "/memberUpdate").submit();
-		}
-		
+		$("#addressFull").val( $('#sample6_address').val() + ' ' + $('#sample6_detailAddress').val() );
+		$('#sample6_address').val( $("#addressFull").val() );
+		memberForm.attr("action", "/memberUpdate").submit();
 	
 	});
 
