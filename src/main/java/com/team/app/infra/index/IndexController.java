@@ -1,24 +1,13 @@
 package com.team.app.infra.index;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
-
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.team.app.infra.code.Code;
 import com.team.app.infra.code.CodeServiceImpl;
@@ -40,8 +29,6 @@ public class IndexController {
     	
     	service.selectList(vo);
 //    	service.selectOne(vo);
-    	System.out.println("voPartySport" + vo.getPartySport());
-    	System.out.println("voPartyName"+ vo.getPartyName());
     	System.out.println(vo.getPlayDt());
     	
     	List<Party> list = service.selectList(vo);
@@ -49,7 +36,6 @@ public class IndexController {
     	model.addAttribute("list", list);
     	model.addAttribute("code", cdList);
     	
-    	System.out.println(vo.getPartyGen());
     	
 //    	Party item = service.selectOne(vo);
 //    	model.addAttribute("item", item);

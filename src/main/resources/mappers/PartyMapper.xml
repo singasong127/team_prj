@@ -38,7 +38,7 @@
 			<if test="partyName != null and !partyName.equals('')">AND partyName LIKE CONCAT('%',#{partyName},'%')</if>
 			<if test="partyGen != null and !partyGen.equals('')">AND partyGen = #{partyGen}</if>
 			<if test="partyAge != null and !partyAge.equals('')">AND partyAge = #{partyAge}</if>
-			<if test="playDt != null and !playDt.equals('')">AND playDt LIKE CONCAT('%',"#{playDt}",'%')</if>
+			<if test="playDt != null and !playDt.equals('')">AND playDt = #{playDt}</if>
     </sql>
 	
 	<select id="selectList" resultType="Party">
@@ -79,7 +79,7 @@
     		AND seq = #{seq}
     		<if test="partySport != null and !partySport.equals('')">AND partySport = #{partySport}</if>
     		<if test="partyName != null and !partyName.equals('')">AND partyName LIKE CONCAT('%',#{partyName},'%')</if>
-    		<if test="playDt != null and !playDt.equals('')">AND playDt LIKE CONCAT('%',#{playDt},'%')</if>
+    		<if test="playDt != null and !playDt.equals('')">AND playDt = #{playDt}</if>
     		<if test="partyGen != null and !partyGen.equals('')">AND partyGen = #{partyGen}</if>
     		<if test="partyAge != null and !partyAge.equals('')">AND partyAge = #{partyAge}</if>
     		<if test="partyLocation != null and !partyLocation.equals('')">AND partyLocation LIKE CONCAT('%',#{partyLocation},'%')</if>
