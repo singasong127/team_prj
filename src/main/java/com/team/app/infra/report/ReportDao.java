@@ -14,7 +14,7 @@ public class ReportDao {
 	@Resource(name="sqlSession")
 	private SqlSession sqlSession;
 	
-	private static String namespace = "com.team.infra.repot.ReportMapper";
+	private static String namespace = "com.team.app.infra.report.ReportMapper";
 	
 	public List<Report> selectList(ReportVo vo){
 		return sqlSession.selectList(namespace + ".selectList", vo);

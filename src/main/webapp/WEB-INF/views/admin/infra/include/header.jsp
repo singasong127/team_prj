@@ -27,6 +27,11 @@
                         멤버 관리
                     </li>
                 </a>
+                <a class="itemBox" href="/reportList">
+                    <li>
+                        신고 내용 조회
+                    </li>
+                </a>
 			</ul>
 		</div>
         <c:choose>
