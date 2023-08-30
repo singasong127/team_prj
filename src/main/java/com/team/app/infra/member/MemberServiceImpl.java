@@ -31,7 +31,12 @@ public class MemberServiceImpl implements MemberService {
 	public int memberOneCount(MemberVo vo) {
 		return dao.memberOneCount(vo);
 	}
-
+	
+	@Override
+	public List<Member> selectNickname(MemberVo vo) {
+		return dao.selectNickname(vo);
+	}
+	
 	@Override
 	public int newMemberJoin(Member dto) throws Exception {
 		return dao.newMemberJoin(dto);
@@ -156,6 +161,7 @@ public class MemberServiceImpl implements MemberService {
 	public int selectOneCheckNickname(MemberVo vo) {
 		return dao.selectOneCheckNickname(vo);
 	}
+
 
 
 }

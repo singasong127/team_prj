@@ -13,6 +13,8 @@ public interface MemberService {
 
 	public int memberOneCount(MemberVo vo);
 	
+	public List<Member> selectNickname(MemberVo vo);
+	
 	public int newMemberJoin(Member dto) throws Exception;
 	
 	public int newAdminJoin(Member dto) throws Exception;

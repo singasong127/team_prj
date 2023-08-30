@@ -45,6 +45,48 @@
 							</div>
 						</div>
 					</div>
+					<div class="partHalf partyStatus_half">
+						<div>
+							<label for="partySport">종목 : </label>
+							<c:forEach items="${code}" var="code">
+								<span>
+									<c:if test="${code.cdSeq == item.partySport}">
+										<c:out value="${code.cdName }"></c:out>
+									</c:if>
+								</span>
+							</c:forEach>
+							<label for="partyName">파티 제목 : </label>
+							<span><c:out value="${item.partyName }"></c:out></span><br>
+							<label for="partyLeader">파티 리더 : </label>
+							<c:forEach items="${member}" var="member">
+								<span>
+									<c:if test="${member.seq == item.partyLeader}">
+										<c:out value="${member.nickname }"></c:out>
+									</c:if>
+								</span>
+								<input type="hidden" name="partyLeader" value="<c:out value='${item.partyLeader }' />">
+							</c:forEach>
+							<%--
+							<label>인원수 : </label>
+							<span><c:out value="${item.playerNum }"></c:out> / <c:out value="${item.playerMax }"></c:out></span>
+							<label for="playDt">날짜 : </label>
+							<span><c:out value="${item.playDt }"></c:out></span><br>
+							<label>시간 : </label>
+							<span><c:out value="${item.playTimeStart }"></c:out> ~ <c:out value="${item.playTimeEnd }"></c:out></span>
+							<label for="partyGen">성별 : </label>
+							<span>	
+								<c:choose>
+									<c:when test="${item.partyGen == 0}">남성</c:when>
+									<c:when test="${item.partyGen == 1}">여성</c:when>
+								</c:choose>
+								<c:otherwise>
+									무관
+								</c:otherwise>
+							</span>
+							<label for="playLocation">지역 : </label>
+							<span><c:out value="${item.playLocation }"></c:out></span> --%>
+						</div>					
+					</div>
 					<%--FORM CONTENT STARTS FROM HERE!!--%>
 					<%--FORM CONTENT ENDS FROM HERE!!--%>
 

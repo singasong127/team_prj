@@ -42,6 +42,7 @@
 			<mapping path="/**"/>
 			<exclude-mapping path="/resources/**" />
 			<exclude-mapping path="/" />
+			<exclude-mapping path="/**" />
 			<exclude-mapping path="/newChallger" />
 			<exclude-mapping path="/findmap/**" />
 			<exclude-mapping path="/three" />
@@ -54,6 +55,7 @@
 			<exclude-mapping path="/memberJoin" />
 			<exclude-mapping path="/memberOne" />
 			<exclude-mapping path="/memberUpdate" />
+			<exclude-mapping path="/codeList" />
 			<beans:bean id="checkLoginSessionInterception" class="com.team.app.interceptor.CheckLoginSessionInterception"/>
 		</interceptor>
 	</interceptors>	
@@ -65,6 +67,7 @@
 			<mapping path="/**"/>
 			<exclude-mapping path="/resources/**" />
 			<exclude-mapping path="/" />
+			<exclude-mapping path="/**" />
 			<exclude-mapping path="/usrLogout" />
 			<exclude-mapping path="/memberOneUser" />
 			<exclude-mapping path="/usrLogin" />
@@ -80,6 +83,7 @@
 			<exclude-mapping path="/ptlist" />
 			<exclude-mapping path="/memberList" />
 			<exclude-mapping path="/memberUpdate" />
+			<exclude-mapping path="/codeList" />
 			<beans:bean id="checkAdminInterception" class="com.team.app.interceptor.CheckAdminInterception"/>
 		</interceptor>
 	</interceptors>

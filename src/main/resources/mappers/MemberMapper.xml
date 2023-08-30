@@ -53,6 +53,20 @@
 			AND seq = #{seq}
 	</select>
 	
+	<select id="selectNickname" resultMap="resultMapObj">
+		SELECT
+			m.seq
+			m.nickname
+			p.seq
+			p.partyLeader
+		FROM member as m
+		LEFT JOIN party p ON p.partyLeader = m.seq
+		WHERE 1+1
+			<if test="partyLeader != null and !partyLeader.equals('') ">
+				AND m.seq = #{seq}
+			</if>
+	</select>
+	
 	<select id="usrLogin" resultType="Member">
 		SELECT
 			a.seq

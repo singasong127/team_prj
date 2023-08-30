@@ -14,6 +14,9 @@ import com.team.app.infra.code.Code;
 import com.team.app.infra.code.CodeServiceImpl;
 import com.team.app.infra.code.CodeVo;
 import com.team.app.infra.index.CurrentDt;
+import com.team.app.infra.member.Member;
+import com.team.app.infra.member.MemberServiceImpl;
+import com.team.app.infra.member.MemberVo;
 
 
 @Controller
@@ -22,6 +25,8 @@ public class PartyController {
 	PartyServiceImpl service;
 	@Autowired
 	CodeServiceImpl cdService;
+	@Autowired
+	MemberServiceImpl memService;
 	
 	  @RequestMapping(value="/ptlist") 
 	  public String partyList(@ModelAttribute("vo") PartyVo vo, Model model, CodeVo cdVo) {
@@ -45,10 +50,14 @@ public class PartyController {
 	 
 	
 	@RequestMapping(value="/ptform") 
-	public String partyForm(PartyVo vo, Model model) { 
+	public String partyForm(PartyVo vo, CodeVo cdVo, MemberVo memVo, Model model) { 
 		Party party = service.selectOne(vo);
-	  
+		List<Code> code = cdService.selectCodeName(cdVo);
+		List<Member> member = memService.selectNickname(memVo);
+		
 		model.addAttribute("item", party);
+		model.addAttribute("code", code);
+		model.addAttribute("member", member);
 	  
 		return "usr/infra/member/partyStatus"; 
 	}

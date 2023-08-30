@@ -125,16 +125,16 @@
         if(thisPage == 0) {
 
             $("input:hidden[name=thisPage]").val(1);
-            $("form[name=search]").attr("action", "/cdlist").submit();
+            $("form[name=search]").attr("action", "/codeList").submit();
 
         } else if(thisPage > ${vo.totalPages}){
 
             $("input:hidden[name=thisPage]").val(thisPage - 1);
-            $("form[name=search]").attr("action", "/codeList/list").submit();
+            $("form[name=search]").attr("action", "/codeList").submit();
         }else{
 
             $("input:hidden[name=thisPage]").val(thisPage);
-            $("form[name=search]").attr("action", "/codeList/list").submit();
+            $("form[name=search]").attr("action", "/codeList").submit();
 
         }
     }

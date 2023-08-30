@@ -53,7 +53,7 @@
 				   <input type="text" class="form-control me-2" name="partyLocation" id="partyLocation" placeholder="-- 지역 --">
 				   					   
 				   
-				   <button class="detailBtn">
+				   <button class="detailBtn" onclick="refresh()">
 				   	<i class="bi bi-arrow-clockwise"></i>
 				   </button>
 	            </form>
@@ -74,7 +74,7 @@
 	    	        			<th>장비지참</th>
 	            			</tr>
 	            		</thead>
-	            		<tbody>
+	            		<tbody id="list">
            					<c:choose>
 								<c:when test="${fn:length(list) eq 0}">
 									<tr>
@@ -155,7 +155,9 @@
 		$("form[name=formSh]").attr("action", "/").submit();
 	});	
 	
-
+	function refresh() {
+		$("#list").load(window.location.href + ' #list');
+	}
 	
 	$('#playDt')
 	.datepicker({

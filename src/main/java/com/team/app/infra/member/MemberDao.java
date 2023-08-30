@@ -30,6 +30,10 @@ public class MemberDao {
 		return sqlSession.selectOne(namespace + ".memberOneCount", vo);
 	}
 	
+	public List<Member> selectNickname(MemberVo vo) {
+		return sqlSession.selectList(namespace + ".selectNickname", vo);
+	}
+	
 	public int newMemberJoin(Member dto) {
 		return sqlSession.insert(namespace + ".newMemberJoin", dto);
 	}
