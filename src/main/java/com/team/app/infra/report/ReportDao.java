@@ -20,7 +20,7 @@ public class ReportDao {
 		return sqlSession.selectList(namespace + ".selectList", vo);
 	}
 	
-	public int selectOne(ReportVo vo) {
+	public Report selectOne(ReportVo vo) {
 		return sqlSession.selectOne(namespace + ".selectOne", vo);
 	}
 	

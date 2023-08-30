@@ -57,6 +57,8 @@
 		</interceptor>
 	</interceptors>	
 	<!-- session interceptor e 2023.07.18 for logincheck -->
+
+
 	<!-- session interceptor s 2023.07.18 for 유저가 관리자 못 들어오게 -->
 	<!-- session interceptor s 2023.07.18 for 유저가 관리자 못 들어오게 -->
 	<interceptors>
@@ -69,7 +71,6 @@
 			<exclude-mapping path="/usrLogin" />
 			<exclude-mapping path="/usrJoin" />
 			<exclude-mapping path="/login/kakao" />
-
 			<exclude-mapping path="/memberJoin" />
 			<exclude-mapping path="/newChallger" />
 			<exclude-mapping path="/ptinsert" />
@@ -77,6 +78,7 @@
 			<exclude-mapping path="/ptupdate" />
 			<exclude-mapping path="/ptform" />
 			<exclude-mapping path="/ptlist" />
+			<exclude-mapping path="/memberList" />
 			<beans:bean id="checkAdminInterception" class="com.team.app.interceptor.CheckAdminInterception"/>
 		</interceptor>
 	</interceptors>

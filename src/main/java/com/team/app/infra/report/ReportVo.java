@@ -150,7 +150,53 @@ public class ReportVo {
 	}
 	
 	
-	
-	
-	
+public void setParamsPaging(int totalRows) {
+		
+		//		setThisPage(3);
+
+		setTotalRows(totalRows);
+
+		if (getTotalRows() == 0) {
+			setTotalPages(1);
+		} else {
+			setTotalPages(getTotalRows() / getRowNumToShow());
+		}
+
+		if (getTotalRows() % getRowNumToShow() > 0) {
+			setTotalPages(getTotalPages() + 1);
+		}
+
+		if (getTotalPages() < getThisPage()) {
+			setThisPage(getTotalPages());
+		}
+		
+		setStartPage(((getThisPage() - 1) / getPageNumToShow()) * getPageNumToShow() + 1);
+
+		setEndPage(getStartPage() + getPageNumToShow() - 1);
+
+		if (getEndPage() > getTotalPages()) {
+			setEndPage(getTotalPages());
+		}
+		
+		setEndRnumForOracle((getRowNumToShow() * getThisPage()));
+		setStartRnumForOracle((getEndRnumForOracle() - getRowNumToShow()) + 1);
+		if (getStartRnumForOracle() < 1) setStartRnumForOracle(1);
+		
+		if (thisPage == 1) {
+			setStartRnumForMysql(0);
+		} else {
+			setStartRnumForMysql((getRowNumToShow() * (getThisPage()-1)));
+		}
+		
+		System.out.println("getThisPage():" + getThisPage());
+		System.out.println("getTotalRows():" + getTotalRows());
+		System.out.println("getRowNumToShow():" + getRowNumToShow());
+		System.out.println("getTotalPages():" + getTotalPages());
+		System.out.println("getStartPage():" + getStartPage());
+		System.out.println("getEndPage():" + getEndPage());		
+		System.out.println("getStartRnumForOracle():" + getStartRnumForOracle());
+		System.out.println("getEndRnumForOracle():" + getEndRnumForOracle());
+		System.out.println("getStartRnumForMysql(): " + getStartRnumForMysql());
+		
+	}
 }

@@ -11,7 +11,7 @@ public interface ReportService {
 	public List<Report> selectList(ReportVo vo);
 	
 //	신고 내용 열람
-	public int selectOne(ReportVo vo);
+	public Report selectOne(ReportVo vo);
 	
 //	신고하겠습니다
 	public int repot_insert(Report dto);

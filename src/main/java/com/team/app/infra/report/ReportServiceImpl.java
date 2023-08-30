@@ -2,30 +2,35 @@ package com.team.app.infra.report;
 
 import java.util.List;
 
-public class ReportServiceImpl implements ReportService {
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
+public class ReportServiceImpl implements ReportService {
+	
+	@Autowired
+	ReportDao dao;
+	
 	@Override
 	public int selectOneCount(ReportVo vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.selectOneCount(vo);
 	}
 
 	@Override
 	public List<Report> selectList(ReportVo vo) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Report> reportList = dao.selectList(vo);
+		
+		return reportList;
 	}
 
 	@Override
-	public int selectOne(ReportVo vo) {
-		// TODO Auto-generated method stub
-		return 0;
+	public Report selectOne(ReportVo vo) {
+		return dao.selectOne(vo);
 	}
 
 	@Override
 	public int repot_insert(Report dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.repot_insert(dto);
 	}
 
 }
