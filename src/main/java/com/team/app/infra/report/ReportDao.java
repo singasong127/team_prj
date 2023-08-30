@@ -20,6 +20,11 @@ public class ReportDao {
 		return sqlSession.selectList(namespace + ".selectList", vo);
 	}
 	
+	public int selectOne(ReportVo vo) {
+		return sqlSession.selectOne(namespace + ".selectOne", vo);
+	}
+	
+	
 	public int selectOneCount(ReportVo vo) {
 		return sqlSession.selectOne(namespace + ".selectOneCount", vo);
 	}
