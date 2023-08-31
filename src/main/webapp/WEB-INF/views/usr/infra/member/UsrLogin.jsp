@@ -19,12 +19,12 @@
             		<h3>로그인</h3>
             		<form>
             			<div class="form-floating mb-3">
-    	        			<input type="email" name="email" id="email" class="form-control" placeholder="email">
+    	        			<input type="email" name="email" id="email" value="test@loremInsup.com" class="form-control" placeholder="email">
 	            			<label for="email">이메일</label>
             			</div>
             			<div class="form-floating mb-3">
 
-    	        			<input type="password" name="pwd" id="pwd" class="form-control"  placeholder="password">
+    	        			<input type="password" name="pwd" id="pwd" value="123456" class="form-control"  placeholder="password">
 	            			<label for="pwd">비밀번호</label>
 
             			</div>
