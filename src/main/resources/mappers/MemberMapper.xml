@@ -56,15 +56,13 @@
 	<select id="selectNickname" resultMap="resultMapObj">
 		SELECT
 			m.seq
-			m.nickname
-			p.seq
-			p.partyLeader
-		FROM member as m
+			, m.nickname
+			, p.partyLeader
+		FROM member m
 		LEFT JOIN party p ON p.partyLeader = m.seq
-		WHERE 1+1
-			<if test="partyLeader != null and !partyLeader.equals('') ">
-				AND m.seq = #{seq}
-			</if>
+		WHERE 1=1
+			AND p.partyLeader = #{seq}
+			AND p.seq = #{ptSeq}
 	</select>
 	
 	<select id="usrLogin" resultType="Member">

@@ -64,9 +64,7 @@
 										<c:out value="${member.nickname }"></c:out>
 									</c:if>
 								</span>
-								<input type="hidden" name="partyLeader" value="<c:out value='${item.partyLeader }' />">
 							</c:forEach>
-							<%--
 							<label>인원수 : </label>
 							<span><c:out value="${item.playerNum }"></c:out> / <c:out value="${item.playerMax }"></c:out></span>
 							<label for="playDt">날짜 : </label>
@@ -76,15 +74,15 @@
 							<label for="partyGen">성별 : </label>
 							<span>	
 								<c:choose>
-									<c:when test="${item.partyGen == 0}">남성</c:when>
-									<c:when test="${item.partyGen == 1}">여성</c:when>
+									<c:when test="<c:out value='${item.partyGen} == 0'/>">남성</c:when>
+									<c:when test="<c:out value='${item.partyGen} == 1'/>">여성</c:when>
 								</c:choose>
 								<c:otherwise>
 									무관
 								</c:otherwise>
 							</span>
 							<label for="playLocation">지역 : </label>
-							<span><c:out value="${item.playLocation }"></c:out></span> --%>
+							<span><c:out value="${item.playLocation }"></c:out></span>
 						</div>					
 					</div>
 					<%--FORM CONTENT STARTS FROM HERE!!--%>

@@ -16,6 +16,7 @@ public class MemberVo {
 	private String delNy;
 	private String signUpDt;
 	private String uptProfileDt;
+	private String ptSeq;
 
 	public String getSignUpDt() {
 		return signUpDt;
@@ -147,6 +148,15 @@ public class MemberVo {
 	}
 
 //	page 메서드?
+
+	
+	public String getPtSeq() {
+		return ptSeq;
+	}
+
+	public void setPtSeq(String ptSeq) {
+		this.ptSeq = ptSeq;
+	}
 
 	public int getThisPage() {
 		return thisPage;

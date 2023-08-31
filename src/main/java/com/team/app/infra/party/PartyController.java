@@ -53,12 +53,19 @@ public class PartyController {
 	public String partyForm(PartyVo vo, CodeVo cdVo, MemberVo memVo, Model model) { 
 		Party party = service.selectOne(vo);
 		List<Code> code = cdService.selectCodeName(cdVo);
+		
+		System.out.println("Leader: " + party.getPartyLeader());
+		
+		memVo.setSeq(party.getPartyLeader());
+		memVo.setPtSeq(vo.getSeq());
+		
 		List<Member> member = memService.selectNickname(memVo);
 		
 		model.addAttribute("item", party);
 		model.addAttribute("code", code);
 		model.addAttribute("member", member);
-	  
+		
+		
 		return "usr/infra/member/partyStatus"; 
 	}
 	 
