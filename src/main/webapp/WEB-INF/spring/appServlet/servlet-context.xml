@@ -60,6 +60,8 @@
 		</interceptor>
 	</interceptors>	
 	<!-- session interceptor e 2023.07.18 for logincheck -->
+
+
 	<!-- session interceptor s 2023.07.18 for 유저가 관리자 못 들어오게 -->
 	<!-- session interceptor s 2023.07.18 for 유저가 관리자 못 들어오게 -->
 	<interceptors>
