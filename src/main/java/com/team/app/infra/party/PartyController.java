@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.team.app.infra.code.Code;
 import com.team.app.infra.code.CodeServiceImpl;
@@ -48,9 +49,8 @@ public class PartyController {
 	  	return "admin/infra/party/partyList";
 	  }
 	 
-	
 	@RequestMapping(value="/ptform") 
-	public String partyForm(PartyVo vo, CodeVo cdVo, MemberVo memVo, Model model) { 
+	public String partyForm(PartyVo vo, CodeVo cdVo, MemberVo memVo, Model model) throws Exception { 
 		Party party = service.selectOne(vo);
 		List<Code> code = cdService.selectCodeName(cdVo);
 		

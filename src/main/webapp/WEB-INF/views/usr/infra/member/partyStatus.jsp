@@ -65,7 +65,7 @@
 									</c:if>
 								</span>
 							</c:forEach>
-							<label>인원수 : </label>
+							<%-- <label>인원수 : </label>
 							<span><c:out value="${item.playerNum }"></c:out> / <c:out value="${item.playerMax }"></c:out></span>
 							<label for="playDt">날짜 : </label>
 							<span><c:out value="${item.playDt }"></c:out></span><br>
@@ -82,7 +82,7 @@
 								</c:otherwise>
 							</span>
 							<label for="playLocation">지역 : </label>
-							<span><c:out value="${item.playLocation }"></c:out></span>
+							<span><c:out value="${item.playLocation }"></c:out></span> --%>
 						</div>					
 					</div>
 					<%--FORM CONTENT STARTS FROM HERE!!--%>
