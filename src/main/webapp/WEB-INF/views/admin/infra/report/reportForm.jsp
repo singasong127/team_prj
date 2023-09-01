@@ -27,8 +27,8 @@
            					<div class="row mb-3">
 								<div class="col-md-5">
 									<label for="desc" class="form-label">신고내용</label>
-									<textarea class="form-control" id="desc" name="memDesc" rows="5" readonly="readonly">
-										<c:out value="${item.desc }"/>
+									<textarea class="form-control" id="reportDesc" name="reportDesc" cols="5" rows="5" readonly="readonly">
+										<c:out value="${item.reportDesc }"/>
 									</textarea>
 								</div>
 							</div>

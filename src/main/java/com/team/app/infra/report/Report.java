@@ -8,7 +8,7 @@ public class Report {
 	private String actee;
 	private String reason;
 	private Integer delNy;
-	private String desc;
+	private String reportDesc;
 	private String datetime;
 	
 	public String getSeq() {
@@ -47,17 +47,17 @@ public class Report {
 	public void setDelNy(Integer delNy) {
 		this.delNy = delNy;
 	}
-	public String getDesc() {
-		return desc;
-	}
-	public void setDesc(String desc) {
-		this.desc = desc;
-	}
 	public String getDatetime() {
 		return datetime;
 	}
 	public void setDatetime(String datetime) {
 		this.datetime = datetime;
+	}
+	public String getReportDesc() {
+		return reportDesc;
+	}
+	public void setReportDesc(String reportDesc) {
+		this.reportDesc = reportDesc;
 	}
 	
 	

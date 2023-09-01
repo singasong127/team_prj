@@ -33,9 +33,10 @@
            					<th>신고자</th>
            					<th>피신고자</th>
            					<th>신고 제목</th>
-           					<th>처리</th>
+           					<th>삭제</th>
            					<th>신고내용</th>
            					<th>신고날짜</th>
+           					<th>상세보기</th>
            				</tr>
            			</thead>
            			<tbody>
@@ -58,8 +59,13 @@
            								<td><c:out value="${list.actee }"/></td>
            								<td><c:out value="${list.reason }"/></td>
            								<td><c:out value="${list.delNy }"/></td>
-           								<td><c:out value="${list.desc }"/></td>
+           								<td><c:out value="${list.reportDesc }"/></td>
            								<td><c:out value="${list.datetime }"/></td>
+           								<td>
+           									<button class="detailBtn" onclick="location.href='/reportView?seq=<c:out value = '${list.seq}'/>'">
+												상세
+											</button>
+           								</td>
            							</tr>
            						</c:forEach>
            					</c:otherwise>

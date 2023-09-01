@@ -8,9 +8,8 @@ public class ReportVo {
 	private String actee;	// 신고당한 사람
 	private String reason;	
 	private Integer delNy;
-	private String desc;
+	private String reportDesc;
 	private String datetime;
-	
 	
 	public String getSeq() {
 		return seq;
@@ -48,12 +47,7 @@ public class ReportVo {
 	public void setDelNy(Integer delNy) {
 		this.delNy = delNy;
 	}
-	public String getDesc() {
-		return desc;
-	}
-	public void setDesc(String desc) {
-		this.desc = desc;
-	}
+
 	public String getDatetime() {
 		return datetime;
 	}
@@ -199,4 +193,10 @@ public void setParamsPaging(int totalRows) {
 		System.out.println("getStartRnumForMysql(): " + getStartRnumForMysql());
 		
 	}
+public String getReportDesc() {
+	return reportDesc;
+}
+public void setReportDesc(String reportDesc) {
+	this.reportDesc = reportDesc;
+}
 }
