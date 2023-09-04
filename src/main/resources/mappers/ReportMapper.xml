@@ -75,7 +75,7 @@
 			, actee
 			, reason
 			, delNy
-			, desc
+			, reportDesc
 			, datetime
 		)VALUES(
 			#{type}

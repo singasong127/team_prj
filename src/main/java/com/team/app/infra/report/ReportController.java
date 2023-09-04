@@ -8,8 +8,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.team.app.infra.code.Code;
 import com.team.app.infra.code.CodeServiceImpl;
+import com.team.app.infra.code.CodeVo;
 import com.team.app.infra.index.CurrentDt;
+import com.team.app.infra.member.MemberServiceImpl;
+import com.team.app.infra.member.MemberVo;
 
 @Controller
 public class ReportController {
@@ -18,6 +22,8 @@ public class ReportController {
 		ReportServiceImpl service;
 		@Autowired
 		CodeServiceImpl codeService;
+		@Autowired
+		MemberServiceImpl memService;
 		
 //		관리자 신고 내역 목록 관리
 		@RequestMapping(value="/reportList")
@@ -43,29 +49,26 @@ public class ReportController {
 			Report report = service.selectOne(vo);
 			
 			model.addAttribute("item", report);
+			
 			return "admin/infra/report/reportForm";
 		}
 		
-//		사용자 신고서 작성페이지
-		@RequestMapping(value="/repotPage")
-		public String reportPage(Report dto) {
-			dto.setActor(dto.getActor());
-			dto.setActee(dto.getActee());
-			
-			
-			return "usr/infra/member/reportForm";
-		}
 		
 //		사용자 신고하기
 		@RequestMapping(value="/reportYou")
-		public String reportYou(Report dto, ReportVo vo, CurrentDt dt) {
-			dto.setActor(vo.getActor());
-			dto.setActee(vo.getActee());
-			
+		public String reportYou(@ModelAttribute Report dto, MemberVo mevo, CurrentDt dt, Model model, CodeVo cdvo) {
 			dto.setDatetime(dt.getNowDt());
+			dto.setActor(mevo.getSeq());
+			dto.setActee(mevo.getSeq());
+			
+			List<Code> code = codeService.selectCodeName(cdvo); 
+			
+			
+			model.addAttribute("code", code);
+			
 			
 			service.repot_insert(dto);
 			
-			return "";
+			return "redirect:/ptform";
 		}
 }
