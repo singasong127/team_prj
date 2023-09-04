@@ -68,7 +68,21 @@ public class PartyController {
 		
 		return "usr/infra/member/partyStatus"; 
 	}
-	 
+
+	@RequestMapping(value="/myparty")
+	public String myParty(PartyVo vo, CodeVo cdVo, Model model, HttpSession session) throws Exception {
+		List<Party> party = service.selectMyParty(vo);
+		List<Code> code = cdService.selectCodeName(cdVo);
+		
+		vo.setMyName( (String)session.getAttribute("sessionSeq") );
+	
+		System.out.println("myName: " + vo.getMyName());
+		
+		model.addAttribute("mp", party);
+		model.addAttribute("code", code);
+		
+		return "usr/infra/member/myParty";
+	}
 	
 	@RequestMapping(value="/ptupdate")
 	public String partyUpdate(Party dto) {
@@ -120,18 +134,6 @@ public class PartyController {
 		return "usr/infra/member/newParty";
 	}
 	
-//	@ResponseBody
-//    @RequestMapping(value="/newChallger/post", method=RequestMethod.POST)
-//    public Map<String, Object> postNewParty(@RequestBody Map<String, Object> location,
-//    		HttpServletRequest request) throws Exception {
-//    	Map<String, Object> returnMap = new HashMap<String, Object>();
-//    	
-//    	System.out.println("Location: " + location.get("location"));
-//    	
-//    	returnMap.put("lo", location.get("location"));
-//    	returnMap.put("rt", "success");
-//    	return returnMap;
-//    }
 	
 	
 }

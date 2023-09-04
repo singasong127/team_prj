@@ -28,6 +28,11 @@ public class PartyServiceImpl implements PartyService {
 	public Party selectOne(PartyVo vo) {
 		return dao.selectOne(vo);
 	}
+	
+	@Override
+	public List<Party> selectMyParty(PartyVo vo) {
+		return dao.selectMyParty(vo);
+	}
 
 	@Override
 	public int update(Party dto) {
@@ -43,6 +48,7 @@ public class PartyServiceImpl implements PartyService {
 	public int insert(Party dto) {
 		return dao.insert(dto);
 	}
+
 
 
 }

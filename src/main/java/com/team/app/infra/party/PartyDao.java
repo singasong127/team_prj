@@ -25,6 +25,8 @@ public class PartyDao {
 		return party;
 	}
 	
+	public List<Party> selectMyParty(PartyVo vo) { return sqlSession.selectList(namespace + ".selectMyParty", vo); }
+	
 	public int update(Party dto) {
 		
 		return sqlSession.update(namespace + ".update", dto);

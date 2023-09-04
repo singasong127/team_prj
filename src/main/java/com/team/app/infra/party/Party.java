@@ -19,6 +19,16 @@ public class Party {
 	private String madeTime;
 	private String partyLocation;
 	
+	// myParty 테이블 칼럼
+	private String mpSeq;
+	private String nowStatus;
+	private String myName;
+	private String leaderName;
+	private String mpName;
+	private String mpDelNy;
+	private String endDt;
+	
+	
 	public String getSeq() {
 		return seq;
 	}
@@ -120,5 +130,47 @@ public class Party {
 	}
 	public void setPartyLocation(String partyLocation) {
 		this.partyLocation = partyLocation;
+	}
+	public String getMpSeq() {
+		return mpSeq;
+	}
+	public void setMpSeq(String mpSeq) {
+		this.mpSeq = mpSeq;
+	}
+	public String getNowStatus() {
+		return nowStatus;
+	}
+	public void setNowStatus(String nowStatus) {
+		this.nowStatus = nowStatus;
+	}
+	public String getMyName() {
+		return myName;
+	}
+	public void setMyName(String myName) {
+		this.myName = myName;
+	}
+	public String getLeaderName() {
+		return leaderName;
+	}
+	public void setLeaderName(String leaderName) {
+		this.leaderName = leaderName;
+	}
+	public String getMpName() {
+		return mpName;
+	}
+	public void setMpName(String mpName) {
+		this.mpName = mpName;
+	}
+	public String getMpDelNy() {
+		return mpDelNy;
+	}
+	public void setMpDelNy(String mpDelNy) {
+		this.mpDelNy = mpDelNy;
+	}
+	public String getEndDt() {
+		return endDt;
+	}
+	public void setEndDt(String endDt) {
+		this.endDt = endDt;
 	}
 }

@@ -18,7 +18,7 @@
 				<%--FORM CONTENT STARTS FROM HERE!!--%>
 				<div class="mainLabelBox">
 					<h2 class="tableLabel">코드그룹 관리</h2>
-					<div class="addBox" onclick="location.href='/codeGroupForm'">
+					<div class="addBox" onclick="location.href='/cgform'">
 						<h3 class="tableSubLabel">코드그룹 추가</h3>
 						<span class="material-symbols-outlined">add_box</span></a>
 					</div>

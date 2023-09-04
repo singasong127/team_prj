@@ -20,38 +20,16 @@
 	            <!-- select 박스 -->
 	            <div class="searchBox">
 	            <form name="formSh" method="post" class="d-flex" autocomplete="off">
-	            <!-- 종목(나중에 분류 재지정하고 재설정) -->
-			   		<select name="partySport" id="partySport" class="me-2">
-			   			<option value="" selected>-- 종목 --</option>
+	            	<input type="hidden" name="myName" value="<c:out value='${sessionSeq }' />">
+			   		<select name="nowStatus" id="nowStatus" class="me-2">
+			   			<option value="" selected>-- 상태 --</option>
 				   		<c:forEach items="${code}" var="code" >
 				   			<option value="<c:out value='${code.cdSeq}'/>"><c:out value="${code.cdName}"></c:out></option>
 				   		</c:forEach>
 				   	</select>
-				   <input type="text" class="form-control me-2" id="partyName" name="partyName" placeholder="-- 파티 제목 --">
-				   <!-- 날짜 선택 -->
-				   <input type="text" class="form-control me-2" id="playDt" name="playDt" placeholder="-- 날짜 --">
+				   <input type="text" class="form-control me-2" id="mpName" name="mpName" placeholder="-- 파티 제목 --">
 				   
-				   <!-- 성별 선택창 -->
-				   <select name="partyGen" id="partyGen" class="me-2">
-				   	<option value="" selected>-- 성별 --</option>
-				   	<option value="0">남성</option>
-				   	<option value="1">여성</option>
-				   	<option value="2">무관</option>
-				   </select>
 				   
-				   <select name="partyAge" id="partyAge" class="me-2">
-			   		<option value="" selected>-- 연령대 --</option>
-			   			<option value="0">연령 무관</option>
-				   		<option value="10">10대</option>
-				   		<option value="20">20대</option>
-				   		<option value="30">30대</option>
-				   		<option value="40">40대</option>
-				   		<option value="50">50대</option>
-				   		<option value="60">60대</option>
-				   </select>
-				   
-				   	<input type="text" class="form-control me-2" name="partyLocation" id="partyLocation" placeholder="-- 지역 --">
-				   					   
 				   	<button class="detailBtn" onclick="refresh()">
 				   		<i class="bi bi-arrow-clockwise"></i>
 				   	</button>
@@ -65,71 +43,30 @@
 	            		<thead>
 	            			<tr>
 		            			<th>No.</th>
-	    	        			<th>종목</th>
+	    	        			<th>상태</th>
 	    	        			<th>파티 제목</th>
-	    	        			<th>인원수</th>
-	    	        			<th>날짜</th>
-	    	        			<th>시간</th>
-	    	        			<th>성별</th>
-	    	        			<th>연령대</th>
-	    	        			<th>지역</th>
-	    	        			<th>장비지참</th>
 	            			</tr>
 	            		</thead>
 	            		<tbody id="list">
            					<c:choose>
-								<c:when test="${fn:length(list) eq 0}">
+								<c:when test="${fn:length(mp) eq 0}">
 									<tr>
 										<td class="text-center" colspan="9">데이터가 없습니다!</td>
 									</tr>
 								</c:when>
 								<c:otherwise>
-									<c:forEach items="${list}" var="list" varStatus="status">
-											<tr onclick="location.href='/ptform?seq=<c:out value="${list.seq}"/>'">
+									<c:forEach items="${mp}" var="party" varStatus="status">
+											<tr 
+												<%-- onclick="location.href='/ptform?seq=<c:out value="${list.seq}"/>'" --%>
+												>
 												<td>
-													<c:out value="${list.seq}"></c:out>
+													<c:out value="${party.mpSeq}"></c:out>
 												</td>
 												<td>
-													<c:out value="${list.partySport}"></c:out>
+													<c:out value="${party.nowStatus}"></c:out>
 												</td>
 												<td>
-													<c:out value="${list.partyName}"></c:out>
-												</td>
-												<td>
-													<c:out value="${list.playerNum}"></c:out> / <c:out value="${list.playerMax}"></c:out>
-												</td>
-												<td>
-													<c:out value="${list.playDt}"></c:out>
-												</td>
-												<td>
-													<c:out value="${list.playTimeStart}"></c:out>
-												</td>
-												<td>
-													<c:choose>
-														<c:when test="${list.partyGen eq '0'}">남성</c:when>
-														<c:when test="${list.partyGen eq '1'}">여성</c:when>
-														<c:otherwise>무관</c:otherwise>
-													</c:choose>
-												</td>
-												<td>
-													<c:choose>
-														<c:when test="${list.partyAge eq '10'}">10대</c:when>
-														<c:when test="${list.partyAge eq '20'}">20대</c:when>
-														<c:when test="${list.partyAge eq '30'}">30대</c:when>
-														<c:when test="${list.partyAge eq '40'}">40대</c:when>
-														<c:when test="${list.partyAge eq '50'}">50대</c:when>
-														<c:when test="${list.partyAge eq '60'}">60대</c:when>
-														<c:otherwise>연령 무관</c:otherwise>
-													</c:choose>
-												</td>
-												<td>
-													<c:out value="${list.partyLocation}"></c:out>
-												</td>
-												<td>
-													<c:choose>
-														<c:when test="${list.toolNy eq '1'}">Y</c:when>
-														<c:otherwise>N</c:otherwise>
-													</c:choose>
+													<c:out value="${party.mpName}"></c:out>
 												</td>
 											</tr>
 										</c:forEach>
@@ -140,7 +77,7 @@
            		</div>
             <%--FORM CONTENT STARTS FROM HERE!!--%>
             	<div class="excuteBox">
-	            	<button class="detailBtn" id="btnCre" onclick="location.href='/newChallger'">파티생성</button>
+            	
             	</div>
 			<%--FORM CONTENT ENDS FROM HERE!!--%>
        		<%--FORM CONTENT ENDS FROM HERE!!--%>

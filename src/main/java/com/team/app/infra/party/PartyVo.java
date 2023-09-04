@@ -19,6 +19,14 @@ public class PartyVo {
 	private String madeTime;
 	private String partyLocation;
 	
+	private String mpSeq;
+	private String nowStatus;
+	private String myName;
+	private String leaderName;
+	private String mpName;
+	private String mpDelNy;
+	private String endDt;
+	
 	private int thisPage = 1;									// 현재 페이지
 //	private int rowNumToShow = Constants.ROW_NUM_TO_SHOW;		// 화면에 보여줄 데이터 줄 갯수 - 오라클
 //	private int pageNumToShow = Constants.PAGE_NUM_TO_SHOW;		// 화면에 보여줄 페이징 번호 갯수 - 오라클
@@ -139,6 +147,48 @@ public class PartyVo {
 	}
 	public void setPartyLocation(String partyLocation) {
 		this.partyLocation = partyLocation;
+	}
+	public String getMpSeq() {
+		return mpSeq;
+	}
+	public void setMpSeq(String mpSeq) {
+		this.mpSeq = mpSeq;
+	}
+	public String getNowStatus() {
+		return nowStatus;
+	}
+	public void setNowStatus(String nowStatus) {
+		this.nowStatus = nowStatus;
+	}
+	public String getMyName() {
+		return myName;
+	}
+	public void setMyName(String myName) {
+		this.myName = myName;
+	}
+	public String getLeaderName() {
+		return leaderName;
+	}
+	public void setLeaderName(String leaderName) {
+		this.leaderName = leaderName;
+	}
+	public String getMpName() {
+		return mpName;
+	}
+	public void setMpName(String mpName) {
+		this.mpName = mpName;
+	}
+	public String getMpDelNy() {
+		return mpDelNy;
+	}
+	public void setMpDelNy(String mpDelNy) {
+		this.mpDelNy = mpDelNy;
+	}
+	public String getEndDt() {
+		return endDt;
+	}
+	public void setEndDt(String endDt) {
+		this.endDt = endDt;
 	}
 	public int getThisPage() {
 		return thisPage;

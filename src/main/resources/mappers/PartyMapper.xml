@@ -85,6 +85,43 @@
     		<if test="partyLocation != null and !partyLocation.equals('')">AND partyLocation LIKE CONCAT('%',#{partyLocation},'%')</if>
     </select>
     
+    <select id="selectMyParty" resultType="Party">
+    	SELECT
+			mpSeq
+		    , (SELECT
+				cdName
+		        FROM teamCode cd
+		        WHERE 1=1
+		        AND cd.cdSeq = mp.nowStatus
+		        ) nowStatus
+			, (SELECT
+				nickname
+		        FROM member m
+		        WHERE 1=1
+		        AND m.seq = mp.myName
+		        ) myName
+			, (SELECT
+				mm.nickname
+		        FROM member mm
+		        WHERE 1=1
+		        AND mm.seq = mp.leaderName
+		        ) leaderName
+			, (SELECT
+				p.partyName
+		        FROM party p
+		        WHERE 1=1
+		        AND p.seq = mp.mpName
+		        ) mpName
+			, mp.mpDelNy
+		    , mp.endDt
+		FROM myParty mp
+		LEFT JOIN teamCode cd ON cd.cdSeq = mp.nowStatus
+		LEFT JOIN member m ON m.seq = mp.myName AND mp.leaderName
+		LEFT JOIN party p ON p.seq = mp.mpName
+		WHERE 1=1
+		<if test="myName != null and !myName.equals('')">AND myName = #{myName}</if>
+    </select>
+    
     <update id="update">
     	UPDATE party
     	SET

@@ -11,6 +11,8 @@ public interface PartyService {
 	
 	public Party selectOne(PartyVo vo);
 	
+	public List<Party> selectMyParty(PartyVo vo);
+	
 	public int update(Party dto);
 	
 	public int uelete(Party dto);

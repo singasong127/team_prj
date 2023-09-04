@@ -17,15 +17,10 @@
                         </li>
                     </a>
                     <ul class="subNavList">
-                        <a style="display:block; width: 100%; text-decoration: none; margin: 0 15px;" href="#">
+                        <a href="/myparty" style="display:block; width: 100%; text-decoration: none; margin: 0 15px;" href="#">
                             <li style="margin: 0 15px">
-                            참가신청한 파티
+                            내 파티
                         </li></a>
-                        <a style="display: block; width: 100%; text-decoration: none; margin: 0 15px; " href="#">
-                            <li>
-                                참가중인 파티
-                            </li>
-                        </a>
                     </ul>
                 </div>
 
