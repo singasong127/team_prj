@@ -45,4 +45,9 @@ public class CodeServiceImpl implements CodeService{
 		return dao.selectCodeName(vo);
 	}
 
+	@Override
+	public List<Code> selectPartyStatus(CodeVo vo) {
+		return dao.selectPartyStatus(vo);
+	}
+
 }

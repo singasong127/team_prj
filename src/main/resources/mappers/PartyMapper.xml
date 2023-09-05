@@ -89,13 +89,13 @@
     	SELECT
 			mpSeq
 		    , (SELECT
-				cdName
+				cd.cdName
 		        FROM teamCode cd
 		        WHERE 1=1
 		        AND cd.cdSeq = mp.nowStatus
 		        ) nowStatus
 			, (SELECT
-				nickname
+				m.nickname
 		        FROM member m
 		        WHERE 1=1
 		        AND m.seq = mp.myName
@@ -178,4 +178,20 @@
     		, 0
     	)
     </insert>   
+    
+    <update id="countPlayer">
+    	SET @mpCount = (SELECT
+							COUNT(mp.mpSeq) mpCount
+						FROM myParty mp
+    					LEFT JOIN party p ON p.seq = mp.mpName
+    					WHERE 1=1
+						AND mp.mpName = #{mpName}
+						AND mp.nowStatus = 19)
+		
+		UPDATE party p
+		SET playerNum = @mpCount + 1
+		WHERE 1=1
+		AND p.seq = #{mpName}    
+    
+    </update>
 </mapper>    

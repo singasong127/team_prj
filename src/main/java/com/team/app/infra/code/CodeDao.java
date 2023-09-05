@@ -42,4 +42,8 @@ public class CodeDao {
     	return sqlSession.selectList("Code.selectCodeName", vo);
     }
     
+    public List<Code> selectPartyStatus(CodeVo vo) {
+    	return sqlSession.selectList("Code.selectPartyStatus", vo);
+    }
+    
 }

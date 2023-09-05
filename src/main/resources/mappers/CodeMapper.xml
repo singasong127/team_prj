@@ -51,6 +51,20 @@
             OR a.cdName LIKE CONCAT('%',#{shKey},'%'))
         </if>
 	</select>
+	
+	<select id="selectPartyStatus" resultType="Code">
+		SELECT
+			<include refid="selectField" />
+        FROM
+        	teamCode AS a
+        LEFT JOIN teamCodeGroup AS b ON a.teamCodeGroup_seq = b.cgSeq
+        WHERE 1+1
+        	AND a.teamCodeGroup_seq = 3
+        <if test="shKey != null and !shKey.equals('')">
+            AND (b.cgName LIKE CONCAT('%',#{shKey},'%')
+            OR a.cdName LIKE CONCAT('%',#{shKey},'%'))
+        </if>
+	</select>
 
     <!--PAGING TOTAL COUNT-->
     <!--PAGING TOTAL COUNT-->

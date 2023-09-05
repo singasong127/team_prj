@@ -71,10 +71,10 @@ public class PartyController {
 
 	@RequestMapping(value="/myparty")
 	public String myParty(PartyVo vo, CodeVo cdVo, Model model, HttpSession session) throws Exception {
-		List<Party> party = service.selectMyParty(vo);
-		List<Code> code = cdService.selectCodeName(cdVo);
-		
 		vo.setMyName( (String)session.getAttribute("sessionSeq") );
+		
+		List<Code> code = cdService.selectPartyStatus(cdVo);
+		List<Party> party = service.selectMyParty(vo);
 	
 		System.out.println("myName: " + vo.getMyName());
 		
@@ -82,6 +82,12 @@ public class PartyController {
 		model.addAttribute("code", code);
 		
 		return "usr/infra/member/myParty";
+	}
+	
+	@RequestMapping("/ptjoin")
+	public String joinParty() {
+		
+		return "";
 	}
 	
 	@RequestMapping(value="/ptupdate")

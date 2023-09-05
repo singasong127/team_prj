@@ -19,4 +19,6 @@ public interface PartyService {
 	
 	public int insert(Party dto);
 	
+	public int countPlayer(Party dto);
+	
 }
