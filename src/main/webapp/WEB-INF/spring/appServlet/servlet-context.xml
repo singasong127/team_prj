@@ -53,6 +53,7 @@
 			<exclude-mapping path="/idCheck" />
 			<exclude-mapping path="/nicknameCheck" />
 			<exclude-mapping path="/memberJoin" />
+			<exclude-mapping path="/reportList/**" />
 			<beans:bean id="checkLoginSessionInterception" class="com.team.app.interceptor.CheckLoginSessionInterception"/>
 		</interceptor>
 	</interceptors>	
@@ -79,6 +80,7 @@
 			<exclude-mapping path="/ptform" />
 			<exclude-mapping path="/ptlist" />
 			<exclude-mapping path="/memberList" />
+			<exclude-mapping path="/reportList/**" />
 			<beans:bean id="checkAdminInterception" class="com.team.app.interceptor.CheckAdminInterception"/>
 		</interceptor>
 	</interceptors>

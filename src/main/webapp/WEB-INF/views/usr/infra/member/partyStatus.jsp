@@ -103,15 +103,17 @@
 			<form name="reportFormer">
 			 	<div class="modal-header" style="background-color: limegreen">
 	        		<h2 style="color: #fff; font-weight: bold;">신고</h2>
-	        		<input type="hidden" name="type" value="">
+	        		<input type="hidden" name="type" value="1">
 	        		<a class="modalClose"><span class="material-symbols-outlined">close</span></a>
 	    		</div>
 				<div id="reportPageWrap" class="modal-body">
 					<div class="col-6 mt-3 mb-3">
-						<input type="hidden" id="actor" name="actor" value="">
+						<!-- 신고자 -->
+						<input type="hidden" name="actor" value="${sessionSeq }">
+						<!-- 피신고자 -->
 						<label for="actee" class="col-2">신고 대상</label>
 						<input type="text" id="actee" class="col-4" value="${sessionNickName }" readonly="readonly"/>
-						<input type="hidden" name="actee" value="">
+						<input type="hidden" name="actee" value="${sessionSeq }">
 					</div>
 					<div class="col-8 mt-3 mb-3">
 						<label for="reason" class="col-2">신고내용</label>

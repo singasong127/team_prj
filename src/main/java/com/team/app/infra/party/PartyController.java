@@ -54,11 +54,12 @@ public class PartyController {
 	public String partyForm(@ModelAttribute PartyVo vo, ReportVo reVo, MemberVo meVo, CodeVo cdVo, Model model) { 
 		Party party = service.selectOne(vo);
 		reVo.setActor(meVo.getSeq());
-		reVo.setActee(meVo.getSeq());
+		reVo.setActee(meVo.getSec_seq());
 		
 		List<Code> code = cdService.selectCodeName(cdVo); 
+		List<Member> member = memServie.memberList(meVo); 
 		
-		
+		model.addAttribute("member",member);
 		model.addAttribute("code", code);
 		model.addAttribute("item", party);
 	  

@@ -16,6 +16,8 @@ public class MemberVo {
 	private String delNy;
 	private String signUpDt;
 	private String uptProfileDt;
+	
+	private String sec_seq;
 
 	public String getSignUpDt() {
 		return signUpDt;
@@ -287,6 +289,14 @@ public class MemberVo {
 		System.out.println("getEndRnumForOracle():" + getEndRnumForOracle());
 		System.out.println("getStartRnumForMysql(): " + getStartRnumForMysql());
 
+	}
+
+	public String getSec_seq() {
+		return sec_seq;
+	}
+
+	public void setSec_seq(String sec_seq) {
+		this.sec_seq = sec_seq;
 	}
 
 }

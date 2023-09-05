@@ -12,6 +12,7 @@ import com.team.app.infra.code.Code;
 import com.team.app.infra.code.CodeServiceImpl;
 import com.team.app.infra.code.CodeVo;
 import com.team.app.infra.index.CurrentDt;
+import com.team.app.infra.member.Member;
 import com.team.app.infra.member.MemberServiceImpl;
 import com.team.app.infra.member.MemberVo;
 
@@ -56,10 +57,13 @@ public class ReportController {
 		
 //		사용자 신고하기
 		@RequestMapping(value="/reportYou")
-		public String reportYou(@ModelAttribute Report dto, MemberVo mevo, CurrentDt dt, Model model, CodeVo cdvo) {
+		public String reportYou(Report dto, Member memdto, ReportVo vo, MemberVo mevo, CurrentDt dt, Model model, CodeVo cdvo) {
+			dto.setType(vo.getType());
 			dto.setDatetime(dt.getNowDt());
-			dto.setActor(mevo.getSeq());
-			dto.setActee(mevo.getSeq());
+			dto.setActee(vo.getActee());
+			System.out.println("신고 대상 : " + vo.getActee());
+			dto.setActor(vo.getActor());
+			System.out.println("신고자 : " + vo.getActor());
 			
 			List<Code> code = codeService.selectCodeName(cdvo); 
 			

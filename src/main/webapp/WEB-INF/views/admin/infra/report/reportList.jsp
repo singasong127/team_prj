@@ -15,7 +15,7 @@
            	<div class="mainLabelBox">
           		<h2 class="tableLabel">신고내용 관리</h2>
            	</div>
-           	<form name="">
+           	<form name="search">
            		<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
                 <input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
                 <div class = "searchBox">
@@ -48,7 +48,6 @@
                                     <td><h4 id="nodata">신고 접수된게 없네요..</h4></td>
                                     <td></td>
                                     <td></td>
-                                </tr>
            					</c:when>
            					<c:otherwise>
            						<c:forEach items="${list}" var="list" varStatus="status">
@@ -74,11 +73,10 @@
            		</table>
            	</div>
            	<c:choose>
-           		<c:when test="${vo.totalPages eq 1 }">
-           		
+           		<c:when test="${vo.totalPages gt 1 }">
+	           		<%@include file="../include/pagination.jsp" %>
            		</c:when>
 	           	<c:otherwise>
-	           		<%@include file="../include/pagination.jsp" %>
 	           	</c:otherwise>
            	</c:choose>
          </div>
@@ -92,16 +90,16 @@
         if(thisPage == 0) {
 
             $("input:hidden[name=thisPage]").val(1);
-            $("form[name=search]").attr("action", "/codeList").submit();
+            $("form[name=search]").attr("action", "/reportList").submit();
 
         } else if(thisPage > ${vo.totalPages}){
 
             $("input:hidden[name=thisPage]").val(thisPage - 1);
-            $("form[name=search]").attr("action", "/codeList").submit();
+            $("form[name=search]").attr("action", "/reportList").submit();
         }else{
 
             $("input:hidden[name=thisPage]").val(thisPage);
-            $("form[name=search]").attr("action", "/codeList").submit();
+            $("form[name=search]").attr("action", "/reportList").submit();
 
         }
     }
