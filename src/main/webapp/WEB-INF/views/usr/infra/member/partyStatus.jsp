@@ -26,7 +26,7 @@
 <html lang="kr">
 
 <style>
-	#reportPage {
+	#reportPage, #respectPage {
 		width: 70%;
 		height: 70%;
 		position: fixed;
@@ -68,7 +68,7 @@
 							</div>
 							<div class="userInfo_info">
 								<input type="hidden" value="${sessionId}">
-								<button class="btn btn-primary" id="">추천</button>
+								<button class="btn btn-primary" id="respect">추천</button>
 								<button class="btn btn-danger" id="report">신고</button>
 							</div>
 						</div>
@@ -95,8 +95,34 @@
 			<%--FORM CONTENT ENDS FROM HERE!!--%>
 		</main>
 		<!-- 추천 -->
-		<div id="" class="modal" style="display: none;">
-		
+		<div id="respectPage" class="modal" style="display: none;">
+			<form name="reportFormer">
+				<div class="modal-header" style="background-color: limegreen">
+	        		<h2 style="color: #fff; font-weight: bold;">추천</h2>
+	        		<input type="hidden" name="type" value="0">
+	        		<a class="modalClose"><span class="material-symbols-outlined">close</span></a>
+	    		</div>
+	    		<div id="reportPageWrap" class="modal-body">
+					<div class="col-6 mt-3 mb-3">
+						<!-- 추천하는 사람 -->
+						<input type="hidden" name="actor" value="${sessionSeq }">
+						<!-- 추천받는 사람 -->
+						<label for="actee" class="col-2">추천 대상</label>
+						<input type="text" id="actee" class="col-4" value="${sessionNickName }" readonly="readonly"/>
+						<input type="hidden" name="actee" value="${sessionSeq }">
+					</div>
+					<div class="col-8 mt-3 mb-3">
+						<input type="hidden" id="reason" name="reason" value="22" value="추천" >			
+					</div>
+					<div class="col-auto mt-3 mb-3">
+						<label for="reportDesc" class="col-2">추천내용</label>
+						<textarea id="reportDesc" name="reportDesc" rows="10" cols="10"></textarea>
+					</div>
+					<div class="modalFooter mt-4 mx-auto">
+						<button id="youResepect" class="btn btn-primary">강추!</button>
+					</div>
+				</div>
+			</form>
 		</div>
 		<!-- 신고 -->
 		<div id="reportPage" class="modal" style="display: none;">
@@ -140,10 +166,16 @@
 	<script type="text/javascript">
 	
 		var report = $('form[name=reportFormer]')
+		var respect = $('form[name=reportFormer]')
 		
-		/* 신고 모달창 */
+		/* 신고 모달창 열기 */
 		$("#report").on("click", function(){
 			$("#reportPage").show();			
+		});
+
+		/* 추천 모달창 열기 */
+		$("#respect").on("click", function(){
+			$("#respectPage").show();			
 		});
 		
 		/* 모달창 닫기 */
@@ -154,6 +186,12 @@
 		/* 신고하기 */
 		$("#youRepot").on("click", function(){
 			alert("신고가 접수 되었습니다.")
+			report.attr("action", "/reportYou").submit();
+		});
+
+		/* 추천하기 */
+		$("#youResepect").on("click", function(){
+			alert("추천되었습니다..")
 			report.attr("action", "/reportYou").submit();
 		});
 	

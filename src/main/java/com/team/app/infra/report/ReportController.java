@@ -46,7 +46,7 @@ public class ReportController {
 		
 //		관리자 신고 내역 상세보기
 		@RequestMapping(value="/reportView")
-		public String reportView(ReportVo vo, Model model) {
+		public String reportView( ReportVo vo, Model model) {
 			Report report = service.selectOne(vo);
 			
 			model.addAttribute("item", report);

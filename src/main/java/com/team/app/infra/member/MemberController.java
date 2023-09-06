@@ -102,7 +102,7 @@ public class MemberController {
 	
 //	상세
 	@RequestMapping(value="/memberOne")
-	public String memberOne(Member dto,MemberVo vo, Model model) {
+	public String memberOne(Member dto, MemberVo vo, Model model) {
 		Member member = service.memberOne(vo);
 		model.addAttribute("member", member);
 
