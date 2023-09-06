@@ -18,6 +18,8 @@ public interface PartyService {
 	public int uelete(Party dto);
 	
 	public int insert(Party dto);
+
+	public int addMyParty(Party dto);
 	
 	public int countPlayer(Party dto);
 	

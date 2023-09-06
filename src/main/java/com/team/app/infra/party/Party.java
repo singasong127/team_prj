@@ -24,9 +24,10 @@ public class Party {
 	private String nowStatus;
 	private String myName;
 	private String leaderName;
+	private String ptName;
 	private String mpName;
 	private String mpDelNy;
-	private String endDt;
+	private String updtDt;
 	
 	
 	public String getSeq() {
@@ -155,6 +156,12 @@ public class Party {
 	public void setLeaderName(String leaderName) {
 		this.leaderName = leaderName;
 	}
+	public String getPtName() {
+		return ptName;
+	}
+	public void setPtName(String ptName) {
+		this.ptName = ptName;
+	}
 	public String getMpName() {
 		return mpName;
 	}
@@ -167,10 +174,10 @@ public class Party {
 	public void setMpDelNy(String mpDelNy) {
 		this.mpDelNy = mpDelNy;
 	}
-	public String getEndDt() {
-		return endDt;
+	public String getUpdtDt() {
+		return updtDt;
 	}
-	public void setEndDt(String endDt) {
-		this.endDt = endDt;
+	public void setUpdtDt(String updtDt) {
+		this.updtDt = updtDt;
 	}
 }

@@ -35,6 +35,7 @@
 						<%@include file="../../../chat.jsp"%>
 
 					</div>
+					<form name="formParty" method="post">
 					<div class="partHalf partyStatus_half">
 						<div class="userInfo">
 							<div class="userInfo_img">
@@ -56,6 +57,7 @@
 								</span>
 							</c:forEach>
 							<label for="partyName">파티 제목 : </label>
+							<input type="hidden" name="mpName" value="${item.seq }">
 							<span><c:out value="${item.partyName }"></c:out></span><br>
 							<label for="partyLeader">파티 리더 : </label>
 							<c:forEach items="${member}" var="member">
@@ -64,6 +66,7 @@
 										<c:out value="${member.nickname }"></c:out>
 									</c:if>
 								</span>
+								<input type="hidden" name="leaderName" value="${item.partyLeader }">
 							</c:forEach>
 							<%-- <label>인원수 : </label>
 							<span><c:out value="${item.playerNum }"></c:out> / <c:out value="${item.playerMax }"></c:out></span>
@@ -90,12 +93,20 @@
 
 					<%--FORM CONTENT ENDS FROM HERE!!--%>
 					<%--FORM CONTENT STARTS FROM HERE!!--%>
-
-
+					<input type="button" onclick="joinParty()" value="참가 신청">
+					</form>
 				</div>
 			</div>
 			<%--FORM CONTENT ENDS FROM HERE!!--%>
 		</main>
 	</div>
+	<script type="text/javascript">
+		
+		function joinParty() {
+				alert("파티 참가 신청이 완료 되었습니다!");
+				$("form[name=formParty]").attr("action", "/joinParty").submit();
+		}		
+	
+	</script>
 </body>
 </html>

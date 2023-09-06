@@ -48,11 +48,17 @@ public class PartyServiceImpl implements PartyService {
 	public int insert(Party dto) {
 		return dao.insert(dto);
 	}
+	
+	@Override
+	public int addMyParty(Party dto) {
+		return dao.addMyParty(dto);
+	}
 
 	@Override
 	public int countPlayer(Party dto) {
 		return dao.countPlayer(dto);
 	}
+
 
 
 

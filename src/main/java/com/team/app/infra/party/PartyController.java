@@ -84,11 +84,31 @@ public class PartyController {
 		return "usr/infra/member/myParty";
 	}
 	
-	@RequestMapping("/ptjoin")
-	public String joinParty() {
+	@RequestMapping("/joinParty")
+	public String joinParty(Party dto, PartyVo vo, CurrentDt dt, HttpSession session) {
+		dto.setUpdtDt(dt.getNowDt());
+		dto.setMyName( (String)session.getAttribute("sessionSeq") );
+		dto.setLeaderName(vo.getLeaderName());
+		dto.setMpName(vo.getMpName());
+		dto.setNowStatus("19");
+		System.out.println("MPNAME: " + dto.getMpName());
 		
-		return "";
+		System.out.println("나?: " + dto.getMyName());
+		System.out.println("파티 리더: " + dto.getLeaderName());
+		System.out.println("파티 이름: " + dto.getMpName());
+		
+		service.addMyParty(dto);
+		service.countPlayer(dto);
+		
+		return "redirect:/myparty";
 	}
+	
+	
+//	@RequestMapping("/countplayer")
+//	public String countPlayer(Model model, Party dto, PartyVo vo) throws Exception {
+//		
+//		return "redirect:/myparty";
+//	}
 	
 	@RequestMapping(value="/ptupdate")
 	public String partyUpdate(Party dto) {

@@ -23,9 +23,10 @@ public class PartyVo {
 	private String nowStatus;
 	private String myName;
 	private String leaderName;
+	private String ptName;
 	private String mpName;
 	private String mpDelNy;
-	private String endDt;
+	private String updtDt;
 	
 	private int thisPage = 1;									// 현재 페이지
 //	private int rowNumToShow = Constants.ROW_NUM_TO_SHOW;		// 화면에 보여줄 데이터 줄 갯수 - 오라클
@@ -172,6 +173,12 @@ public class PartyVo {
 	public void setLeaderName(String leaderName) {
 		this.leaderName = leaderName;
 	}
+	public String getPtName() {
+		return ptName;
+	}
+	public void setPtName(String ptName) {
+		this.ptName = ptName;
+	}
 	public String getMpName() {
 		return mpName;
 	}
@@ -184,11 +191,11 @@ public class PartyVo {
 	public void setMpDelNy(String mpDelNy) {
 		this.mpDelNy = mpDelNy;
 	}
-	public String getEndDt() {
-		return endDt;
+	public String getUpdtDt() {
+		return updtDt;
 	}
-	public void setEndDt(String endDt) {
-		this.endDt = endDt;
+	public void setUpdtDt(String updtDt) {
+		this.updtDt = updtDt;
 	}
 	public int getThisPage() {
 		return thisPage;

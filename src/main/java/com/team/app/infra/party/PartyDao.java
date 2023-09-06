@@ -43,6 +43,10 @@ public class PartyDao {
 		return sqlSession.insert(namespace + ".insert", dto);
 	}
 	
+	public int addMyParty(Party dto) {
+		return sqlSession.insert(namespace + ".addMyParty", dto);
+	}
+	
 	public int countPlayer(Party dto) {
 		return sqlSession.update(namespace + ".countPlayer", dto);
 	}

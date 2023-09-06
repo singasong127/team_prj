@@ -28,7 +28,7 @@
 				   		</c:forEach>
 				   	</select>
 				   <input type="text" class="form-control me-2" id="mpName" name="mpName" placeholder="-- 파티 제목 --">
-				   <input type="text" class="form-control me-2" id="endDt" name="endDt" placeholder="-- 날짜 선택 --">
+				   <input type="text" class="form-control me-2" id="updtDt" name="endDt" placeholder="-- 날짜 선택 --">
 				   
 				   	<button class="detailBtn" onclick="refresh()">
 				   		<i class="bi bi-arrow-clockwise"></i>
@@ -58,7 +58,7 @@
 								<c:otherwise>
 									<c:forEach items="${mp}" var="party" varStatus="status">
 											<tr 
-												<%-- onclick="location.href='/ptform?seq=<c:out value="${list.seq}"/>'" --%>
+												onclick="location.href='/ptform?seq=<c:out value="${party.mpName}"/>'"
 												>
 												<td>
 													<c:out value="${party.mpSeq}"></c:out>
@@ -67,10 +67,10 @@
 													<c:out value="${party.nowStatus}"></c:out>
 												</td>
 												<td>
-													<c:out value="${party.mpName}"></c:out>
+													<c:out value="${party.ptName}"></c:out>
 												</td>
 												<td>
-													<c:out value="${party.endDt}"></c:out>
+													<c:out value="${party.updtDt}"></c:out>
 												</td>
 											</tr>
 										</c:forEach>

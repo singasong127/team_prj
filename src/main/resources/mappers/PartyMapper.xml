@@ -111,9 +111,10 @@
 		        FROM party p
 		        WHERE 1=1
 		        AND p.seq = mp.mpName
-		        ) mpName
+		        ) ptName
+		    , mp.mpName
 			, mp.mpDelNy
-		    , mp.endDt
+		    , mp.updtDt
 		FROM myParty mp
 		LEFT JOIN teamCode cd ON cd.cdSeq = mp.nowStatus
 		LEFT JOIN member m ON m.seq = mp.myName AND mp.leaderName
@@ -179,6 +180,24 @@
     	)
     </insert>   
     
+    <insert id="addMyParty">
+    	INSERT INTO myParty (
+    		nowStatus
+    		, myName
+    		, leaderName
+    		, mpName
+    		, mpDelNy
+    		, updtDt
+    	) VALUES (
+    		18
+    		, #{myName}
+    		, #{leaderName}
+    		, #{mpName}
+    		, 0
+			, #{updtDt}    		
+    	)
+    </insert>
+    
     <update id="countPlayer">
     	SET @mpCount = (SELECT
 							COUNT(mp.mpSeq) mpCount
@@ -186,7 +205,7 @@
     					LEFT JOIN party p ON p.seq = mp.mpName
     					WHERE 1=1
 						AND mp.mpName = #{mpName}
-						AND mp.nowStatus = 19)
+						AND mp.nowStatus = #{nowStatus})
 		
 		UPDATE party p
 		SET playerNum = @mpCount + 1
