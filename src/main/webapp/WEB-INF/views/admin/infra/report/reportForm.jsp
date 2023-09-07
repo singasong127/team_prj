@@ -20,13 +20,11 @@
 					<div class="row mb-3">
 						<div class="col-md-2">
 							<label for="reason" class="form-label">회원 유형</label>
-							<select class="form-select" aria-label="Default select example" disabled id="reason">
-								<option value="13" <c:if test="${item.reason == 13 }">selected</c:if> >욕설/비방</option>
-								<option value="14" <c:if test="${item.reason == 14 }">selected</c:if> >비매너 플레이</option>
-								<option value="15" <c:if test="${item.reason == 15 }">selected</c:if> >불건전한 행위/언행</option>
-								<option value="16" <c:if test="${item.reason == 16 }">selected</c:if> >기타</option>
-								<option value="22" <c:if test="${item.reason == 22 }">selected</c:if> >추천</option>
-							</select>
+							<c:forEach items="code" var="code">
+								<c:if test="${code.cdSeq == item.reason }">
+									<input type="text"  value="<c:out value='${code.cdName }' />" readonly>
+								</c:if>
+							</c:forEach>
 						</div>
 					</div>
 					<div class="col-md-2">

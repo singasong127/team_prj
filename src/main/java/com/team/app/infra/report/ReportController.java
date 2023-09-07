@@ -46,10 +46,12 @@ public class ReportController {
 		
 //		관리자 신고 내역 상세보기
 		@RequestMapping(value="/reportView")
-		public String reportView( ReportVo vo, Model model) {
+		public String reportView( ReportVo vo, CodeVo cdVo, Model model) {
 			Report report = service.selectOne(vo);
+			List<Code> code = codeService.selectCodeName(cdVo);
 			
 			model.addAttribute("item", report);
+			model.addAttribute("code", code);
 			
 			return "admin/infra/report/reportForm";
 		}
