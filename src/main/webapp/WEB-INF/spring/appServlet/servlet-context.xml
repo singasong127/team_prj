@@ -95,7 +95,7 @@
 
 	<!-- 웹소캣 등록 첫번째 -->
 	<!-- 웹소캣 등록 첫번째 -->
-	<beans:bean id="echoHandler" class="com.team.app.infra.chat.ChatHandler"/>
+	<beans:bean id="echoHandler" class="com.team.app.infra.chat.SocketHandler"/>
 		<websocket:handlers>
 			<websocket:mapping handler="echoHandler" path="/echo"/>
 			<websocket:sockjs/>
