@@ -51,4 +51,8 @@ public class PartyDao {
 		return sqlSession.update(namespace + ".countPlayer", dto);
 	}
 	
+	public int retirePlayer(Party dto) {
+		return sqlSession.update(namespace + ".retirePlayer", dto);
+	}
+	
 }

@@ -199,18 +199,16 @@
     </insert>
     
     <update id="countPlayer">
-    	SET @mpCount = (SELECT
-							COUNT(mp.mpSeq) mpCount
-						FROM myParty mp
-    					LEFT JOIN party p ON p.seq = mp.mpName
-    					WHERE 1=1
-						AND mp.mpName = #{mpName}
-						AND mp.nowStatus = #{nowStatus})
-		
-		UPDATE party p
-		SET playerNum = @mpCount + 1
+		UPDATE party
+		SET playerNum = playerNum + 1
 		WHERE 1=1
-		AND p.seq = #{mpName}    
+		AND seq = #{mpName}    
+    </update>
     
+    <update id="retirePlayer">
+		UPDATE party
+		SET playerNum = playerNum - 1
+		WHERE 1=1
+		AND seq = #{mpName}    
     </update>
 </mapper>    

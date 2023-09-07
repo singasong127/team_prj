@@ -22,5 +22,7 @@ public interface PartyService {
 	public int addMyParty(Party dto);
 	
 	public int countPlayer(Party dto);
+
+	public int retirePlayer(Party dto);
 	
 }

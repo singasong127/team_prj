@@ -93,7 +93,14 @@
 
 					<%--FORM CONTENT ENDS FROM HERE!!--%>
 					<%--FORM CONTENT STARTS FROM HERE!!--%>
-					<input type="button" onclick="joinParty()" value="참가 신청">
+					<c:choose>
+						<c:when test="">
+							<input type="button" onclick="joinParty()" value="참가 신청">
+						</c:when>
+						<c:otherwise>
+							<input type="button" onclick="retireParty()" value="파티 탈퇴">
+						</c:otherwise>
+					</c:choose>
 					</form>
 				</div>
 			</div>
@@ -103,9 +110,14 @@
 	<script type="text/javascript">
 		
 		function joinParty() {
-				alert("파티 참가 신청이 완료 되었습니다!");
-				$("form[name=formParty]").attr("action", "/joinParty").submit();
-		}		
+			alert("파티 참가 신청이 완료 되었습니다!");
+			$("form[name=formParty]").attr("action", "/joinparty").submit();
+		}
+		
+		function retireParty() {
+			alert("파티를 탈퇴했습니다!");
+			$("form[name=formParty]").attr("action", "/retireparty").submit();
+		}
 	
 	</script>
 </body>

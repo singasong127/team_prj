@@ -53,6 +53,7 @@ public class PartyController {
 	public String partyForm(PartyVo vo, CodeVo cdVo, MemberVo memVo, Model model) throws Exception { 
 		Party party = service.selectOne(vo);
 		List<Code> code = cdService.selectCodeName(cdVo);
+		List<Party> myParty = service.selectMyParty(vo);
 		
 		System.out.println("Leader: " + party.getPartyLeader());
 		
@@ -84,13 +85,12 @@ public class PartyController {
 		return "usr/infra/member/myParty";
 	}
 	
-	@RequestMapping("/joinParty")
+	@RequestMapping("/joinparty")
 	public String joinParty(Party dto, PartyVo vo, CurrentDt dt, HttpSession session) {
 		dto.setUpdtDt(dt.getNowDt());
 		dto.setMyName( (String)session.getAttribute("sessionSeq") );
 		dto.setLeaderName(vo.getLeaderName());
 		dto.setMpName(vo.getMpName());
-		dto.setNowStatus("19");
 		System.out.println("MPNAME: " + dto.getMpName());
 		
 		System.out.println("나?: " + dto.getMyName());
@@ -103,12 +103,11 @@ public class PartyController {
 		return "redirect:/myparty";
 	}
 	
-	
-//	@RequestMapping("/countplayer")
-//	public String countPlayer(Model model, Party dto, PartyVo vo) throws Exception {
-//		
-//		return "redirect:/myparty";
-//	}
+	@RequestMapping("/retireparty")
+	public String retireParty() {
+		
+		return "";
+	} 
 	
 	@RequestMapping(value="/ptupdate")
 	public String partyUpdate(Party dto) {

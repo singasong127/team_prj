@@ -58,7 +58,11 @@ public class PartyServiceImpl implements PartyService {
 	public int countPlayer(Party dto) {
 		return dao.countPlayer(dto);
 	}
-
+	
+	@Override
+	public int retirePlayer(Party dto) {
+		return dao.retirePlayer(dto);
+	}
 
 
 
