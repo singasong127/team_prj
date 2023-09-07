@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team.app.infra.report.ReportMapper">
+	
+	<resultMap id="resultMapObj" type="com.team.app.infra.report.Report"/>
+	
+	<sql id="reportCol">
+		r.seq
+		, r.type
+		, m.nickname as actor
+		, (
+			SELECT 
+				m.nickname
+			FROM
+				member m
+			WHERE 1=1
+            AND m.seq = r.actee
+        )actee
+		, (
+			SELECT
+				t.cdName
+			FROM
+				teamCode t
+			WHERE 1=1
+            AND t.cdSeq = r.reason
+        )reason
+		, r.delNy
+		, r.reportDesc
+		, r.datetime
+	</sql>
+
+	<sql id="report_table">
+		FROM
+			report r
+		LEFT JOIN member m on m.seq = r.actor
+		WHERE 1=1
+	</sql>
+	
+	<select id="selectOneCount" resultType="Integer">
+		SELECT count(*)
+		<include refid="report_table"/>
+	</select>
+
+	<select id="selectList" resultMap="resultMapObj">
+		SELECT repot. * FROM(
+			SELECT
+				<include refid="reportCol"/>
+				<include refid="report_table"/>
+		) repot
+		LIMIT #{rowNumToShow} OFFSET #{startRnumForMysql}
+	</select>
+
+	<select id="selectOne" resultMap="resultMapObj">
+		SELECT
+			seq
+			, type
+			, actor
+			, actee
+			, reason
+			, delNy
+			, reportDesc
+			, datetime
+		FROM
+			report 
+		WHERE 1=1
+			AND seq = #{seq}
+	</select>
+	
+	<insert id="repot_insert">
+		INSERT INTO	report(
+			type
+			, actor
+			, actee
+			, reason
+			, delNy
+			, reportDesc
+			, datetime
+		)VALUES(
+			#{type}
+			, #{actor}
+			, #{actee}
+			, #{reason}
+			, 0
+			, #{reportDesc}
+			, #{datetime}
+		)
+	</insert>
+	
+	
+</mapper>
+    
+    

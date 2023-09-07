@@ -6,13 +6,20 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+
 import com.team.app.infra.index.CurrentDt;
 import com.team.app.infra.upload.Upload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.team.app.infra.upload.Upload;
 
 @Controller
 public class MemberController {
@@ -21,7 +28,7 @@ public class MemberController {
 	MemberServiceImpl service;
 	@Autowired
 	KakaoAPI kakaoAPI;
-	
+
 //	-------------------------------------------------관리단----------------------------------------------------
 	@RequestMapping(value="/memberList")
 	public String memberList(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception{
@@ -95,7 +102,7 @@ public class MemberController {
 	
 //	상세
 	@RequestMapping(value="/memberOne")
-	public String memberOne(Member dto,MemberVo vo, Model model) {
+	public String memberOne(Member dto, MemberVo vo, Model model) {
 		Member member = service.memberOne(vo);
 		model.addAttribute("member", member);
 
@@ -225,9 +232,7 @@ public class MemberController {
 
 
 
-
-
-//		회원정보 수정
+//		회원정보
 	@RequestMapping(value="/memberOneUser")
 	public String memberOneUser(Member dto, MemberVo vo, Model model) throws Exception {
 		Member member = service.memberOne(vo);
@@ -239,4 +244,48 @@ public class MemberController {
 	}
 
 //	-------------------------------------------------/유저단----------------------------------------------------
+	
+//	카카오 로그인 API
+	
+	@RequestMapping(value="/login")
+	public String KakaoLogin(@RequestParam("code") String code, HttpSession session) throws Exception {
+		 System.out.println("code : " + code);
+
+	        String access_Token = kakaoAPI.getAccessToken(code);
+	        System.out.println("access_Token : " + access_Token);
+	        
+	        HashMap<String, Object> userInfo = kakaoAPI.getUserInfo(access_Token);
+	        System.out.println("login Controller : " + userInfo);
+
+	        //    클라이언트의 이메일이 존재할 때 세션에 해당 이메일과 토큰 등록
+	        if (userInfo.get("email") != null) {
+	        	session.setMaxInactiveInterval(60*10);
+	            session.setAttribute("sessionId", userInfo.get("email"));
+	            session.setAttribute("sessionNickName", userInfo.get("nickname"));
+	            session.setAttribute("access_Token", access_Token);
+	            
+	            System.out.println(userInfo.get("email"));
+	            System.out.println(session.getAttribute("sessionId"));
+	            System.out.println(session.getAttribute("access_Token"));
+	        }
+		
+		
+		return "/";
+	}
+	
+//	@RequestMapping(value="")
+//	public String kakaoLogout(HttpSession session) {
+//		String access_Token  = (String)session.getAttribute("access_Token");
+//		
+//		if(access_Token != null && !"".equals(access_Token)) {
+//			kakaoAPI.kakaoLogout(access_Token);
+//			session.removeAttribute(access_Token);
+//			session.removeAttribute("userId");
+//			session.removeAttribute("userNick");
+//		}else {
+//			System.out.println("access_Token is null");
+//		}
+//		
+//		return "redirect:/";
+//	}
 }
